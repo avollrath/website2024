@@ -1,0 +1,22 @@
+.border-gradient {
+    position: relative;
+}
+
+.border-gradient::before {
+    content: '';
+    position: absolute;
+    top: -1px; right: -1px; bottom: -1px; left: -1px; /* Expand the pseudo-element */
+    z-index: -1;
+    background: linear-gradient(150deg, rgb(90, 90, 90), transparent);
+    border-radius: inherit; /* Match the border-radius of the element */
+}
+
+/* Ensure the content of the card is above the pseudo-element */
+.border-gradient * {
+    position: relative;
+    z-index: 1;
+}
+
+.bento-gradient-bg {
+    background: linear-gradient(to bottom, #yourStartColor, #yourEndColor); /* Replace with your colors */
+}
