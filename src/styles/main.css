@@ -1,0 +1,121 @@
+@import url('./tailwind.css');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+
+.border-gradient {
+    position: relative;
+}
+
+.border-gradient::before {
+    content: '';
+    position: absolute;
+    top: -2px; right: -2px; bottom: -2px; left: -2px; /* Expand the pseudo-element */
+    z-index: -1;
+    background: linear-gradient(30deg, rgba(90, 90, 90, 0.30), rgba(255, 255, 255, 0.301), rgb(90, 90, 90, 0.30));
+    border-radius: inherit; /* Match the border-radius of the element */
+}
+
+/* Ensure the content of the card is above the pseudo-element */
+.border-gradient * {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* Custom Tooltip Theming */
+.tippy-box[data-theme='custom'] {
+    background-color: black; /* Black background */
+    color: white; /* White text color */
+    border-radius: 0.5rem; /* Slightly rounded corners */
+    padding: 0.5rem; /* Padding inside the tooltip */
+    font-size: 1.2rem; /* Larger font size */
+    text-align: center;
+  }
+
+  .gradient-text {
+    background: linear-gradient(45deg, #ff6309, #ffbd06);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.arrow-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; /* Make it round */
+    width: 56px; /* Circle size */
+    height: 56px; /* Circle size */
+    transition: transform 0.3s ease;
+    border: 2px solid #fff;
+}
+
+.arrow-link svg {
+    transform: rotate(-45deg); /* Rotate arrow to upper right */
+    transition: transform 0.3s ease;
+}
+
+.arrow-link:hover svg {
+    transform: rotate(0deg); /* Rotate back to right and move arrow */
+}
+
+.clickable-section {
+    cursor: pointer;
+}
+
+
+
+.image-container {
+    width: 100%; /* Set to desired width of the image */
+    overflow: hidden; /* Hide parts of the image outside the container */
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.5s ease-in-out;
+    object-fit: cover;
+}
+
+.frosted-glass-section {
+    /* Adjust the background color and opacity to your preference */
+
+    /* Apply the frosted glass effect */
+    backdrop-filter: blur(10px); /* Adjust the blur value as needed */
+  
+
+  }
+
+  .avatar {
+    position: absolute;
+    bottom: 0px; /* Adjust as needed */
+    right: 0px; /* Adjust as needed */
+    width: 600px; /* Adjust size as needed */
+    height: auto;
+    z-index: 0; /* Ensure it's above other content */
+}
+
+.cool-contrast-gradient {
+    background: linear-gradient(45deg, #cc0a0a, #d80a71); /* Blue to Purple gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+
+  .img-spotify {
+    transition: transform 0.3s ease;
+}
+
+
+
+.img-spotify:hover {
+transform: scale(1.1);
+}
+
+
+.orange-bullets li::marker {
+    color: #ff6309;
+  }
+
+
+  
+
