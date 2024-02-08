@@ -9,7 +9,7 @@ const Globe = () => {
     "Germany", "Netherlands", "Finland", "Norway", "Sweden",
     "Latvia", "Estonia", "Cuba", "Panama", "Spain",
     "Italy", "Russia", "Greece", "Turkey", "Vatican",
-    "Austria", "Poland", "England",
+    "Austria", "Poland", "England", "Hungary",
 ];
 
 onMount(() => {
@@ -52,7 +52,7 @@ onMount(() => {
     .enter()
     .append("path")
     .attr("d", pathGenerator)
-    .attr("fill", d => visitedCountries.includes(d.properties.name) ? "#ff6309" : "#333") // Orange color for visited countries
+    .attr("fill", d => visitedCountries.includes(d.properties.name) ? "#45CE8A" : "#333") // Orange color for visited countries
     .style("stroke", "black")
     .style("stroke-width", 0.2);
 

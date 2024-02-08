@@ -1,29 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
+---
+import Layout from '../layouts/Layout.astro';
+---
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About André Vollrath</title>
-</head>
-
-<body>
-    <div class="portrait">
-        <!-- Insert your portrait image here -->
-        <img src="path/to/your/portrait.jpg" alt="André Vollrath">
+<Layout title="About" description="About me page">
+    <div class="lg:col-span-4 dark:bg-gradient-to-r from-dark-card to-darker-card rounded-lg flex flex-col items-center border-gradient bg-cover bg-center bg-no-repeat" style="background-image: url('/images/about.jpg');">
+        <!-- The content of your container goes here -->
     </div>
-    <div class="bio">
-        <h1>About André Vollrath</h1>
-        <p>Hello there,</p>
-        <p>I'm André Vollrath, and I'm thrilled to make your acquaintance. I'm a designer and front-end developer, deeply passionate about the digital world. With over a decade of experience under my belt, I've dedicated myself to crafting visually stunning designs and building engaging websites.</p>
-        <p>In the realm of design, I thrive on bringing ideas to life. Whether it's fine-tuning images in Adobe Photoshop or creating captivating graphics in Adobe Illustrator, I find joy in the creative process.</p>
-        <p>When it comes to web development, I'm your go-to person. From HTML5 and CSS3 to JavaScript and React, I enjoy the challenge of crafting seamless online experiences.</p>
-        <p>Photography is another avenue through which I express my creativity. Over the years, I've had the pleasure of working with advertising agencies and freelancing, always striving to capture the perfect shot.</p>
-        <p>But beyond my professional pursuits, I find fulfillment in a variety of hobbies. Whether it's hitting the trails on my mountain bike, playing the piano, or exploring Helsinki on my motorcycle, I'm always seeking new experiences.</p>
-        <p>Originally from Germany, I've found a sense of belonging in Helsinki. It's a city that inspires me with its vibrancy and creativity.</p>
-        <p>So whether you're looking to enhance your website, create captivating visuals, or simply chat about the latest tech trends, I'm here to lend a helping hand. Let's connect and bring your ideas to life.</p>
-        <p>Warm regards,<br>André</p>
+    <div class="lg:col-span-8 dark:bg-gradient-to-r long-transition from-dark-card to-darker-card px-48 py-24 text-xl text-gray-500 dark:text-white  bg-white rounded-lg flex flex-col items-center border-gradient">
+        <div class="bio space-y-4">
+            <h1 class="text-3xl font-bold mb-4">About me</h1>
+            <p>Hi, I'm <strong class="text-dark-text dark:text-white">André</strong>, a <strong class="text-dark-text dark:text-white">designer</strong> and <strong class="text-dark-text dark:text-white">front-end developer</strong> with a solid decade crafting digital experiences. My journey in design and development is driven by a blend of creativity and technical prowess.</p>
+            <p>I find great joy in <strong class="text-dark-text dark:text-white">3D modeling</strong> with Blender – it's not just about creating models but about bringing ideas to life. <strong class="text-dark-text dark:text-white">VR technology</strong> fascinates me too; it's a game-changer in how we interact with digital content.</p>
+            <p>On the professional front, I’m deeply involved in <strong class="text-dark-text dark:text-white">front-end development</strong>. I've worked extensively with <strong class="text-dark-text dark:text-white">HTML5, CSS3, JavaScript</strong>, and frameworks like <strong class="text-dark-text dark:text-white">React</strong>. Staying updated with the latest tech trends is not just my job, it's my passion.</p>
+            <p>My interest doesn't stop at the screen. Building and flying <strong class="text-dark-text dark:text-white">FPV drones</strong> is my kind of adventure – it’s amazing how tech can literally take you to new heights. It's a blend of fun and challenge that I deeply enjoy.</p>
+            <p>Technology and gadgets are part of my daily life. Whether it's the latest smartphone release or innovative tech products, I’m always curious. And yes, that curiosity extends to <strong class="text-dark-text dark:text-white">perfumes</strong> as well; each fragrance has its own story, and I love that.</p>
+            <p>As an <strong class="text-dark-text dark:text-white">animal lover</strong>, my days are often brightened by dogs and cats. They remind me of the simple joys of life. And when it comes to food, a good <strong class="text-dark-text dark:text-white">Döner</strong> is unbeatable – it’s the perfect mix of flavors.</p>
+            <p>I originally hail from Germany, but <strong class="text-dark-text dark:text-white">Helsinki</strong> is where I call home now. The city's energy and creativity are inspiring, and there's always something new to discover.</p>
+            <p>If you’re looking for someone to discuss the latest tech, need help with a web project, or just want to share your favorite Döner spot, feel free to reach out. I’m always up for a good conversation and exciting projects.</p>
+            <p>Best regards,<br><strong class="text-dark-text dark:text-white">André</strong></p>
+        </div>
     </div>
-</body>
+    
+</Layout>
 
-</html>
+  
+

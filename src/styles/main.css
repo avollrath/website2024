@@ -1,6 +1,13 @@
 @import url('./tailwind.css');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
+:root {
+    --border-gradient: none; /* Default to no gradient for light mode */
+}
+
+.dark {
+    --border-gradient: linear-gradient(30deg, rgba(90, 90, 90, 0.30), rgba(255, 255, 255, 0.301), rgba(90, 90, 90, 0.30)); /* Gradient for dark mode */
+}
 
 .border-gradient {
     position: relative;
@@ -9,13 +16,12 @@
 .border-gradient::before {
     content: '';
     position: absolute;
-    top: -2px; right: -2px; bottom: -2px; left: -2px; /* Expand the pseudo-element */
+    top: -2px; right: -2px; bottom: -2px; left: -2px;
     z-index: -1;
-    background: linear-gradient(30deg, rgba(90, 90, 90, 0.30), rgba(255, 255, 255, 0.301), rgb(90, 90, 90, 0.30));
-    border-radius: inherit; /* Match the border-radius of the element */
+    background: var(--border-gradient);
+    border-radius: inherit;
 }
 
-/* Ensure the content of the card is above the pseudo-element */
 .border-gradient * {
     position: relative;
     z-index: 1;
@@ -33,7 +39,7 @@
   }
 
   .gradient-text {
-    background: linear-gradient(45deg, #ff6309, #ffbd06);
+    background: linear-gradient(45deg, #1d4ed8, #22c55e);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -46,7 +52,11 @@
     width: 56px; /* Circle size */
     height: 56px; /* Circle size */
     transition: transform 0.3s ease;
-    border: 2px solid #fff;
+    border: 3px solid #06b6d4;
+}
+
+.arrow-link.white {
+    border: 3px solid #ffffff;
 }
 
 .arrow-link svg {
@@ -89,13 +99,13 @@
     position: absolute;
     bottom: 0px; /* Adjust as needed */
     right: 0px; /* Adjust as needed */
-    width: 600px; /* Adjust size as needed */
+    width: 620px; /* Adjust size as needed */
     height: auto;
     z-index: 0; /* Ensure it's above other content */
 }
 
 .cool-contrast-gradient {
-    background: linear-gradient(45deg, #cc0a0a, #d80a71); /* Blue to Purple gradient */
+    background: linear-gradient(45deg, #74c7ff, #5bff76); /* Blue to Purple gradient */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -112,9 +122,43 @@ transform: scale(1.1);
 }
 
 
-.orange-bullets li::marker {
-    color: #ff6309;
+.bullets li::marker {
+    color: #22c55e;
   }
+
+  .gradient-underline {
+    text-decoration: underline;
+    text-decoration-color: transparent; /* Use transparent color initially */
+    background-clip: text; /* Ensure the background clip applies to the text */
+  }
+  
+  .gradient-underline::after {
+    content: '';
+    display: block;
+    height: 5px; /* Adjust the height of the underline as needed */
+    background: linear-gradient(45deg, #1d4ed8, #22c55e);
+    border-radius: 50px;
+    width: 110%;
+    transform: translateX(-5%)
+  }
+
+
+  .globe-container {
+    width: 100%; /* Adjust based on layout */
+    height: 500px; /* Adjust as needed */
+    position: relative; /* Or 'absolute', depending on your layout */
+    z-index: 1; /* Adjust based on your stacking context */
+}
+
+
+
+/* Define the transition effect for the text-transition class */
+.long-transition {
+    transition: 1s ease;
+}
+
+
+
 
 
   

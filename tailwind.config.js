@@ -12,15 +12,21 @@ export default {
         'md': '1rem',
       },
 
-      
+      maxWidth: {
+        '1920': '1920px',
+      },
+
+      gradientColorStops: theme => ({
+        ...theme('colors'),
+        'gradient': 'linear-gradient(45deg, #ff6309, #ffbd06)',
+      }),
 
       colors: {
         'dark-bg': '#0d0d0d',  // Adjust the hex value to match your design
         'dark-card': '#1a1a1a', // Adjust the hex value to match your design
         'darker-card': '#121212',
         'dark-accent': '#757575', // Adjust the hex value to match your design
-        'dark-text': '#EEEEEE', // Adjust the hex value to match your design
-        // Add other colors from your design as needed
+        'dark-text': '#45CE8A', // Adjust the hex value to match your design
       },
 
   fontFamily: {
@@ -30,7 +36,7 @@ export default {
 
     },
   },
-  plugins: [],
+  plugins: [ require('@tailwindcss/typography'),],
   darkMode: 'class', // 'media' or 'class'
 };
 

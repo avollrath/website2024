@@ -1,342 +1,179 @@
 ---
 // Import the getTopTracks function
 import getTopTracks from "../scripts/getTopTracks.js";
-import { Tooltips } from "astro-tooltips";
 import Globe from '../components/Globe';
+import Layout from '../layouts/Layout.astro';
 
 const refreshToken = import.meta.env.SPOTIFY_REFRESH_TOKEN;
 
 let topTracks = [];
 
 try {
-  // Call getTopTracks with only the refreshToken
   topTracks = await getTopTracks(refreshToken);
 } catch (error) {
   console.error("Error fetching top tracks:", error);
 }
 
+const allPosts = await Astro.glob('../pages/posts/*.md');
+const latestPost = allPosts[0]; 
 
-// Rest of your JavaScript code
+export { latestPost };
 ---
 
-<!doctype html>
-<html lang="en" class="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/src/styles/main.css" />
-    <title>André's Portfolio</title>
-    <Tooltips
-      theme="custom"
-      delay={[50, 100]}
-      placement="top"
-      allowHTML={true}
-    />
-  </head>
-
-  <body class="dark:bg-dark-bg text-dark-text font-body">
-    <div class="container mx-auto min-w-[1920px] px-4 py-8">
-
-        <!-- Navigation Bar -->
-        <div class="nav-bar mb-8">
-          <div class="flex justify-end">
-            <a href="/home" class="nav-item text-gray-400 px-4 py-2 text-lg font-bold">Home</a>
-            <a href="/about" class="nav-item text-gray-400 px-4 py-2 text-lg font-bold">About</a>
-            <a href="/blog" class="nav-item text-gray-400 px-4 py-2 text-lg font-bold">Blog</a>
-          </div>
-        </div>
-  
-        <!-- Main Content -->
-
-
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-        <!-- Intro Section -->
-        <div
-          class="lg:col-span-9 dark:bg-gradient-to-r from-dark-card to-darker-card p-24 rounded-lg flex items-center border-gradient"
-        >
-          <div class="z-10 flex-1">
-            <h1
-              class="text-8xl lg:text-9xl font-bold mb-6 lg:mb-12 font-header"
-            >
-              Hi, I'm André
-            </h1>
-            <p
-              class="text-gray-300 text-lg lg:text-3xl/relaxed max-w-3xl lg:max-w-4xl mb-6 lg:mb-12"
-            >
-              I'm a multi-talented human specializing in <strong>design</strong>
-              and <strong>development</strong>. Most of my time I <strong
-                >design and build digital products</strong
-              >. I possess a degree in Media Design and have worked on a
-              multitude of web and print-based projects.
-            </p>
-
-            <p
-              class="text-gray-300 text-lg lg:text-3xl/relaxed max-w-xl lg:max-w-4xl mb-6 leading-loose"
-            >
-              Currently, I'm working as a Front End Developer at
-              <a
-                href="https://www.talentadore.com"
-                class="bg-red-500 text-white px-2 py-1 rounded font-bold hover:bg-red-700 transition ease-in-out"
-                >TalentAdore.</a
-              >
-            </p>
-          </div>
-          <div></div>
-          <img
-          src="/images/profile.png"
-          alt="André's Avatar"
-          class="avatar"
-      />
-        </div>
-
-        <!-- Now Section -->
-        <div
-          class="md:col-span-3 bg-gradient-to-r from-dark-card to-darker-card p-12 rounded-lg h-full border-gradient flex flex-col justify-between clickable-section"
-        >
-          <div class="flex justify-between items-center mb-6">
-            <h2 class="font-body font-bold text-4xl">Now</h2>
-            <a href="/now" class="arrow-link">
-              <!-- SVG for arrow -->
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="3"
-                  d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-              </svg>
-            </a>
-          </div>
-          <ul class="list-disc pl-5 mb-4 text-lg text-gray-300 orange-bullets">
-            <li class="mb-4">
-              Learning <strong>Astro.js</strong> and <strong
-                >Tailwind CSS</strong>
-            </li>
-            <li class="mb-4">
-              Reading "<strong>The Count of Monte Cristo</strong>" by <strong
-                >Alexandre Dumas</strong>
-            </li>
-            <li class="mb-4">
-              Reading "<strong>How to Win at Chess</strong>" by <strong
-                >Levy Rozman</strong>
-            </li>
-            <li class="mb-4">
-              Reading "<strong>Demon Copperhead</strong>" by <strong
-                >Barbara Kingsolver</strong>
-            </li>
-            <li class="mb-4">
-              Practicing "<strong>Comptine d'un autre été</strong>" by <strong
-                >Yann Tiersen</strong
-              > on the piano
-            </li>
-          </ul>
-          
-          
-
-          <div>
-            <p class="text-right">Last Updated: February 6, 2024</p>
-            <!-- Update with the current date -->
-          </div>
-        </div>
-
-<!-- Latest Blog Section -->
-<div class="md:col-span-3 md:row-span-2 bg-gradient-to-r from-dark-card to-darker-card p-12 rounded-lg h-full border-gradient clickable-section">
-  <div class="flex justify-between items-center mb-6">
-    <h2 class="font-body font-bold text-4xl">Latest Blog</h2>
-    <a href="/blog/chess-rating-display" class="arrow-link">
-      <!-- SVG or icon for arrow -->
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-      </svg>
-    </a>
-  </div>
-  <h3 class="text-lg font-body text-white mb-6">
-    Building a Real-Time Chess Rating Display with Python and Pixoo
-  </h3>
-  <div class="image-container rounded-md">
-  <img src="images/blog/pixoo.jpg" alt="Pixoo Display" class="mb-6 rounded-md">
-</div>
-<p class="text-gray-300 text-lg leading-relaxed">
-  Dive into the journey of <strong>building a real-time chess rating display</strong> using <strong>Python</strong> and the <strong>Chess.com API</strong>, showcased on a Pixoo display. Learn how I leveraged <strong>Python programming skills</strong> to create an interactive experience for <strong>chess enthusiasts</strong> and <strong>Python programmers alike</strong>.  </br></br> Explore the fusion of <strong>technology and creativity</strong> as we delve into the intricacies of <strong>real-time data integration</strong> and <strong>visual display</strong>, making this project a fascinating endeavor for anyone passionate about the intersection of <strong>programming and gaming</strong>.
-</p>
-</div>
-
-
-        <!-- About Section -->
-        <div
-          class="lg:col-span-3 bg-gradient-to-tr from-orange-700 to-orange-400 p-12 rounded-lg h-full clickable-section bright-section"
-        >
-          <div class="flex justify-between items-center mb-6">
-            <h2 class="font-body font-bold text-4xl">About</h2>
-            <a href="/about" class="arrow-link">
-              <!-- SVG for arrow -->
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="3"
-                  d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-              </svg>
-            </a>
-          </div>
-          <p class="text-gray-300 text-lg leading-relaxed">
-            Hello there, </br></br>
-            I'm <strong>André Vollrath</strong>, and I'm thrilled to make your
-            acquaintance. I'm a <strong>designer</strong> and <strong>front-end developer</strong>, deeply
-            passionate about the <strong>digital world</strong>. With over a decade of experience
-            under my belt, I've dedicated myself to crafting <strong>visually stunning
-            designs</strong> and building <strong>engaging websites</strong>.
+<Layout title="André's Portfolio" description="Welcome to André's Portfolio">
+    
+    <!-- Intro Section -->
+    <div class="lg:col-span-9 dark:dark:bg-gradient-to-r from-dark-card to-darker-card bg-white py-24 px-12 rounded-lg flex relative items-center border-gradient" >
+      <div class="z-10 flex-1">
+        <h1 class="text-8xl lg:text-9xl font-bold mb-6 lg:mb-12 font-header long-transition">Hi, I'm André</h1>
+        <p class=" text-lg lg:text-3xl leading-relaxed max-w-3xl text-gray-500 long-transition dark:text-white lg:max-w-4xl mb-6 lg:mb-12">
+          I'm a multi-talented human specializing in design and development. Most of my time I design and build digital products. I possess a degree in Media Design and have worked on a multitude of web and print-based projects.
         </p>
-        </br>
-        <p class="text-gray-300 text-lg leading-relaxed">
-            In the realm of <strong>design</strong>, I thrive on bringing ideas to life. Whether it's fine-tuning images in <strong>Adobe Photoshop</strong> or creating ...
+        <p class=" text-lg lg:text-3xl/relaxed leading-relaxed max-w-xl  text-gray-500 long-transition dark:text-white lg:max-w-4xl mb-6">
+          Currently, I'm working as a Front End Developer at <a href="https://www.talentadore.com" class="bg-gradient-to-tr from-blue-600 to-green-400 text-white px-2 py-1 rounded font-bold">TalentAdore.</a>
         </p>
-        
-        </div>
-
-        <!-- Latest Render Section -->
-        <div
-          class="lg:col-span-6 bg-gradient-to-r from-dark-card to-darker-card p-12 rounded-lg border-gradient h-full clickable-section latest-render-section"
-        >
-          <div class="flex justify-between items-center mb-6">
-            <h2 class="font-body font-bold text-4xl">Latest Render</h2>
-            <a href="/render" class="arrow-link">
-              <!-- SVG for arrow -->
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="3"
-                  d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-              </svg>
-            </a>
-          </div>
-          <!-- Placeholder for Render Image -->
-          <div class="image-container rounded-md">
-            <img
-			class="rounded-md"
-              src="/images/renders/vollrathdoV1edited.png"
-              alt="Latest Render"
-            />
-          </div>
-        </div>
-
-        <!-- Spotify Section -->
-        <div
-          class="md:col-span-9 lg:col-span-9 bg-gradient-to-r from-dark-card to-darker-card p-12 rounded-lg border-gradient h-full flex flex-col items-center overflow-visible"
-        >
-          <h2 class="font-body font-bold self-start mb-8 text-4xl">
-            Spotify Top 5 <span class="text-gray-500 text-2xl">(last 6 months)</span>
-          </h2>
-          <div class="flex flex-row justify-between w-full">
-            {
-              topTracks.map((track) => (
-                <div key={track.id}>
-                  <a
-                    href={track.external_urls.spotify}
-                    target="_blank"
-                    title={`<b>${track.name}</b> - ${track.artists
-                      .map((artist) => artist.name)
-                      .join(", ")}`}
-                  >
-                    <img
-                      src={track.album.images[0].url}
-                      alt={`Cover art for ${track.name}`}
-                      class="w-48 rounded-md img-spotify"
-                    />
-                  </a>
-                </div>
-              ))
-            }
-          </div>
-        </div>
-
-<!-- Links Section -->
-<div class="lg:col-span-4 bg-gradient-to-r from-dark-card to-darker-card p-12 rounded-lg border-gradient h-full flex flex-col">
-  <h2 class="font-body mb-4 font-bold text-4xl">Links</h2>
-  <div class="flex-1 flex items-center justify-center">
-    <div class="grid grid-cols-2 gap-4">
-      <a href="https://github.com/yourusername" target="_blank">
-        <img src="/icons/github.png" alt="GitHub" class="w-32" />
-      </a>
-      <a href="https://instagram.com/yourusername" target="_blank">
-        <img src="/icons/instagram.png" alt="Instagram" class="w-32" />
-      </a>
-      <a href="https://linkedin.com/in/yourusername" target="_blank">
-        <img src="/icons/linkedin.png" alt="LinkedIn" class="w-32" />
-      </a>
-      <a href="https://spotify.com/yourusername" target="_blank">
-        <img src="/icons/spotify.png" alt="Spotify" class="w-32" />
-      </a>
+      </div>
+      <img src="/images/profile.png" alt="André's Avatar" class="avatar" />
     </div>
-  </div>
-</div>
 
-
-
-
-
-<!-- Countries Visited Section -->
-<div class="lg:col-span-8 bg-gradient-to-r from-dark-card to-darker-card p-12 rounded-lg border-gradient h-full">
-  <h2 class="font-body font-bold text-4xl">Countries Visited</h2>
-  <div class="h-full w-full absolute inset-0 -z-10">
-    <Globe client:load />
-  </div>
-</div>
-
-
-<!-- Based in Section -->
-<div class="lg:col-span-8 bg-gradient-to-r from-dark-card to-darker-card p-12 rounded-lg border-gradient h-full flex flex-col">
-  <h2 class="font-body font-bold text-4xl mb-12">Based in</h2>
-  <div class="flex justify-center items-center">
-    <img src="/images/globe.png" alt="Globe" class="w-96 h-96 mr-16">
-    <div class="grid grid-flow-row gap-2">
-      <h1 class="text-8xl lg:text-9xl font-bold mb-6 lg:mb-12 font-header">
-        Helsinki<br>Finland<br><span class="text-gray-500">GMT +2</span>
-      </h1>
+    <!-- Now Section -->
+    <div class="md:col-span-3 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white p-12 rounded-lg h-full border-gradient flex flex-col justify-between clickable-section" >
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="font-body font-bold text-4xl long-transition">Now</h2>
+        <a href="/now" class="arrow-link">
+             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-cyan-500" fill="none" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+          </svg>
+        </a>
+      </div>
+      <ul class="list-disc pl-5 mb-4 text-lg  text-gray-500 dark:text-white bullets long-transition">
+        <li class="mb-4">Learning Astro.js and Tailwind CSS</li>
+        <li class="mb-4">Reading "The Count of Monte Cristo" by Alexandre Dumas</li>
+        <li class="mb-4">Reading "How to Win at Chess" by Levy Rozman</li>
+        <li class="mb-4">Reading "Demon Copperhead" by Barbara Kingsolver</li>
+        <li class="mb-4">Practicing "Comptine d'un autre été" by Yann Tiersen on the piano</li>
+      </ul>
+      <p class="text-right  text-gray-500 dark:text-white">Last Updated: February 6, 2024</p>
     </div>
-  </div>
-</div>
 
-
-
-
-
-
-<!-- Contact Section -->
-<div class="lg:col-span-4 bg-gradient-to-r from-dark-card to-darker-card p-12 rounded-lg border-gradient h-full flex flex-col justify-between">
-  <h2 class="font-body font-bold text-4xl mb-6">Contact</h2>
-  <div class="flex-1 flex items-center justify-center">
-      <button class="bg-gradient-to-tr from-orange-700 to-orange-400 rounded-full px-6 py-8 text-white text-3xl font-semibold w-full">Send Email</button>
-  </div>
-</div>
-
-
-
-
-
-
-        
+    <!-- Latest Blog Section -->
+    <div class="md:col-span-3 md:row-span-2 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white p-12 rounded-lg h-full border-gradient clickable-section">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="font-body font-bold text-4xl long-transition">Latest Blog</h2>
+        <a href={latestPost.url} class="arrow-link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-cyan-500" fill="none" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+          </svg>
+        </a>
+      </div>
+      <h3 class="text-lg font-body  text-gray-500 long-transition dark:text-white mb-6 font-bold">{latestPost.frontmatter.title}</h3>
+      <div class="image-container rounded-md">
+        <img src={latestPost.frontmatter.image.url} alt={latestPost.frontmatter.image.alt} class="mb-6 rounded-md object-cover aspect-video">
+      </div>
+      <p class="long-transition text-lg leading-relaxed text-gray-500 dark:text-white">
+        {latestPost.frontmatter.teaser}
+      </p>
+      <div class="flex justify-center">
+        <button class="bg-gradient-to-tr from-blue-700 to-green-400 rounded-full px-10 py-4 mt-12 text-white text-xl font-semibold">Read more</button>
       </div>
     </div>
-    <script type="module" src="/src/scripts/interactiveSections.js"></script>
-  </body>
-</html>
-../components/globe.tsx../components/globe.tsx
+
+    <!-- About Section -->
+    <div class="lg:col-span-3 bg-gradient-to-tr from-blue-700 to-green-400 p-12 text-white rounded-lg h-full clickable-section bright-section">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="font-body font-bold text-4xl">About</h2>
+        <a href="/about" class="arrow-link white">
+             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-white" fill="none" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+          </svg>
+        </a>
+      </div>
+      <p class=" text-lg leading-relaxed">
+        Hello there, I'm André Vollrath, and I'm thrilled to make your acquaintance. I'm a designer and front-end developer, deeply passionate about the digital world. With over a decade of experience under my belt, I've dedicated myself to crafting visually stunning designs and building engaging websites.
+      </p>
+      <p class=" text-lg leading-relaxed">
+        In the realm of design, I thrive on bringing ideas to life. Whether it's fine-tuning images in Adobe Photoshop or creating stunning web designs, my passion for visual storytelling drives me to push the boundaries of creativity.
+      </p>
+    </div>
+
+    <!-- Latest Render Section -->
+    <div class="lg:col-span-6 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white p-12 rounded-lg border-gradient h-full clickable-section latest-render-section" >
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="font-body font-bold text-4xl long-transition">Latest Render</h2>
+        <a href="/render" class="arrow-link">
+             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-cyan-500" fill="none" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+          </svg>
+        </a>
+      </div>
+      <div class="image-container rounded-md">
+        <img src="/images/renders/vollrathdoV1edited.png" alt="Latest Render" class="rounded-md" />
+      </div>
+    </div>
+
+    <!-- Spotify Section -->
+    <div class="md:col-span-9 lg:col-span-9 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white p-12 rounded-lg border-gradient h-full flex flex-col items-center overflow-visible" >
+      <h2 class="font-body font-bold self-start mb-8 text-4xl long-transition">Spotify Top 5 <span class="text-gray-500 text-2xl">(last 6 months)</span></h2>
+      <div class="flex flex-row justify-between w-full">
+        {topTracks.map((track) => (
+          <div key={track.id}>
+            <a href={track.external_urls.spotify} target="_blank" title={`<b>${track.name}</b> - ${track.artists.map((artist) => artist.name).join(", ")}`}>
+              <img src={track.album.images[0].url} alt={`Cover art for ${track.name}`} class="w-48 rounded-md dark:shadow:none shadow-md img-spotify" />
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Links Section -->
+    <div class="lg:col-span-4 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white p-12 rounded-lg border-gradient h-full flex flex-col" >
+      <h2 class="font-body mb-4 font-bold text-4xl long-transition">Links</h2>
+      <div class="flex-1 flex items-center justify-center">
+        <div class="grid grid-cols-2 gap-4">
+          <a href="https://github.com/yourusername" target="_blank">
+            <img src="/icons/github.png" alt="GitHub" class="w-32" />
+          </a>
+          <a href="https://instagram.com/yourusername" target="_blank">
+            <img src="/icons/instagram.png" alt="Instagram" class="w-32" />
+          </a>
+          <a href="https://linkedin.com/in/yourusername" target="_blank">
+            <img src="/icons/linkedin.png" alt="LinkedIn" class="w-32" />
+          </a>
+          <a href="https://spotify.com/yourusername" target="_blank">
+            <img src="/icons/spotify.png" alt="Spotify" class="w-32" />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Countries Visited Section -->
+    <div class="lg:col-span-8 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white p-12 rounded-lg border-gradient h-full" >
+      <h2 class="font-body font-bold text-4xl long-transition">Countries Visited</h2>
+      <div class="h-full w-full absolute inset-0 -z-10 globe-container">
+        <Globe client:load />
+      </div>
+    </div>
+
+    <!-- Based in Section -->
+    <div class="lg:col-span-8 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white p-12 rounded-lg border-gradient h-full flex flex-col" >
+      <h2 class="font-body font-bold text-4xl mb-12 long-transition">Based in</h2>
+      <div class="flex justify-center items-center">
+        <img src="/images/globe.png" alt="Globe" class="w-96 h-96 mr-16">
+        <div class="grid grid-flow-row gap-2">
+          <h1 class="text-8xl lg:text-9xl font-bold mb-6 lg:mb-12 font-header">
+            Helsinki<br>Finland<br><span class="text-gray-500">GMT +2</span>
+          </h1>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="lg:col-span-4 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white p-12 rounded-lg border-gradient h-full flex flex-col justify-between" >
+      <h2 class="font-body font-bold text-4xl mb-6 long-transition">Contact</h2>
+      <div class="flex-1 flex items-center justify-center">
+        <button class="bg-gradient-to-tr from-blue-700 to-green-400 rounded-full px-6 py-8 text-white text-3xl font-semibold w-full">Send Email</button>
+      </div>
+    </div>
+  </div>
+</Layout>
+

@@ -1,0 +1,23 @@
+---
+
+import { formatDate } from '../scripts/utils.js';
+const allPosts = await Astro.glob('../pages/posts/*.md');
+
+// Function to format date
+
+---
+
+<aside class="sidebar dark:bg-gradient-to-r from-dark-card to-darker-card py-24 px-12 bg-white rounded-lg flex flex-col items-start border-gradient">
+  <h2 class="text-lg font-bold mb-12">Other Posts</h2>
+  <ul class="space-y-4">
+    {allPosts.map(post => (
+      <li key={post.url} class="flex flex-col mb-12">
+        {post.frontmatter.image.url && (
+          <img src={post.frontmatter.image.url} alt={post.frontmatter.image.alt} class="w-full h-auto mb-2 rounded-md aspect-video object-cover" />
+        )}
+        <a href={post.url} class="text-lg font-bold">{post.frontmatter.title}</a>
+        <span class="text-sm text-gray-500">{formatDate(post.frontmatter.pubDate)}</span>
+      </li>
+    ))}
+  </ul>
+</aside>

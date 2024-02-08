@@ -1,0 +1,18 @@
+---
+import ThemeIcon from './ThemeIcon.astro';
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.endsWith('/') ? pathname.slice(1, -1) : pathname.slice(1); // Remove the first "/" and trailing "/" if present
+---
+
+<nav class="nav-bar mb-8 lg:col-span-3 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white px-12 py-6 rounded-lg flex justify-between items-center border-gradient" data-border-gradient>
+  <!-- Dark Mode Toggle -->
+  <ThemeIcon />
+
+  <!-- Navigation Links -->
+  <div class="flex">
+    <a href="/" class={`nav-item px-4 py-2 text-lg ${currentPath === '' ? 'gradient-underline' : ''}`} id="home-link">Home</a>
+    <a href="/about" class={`nav-item px-4 py-2 text-lg ${currentPath === 'about' ? 'gradient-underline' : ''}`} id="about-link">About</a>
+    <!-- Underline /blog by default unless other specific paths are matched -->
+    <a href="/blog" class={`nav-item px-4 py-2 text-lg ${currentPath === '' || currentPath === 'about' ? '' : 'gradient-underline'}`} id="blog-link">Blog</a>
+  </div>
+</nav>

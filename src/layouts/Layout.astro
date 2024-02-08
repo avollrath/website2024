@@ -1,86 +1,76 @@
 ---
-interface Props {
-  title: string;
-  description: string;
-  page?: "travel";
-}
+import NavBar from '../components/NavBar.astro';
+import Footer from '../components/Footer.astro';
+import { Tooltips } from "astro-tooltips";
+import { ViewTransitions } from 'astro:transitions';
 
-const { title, description, page } = Astro.props;
-const image =
-  page === "travel"
-    ? `${Astro.url.origin}/globe_preview.webp"`
-    : `${Astro.url.origin}/me.webp`;
+const { title, description } = Astro.props;
+
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/styles/main.css" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content="/favicon/sitemap-index.xml" />
-    <!-- Basic OG tags for sharing your website's content on platforms like Facebook and LinkedIn -->
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={Astro.url.origin} />
-    <meta property="og:image" content={image} />
-    <!-- Basic Twitter Card tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={image} />
-
-    <link rel="preconnect" href="https://cdn.fontshare.com" />
+    <Tooltips theme="custom" delay={[50, 100]} placement="top" allowHTML={true} />
+    <ViewTransitions />
   </head>
-  <body
-    class="bg-darkslate-700 md:h-screen flex flex-col justify-center items-center"
-  >
-    <slot name="loader" />
-    <slot />
+  <body class="dark:bg-dark-bg dark:text-white text-dark-text bg-gray-200 font-body">
+    <div class="container mx-auto px-4 py-8 w-full max-w-1920 flex flex-col min-h-screen">
+      <NavBar />
+
+      <!-- Main content area with 12-column grid layout -->
+      <main class="flex-grow">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+          <slot /> <!-- Slot for page-specific content -->
+        </div>
+      </main>
+
+      <Footer />
+    </div>
+    <script type="module">
+      // Function to update theme
+      const updateTheme = () => {
+        const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+
+        const gradientElements = document.querySelectorAll('[data-border-gradient]');
+        gradientElements.forEach(el => {
+          el.classList.toggle('border-gradient', theme === 'dark');
+        });
+      };
+
+      // Function to handle theme toggle click
+      const handleToggleClick = () => {
+        const isDark = document.documentElement.classList.toggle('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        updateTheme();
+      };
+
+      // Initialize and attach listeners
+      const init = () => {
+        updateTheme();
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle && themeToggle.addEventListener('click', handleToggleClick);
+      };
+
+      // Check if document is already loaded
+      if (document.readyState === 'loading') {  
+        // Document is still loading, wait for it to complete
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        // Document is already loaded, initialize immediately
+        init();
+      }
+
+      // Re-initialize on astro:after-swap
+      document.addEventListener('astro:after-swap', init);
+    </script>
+    <script type="module" src="/src/scripts/interactiveSections.js"></script>
   </body>
+
 </html>
-
-<style is:global>
-  @font-face {
-    font-family: "CabinetGrotesk";
-    src: url("/fonts/CabinetGrotesk-Variable.ttf") format("truetype-variations");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-    font-weight: 100 1000;
-  }
-  @font-face {
-    font-family: "Satoshi";
-    src: url("/fonts/Satoshi-Variable.ttf") format("truetype-variations");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-    font-weight: 100 1000;
-  }
-
-  body {
-    margin: 0;
-    font-family: "Satoshi", sans-serif;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: "Cabinet Grotesk", sans-serif;
-  }
-  p {
-    font-family: "Satoshi";
-  }
-
-  b {
-    font-weight: 700 !important;
-  }
-</style>
