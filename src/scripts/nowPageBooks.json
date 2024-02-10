@@ -1,0 +1,20 @@
+[
+  {
+    "isbn": "9780451529701",
+    "title": "The Count of Monte Cristo",
+    "authors": "Alexandre Dumas",
+    "coverURL": "http://books.google.com/books/content?id=CCeTEAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+  },
+  {
+    "isbn": "9781984862075",
+    "title": "How to Win at Chess",
+    "authors": "Levy Rozman",
+    "coverURL": "http://books.google.com/books/content?id=r3W4EAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+  },
+  {
+    "isbn": "9780063251922",
+    "title": "Demon Copperhead",
+    "authors": "Barbara Kingsolver",
+    "coverURL": "http://books.google.com/books/content?id=w7ntzgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+  }
+]

@@ -57,4 +57,68 @@ async function getTopTracks(refreshToken) {
   return data.items;
 }
 
-export default getTopTracks;
+async function getCurrentPlayingTrack(refreshToken) {
+  if (!currentAccessToken) {
+    await refreshAccessToken(refreshToken);
+  }
+
+  let response = await fetch('https://api.spotify.com/v1/me/player/currently-playing', {
+    headers: {
+      Authorization: `Bearer ${currentAccessToken}`
+    }
+  });
+
+  if (response.status === 401) {
+    await refreshAccessToken(refreshToken);
+    response = await fetch('https://api.spotify.com/v1/me/player/currently-playing', {
+      headers: {
+        Authorization: `Bearer ${currentAccessToken}`
+      }
+    });
+  }
+
+  // Check if the response is ok and not empty
+  if (response.ok && response.status !== 204) {
+    const data = await response.json();
+    console.log("Currently Playing Track:", data); // Log the response
+    return data;
+  } else {
+    // Handle no content or other errors
+    console.log("No currently playing track or error:", response.status);
+    return null;
+  } 
+}
+
+async function getTopTracksAllTime(refreshToken) {
+  // Ensure the access token is current
+  if (!currentAccessToken) {
+    await refreshAccessToken(refreshToken);
+  }
+
+  let response = await fetch('https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=50', {
+    headers: {
+      Authorization: `Bearer ${currentAccessToken}`
+    }
+  });
+
+  // Check if the access token was expired
+  if (response.status === 401) {
+    // Refresh the token
+    await refreshAccessToken(refreshToken);
+    // Retry the request with the new token
+    response = await fetch('https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=50', {
+      headers: {
+        Authorization: `Bearer ${currentAccessToken}`
+      }
+    });
+  }
+
+  if (!response.ok) {
+    throw new Error(`Error fetching all-time top tracks: ${response.status}`);
+  }
+
+  const data = await response.json();
+  return data.items;
+}
+
+export { getTopTracks, getTopTracksAllTime, getCurrentPlayingTrack };
