@@ -1,18 +1,26 @@
 ---
-// Import the getTopTracks function
-import getTopTracks from "../scripts/getTopTracks.js";
+
+import { getTopTracks, getCurrentPlayingTrack } from "../scripts/getTopTracks.js";
 import Globe from '../components/Globe';
 import Layout from '../layouts/Layout.astro';
+import AudioWave from '../components/AudioWave.astro';
 
 const refreshToken = import.meta.env.SPOTIFY_REFRESH_TOKEN;
 
 let topTracks = [];
-
 try {
   topTracks = await getTopTracks(refreshToken);
 } catch (error) {
   console.error("Error fetching top tracks:", error);
 }
+
+let currentPlayingTrack = null;
+try {
+  currentPlayingTrack = await getCurrentPlayingTrack(refreshToken);
+} catch (error) {
+  console.error("Error fetching currently playing track:", error);
+}
+ 
 
 const allPosts = await Astro.glob('../pages/posts/*.md');
 const latestPost = allPosts[0]; 
@@ -25,11 +33,16 @@ export { latestPost };
     <!-- Intro Section -->
     <div class="lg:col-span-9 dark:dark:bg-gradient-to-r from-dark-card to-darker-card bg-white py-24 px-12 rounded-lg flex relative items-center border-gradient" >
       <div class="z-10 flex-1">
-        <h1 class="text-8xl lg:text-9xl font-bold mb-6 lg:mb-12 font-header long-transition">Hi, I'm André</h1>
-        <p class=" text-lg lg:text-3xl leading-relaxed max-w-3xl text-gray-500 long-transition dark:text-white lg:max-w-4xl mb-6 lg:mb-12">
-          I'm a multi-talented human specializing in design and development. Most of my time I design and build digital products. I possess a degree in Media Design and have worked on a multitude of web and print-based projects.
+        <div class="flex items-center mb-6 lg:mb-12">
+          <h1 class="text-8xl lg:text-8xl font-bold font-header long-transition mr-4">Hi, I'm André</h1>
+          <img src="/images/hangloose.png" alt="Hangloose emoji" class="w-16" />
+      </div>
+      
+        <p class="text-lg lg:text-3xl leading-relaxed max-w-3xl text-gray-500 long-transition dark:text-white lg:max-w-4xl mb-6 lg:mb-12">
+          I'm a <strong>multi-talented</strong> human specializing in <strong>design</strong> and <strong>development</strong>. Most of my time I design and build digital products. I possess a degree in <strong>Media Design</strong> and have worked on a multitude of <strong>web</strong> and <strong>print-based projects</strong>.
         </p>
-        <p class=" text-lg lg:text-3xl/relaxed leading-relaxed max-w-xl  text-gray-500 long-transition dark:text-white lg:max-w-4xl mb-6">
+        
+        <p class=" text-lg lg:text-3xl/relaxed leading-relaxed max-w-xl  text-gray-500 long-transition dark:text-white lg:max-w-5xl mb-6">
           Currently, I'm working as a Front End Developer at <a href="https://www.talentadore.com" class="bg-gradient-to-tr from-blue-600 to-green-400 text-white px-2 py-1 rounded font-bold">TalentAdore.</a>
         </p>
       </div>
@@ -46,13 +59,14 @@ export { latestPost };
           </svg>
         </a>
       </div>
-      <ul class="list-disc pl-5 mb-4 text-lg  text-gray-500 dark:text-white bullets long-transition">
-        <li class="mb-4">Learning Astro.js and Tailwind CSS</li>
-        <li class="mb-4">Reading "The Count of Monte Cristo" by Alexandre Dumas</li>
-        <li class="mb-4">Reading "How to Win at Chess" by Levy Rozman</li>
-        <li class="mb-4">Reading "Demon Copperhead" by Barbara Kingsolver</li>
-        <li class="mb-4">Practicing "Comptine d'un autre été" by Yann Tiersen on the piano</li>
+      <ul class="list-disc pl-5 mb-4 text-lg text-gray-500 dark:text-white bullets long-transition">
+        <li class="mb-4">Learning <strong>Astro.js</strong> <strong>and Tailwind CSS</strong></li>
+        <li class="mb-4">Reading "<strong>The Count of Monte Cristo</strong>" by <strong>Alexandre Dumas</strong></li>
+        <li class="mb-4">Reading "<strong>How to Win at Chess</strong>" by <strong>Levy Rozman</strong></li>
+        <li class="mb-4">Reading "<strong>Demon Copperhead</strong>" by <strong>Barbara Kingsolver</strong></li>
+        <li class="mb-4">Practicing "<strong>Comptine d'un autre été</strong>" by <strong>Yann Tiersen</strong> on the piano</li>
       </ul>
+      
       <p class="text-right  text-gray-500 dark:text-white">Last Updated: February 6, 2024</p>
     </div>
 
@@ -88,11 +102,11 @@ export { latestPost };
           </svg>
         </a>
       </div>
-      <p class=" text-lg leading-relaxed">
-        Hello there, I'm André Vollrath, and I'm thrilled to make your acquaintance. I'm a designer and front-end developer, deeply passionate about the digital world. With over a decade of experience under my belt, I've dedicated myself to crafting visually stunning designs and building engaging websites.
+      <p class="text-lg leading-relaxed">
+        Hello there, I'm <strong>André Vollrath</strong>, and I'm thrilled to make your acquaintance. I'm a <strong>designer</strong> and <strong>front-end developer</strong>, deeply passionate about the digital world. With over a decade of experience under my belt, I've dedicated myself to crafting visually stunning designs and building engaging websites.
       </p>
-      <p class=" text-lg leading-relaxed">
-        In the realm of design, I thrive on bringing ideas to life. Whether it's fine-tuning images in Adobe Photoshop or creating stunning web designs, my passion for visual storytelling drives me to push the boundaries of creativity.
+      <p class="text-lg leading-relaxed">
+        In the realm of <strong>design</strong>, I thrive on bringing ideas to life. Whether it's fine-tuning images in <strong>Adobe Photoshop</strong> or creating stunning <strong>web designs</strong>, my passion for visual storytelling drives me to push the boundaries of creativity.
       </p>
     </div>
 
@@ -118,11 +132,18 @@ export { latestPost };
         {topTracks.map((track) => (
           <div key={track.id}>
             <a href={track.external_urls.spotify} target="_blank" title={`<b>${track.name}</b> - ${track.artists.map((artist) => artist.name).join(", ")}`}>
-              <img src={track.album.images[0].url} alt={`Cover art for ${track.name}`} class="w-48 rounded-md dark:shadow:none shadow-md img-spotify" />
+              <img src={track.album.images[0].url} alt={`Cover art for ${track.name}`} class="w-48 h-auto rounded-md shadow-lg transition-transform duration-300 hover:scale-105" />
             </a>
           </div>
-        ))}
+          ))}
+        </div>
+      {currentPlayingTrack && currentPlayingTrack.is_playing && (
+      <div class="currently-playing self-start mt-8">
+        <a href={currentPlayingTrack.item.external_urls.spotify} target="_blank" class="flex items-center">
+          <span class="mr-4 text-gray-500 dark:text-white">Playing right now: <strong class="text-dark-text">{currentPlayingTrack.item.name}</strong> by {currentPlayingTrack.item.artists.map(artist => artist.name).join(", ")}</span>  <AudioWave />
+        </a>
       </div>
+      )}
     </div>
 
     <!-- Links Section -->
@@ -176,4 +197,4 @@ export { latestPost };
     </div>
   </div>
 </Layout>
-
+ 

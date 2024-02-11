@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import FavoriteBooks from '../components/FavoriteBooks.astro';
+import Spotify from '../components/Spotify.astro';
 ---
 
 <Layout title="About" description="About me page">
@@ -8,18 +10,21 @@ import Layout from '../layouts/Layout.astro';
     </div>
     <div class="lg:col-span-8 dark:bg-gradient-to-r long-transition from-dark-card to-darker-card px-48 py-24 text-xl text-gray-500 dark:text-white  bg-white rounded-lg flex flex-col items-center border-gradient">
         <div class="bio space-y-4">
-            <h1 class="text-3xl font-bold mb-4">About me</h1>
-            <p>Hi, I'm <strong class="text-dark-text dark:text-white">André</strong>, a <strong class="text-dark-text dark:text-white">designer</strong> and <strong class="text-dark-text dark:text-white">front-end developer</strong> with a solid decade crafting digital experiences. My journey in design and development is driven by a blend of creativity and technical prowess.</p>
-            <p>I find great joy in <strong class="text-dark-text dark:text-white">3D modeling</strong> with Blender – it's not just about creating models but about bringing ideas to life. <strong class="text-dark-text dark:text-white">VR technology</strong> fascinates me too; it's a game-changer in how we interact with digital content.</p>
-            <p>On the professional front, I’m deeply involved in <strong class="text-dark-text dark:text-white">front-end development</strong>. I've worked extensively with <strong class="text-dark-text dark:text-white">HTML5, CSS3, JavaScript</strong>, and frameworks like <strong class="text-dark-text dark:text-white">React</strong>. Staying updated with the latest tech trends is not just my job, it's my passion.</p>
-            <p>My interest doesn't stop at the screen. Building and flying <strong class="text-dark-text dark:text-white">FPV drones</strong> is my kind of adventure – it’s amazing how tech can literally take you to new heights. It's a blend of fun and challenge that I deeply enjoy.</p>
-            <p>Technology and gadgets are part of my daily life. Whether it's the latest smartphone release or innovative tech products, I’m always curious. And yes, that curiosity extends to <strong class="text-dark-text dark:text-white">perfumes</strong> as well; each fragrance has its own story, and I love that.</p>
-            <p>As an <strong class="text-dark-text dark:text-white">animal lover</strong>, my days are often brightened by dogs and cats. They remind me of the simple joys of life. And when it comes to food, a good <strong class="text-dark-text dark:text-white">Döner</strong> is unbeatable – it’s the perfect mix of flavors.</p>
-            <p>I originally hail from Germany, but <strong class="text-dark-text dark:text-white">Helsinki</strong> is where I call home now. The city's energy and creativity are inspiring, and there's always something new to discover.</p>
-            <p>If you’re looking for someone to discuss the latest tech, need help with a web project, or just want to share your favorite Döner spot, feel free to reach out. I’m always up for a good conversation and exciting projects.</p>
+            <h1 class="text-3xl font-bold mb-4">About Me</h1>
+            <p>Welcome! I'm <strong class="text-dark-text dark:text-white">André</strong>, an experienced <strong class="text-dark-text dark:text-white">front-end developer</strong> and digital strategist. Over the past decade, I've navigated the evolving tech landscape, specializing in creating intuitive and responsive web applications. My expertise spans a range of technologies, including React, various JavaScript frameworks, and modern CSS methodologies like Tailwind CSS.</p>
+            <p>Apart from my professional endeavors, I have a keen interest in 3D modeling, photography, and exploring the vast potential of the Adobe Creative Suite. I enjoy combining my technical skills with creative pursuits to bring unique ideas to life. My personal projects, such as developing this website to share tech insights and maintain a 'Now' page, reflect my commitment to continuous learning and passion for technology.</p>
+            <p>Living in Helsinki, I embrace the unique challenges and inspirations this city offers. Here, I balance my tech-focused life with outdoor hobbies like drone flying and mountain biking, providing a perfect blend of adventure and creativity. I'm also an avid collector of perfumes, each representing a unique story and experience.</p>
+            <p>If you're interested in discussing the latest in tech, seeking collaboration on innovative projects, or just want to exchange thoughts on creative tech applications, feel free to reach out. I'm always open to new ideas and connections in the tech community.</p>
             <p>Best regards,<br><strong class="text-dark-text dark:text-white">André</strong></p>
         </div>
+        
+        
+        
+        
     </div>
+
+    <FavoriteBooks bookWidth="w-24"/>
+    <Spotify coverWidth="w-28" />
     
 </Layout>
 

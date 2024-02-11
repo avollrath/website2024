@@ -1,6 +1,6 @@
-import { onMount } from "solid-js";
-import * as d3 from "d3";
-import worldData from "../lib/world.json";
+import { onMount, createEffect } from 'solid-js';
+import * as d3 from 'd3';
+import worldData from '../lib/world.json';
 
 const Globe = () => {
   let mapContainer;
@@ -10,75 +10,85 @@ const Globe = () => {
     "Latvia", "Estonia", "Cuba", "Panama", "Spain",
     "Italy", "Russia", "Greece", "Turkey", "Vatican",
     "Austria", "Poland", "England", "Hungary",
-];
+  ];
 
-onMount(() => {
-  if (!mapContainer) return;
+  const updateGlobeColors = () => {
+    const isDarkTheme = document.documentElement.classList.contains('dark');
+    const oceanColor = isDarkTheme ? '#222' : '#5089b4';
+    const landColor = isDarkTheme ? '#303030' : '#c2c2c2';
+    const visitedCountryColor = isDarkTheme ? '#45CE8A' : '#45CE8A';
+    const strokeColor = isDarkTheme ? '#525252' : '#737373';
 
-  const width = mapContainer.clientWidth;
-  const height = 500;
-  const rotationSpeed = 0.1; // Increase this value to make the globe rotate faster
+    const svg = d3.select(mapContainer).select("svg");
+    svg.selectAll("circle").attr("fill", oceanColor);
+    svg.selectAll("path")
+       .attr("fill", d => visitedCountries.includes(d.properties.name) ? visitedCountryColor : landColor)
+       .style("stroke", strokeColor); 
+  };
 
-  let projection = d3
-    .geoOrthographic()
-    .scale(250)
-    .center([0, 0])
-    .rotate([300, -50])
-    .translate([width / 2, height / 2]);
+  onMount(() => {
+    const width = mapContainer.clientWidth;
+    const height = 500;
+    const rotationSpeed = 0.1;
+    const intervalTime = 24;
+    let lastTime = Date.now();
 
-  const initialScale = projection.scale();
-  let pathGenerator = d3.geoPath().projection(projection);
+    let projection = d3.geoOrthographic()
+      .scale(250)
+      .center([0, 0])
+      .rotate([300, -50])
+      .translate([width / 2, height / 2]);
 
-  let svg = d3
-    .select(mapContainer)
-    .append("svg")
-    .attr("width", width)
-    .attr("height", height);
+    let pathGenerator = d3.geoPath().projection(projection);
 
-  svg
-    .append("circle")
-    .attr("fill", "#222") // Darker color for the ocean
-    .attr("stroke", "#000")
-    .attr("stroke-width", "0.2")
-    .attr("cx", width / 2)
-    .attr("cy", height / 2)
-    .attr("r", initialScale);
+    let svg = d3.select(mapContainer)
+      .append("svg")
+      .attr("width", width)
+      .attr("height", height);
 
-  let map = svg.append("g");
+    svg.append("circle")
+      .attr("cx", width / 2)
+      .attr("cy", height / 2)
+      .attr("r", projection.scale())
+      .attr("stroke", "#000")
+      .attr("stroke-width", "0");
 
-  map
-    .selectAll("path")
-    .data(worldData.features)
-    .enter()
-    .append("path")
-    .attr("d", pathGenerator)
-    .attr("fill", d => visitedCountries.includes(d.properties.name) ? "#45CE8A" : "#333") // Orange color for visited countries
-    .style("stroke", "black")
-    .style("stroke-width", 0.2);
+    let map = svg.append("g");
+    map.selectAll("path")
+      .data(worldData.features)
+      .enter()
+      .append("path")
+      .attr("d", pathGenerator)
+      .style("stroke-width", 0.5);
 
-  // Optimize the timer function
-  let lastTime = Date.now();
+    updateGlobeColors();
 
-d3.timer(() => {
-  const now = Date.now();
-  const deltaTime = now - lastTime;
+    const themeChangeListener = () => {
+      updateGlobeColors();
+    };
+    document.addEventListener('theme-change', themeChangeListener);
 
-  // Check if enough time has passed since the last invocation
-  if (deltaTime > intervalTime) {
-    const rotate = projection.rotate();
-    projection.rotate([rotate[0] + rotationSpeed, rotate[1]]);
-    svg.selectAll("path").attr("d", pathGenerator);
+    d3.timer(() => {
+      const now = Date.now();
+      const deltaTime = now - lastTime;
 
-    lastTime = now; // Reset the last time
-  }
-});
+      if (deltaTime > intervalTime) {
+        const rotate = projection.rotate();
+        projection.rotate([rotate[0] + rotationSpeed, rotate[1]]);
+        svg.selectAll("path").attr("d", pathGenerator);
 
-const intervalTime = 24; // in milliseconds, adjust this for slower or faster rotation
+        lastTime = now;
+      }
+    });
 
-  // You can also control the timer's frequency by setting a longer duration
-  // between invocations, which can help with performance.
-});
+    // Cleanup routine
+    return () => {
+      document.removeEventListener('theme-change', themeChangeListener);
+    };
+  });
 
+  // Effect to update globe colors when the theme changes
+  createEffect(updateGlobeColors);
 
   return (
     <div class="flex flex-col text-white justify-center items-center w-full h-full">

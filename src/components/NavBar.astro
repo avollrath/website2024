@@ -9,10 +9,10 @@ const currentPath = pathname.endsWith('/') ? pathname.slice(1, -1) : pathname.sl
   <ThemeIcon />
 
   <!-- Navigation Links -->
-  <div class="flex">
+  <div class="flex select-none">
     <a href="/" class={`nav-item px-4 py-2 text-lg ${currentPath === '' ? 'gradient-underline' : ''}`} id="home-link">Home</a>
     <a href="/about" class={`nav-item px-4 py-2 text-lg ${currentPath === 'about' ? 'gradient-underline' : ''}`} id="about-link">About</a>
-    <!-- Underline /blog by default unless other specific paths are matched -->
-    <a href="/blog" class={`nav-item px-4 py-2 text-lg ${currentPath === '' || currentPath === 'about' ? '' : 'gradient-underline'}`} id="blog-link">Blog</a>
+    <a href="/now" class={`nav-item px-4 py-2 text-lg ${currentPath === 'now' ? 'gradient-underline' : ''}`} id="about-link">Now</a>
+    <a href="/blog" class={`nav-item px-4 py-2 text-lg ${currentPath === '' || currentPath === 'about' || currentPath === 'now'? '' : 'gradient-underline'}`} id="blog-link">Blog</a>
   </div>
 </nav>

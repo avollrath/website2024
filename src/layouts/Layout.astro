@@ -1,7 +1,6 @@
 ---
 import NavBar from '../components/NavBar.astro';
 import Footer from '../components/Footer.astro';
-import { Tooltips } from "astro-tooltips";
 import { ViewTransitions } from 'astro:transitions';
 
 const { title, description } = Astro.props;
@@ -16,10 +15,10 @@ const { title, description } = Astro.props;
     <link rel="stylesheet" href="/src/styles/main.css" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <Tooltips theme="custom" delay={[50, 100]} placement="top" allowHTML={true} />
     <ViewTransitions />
   </head>
   <body class="dark:bg-dark-bg dark:text-white text-dark-text bg-gray-200 font-body">
+    <div class="grain"></div>
     <div class="container mx-auto px-4 py-8 w-full max-w-1920 flex flex-col min-h-screen">
       <NavBar />
 
@@ -35,41 +34,46 @@ const { title, description } = Astro.props;
     <script type="module">
       // Function to update theme
       const updateTheme = () => {
-        const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        document.documentElement.classList.toggle('dark', theme === 'dark');
+    const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    document.dispatchEvent(new CustomEvent('theme-change'));
+    // Update checkbox state based on the theme
+    document.getElementById('checkbox').checked = theme === 'dark';
+  };
 
-        const gradientElements = document.querySelectorAll('[data-border-gradient]');
-        gradientElements.forEach(el => {
-          el.classList.toggle('border-gradient', theme === 'dark');
-        });
-      };
+  // Function to handle checkbox change
+  const handleCheckboxChange = () => {
+    const checkbox = document.getElementById('checkbox');
+    const isDark = checkbox.checked;
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    updateTheme();
+  };
 
-      // Function to handle theme toggle click
-      const handleToggleClick = () => {
-        const isDark = document.documentElement.classList.toggle('dark');
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        updateTheme();
-      };
+  // Initialize theme and attach listeners
+  const init = () => {
+    updateTheme();
+    const checkbox = document.getElementById('checkbox');
+    checkbox.addEventListener('change', handleCheckboxChange);
+  };
 
-      // Initialize and attach listeners
-      const init = () => {
-        updateTheme();
-        const themeToggle = document.getElementById('themeToggle');
-        themeToggle && themeToggle.addEventListener('click', handleToggleClick);
-      };
+  // Check if document is already loaded
+  if (document.readyState === 'loading') {  
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 
-      // Check if document is already loaded
-      if (document.readyState === 'loading') {  
-        // Document is still loading, wait for it to complete
-        document.addEventListener('DOMContentLoaded', init);
-      } else {
-        // Document is already loaded, initialize immediately
-        init();
-      }
+      document.addEventListener('astro:after-swap', () => {
+  // Reinitialize theme and other functionalities
+  init();
 
-      // Re-initialize on astro:after-swap
-      document.addEventListener('astro:after-swap', init);
+  // Dynamically import and reinitialize tooltips
+  import('/src/scripts/initializeTooltips.js').then((module) => {
+    module.default(); // Reinitialize tooltips
+  });
+});
     </script>
+    <script type="module" src="/src/scripts/initializeTooltips.js"></script>
     <script type="module" src="/src/scripts/interactiveSections.js"></script>
   </body>
 

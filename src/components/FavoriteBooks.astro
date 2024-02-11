@@ -1,0 +1,36 @@
+---
+import favoriteBooks from '../lib/books.json';
+const fallbackCover = '/images/book_placeholder.jpeg';
+const colSpan = Astro.props.colSpan || 'lg:col-span-12'; // Default value if colSpan prop is not passed
+const bookWidth = Astro.props.bookWidth || 'w-32'; // Default width if bookWidth prop is not passed
+
+// Function to shuffle an array (Fisher-Yates Shuffle)
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+  }
+}
+
+// Shuffle the favoriteBooks array
+shuffleArray(favoriteBooks);
+---
+
+<div class={`md:col-span-9 ${colSpan} dark:bg-gradient-to-r from-dark-card to-darker-card bg-white p-12 rounded-lg border-gradient flex flex-col items-center overflow-visible`}>
+    <h2 class="font-body font-bold self-start mb-8 text-4xl">Favorite Books</h2>
+    <div class="flex flex-row flex-wrap justify-center w-full">
+      {favoriteBooks.map((book, index) => (
+        <div key={index} class="p-4">
+          <div title={`<b>${book.title}</b> - ${book.authors}`}>
+            <img 
+              src={book.coverURL || fallbackCover} 
+              alt={`Cover of ${book.title}`} 
+              class={`${bookWidth} h-auto rounded-sm shadow-lg transition-transform duration-300 hover:scale-105`}
+              onError={(e) => e.currentTarget.src = fallbackCover} 
+            />
+          </div>
+        </div> 
+      ))}
+    </div>
+</div>
+

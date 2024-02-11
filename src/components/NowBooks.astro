@@ -1,0 +1,25 @@
+---
+// Import the JSON data and the date prop
+import nowBooksData from '../lib/now_books.json';
+const selectedDate = Astro.props.date;
+
+// Access the books array
+const booksForSelectedDate = nowBooksData.date === selectedDate ? nowBooksData.books : [];
+---
+
+<div>
+    <div class="flex flex-col mb-12">
+     
+        <hr class="my-8">
+        <h3 class="mb-8">Currently reading:</h3>
+        {booksForSelectedDate.map(book => (
+            <div key={book.isbn} class="flex mb-12 items-center">
+                <img src={book.coverURL} alt={`${book.title} Book Cover`} class="w-32 h-auto rounded-sm shadow-lg mr-8"/>
+                <div>
+                    <p class="font-bold text-2xl">{book.title}</p>
+                    <p>by {book.authors}</p>
+                </div>
+            </div>
+        ))}
+    </div>
+</div>

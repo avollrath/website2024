@@ -1,0 +1,28 @@
+
+---
+import NowBooks from '../components/NowBooks.astro';
+const inputDate = Astro.props.date;
+const colSpan = Astro.props.colSpan || 'lg:col-span-6'; // Set default col-span value
+
+
+
+// Function to format date from YYYY-MM-DD to D.M.YYYY
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
+}
+
+const formattedDate = formatDate(inputDate);
+
+---
+<div class={`${colSpan} flex flex-col`}>
+<div class="dark:bg-gradient-to-r mb-8 long-transition from-dark-card to-darker-card p-12 text-xl text-gray-500 dark:text-white bg-white rounded-lg flex flex-col border-gradient">
+    <h1 class="font-body font-bold text-center text-9xl long-transition">{formattedDate}</h1>
+</div>
+
+<div class="dark:bg-gradient-to-r long-transition from-dark-card to-darker-card p-24 text-xl text-gray-500 dark:text-white bg-white rounded-lg flex flex-col border-gradient">
+            <slot />
+        <NowBooks date={inputDate} />
+ </div>
+</div>
+

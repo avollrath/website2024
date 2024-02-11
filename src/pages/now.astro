@@ -1,44 +1,95 @@
 ---
-// Import the necessary components and data
-
+import Layout from "../layouts/Layout.astro";
+import FavoriteBooks from "../components/FavoriteBooks.astro";
+import Spotify from "../components/Spotify.astro";
+import NowEntry from "../components/NowEntry.astro";
 ---
 
-<!DOCTYPE html>
-<html lang="en" class="dark font-body">
-<head>
-    <!-- ... head content ... -->
-</head>
+<Layout title="Now" description="What I'm doing now">
+     <div class="flex flex-col lg:col-span-3">
+        <div
+            class=" dark:bg-gradient-to-r long-transition from-dark-card to-darker-card p-12 text-xl text-gray-500 dark:text-white bg-white rounded-lg flex flex-col items-center border-gradient"
+        >
+            <h2 class="font-body font-bold self-start mb-8 text-4xl long-transition">
+            Now
+            </h2>
+            <p class="my-3 leading-relaxed">
+            Welcome to my <strong>Now</strong> page, a unique space where I share what's
+            currently engaging my attention. Unlike the more static "About" page, this
+            page offers a window into my <strong>current world</strong>.
+            </p>
+            <p class="my-3 leading-relaxed">
+            Here, you'll find out about the <strong>projects</strong> I'm involved in,
+            the <strong>subjects</strong> that intrigue me, and where my passions currently
+            lie. This page is like a snapshot of my <strong>life's priorities</strong>
+            and activities at this moment.
+            </p>
+            <p class="my-3 leading-relaxed">
+            It's an up-to-date glimpse into my journey, reflecting my latest <strong
+                >interests</strong
+            >, <strong>goals</strong>, and <strong>endeavors</strong>. This page is
+            where I openly share what's important to me right now.
+            </p>
+            <p class="my-3 leading-relaxed">
+            For more about the concept of a "Now" page, visit
+            <a href="https://sivers.org/nowff" class="text-dark-text font-bold"
+                >Derek Sivers' explanation</a
+            >.
+            </p>
+        </div>
+     </div>
 
-<body>
-    <div class="container mx-auto px-4 py-8">
-        <!-- Now Page Content -->
-        <h1 class="text-3xl font-header mb-6">What I'm Doing Now</h1>
-        <p>
-            I'm currently immersed in the world of web development, exploring the capabilities of <strong>Astro.js</strong> and <strong>Tailwind CSS</strong> to craft efficient and responsive web applications. Both of these technologies offer a unique approach to building websites, and I'm enjoying the learning process.
-        </p>
-        <div class="flex mb-4">
-            <img src="/path-to-astro-icon.png" alt="Astro.js Icon" class="w-12 h-12 mr-2"/>
-            <img src="/path-to-tailwind-icon.png" alt="Tailwind CSS Icon" class="w-12 h-12"/>
-        </div>
-        <p>
-            On the literary front, I'm delving into <strong>"The Count of Monte Cristo" by Alexandre Dumas</strong>, a classic tale of adventure and intrigue, alongside <strong>"How to Win at Chess" by Levy Rozman</strong>, which is sharpening my strategic thinking on the chessboard.
-        </p>
-        <div class="flex mb-4">
-            <img src="/path-to-count-of-monte-cristo-cover.jpg" alt="The Count of Monte Cristo Book Cover" class="w-24 h-36 mr-2"/>
-            <img src="/path-to-how-to-win-at-chess-cover.jpg" alt="How to Win at Chess Book Cover" class="w-24 h-36"/>
-        </div>
-        <p>
-            In the realm of music, I've been practicing <strong>"Comptine d'un autre été" by Yann Tiersen</strong> on the piano, a piece that's both challenging and deeply rewarding.
-        </p>
-        <!-- Include an image of the sheet music or a related icon -->
-        <img src="/path-to-piano-sheet-music.jpg" alt="Piano Sheet Music" class="w-36 h-24 mb-4"/>
-        
-        <p>Last Updated: February 6, 2024</p>
+  <NowEntry date="2024-02-06" colSpan="lg:col-span-6">
+    <div class="flex flex-wrap mb-4">
+      <img id="tailwind-logo" class="w-72 h-auto" alt="Tailwind CSS Logo" />
+      <img id="astro-logo" class="w-72 h-auto mr-2" alt="Astro.js Logo" />
     </div>
     <p>
-        For more about the concept of a "Now" page, visit 
-        <a href="https://sivers.org/nowff" class="text-blue-600 hover:text-blue-800 transition duration-300">Derek Sivers' explanation</a>.
-      </p>
-      
-</body>
-</html>
+      I'm currently immersed in the world of web development, exploring the
+      capabilities of <strong>Astro.js</strong> and <strong>Tailwind CSS</strong
+      > to craft efficient and responsive web applications.
+    </p>
+  
+
+    <hr class="my-8" />
+    <h3 class="mb-8">Currently practicing:</h3>
+
+    <p>
+      Currently, I'm also practicing the piano piece <strong
+        >"Comptine d'un autre été"</strong
+      > by Yann Tiersen, famously known from the movie Amélie.
+    </p>
+    <img
+      src="/images/now/amelie.jpeg"
+      alt="Sheet Music of Comptine d'un autre été"
+      class="w-40 h-auto my-12"
+    />
+
+    <script>
+      // Function to update logos based on the theme
+      function updateLogos() {
+        const theme = localStorage.getItem("theme") || "light"; // Default to light theme
+        document.getElementById("astro-logo").src =
+          theme === "dark"
+            ? "/images/now/astro-logo-light-gradient.svg"
+            : "/images/now/astro-logo-dark.svg";
+        document.getElementById("tailwind-logo").src =
+          theme === "dark"
+            ? "/images/now/tailwindcss-logotype-white.svg"
+            : "/images/now/tailwindcss-logotype.svg";
+      }
+
+      // Update logos on load and when theme changes
+      updateLogos();
+      document.addEventListener("theme-change", updateLogos);
+    </script>
+  </NowEntry>
+
+  <div class="flex flex-col lg:col-span-3">
+    <FavoriteBooks colSpan="lg:col-span-5" bookWidth="w-14"/>
+    <div class="mt-8">
+    <Spotify coverWidth="w-24"/>
+</div>
+    </div>
+
+</Layout>

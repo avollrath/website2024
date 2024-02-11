@@ -1,0 +1,46 @@
+---
+import { getTopTracksAllTime, getCurrentPlayingTrack } from "../scripts/getTopTracks.js";
+import { shuffleArray } from '../scripts/utils.js';
+import AudioWave from '../components/AudioWave.astro';
+const refreshToken = import.meta.env.SPOTIFY_REFRESH_TOKEN;
+const colSpan = Astro.props.colSpan || 'md:col-span-12 lg:col-span-12'; // Default value if colSpan prop is not passed
+const coverWidth = Astro.props.coverWidth || 'w-32'; // Default cover width
+
+let topTracks = [];
+try {
+  topTracks = await getTopTracksAllTime(refreshToken);
+  shuffleArray(topTracks); // Shuffle the array after fetching
+} catch (error) {
+  console.error("Error fetching top tracks:", error);
+}
+
+let currentPlayingTrack = null;
+try {
+  currentPlayingTrack = await getCurrentPlayingTrack(refreshToken);
+} catch (error) {
+  console.error("Error fetching currently playing track:", error);
+}
+---
+
+<!-- Spotify Section -->
+<div class={`${colSpan} dark:bg-gradient-to-r from-dark-card to-darker-card bg-white p-12 rounded-lg border-gradient h-full flex flex-col items-center overflow-visible`}>
+  <h2 class="font-body font-bold self-start mb-8 text-4xl long-transition">Spotify Top 50 <span class="text-gray-500 text-2xl whitespace-nowrap">All time</span></h2>
+  <div class="flex flex-wrap justify-center gap-4 w-full">
+      {topTracks.map((track) => (
+        <div key={track.id} class={`${coverWidth}`}>
+          <a href={track.external_urls.spotify} target="_blank" title={`${track.name} - ${track.artists.map((artist) => artist.name).join(", ")}`}>
+            <img src={track.album.images[0].url} alt={`Cover art for ${track.name}`} class="w-full h-auto rounded-md shadow-lg transition-transform duration-300 hover:scale-105" />
+          </a>
+        </div>
+      ))}
+  </div>
+  {currentPlayingTrack && currentPlayingTrack.is_playing && (
+  <div class="currently-playing self-start mt-8">
+    <a href={currentPlayingTrack.item.external_urls.spotify} target="_blank" class="flex items-center">
+      <span class="mr-4 text-gray-500 dark:text-white">Playing right now: <strong class="text-dark-text">{currentPlayingTrack.item.name}</strong> by {currentPlayingTrack.item.artists.map(artist => artist.name).join(", ")}</span>  <AudioWave />
+    </a>
+  </div>
+  )}
+</div>
+
+  
