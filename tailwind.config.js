@@ -5,11 +5,17 @@
 export default {
   content: ['./src/**/*.{astro,html,js}'],
   theme: {
+
+    
     extend: {
 
       borderRadius: {
         'lg': '3rem',
         'md': '1rem',
+      },
+
+      fontSize: {
+        xxl: ['12rem', '10rem'],
       },
 
       maxWidth: {

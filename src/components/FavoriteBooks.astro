@@ -1,7 +1,7 @@
 ---
 import favoriteBooks from '../lib/books.json';
 const fallbackCover = '/images/book_placeholder.jpeg';
-const colSpan = Astro.props.colSpan || 'lg:col-span-12'; // Default value if colSpan prop is not passed
+const colSpan = Astro.props.colSpan || '2xl:col-span-12'; // Default value if colSpan prop is not passed
 const bookWidth = Astro.props.bookWidth || 'w-32'; // Default width if bookWidth prop is not passed
 
 // Function to shuffle an array (Fisher-Yates Shuffle)
@@ -16,7 +16,7 @@ function shuffleArray(array) {
 shuffleArray(favoriteBooks);
 ---
 
-<div class={`md:col-span-9 ${colSpan} dark:bg-gradient-to-r from-dark-card to-darker-card bg-white p-12 rounded-lg border-gradient flex flex-col items-center overflow-visible`}>
+<div class={`${colSpan} xl:col-span-3 col-span-3 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white p-12 rounded-lg border-gradient flex flex-col items-center`}>
     <h2 class="font-body font-bold self-start mb-8 text-4xl">Favorite Books</h2>
     <div class="flex flex-row flex-wrap justify-center w-full">
       {favoriteBooks.map((book, index) => (

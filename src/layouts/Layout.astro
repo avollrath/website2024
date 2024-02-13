@@ -24,7 +24,7 @@ const { title, description } = Astro.props;
 
       <!-- Main content area with 12-column grid layout -->
       <main class="flex-grow">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+        <div class="grid 2xl:grid-cols-12 xl:grid-cols-3 grid-cols-1 gap-8">
           <slot /> <!-- Slot for page-specific content -->
         </div>
       </main>

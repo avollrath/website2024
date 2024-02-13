@@ -3,7 +3,7 @@ import { getTopTracksAllTime, getCurrentPlayingTrack } from "../scripts/getTopTr
 import { shuffleArray } from '../scripts/utils.js';
 import AudioWave from '../components/AudioWave.astro';
 const refreshToken = import.meta.env.SPOTIFY_REFRESH_TOKEN;
-const colSpan = Astro.props.colSpan || 'md:col-span-12 lg:col-span-12'; // Default value if colSpan prop is not passed
+const colSpan = Astro.props.colSpan || '2xl:col-span-12 col-span-3'; // Default value if colSpan prop is not passed
 const coverWidth = Astro.props.coverWidth || 'w-32'; // Default cover width
 
 let topTracks = [];

@@ -6,7 +6,7 @@ import NowEntry from "../components/NowEntry.astro";
 ---
 
 <Layout title="Now" description="What I'm doing now">
-     <div class="flex flex-col lg:col-span-3">
+     <div class="flex flex-col 2xl:col-span-3 col-span-3">
         <div
             class=" dark:bg-gradient-to-r long-transition from-dark-card to-darker-card p-12 text-xl text-gray-500 dark:text-white bg-white rounded-lg flex flex-col items-center border-gradient"
         >
@@ -32,14 +32,14 @@ import NowEntry from "../components/NowEntry.astro";
             </p>
             <p class="my-3 leading-relaxed">
             For more about the concept of a "Now" page, visit
-            <a href="https://sivers.org/nowff" class="text-dark-text font-bold"
+            <a href="https://sivers.org/nowff" class="text-dark-text underline font-bold"
                 >Derek Sivers' explanation</a
             >.
             </p>
         </div>
      </div>
 
-  <NowEntry date="2024-02-06" colSpan="lg:col-span-6">
+  <NowEntry date="2024-02-06" colSpan="2xl:col-span-6 col-span-3">
     <div class="flex flex-wrap mb-4">
       <img id="tailwind-logo" class="w-72 h-auto" alt="Tailwind CSS Logo" />
       <img id="astro-logo" class="w-72 h-auto mr-2" alt="Astro.js Logo" />
@@ -85,11 +85,11 @@ import NowEntry from "../components/NowEntry.astro";
     </script>
   </NowEntry>
 
-  <div class="flex flex-col lg:col-span-3">
-    <FavoriteBooks colSpan="lg:col-span-5" bookWidth="w-14"/>
+  <div class="flex flex-col col-span-3">
+    <FavoriteBooks bookWidth="w-24"/>
     <div class="mt-8">
     <Spotify coverWidth="w-24"/>
-</div>
+    </div>
     </div>
 
 </Layout>

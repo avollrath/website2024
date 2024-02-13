@@ -8,20 +8,20 @@ const allPosts = await Astro.glob('../pages/posts/*.md');
     {allPosts.map((post) => (
         <div class="block cursor-pointer dark:bg-gradient-to-r from-dark-card to-darker-card rounded-lg col-span-12 shadow-xl bg-white border-gradient group">
             <!-- Wrapping the entire post in an <a> tag -->
-            <a href={post.url} class="flex flex-col md:flex-row items-center overflow-hidden rounded-l-lg">
+            <a href={post.url} class="flex flex-col lg:flex-row items-center overflow-hidden md:rounded-l-lg rounded-t-lg">
                 
                 <!-- Image Container with overflow-hidden -->
-                <div class="overflow-hidden w-full md:w-auto max-w-3xl">
+                <div class="overflow-hidden w-full max-w-5xl">
                     <!-- Image with scale and transition effect on group hover -->
                     <img src={post.frontmatter.image.url} alt={post.frontmatter.image.alt} 
                          class="w-full transform transition duration-1000 group-hover:scale-125">
                 </div>
                 
                 <!-- Text Content Container -->
-                <div class="p-24 flex flex-col justify-center md:justify-between w-full">
+                <div class="2xl:p-24 p-12 flex flex-col justify-center md:justify-between w-full">
                     <div>
-                        <h2 class="text-5xl font-bold mb-2 long-transition">{post.frontmatter.title}</h2>
-                        <p class="dark:text-gray-300 text-gray-500 text-xl long-transition">{post.frontmatter.description}</p>
+                        <h2 class="2xl:text-5xl xl:text-4xl text-2xl font-bold mb-2 transition long-transition">{post.frontmatter.title}</h2>
+                        <p class="dark:text-gray-300 text-gray-500 2xl:text-2xl text-lg long-transition">{post.frontmatter.description}</p>
                     </div>
                  
                 </div>

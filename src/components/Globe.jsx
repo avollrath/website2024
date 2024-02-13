@@ -2,7 +2,7 @@ import { onMount, createEffect } from 'solid-js';
 import * as d3 from 'd3';
 import worldData from '../lib/world.json';
 
-const Globe = () => {
+const Globe = (props) => {
   let mapContainer;
 
   const visitedCountries = [
@@ -31,10 +31,11 @@ const Globe = () => {
     const height = 500;
     const rotationSpeed = 0.1;
     const intervalTime = 24;
+    const scale = props.scale || 250;
     let lastTime = Date.now();
 
     let projection = d3.geoOrthographic()
-      .scale(250)
+      .scale(scale)
       .center([0, 0])
       .rotate([300, -50])
       .translate([width / 2, height / 2]);
@@ -91,7 +92,7 @@ const Globe = () => {
   createEffect(updateGlobeColors);
 
   return (
-    <div class="flex flex-col text-white justify-center items-center w-full h-full">
+    <div class="flex flex-col text-white justify-center mx-auto items-center w-full h-full">
       <div class="w-full" ref={el => { mapContainer = el; }}></div>
     </div>
   );
