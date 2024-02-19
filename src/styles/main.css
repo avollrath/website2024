@@ -182,6 +182,11 @@ body {
   }
 
 
+.nav-item.active ~ .underline {
+    width: 100%;
+}
+
+
   .globe-container {
     width: 100%; /* Adjust based on layout */
     height: 500px; /* Adjust as needed */
@@ -195,8 +200,6 @@ body {
 .long-transition {
     transition: 1s ease;
 }
-
-
 
 
 

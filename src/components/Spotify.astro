@@ -26,21 +26,23 @@ try {
 <div class={`${colSpan} dark:bg-gradient-to-r from-dark-card to-darker-card bg-white p-12 rounded-lg border-gradient h-full flex flex-col items-center overflow-visible`}>
   <h2 class="font-body font-bold self-start mb-8 text-4xl long-transition">Spotify Top 50 <span class="text-gray-500 text-2xl whitespace-nowrap">All time</span></h2>
   <div class="flex flex-wrap justify-center gap-4 w-full">
-      {topTracks.map((track) => (
+    {topTracks.map((track) => (
+      track && track.external_urls && track.album && track.album.images[0] ? (
         <div key={track.id} class={`${coverWidth}`}>
           <a href={track.external_urls.spotify} target="_blank" title={`${track.name} - ${track.artists.map((artist) => artist.name).join(", ")}`}>
             <img src={track.album.images[0].url} alt={`Cover art for ${track.name}`} class="w-full h-auto rounded-md shadow-lg transition-transform duration-300 hover:scale-105" />
           </a>
         </div>
-      ))}
+      ) : null
+    ))}
   </div>
-  {currentPlayingTrack && currentPlayingTrack.is_playing && (
-  <div class="currently-playing self-start mt-8">
-    <a href={currentPlayingTrack.item.external_urls.spotify} target="_blank" class="flex items-center">
-      <span class="mr-4 text-gray-500 dark:text-white">Playing right now: <strong class="text-dark-text">{currentPlayingTrack.item.name}</strong> by {currentPlayingTrack.item.artists.map(artist => artist.name).join(", ")}</span>  <AudioWave />
-    </a>
-  </div>
-  )}
+  {currentPlayingTrack && currentPlayingTrack.is_playing && currentPlayingTrack.item && currentPlayingTrack.item.external_urls ? (
+    <div class="currently-playing self-start mt-8">
+      <a href={currentPlayingTrack.item.external_urls.spotify} target="_blank" class="flex items-center">
+        <span class="mr-4 text-gray-500 dark:text-white">Playing right now: <strong class="text-dark-text">{currentPlayingTrack.item.name}</strong> by {currentPlayingTrack.item.artists.map(artist => artist.name).join(", ")}</span>  <AudioWave />
+      </a>
+    </div>
+  ) : null}
 </div>
 
   

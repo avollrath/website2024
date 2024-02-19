@@ -20,7 +20,7 @@ const formattedDate = formatDate(inputDate);
     <h1 class="font-body font-bold text-center xl:text-9xl text-7xl long-transition">{formattedDate}</h1>
 </div>
 
-<div class="dark:bg-gradient-to-r long-transition from-dark-card to-darker-card p-24 text-xl text-gray-500 dark:text-white bg-white rounded-lg flex flex-col border-gradient">
+<div class="dark:bg-gradient-to-r long-transition from-dark-card to-darker-card md:p-24 p-12 text-xl text-gray-500 dark:text-white bg-white rounded-lg flex flex-col border-gradient">
             <slot />
         <NowBooks date={inputDate} />
  </div>

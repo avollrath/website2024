@@ -62,7 +62,7 @@ export { latestPost };
         </div>
 
     <!-- Now Section -->
-    <div class="xl:col-span-1 xl:row-start-2 2xl:row-start-1 2xl:col-start-10 2xl:col-span-3 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white p-12 rounded-lg h-full border-gradient flex flex-col justify-between clickable-section" >
+    <div class="xl:col-span-1 xl:row-start-2 2xl:row-start-1 2xl:col-start-10 2xl:col-span-3 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white p-12 rounded-lg h-full border-gradient flex flex-col justify-between clickable-section">
       <div class="flex justify-between items-center mb-6">
         <h2 class="font-body font-bold text-4xl long-transition">Now</h2>
         <a href="/now" class="arrow-link">
@@ -94,7 +94,7 @@ export { latestPost };
       </div>
       <h3 class="text-lg font-body  text-gray-500 long-transition dark:text-white mb-6 font-bold">{latestPost.frontmatter.title}</h3>
       <div class="image-container rounded-md">
-        <img src={latestPost.frontmatter.image.url} alt={latestPost.frontmatter.image.alt} class="mb-6 xl:my-12 md:w-24 rounded-md object-cover aspect-video">
+        <img src={latestPost.frontmatter.image.url} alt={latestPost.frontmatter.image.alt} class="mb-6 md:w-24 rounded-md object-cover aspect-video">
       </div>
       <p class="long-transition text-lg leading-relaxed text-gray-500 dark:text-white">
         {latestPost.frontmatter.teaser}
@@ -142,20 +142,22 @@ export { latestPost };
       <h2 class="font-body font-bold self-start mb-8 text-4xl long-transition">Spotify Top 5 <span class="text-gray-500 whitespace-nowrap text-2xl">(last 6 months)</span></h2>
       <div class="flex flex-row justify-between w-full">
         {topTracks.map((track) => (
-          <div key={track.id}>
-            <a href={track.external_urls.spotify} target="_blank" title={`<b>${track.name}</b> - ${track.artists.map((artist) => artist.name).join(", ")}`}>
-              <img src={track.album.images[0].url} alt={`Cover art for ${track.name}`} class="w-48 xl:w-40 h-auto rounded-md shadow-lg transition-transform duration-300 hover:scale-105" />
+          track && track.external_urls && track.album && track.album.images[0] ? (
+            <div key={track.id}>
+              <a href={track.external_urls.spotify} target="_blank" title={`${track.name} - ${track.artists.map((artist) => artist.name).join(", ")}`}>
+                <img src={track.album.images[0].url} alt={`Cover art for ${track.name}`} class="w-48 xl:w-40 h-auto rounded-md shadow-lg transition-transform duration-300 hover:scale-105" />
+              </a>
+            </div>
+          ) : null
+        ))}
+        </div>
+        {currentPlayingTrack && currentPlayingTrack.is_playing && currentPlayingTrack.item && currentPlayingTrack.item.external_urls ? (
+          <div class="currently-playing self-start mt-8">
+            <a href={currentPlayingTrack.item.external_urls.spotify} target="_blank" class="flex items-center">
+              <span class="mr-4 text-gray-500 dark:text-white">Playing right now: <strong class="text-dark-text">{currentPlayingTrack.item.name}</strong> by {currentPlayingTrack.item.artists.map(artist => artist.name).join(", ")}</span>  <AudioWave />
             </a>
           </div>
-          ))}
-        </div>
-      {currentPlayingTrack && currentPlayingTrack.is_playing && (
-      <div class="currently-playing self-start mt-8">
-        <a href={currentPlayingTrack.item.external_urls.spotify} target="_blank" class="flex items-center">
-          <span class="mr-4 text-gray-500 dark:text-white">Playing right now: <strong class="text-dark-text">{currentPlayingTrack.item.name}</strong> by {currentPlayingTrack.item.artists.map(artist => artist.name).join(", ")}</span>  <AudioWave />
-        </a>
-      </div>
-      )}
+        ) : null}
     </div>
 
     <!-- Links Section -->
