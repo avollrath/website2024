@@ -4,6 +4,8 @@ import { getTopTracks, getCurrentPlayingTrack } from "../scripts/getTopTracks.js
 import Globe from '../components/Globe';
 import Layout from '../layouts/Layout.astro';
 import AudioWave from '../components/AudioWave.astro';
+import latestRenderImage from './src/images/renders/vollrathdoV1edited.png';
+import { Image } from 'astro:assets';
 
 const refreshToken = import.meta.env.SPOTIFY_REFRESH_TOKEN;
 
@@ -58,7 +60,7 @@ export { latestPost };
             <p class=" text-lg lg:text-6xl/relaxed leading-relaxed max-w-xl tracking-widest font-bold text-dark-text long-transition dark:text-dark-text lg:max-w-5xl my-12 uppercase">Creative developer
             </p>
           </div>
-          <img src="/images/profile.png" alt="André's Avatar" class="avatar" />
+          <img src="../src/images/profile.png" alt="André's Avatar" class="avatar" />
         </div>
 
     <!-- Now Section -->
@@ -133,7 +135,10 @@ export { latestPost };
         </a>
       </div>
       <div class="image-container rounded-md">
-        <img src="/images/renders/vollrathdoV1edited.png" alt="Latest Render" class="rounded-md" />
+        <Image src={latestRenderImage} alt="Latest Render" class="rounded-md"
+        densities={[1, 1.5, 2]}
+        decoding="async"
+        loading="lazy"/>
       </div>
     </div>
 
@@ -193,7 +198,7 @@ export { latestPost };
     <div class="xl:col-start-1 xl:col-span-2 xl:row-start-6 2xl:col-span-8 2xl:row-start-5 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white p-12 rounded-lg border-gradient h-full flex flex-col" >
       <h2 class="font-body font-bold text-4xl mb-12 long-transition">Based in</h2>
       <div class="flex justify-center items-center 2xl:flex-row xl:flex-row flex-col">
-        <img src="/images/globe.png" alt="Globe" class="2xl:w-96 h-auto w-72 mr-12 md:py-12">
+        <img src="../src/images/globe.png" alt="Globe" class="2xl:w-96 h-auto w-72 mr-12 md:py-12">
         <div class="grid grid-flow-row gap-2">
           <h1 class="text-8xl 2xl:text-9xl font-bold mb-6 lg:mb-12 font-header">
             Helsinki<br>Finland<br><span class="text-gray-500">GMT +2</span>

@@ -60,7 +60,7 @@ import NowEntry from "../components/NowEntry.astro";
       > by Yann Tiersen, famously known from the movie Amélie.
     </p>
     <img
-      src="/images/now/amelie.jpeg"
+      src="../src/images/now/amelie.jpeg"
       alt="Sheet Music of Comptine d'un autre été"
       class="w-40 h-auto my-12"
     />
@@ -71,12 +71,12 @@ import NowEntry from "../components/NowEntry.astro";
         const theme = localStorage.getItem("theme") || "light"; // Default to light theme
         document.getElementById("astro-logo").src =
           theme === "dark"
-            ? "/images/now/astro-logo-light-gradient.svg"
-            : "/images/now/astro-logo-dark.svg";
+            ? "../src/images/now/astro-logo-light-gradient.svg"
+            : "../src/images/now/astro-logo-dark.svg";
         document.getElementById("tailwind-logo").src =
           theme === "dark"
-            ? "/images/now/tailwindcss-logotype-white.svg"
-            : "/images/now/tailwindcss-logotype.svg";
+            ? "../src/images/now/tailwindcss-logotype-white.svg"
+            : "../src/images/now/tailwindcss-logotype.svg";
       }
 
       // Update logos on load and when theme changes
