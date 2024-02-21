@@ -1,0 +1,63 @@
+---
+const { title, htmlText, renderImageSrc, clayRenderImageSrc, transitionName, altProp } = Astro.props;
+import { Image } from "astro:assets";
+---
+
+<div class="flex flex-col 2xl:col-span-3 col-span-2">
+  <div
+    class="dark:bg-gradient-to-r long-transition from-dark-card to-darker-card text-xl text-gray-500 dark:text-white bg-white rounded-lg flex flex-col border-gradient"
+  >
+    <div class="p-12">
+      <h2 class="font-body font-bold self-start mb-8 text-2xl long-transition">
+        {title}
+      </h2>
+      <p set:html={htmlText}></p>
+    </div>
+  </div>
+</div>
+<div
+  class="flex flex-col 2xl:col-span-9 col-span-2 dark:bg-gradient-to-r long-transition from-dark-card to-darker-card p-12 text-xl text-gray-500 dark:text-white bg-white rounded-lg flex flex-col items-center border-gradient"
+>
+  <div class="image-container rounded-md">
+    <Image
+      src={renderImageSrc}
+      transition:name={transitionName}
+      alt={altProp}
+      class="rounded-md"
+      densities={[1, 1.5, 2]}
+      decoding="async"
+      loading="lazy"
+    />
+    <Image
+      src={clayRenderImageSrc}
+      alt="Wireframe Render"
+      class="wireframe-image"
+    />
+  </div>
+</div>
+
+<style>
+    .render-container {
+      position: relative;
+    }
+  
+    .image-container {
+      position: relative;
+    }
+  
+    .render-image, .wireframe-image {
+      max-width: 100%;
+      transition: opacity 0.9s ease;
+    }
+  
+    .wireframe-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
+  
+    .image-container:hover .wireframe-image {
+      opacity: 1;
+    }
+  </style>

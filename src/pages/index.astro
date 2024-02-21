@@ -4,7 +4,8 @@ import { getTopTracks, getCurrentPlayingTrack } from "../scripts/getTopTracks.js
 import Globe from '../components/Globe';
 import Layout from '../layouts/Layout.astro';
 import AudioWave from '../components/AudioWave.astro';
-import latestRenderImage from './src/images/renders/nintendo.png';
+import latestRenderImage from '../images/renders/nintendo.png';
+import latestRenderImageClay from '../images/renders/nintendo-clay.jpg';
 import { Image } from 'astro:assets';
 
 const refreshToken = import.meta.env.SPOTIFY_REFRESH_TOKEN;
@@ -129,7 +130,7 @@ export { latestPost };
     <div class="xl:col-span-3 xl:row-start-4 2xl:col-start-7 2xl:col-span-6 2xl:row-start-2 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white p-12 rounded-lg border-gradient h-full clickable-section latest-render-section" >
       <div class="flex justify-between items-center mb-6">
         <h2 class="font-body font-bold text-4xl long-transition">Latest Render</h2>
-        <a href="/render" class="arrow-link">
+        <a href="/renders" class="arrow-link">
              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-cyan-500" fill="none" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
           </svg>
@@ -142,8 +143,40 @@ export { latestPost };
         densities={[1, 1.5, 2]}
         decoding="async"
         loading="lazy"/>
+        <Image
+        src={latestRenderImageClay}
+        alt="Wireframe Render"
+        class="wireframe-image"
+      />
       </div>
     </div>
+
+    <style>
+      .render-container {
+        position: relative;
+      }
+    
+      .image-container {
+        position: relative;
+      }
+    
+      .render-image, .wireframe-image {
+        max-width: 100%;
+        transition: 0.5s ease-in-out;
+      }
+    
+      .wireframe-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+      }
+    
+      .image-container:hover .wireframe-image {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+    </style>
 
     <!-- Spotify Section -->
     <div class="xl:col-span-2 xl:row-start-5 2xl:col-span-9 2xl:row-start-3 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white p-12 rounded-lg border-gradient h-full flex flex-col items-center overflow-visible" >
