@@ -1,3 +1,5 @@
+import { navigate } from 'astro:transitions/client';
+
 function makeSectionsClickable() {
     const clickableSections = document.querySelectorAll('.clickable-section');
 
@@ -15,8 +17,9 @@ function makeSectionsClickable() {
 }
 
 function onSectionClick(event) {
+    event.preventDefault(); // Prevent default link behavior
     const arrowLink = event.currentTarget.querySelector('.arrow-link');
-    window.location.href = arrowLink.href;
+    navigate(arrowLink.getAttribute('href'));
 }
 
 function onSectionMouseOver(event) {

@@ -4,7 +4,7 @@ import { getTopTracks, getCurrentPlayingTrack } from "../scripts/getTopTracks.js
 import Globe from '../components/Globe';
 import Layout from '../layouts/Layout.astro';
 import AudioWave from '../components/AudioWave.astro';
-import latestRenderImage from './src/images/renders/vollrathdoV1edited.png';
+import latestRenderImage from './src/images/renders/nintendo.png';
 import { Image } from 'astro:assets';
 
 const refreshToken = import.meta.env.SPOTIFY_REFRESH_TOKEN;
@@ -28,6 +28,7 @@ const allPosts = await Astro.glob('../pages/posts/*.md');
 const latestPost = allPosts[0]; 
 
 export { latestPost };
+
 ---
 
 <Layout title="André's Portfolio" description="Welcome to André's Portfolio">
@@ -135,7 +136,9 @@ export { latestPost };
         </a>
       </div>
       <div class="image-container rounded-md">
-        <Image src={latestRenderImage} alt="Latest Render" class="rounded-md"
+        <Image src={latestRenderImage} alt="Latest Render"
+        transition:name="latest-render"
+        class="rounded-md"
         densities={[1, 1.5, 2]}
         decoding="async"
         loading="lazy"/>

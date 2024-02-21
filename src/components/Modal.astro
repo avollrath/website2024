@@ -1,0 +1,31 @@
+---
+import { Image } from 'astro:assets';
+const { imageSrc, customClass } = Astro.props;
+const { isOpen } = Astro.props;
+---
+
+<div class={`modal absolute w-screen h-screen left-0 top-0 bg-black/50 z-10 flex justify-center items-center backdrop-blur-xl transition-all ${customClass} ${isOpen ? 'open' : ''}`}>
+
+    <div class="image-container rounded-md xl:p-48 p-12">
+        <Image src={imageSrc} alt="Latest Render" class="rounded-md"
+               densities={[1, 1.5, 2]}
+               decoding="async"
+               loading="lazy"/>
+    </div>
+</div>
+
+
+
+<script>
+    const disableScroll = () => {
+      document.body.style.overflow = "hidden";
+      console.log('disableScroll');
+    };
+  
+    const enableScroll = () => {
+      document.body.style.overflow = "";
+    };
+  
+    // Call the disableScroll function
+    disableScroll();
+  </script>

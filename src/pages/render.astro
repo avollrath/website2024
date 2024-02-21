@@ -1,0 +1,72 @@
+---
+import Layout from "../layouts/Layout.astro";
+import nintendo from "./src/images/renders/nintendo.png";
+import nintendoClay from "./src/images/renders/nintendo-clay.jpg";
+import { Image } from "astro:assets";
+---
+
+<Layout title="Renders" description="A collection of my latest Blender renders">
+  <div class="flex flex-col 2xl:col-span-3 col-span-2">
+    <div
+      class="dark:bg-gradient-to-r long-transition from-dark-card to-darker-card text-xl text-gray-500 dark:text-white bg-white rounded-lg flex flex-col border-gradient"
+    >
+    <div class="p-12">
+        <h2 class="font-body font-bold self-start mb-8 text-2xl long-transition">
+            Pixel Perfect Past
+        </h2>
+        <p>
+            Inspired by a tutorial from <strong>Polygon Runway</strong>, this render is a nostalgic nod to the <strong>classic Nintendo era</strong>. It features a stylized Nintendo console setup, surrounded by games that defined my early gaming adventures.<br><br>
+            Central to the scene is a TV showing the '<strong>Super Mario World</strong>' intro, evoking fond memories of those pixelated worlds. This render is a heartfelt tribute to the <strong>timeless games</strong> that have left a lasting impression on me.
+        </p>
+    </div>
+    
+    </div>
+  </div>
+  <div
+    class="flex flex-col 2xl:col-span-9 col-span-2 dark:bg-gradient-to-r long-transition from-dark-card to-darker-card p-12 text-xl text-gray-500 dark:text-white bg-white rounded-lg flex flex-col items-center border-gradient"
+  >
+    <div class="image-container rounded-md">
+      <Image
+        src={nintendo}
+        transition:name="latest-render"
+        alt="Latest Render"
+        class="rounded-md"
+        densities={[1, 1.5, 2]}
+        decoding="async"
+        loading="lazy"
+      />
+      <Image
+      src={nintendoClay}
+      alt="Wireframe Render"
+      class="wireframe-image"
+    />
+    </div>
+  </div>
+  
+</Layout>
+
+<style>
+    .render-container {
+      position: relative;
+    }
+  
+    .image-container {
+      position: relative;
+    }
+  
+    .render-image, .wireframe-image {
+      max-width: 100%;
+      transition: opacity 0.5s ease;
+    }
+  
+    .wireframe-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
+  
+    .image-container:hover .wireframe-image {
+      opacity: 1;
+    }
+  </style>
