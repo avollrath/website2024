@@ -7,7 +7,7 @@ const apiKey = 'AIzaSyDGK29IJH_EySONpF1VYQnNNqzCGk4DINU'
 
 
 const favoriteBookISBNs = [
-  "9783646922325", // Wir Kinder vom Bahnhof Zoo
+  "9781936976225", // Wir Kinder vom Bahnhof Zoo
   "9780452295292", // City of Thieves
   "9781626251229", // Upward Spiral
   "9780738212562", // Time
@@ -57,5 +57,5 @@ async function saveBooksData(bookISBNs, fileName) {
   fs.writeFileSync(fileName, JSON.stringify(booksData, null, 2));
 }
 
-// saveBooksData(favoriteBookISBNs, 'favoriteBooks.json');
-saveBooksData(nowPageBookISBNs, 'nowPageBooks.json');
+saveBooksData(favoriteBookISBNs, 'favoriteBooks.json');
+// saveBooksData(nowPageBookISBNs, 'nowPageBooks.json');

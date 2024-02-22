@@ -1,0 +1,80 @@
+[
+  {
+    "isbn": "9781936976225",
+    "title": "Zoo Station",
+    "authors": "Christiane F.",
+    "coverURL": "http://books.google.com/books/content?id=VUhYQD9YlPQC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "isbn": "9780452295292",
+    "title": "City of Thieves",
+    "authors": "David Benioff",
+    "coverURL": "http://books.google.com/books/content?id=uFbvtwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+  },
+  {
+    "isbn": "9781626251229",
+    "title": "The Upward Spiral",
+    "authors": "Alex Korb",
+    "coverURL": "http://books.google.com/books/content?id=K8qnBgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "isbn": "9780738212562",
+    "title": "The Secret Pulse of Time",
+    "authors": "Stefan Klein",
+    "coverURL": "http://books.google.com/books/content?id=Dg3FswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+  },
+  {
+    "isbn": "9781101904220",
+    "title": "Dark Matter",
+    "authors": "Blake Crouch",
+    "coverURL": "http://books.google.com/books/content?id=1imJDAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+  },
+  {
+    "isbn": "9780593138779",
+    "title": "The Comfort Crisis",
+    "authors": "Michael Easter",
+    "coverURL": "http://books.google.com/books/content?id=28L3DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+  },
+  {
+    "isbn": "9780007263516",
+    "title": "The Giver",
+    "authors": "Lois Lowry",
+    "coverURL": "http://books.google.com/books/content?id=Gq7NDxws1uMC&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+  },
+  {
+    "isbn": "9780316739924",
+    "title": "All Quiet on the Western Front",
+    "authors": "Erich Maria Remarque",
+    "coverURL": "http://books.google.com/books/content?id=vdf-wAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+  },
+  {
+    "isbn": "9780857523471",
+    "title": "The Heart's Invisible Furies",
+    "authors": "John Boyne",
+    "coverURL": "http://books.google.com/books/content?id=5S7WDQAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+  },
+  {
+    "isbn": "9780593135204",
+    "title": "Project Hail Mary",
+    "authors": "Andy Weir",
+    "coverURL": "http://books.google.com/books/content?id=GrYsEAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+  },
+  {
+    "isbn": "0983748427",
+    "title": "A Short Stay in Hell",
+    "authors": "Steven L. Peck",
+    "coverURL": "http://books.google.com/books/content?id=blivPwAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+  },
+  {
+    "isbn": "9780749707231",
+    "title": "The Little Prince",
+    "authors": "Antoine de Saint-Exupéry, Katherine Woods",
+    "coverURL": "http://books.google.com/books/content?id=vh-9QgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+  },
+  {
+    "isbn": "9780802144270",
+    "title": "The Physicists",
+    "authors": "Friedrich Dürrenmatt",
+    "coverURL": "http://books.google.com/books/content?id=wpZNPgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+  }
+]
