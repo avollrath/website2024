@@ -16,7 +16,7 @@ const Globe = (props) => {
     const isDarkTheme = document.documentElement.classList.contains('dark');
     const oceanColor = isDarkTheme ? '#222' : '#5089b4';
     const landColor = isDarkTheme ? '#303030' : '#c2c2c2';
-    const visitedCountryColor = isDarkTheme ? '#45CE8A' : '#45CE8A';
+    const visitedCountryColor = isDarkTheme ? '#F6723A' : '#45CE8A';
     const strokeColor = isDarkTheme ? '#525252' : '#737373';
 
     const svg = d3.select(mapContainer).select("svg");

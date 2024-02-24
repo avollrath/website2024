@@ -25,10 +25,12 @@ function onSectionClick(event) {
 function onSectionMouseOver(event) {
     const arrowSvg = event.currentTarget.querySelector('.arrow-link svg');
     const heading = event.currentTarget.querySelector('h2');
-    const img = event.currentTarget.querySelector('img');
+    const img = event.currentTarget.querySelectorAll('img');
+
 
     arrowSvg.style.transform = 'rotate(360deg)';
-    if (img) img.style.transform = 'scale(1.1)';
+    if (img[0]) img[0].style.transform = 'scale(1.1)';
+    if (img[1]) img[1].style.transform = 'scale(1.1)';
     if (event.currentTarget.classList.contains('bright-section')) {
         heading.classList.add('cool-contrast-gradient');
     } else {
@@ -39,10 +41,11 @@ function onSectionMouseOver(event) {
 function onSectionMouseOut(event) {
     const arrowSvg = event.currentTarget.querySelector('.arrow-link svg');
     const heading = event.currentTarget.querySelector('h2');
-    const img = event.currentTarget.querySelector('img');
+    const img = event.currentTarget.querySelectorAll('img');
 
     arrowSvg.style.transform = 'rotate(-45deg)';
-    if (img) img.style.transform = 'scale(1.0)';
+    if (img[0]) img[0].style.transform = 'scale(1.0)';
+    if (img[1]) img[1].style.transform = 'scale(1.0)';
     heading.classList.remove('gradient-text', 'cool-contrast-gradient');
 }
 

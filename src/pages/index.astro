@@ -4,8 +4,8 @@ import { getTopTracks, getCurrentPlayingTrack } from "../scripts/getTopTracks.js
 import Globe from '../components/Globe';
 import Layout from '../layouts/Layout.astro';
 import AudioWave from '../components/AudioWave.astro';
-import latestRenderImage from '../images/renders/nintendo.png';
-import latestRenderImageClay from '../images/renders/nintendo-clay.jpg';
+import latestRenderImage from '../images/renders/braunHF3.jpg';
+import latestRenderImageClay from '../images/renders/braunHF3-clay.jpg';
 import { Image } from 'astro:assets';
 
 const refreshToken = import.meta.env.SPOTIFY_REFRESH_TOKEN;
@@ -58,7 +58,7 @@ export { latestPost };
         <!-- Intro Section -->
         <div class="xl:col-span-3 2xl:col-span-9 dark:dark:bg-gradient-to-r from-dark-card to-darker-card bg-white py-24 px-12 rounded-lg flex relative items-center border-gradient" >
           <div class="z-10 flex-1">
-              <h1 class="text-8xl lg:text-xxl font-bold font-header long-transition mr-4">André <br/><span class="text-gray-400">Vollrath</span></h1>
+              <h1 class="text-8xl lg:text-xxl font-header long-transition mr-4">André <br/><span class="text-gray-400">Vollrath</span></h1>
             <p class=" text-lg lg:text-6xl/relaxed leading-relaxed max-w-xl tracking-widest font-bold text-dark-text long-transition dark:text-dark-text lg:max-w-5xl my-12 uppercase">Creative developer
             </p>
           </div>
@@ -66,72 +66,72 @@ export { latestPost };
         </div>
 
     <!-- Now Section -->
-    <div class="xl:col-span-1 xl:row-start-2 2xl:row-start-1 2xl:col-start-10 2xl:col-span-3 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white p-12 rounded-lg h-full border-gradient flex flex-col justify-between clickable-section">
+    <div class="xl:col-span-1 xl:row-start-2 2xl:row-start-1 2xl:col-start-10 2xl:col-span-3 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white sm:p-12 p-6 rounded-lg h-full border-gradient flex flex-col justify-between clickable-section">
       <div class="flex justify-between items-center mb-6">
-        <h2 class="font-body font-bold text-4xl long-transition">Now</h2>
+        <h2 class="font-header tracking-wide text-4xl long-transition">Now</h2>
         <a href="/now" class="arrow-link">
-             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-cyan-500" fill="none" viewBox="0 0 24 24">
+             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-orange" fill="none" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
           </svg>
         </a>
       </div>
-      <ul class="list-disc pl-5 mb-4 text-lg text-gray-500 dark:text-white bullets long-transition">
-        <li class="mb-4">Learning <strong>Astro.js</strong> <strong>and Tailwind CSS</strong></li>
+      <ul class="list-disc pl-5 mb-4 text-xl text-gray-500 dark:text-white bullets long-transition">
+        <li class="mb-4 ">Learning <strong>Astro.js</strong> <strong>and Tailwind CSS</strong></li>
         <li class="mb-4">Reading "<strong>The Count of Monte Cristo</strong>" by <strong>Alexandre Dumas</strong></li>
         <li class="mb-4">Reading "<strong>How to Win at Chess</strong>" by <strong>Levy Rozman</strong></li>
         <li class="mb-4">Reading "<strong>Demon Copperhead</strong>" by <strong>Barbara Kingsolver</strong></li>
         <li class="mb-4">Practicing "<strong>Comptine d'un autre été</strong>" by <strong>Yann Tiersen</strong> on the piano</li>
       </ul>
       
-      <p class="text-right  text-gray-500 dark:text-white">Last Updated: February 6, 2024</p>
+      <p class="text-right text-lg  text-gray-500 dark:text-white">Last Updated: February 6, 2024</p>
     </div>
 
     <!-- Latest Blog Section -->
-    <div class="xl:col-start-2 xl:col-span-2 xl:row-span-2 2xl:col-span-3 2xl:row-start-2 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white p-12 rounded-lg h-full border-gradient clickable-section">
+    <div class="xl:col-start-2 xl:col-span-2 xl:row-span-2 2xl:col-span-3 2xl:row-start-2 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white sm:p-12 p-6 rounded-lg h-full border-gradient clickable-section">
       <div class="flex justify-between items-center mb-6">
-        <h2 class="font-body font-bold text-4xl long-transition">Latest Blog</h2>
+        <h2 class="font-header text-4xl tracking-wide long-transition">Latest Blog</h2>
         <a href={latestPost.url} class="arrow-link">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-cyan-500" fill="none" viewBox="0 0 24 24">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-orange" fill="none" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
           </svg>
         </a>
       </div>
-      <h3 class="text-lg font-body  text-gray-500 long-transition dark:text-white mb-6 font-bold">{latestPost.frontmatter.title}</h3>
+      <h3 class="text-2xl font-body  text-gray-500 long-transition dark:text-white mb-6">{latestPost.frontmatter.title}</h3>
       <div class="image-container rounded-md">
         <img src={latestPost.frontmatter.image.url} alt={latestPost.frontmatter.image.alt} class="mb-6 md:w-24 rounded-md object-cover aspect-video">
       </div>
-      <p class="long-transition text-lg leading-relaxed text-gray-500 dark:text-white">
+      <p class="long-transition text-xl text-gray-500 dark:text-white">
         {latestPost.frontmatter.teaser}
       </p>
       <div class="flex justify-center">
-        <button class="bg-gradient-to-tr from-blue-700 to-green-400 rounded-full px-10 py-4 mt-12 text-white text-xl font-semibold">Read blog post</button>
+        <button class="bg-orange rounded-full px-10 py-4 mt-12 text-white text-xl font-semibold">Read blog post</button>
       </div>
     </div>
 
     <!-- About Section -->
-    <div class="xl:col-span-1 xl:row-start-3 2xl:col-start-4 2xl:col-span-3 2xl:row-start-2 bg-gradient-to-tr from-blue-700 to-green-400 p-12 text-white rounded-lg h-full clickable-section bright-section">
+    <div class="xl:col-span-1 xl:row-start-3 2xl:col-start-4 2xl:col-span-3 2xl:row-start-2 bg-orange sm:p-12 p-6 text-white rounded-lg h-full clickable-section bright-section">
       <div class="flex justify-between items-center mb-6">
-        <h2 class="font-body font-bold text-4xl">About</h2>
+        <h2 class="font-header tracking-wide text-4xl long-transition">About</h2>
         <a href="/about" class="arrow-link white">
              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-white" fill="none" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
           </svg>
         </a>
       </div>
-      <p class="text-lg leading-relaxed">
+      <p class="text-xl">
         Hello there, I'm <strong>André Vollrath</strong>, and I'm thrilled to make your acquaintance. I'm a <strong>designer</strong> and <strong>front-end developer</strong>, deeply passionate about the digital world. With over a decade of experience under my belt, I've dedicated myself to crafting visually stunning designs and building engaging websites.
       </p>
-      <p class="text-lg leading-relaxed">
+      <p class="text-xl">
         In the realm of <strong>design</strong>, I thrive on bringing ideas to life. Whether it's fine-tuning images in <strong>Adobe Photoshop</strong> or creating stunning <strong>web designs</strong>, my passion for visual storytelling drives me to push the boundaries of creativity.
       </p>
     </div>
 
     <!-- Latest Render Section -->
-    <div class="xl:col-span-3 xl:row-start-4 2xl:col-start-7 2xl:col-span-6 2xl:row-start-2 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white p-12 rounded-lg border-gradient h-full clickable-section latest-render-section" >
+    <div class="xl:col-span-3 xl:row-start-4 2xl:col-start-7 2xl:col-span-6 2xl:row-start-2 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white sm:p-12 p-6 rounded-lg border-gradient h-full clickable-section latest-render-section" >
       <div class="flex justify-between items-center mb-6">
-        <h2 class="font-body font-bold text-4xl long-transition">Latest Render</h2>
+        <h2 class="font-header tracking-wide text-4xl long-transition">Latest Render</h2>
         <a href="/renders" class="arrow-link">
-             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-cyan-500" fill="none" viewBox="0 0 24 24">
+             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-orange" fill="none" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
           </svg>
         </a>
@@ -179,8 +179,8 @@ export { latestPost };
     </style>
 
     <!-- Spotify Section -->
-    <div class="xl:col-span-2 xl:row-start-5 2xl:col-span-9 2xl:row-start-3 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white p-12 rounded-lg border-gradient h-full flex flex-col items-center overflow-visible" >
-      <h2 class="font-body font-bold self-start mb-8 text-4xl long-transition">Spotify Top 5 <span class="text-gray-500 whitespace-nowrap text-2xl">(last 6 months)</span></h2>
+    <div class="xl:col-span-2 xl:row-start-5 2xl:col-span-9 2xl:row-start-3 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white sm:p-12 p-6 rounded-lg border-gradient h-full flex flex-col items-center overflow-visible" >
+      <h2 class="font-header tracking-wide self-start mb-8 text-4xl long-transition">Spotify Top 5 <span class="text-gray-500 whitespace-nowrap text-2xl">(last 6 months)</span></h2>
       <div class="flex flex-row justify-between w-full">
         {topTracks.map((track) => (
           track && track.external_urls && track.album && track.album.images[0] ? (
@@ -195,15 +195,15 @@ export { latestPost };
         {currentPlayingTrack && currentPlayingTrack.is_playing && currentPlayingTrack.item && currentPlayingTrack.item.external_urls ? (
           <div class="currently-playing self-start mt-8">
             <a href={currentPlayingTrack.item.external_urls.spotify} target="_blank" class="flex items-center">
-              <span class="mr-4 text-gray-500 dark:text-white">Playing right now: <strong class="text-dark-text">{currentPlayingTrack.item.name}</strong> by {currentPlayingTrack.item.artists.map(artist => artist.name).join(", ")}</span>  <AudioWave />
+              <span class="mr-4 text-gray-500 dark:text-white text-xl">Playing right now: <strong class="text-dark-text">{currentPlayingTrack.item.name}</strong> by {currentPlayingTrack.item.artists.map(artist => artist.name).join(", ")}</span>  <AudioWave />
             </a>
           </div>
         ) : null}
     </div>
 
     <!-- Links Section -->
-    <div class="xl:col-start-3 xl:col-span-1 xl:row-start-5 2xl:col-span-3 2xl:row-start-4 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white p-12 rounded-lg border-gradient h-full flex flex-col" >
-      <h2 class="font-body mb-4 font-bold text-4xl long-transition">Links</h2>
+    <div class="xl:col-start-3 xl:col-span-1 xl:row-start-5 2xl:col-span-3 2xl:row-start-4 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white sm:p-12 p-6 rounded-lg border-gradient h-full flex flex-col" >
+      <h2 class="font-header tracking-wide mb-4 text-4xl long-transition">Links</h2>
       <div class="flex-1 flex items-center justify-center">
         <div class="grid grid-cols-2 gap-4">
           <a href="https://github.com/yourusername" target="_blank">
@@ -223,20 +223,20 @@ export { latestPost };
     </div>
 
     <!-- Countries Visited Section -->
-    <div class="xl:col-span-3 xl:row-start-7  2xl:col-span-9 2xl:row-start-4 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white p-12 rounded-lg border-gradient h-full" >
-      <h2 class="font-body font-bold text-4xl long-transition">Countries Visited</h2>
+    <div class="xl:col-span-3 xl:row-start-7  2xl:col-span-9 2xl:row-start-4 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white sm:p-12 p-6 rounded-lg border-gradient h-full" >
+      <h2 class="font-header tracking-wide text-4xl long-transition">Countries Visited</h2>
       <div class="h-auto w-24 mx-auto absolute inset-0 -z-10 globe-container">
         <Globe client:load scale={250}/>
       </div>
     </div>
 
     <!-- Based in Section -->
-    <div class="xl:col-start-1 xl:col-span-2 xl:row-start-6 2xl:col-span-8 2xl:row-start-5 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white p-12 rounded-lg border-gradient h-full flex flex-col" >
-      <h2 class="font-body font-bold text-4xl mb-12 long-transition">Based in</h2>
+    <div class="xl:col-start-1 xl:col-span-2 xl:row-start-6 2xl:col-span-8 2xl:row-start-5 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white sm:p-12 p-6 rounded-lg border-gradient h-full flex flex-col" >
+      <h2 class="font-header text-4xl mb-12 long-transition">Based in</h2>
       <div class="flex justify-center items-center 2xl:flex-row xl:flex-row flex-col">
-        <img src="../src/images/globe.png" alt="Globe" class="2xl:w-96 h-auto w-72 mr-12 md:py-12">
+        <img src="../public/basedin.svg" alt="Globe" class="2xl:w-96 h-auto w-72 xl:mr-12 mr-0 md:py-12 sm:mb-0 mb-12" >
         <div class="grid grid-flow-row gap-2">
-          <h1 class="text-8xl 2xl:text-9xl font-bold mb-6 lg:mb-12 font-header">
+          <h1 class="text-8xl 2xl:text-9xl mb-6 lg:mb-12 font-header">
             Helsinki<br>Finland<br><span class="text-gray-500">GMT +2</span>
           </h1>
         </div>
@@ -244,10 +244,10 @@ export { latestPost };
     </div>
 
     <!-- Contact Section -->
-    <div class="xl:col-start-3 xl:col-span-1 xl:row-start-6 2xl:col-start-9 2xl:col-span-4 2xl:row-start-5 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white p-12 rounded-lg border-gradient h-full flex flex-col justify-between" >
-      <h2 class="font-body font-bold text-4xl mb-6 long-transition">Contact</h2>
+    <div class="xl:col-start-3 xl:col-span-1 xl:row-start-6 2xl:col-start-9 2xl:col-span-4 2xl:row-start-5 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white sm:p-12 p-6 rounded-lg border-gradient h-full flex flex-col justify-between" >
+      <h2 class="font-header tracking-wide text-4xl mb-6 long-transition">Contact</h2>
       <div class="flex-1 flex items-center justify-center">
-        <button class="bg-gradient-to-tr max-w-96 from-blue-700 to-green-400 rounded-full px-6 py-8 text-white text-3xl font-semibold w-full">Send Email</button>
+        <button class="bg-orange rounded-full px-6 py-8 text-white text-3xl font-semibold w-full">Send Email</button>
       </div>
     </div>
   </div>

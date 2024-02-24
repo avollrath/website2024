@@ -24,7 +24,7 @@ export default {
 
       gradientColorStops: theme => ({
         ...theme('colors'),
-        'gradient': 'linear-gradient(45deg, #ff6309, #ffbd06)',
+        'gradient': 'linear-gradient(45deg, #F6723A, #F6723A)',
       }),
 
       colors: {
@@ -32,12 +32,14 @@ export default {
         'dark-card': '#1a1a1a', // Adjust the hex value to match your design
         'darker-card': '#121212',
         'dark-accent': '#757575', // Adjust the hex value to match your design
-        'dark-text': '#45CE8A', // Adjust the hex value to match your design
+        'dark-text': '#F6723A', // Adjust the hex value to match your design
+        'white': '#fdf1e7',
+        'orange': '#F6723A',
       },
 
   fontFamily: {
-        'header': ['Montserrat', 'serif'], // For headers, using Montserrat with weight 700
-        'body': ['Montserrat', 'sans-serif'], // For body text, using Montserrat with weight 400
+        'header': ['Young Serif', 'serif'], // For headers, using Montserrat with weight 700
+        'body': ['Syne Mono', 'sans-serif'], // For body text, using Montserrat with weight 400
       },
 
     },

@@ -20,7 +20,7 @@ const allPosts = await Astro.glob('../pages/posts/*.md');
                 <!-- Text Content Container -->
                 <div class="2xl:p-24 p-12 flex flex-col justify-center md:justify-between w-full">
                     <div>
-                        <h2 class="2xl:text-5xl xl:text-4xl text-2xl font-bold mb-2 transition long-transition">{post.frontmatter.title}</h2>
+                        <h2 class="2xl:text-5xl/tight xl:text-4xl text-2xl font-header mb-4 tracking-wide transition long-transition">{post.frontmatter.title}</h2>
                         <p class="dark:text-gray-300 text-gray-500 2xl:text-2xl text-lg long-transition">{post.frontmatter.description}</p>
                     </div>
                  

@@ -24,7 +24,7 @@ try {
 
 <!-- Spotify Section -->
 <div class={`${colSpan} dark:bg-gradient-to-r from-dark-card to-darker-card bg-white p-12 rounded-lg border-gradient h-full flex flex-col items-center overflow-visible`}>
-  <h2 class="font-body font-bold self-start mb-8 text-4xl long-transition">Spotify Top 50 <span class="text-gray-500 text-2xl whitespace-nowrap">All time</span></h2>
+  <h2 class="font-header tracking-wide self-start mb-8 text-4xl long-transition">Spotify Top 50 <span class="text-gray-500 text-2xl whitespace-nowrap">All time</span></h2>
   <div class="flex flex-wrap justify-center gap-4 w-full">
     {topTracks.map((track) => (
       track && track.external_urls && track.album && track.album.images[0] ? (

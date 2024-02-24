@@ -11,7 +11,7 @@ import Prose from '../components/Prose.astro';
 
     <div class="lg:col-span-9 dark:bg-gradient-to-r from-dark-card to-darker-card px-48 py-24 bg-white rounded-lg flex flex-col items-center border-gradient">
         <header class="blog-header text-center">
-            <h1 class="text-5xl font-bold mb-4 long-transition">{frontmatter.title}</h1>
+            <h1 class="text-5xl font-header tracking-wide leading-snug mb-4 long-transition">{frontmatter.title}</h1>
             <div class="metadata flex flex-col mb-4">
               <span class="text-lg">{formatDate(frontmatter.pubDate)}</span>
               {frontmatter.tags && frontmatter.tags.length > 0 && (
