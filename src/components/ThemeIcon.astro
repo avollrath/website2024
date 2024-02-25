@@ -67,7 +67,7 @@
 }
 
 .slider {
-  background-color: rgb(238, 238, 238);
+  background-color: rgb(224, 224, 224);
   bottom: 0;
   cursor: pointer;
   left: 0;
@@ -76,6 +76,10 @@
   top: 0;
   transition: 0.4s;
   border-radius: 50px;  /* Adjusted for larger size */
+}
+
+.slider:hover {
+  background-color: rgb(255, 234, 203);
 }
 
 .slider:before {
@@ -93,6 +97,13 @@
 input:checked + .slider {
   background-color: #2c2c2c;
 }
+
+input:checked + .slider:hover {
+  /* Add your desired hover styles here */
+  background-color: #3d3d3d; /* Example: slightly lighter color on hover */
+}
+
+
 
 input:checked + .slider:before {
   transform: translateX(40px);  /* Adjusted for larger size */

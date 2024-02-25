@@ -13,6 +13,7 @@ const { title, description } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/src/styles/main.css" />
+    <link rel="stylesheet" href="/src/styles/marquee.css" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <ViewTransitions />
@@ -54,6 +55,9 @@ const { title, description } = Astro.props;
     updateTheme();
     const checkbox = document.getElementById('checkbox');
     checkbox.addEventListener('change', handleCheckboxChange);
+    document.getElementById('hamburger').addEventListener('click', function() {
+    document.getElementById('nav-menu').classList.toggle('invisible');
+});
   };
 
   // Check if document is already loaded

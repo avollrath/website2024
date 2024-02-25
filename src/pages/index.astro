@@ -56,10 +56,10 @@ export { latestPost };
     <!-- 2xl:grid-cols-12 xl:grid-cols-3 md:grid-cols-1  -->
 
         <!-- Intro Section -->
-        <div class="xl:col-span-3 2xl:col-span-9 dark:dark:bg-gradient-to-r from-dark-card to-darker-card bg-white py-24 px-12 rounded-lg flex relative items-center border-gradient" >
+        <div class="xl:col-span-3 2xl:col-span-9 dark:dark:bg-gradient-to-r from-dark-card to-darker-card bg-white py-24 px-12 rounded-lg flex sm:flex-row flex-col relative items-center border-gradient" >
           <div class="z-10 flex-1">
-              <h1 class="text-8xl lg:text-xxl font-header long-transition mr-4">André <br/><span class="text-gray-400">Vollrath</span></h1>
-            <p class=" text-lg lg:text-6xl/relaxed leading-relaxed max-w-xl tracking-widest font-bold text-dark-text long-transition dark:text-dark-text lg:max-w-5xl my-12 uppercase">Creative developer
+              <h1 class="text-8xl lg:text-xxl font-header long-transition  md:mr-4 lg:text-left text-center">André <br/><span class="text-gray-400">Vollrath</span></h1>
+            <p class="lg:text-left text-center sm:text-6xl/relaxed leading-relaxed  text-3xl tracking-widest font-bold text-dark-text long-transition dark:text-dark-text md:my-12 uppercase">Creative developer
             </p>
           </div>
           <img src="../src/images/profile.png" alt="André's Avatar" class="avatar" />
@@ -104,7 +104,7 @@ export { latestPost };
         {latestPost.frontmatter.teaser}
       </p>
       <div class="flex justify-center">
-        <button class="bg-orange rounded-full px-10 py-4 mt-12 text-white text-xl font-semibold">Read blog post</button>
+        <button class="bg-orange rounded-full px-10 py-4 mt-12 text-white text-xl font-semibold hover:scale-105 transition-transform">Read blog post</button>
       </div>
     </div>
 
@@ -151,33 +151,6 @@ export { latestPost };
       </div>
     </div>
 
-    <style>
-      .render-container {
-        position: relative;
-      }
-    
-      .image-container {
-        position: relative;
-      }
-    
-      .render-image, .wireframe-image {
-        max-width: 100%;
-        transition: 0.5s ease-in-out;
-      }
-    
-      .wireframe-image {
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: 0;
-      }
-    
-      .image-container:hover .wireframe-image {
-        opacity: 1;
-        transform: scale(1.1);
-      }
-    </style>
-
     <!-- Spotify Section -->
     <div class="xl:col-span-2 xl:row-start-5 2xl:col-span-9 2xl:row-start-3 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white sm:p-12 p-6 rounded-lg border-gradient h-full flex flex-col items-center overflow-visible" >
       <h2 class="font-header tracking-wide self-start mb-8 text-4xl long-transition">Spotify Top 5 <span class="text-gray-500 whitespace-nowrap text-2xl">(last 6 months)</span></h2>
@@ -201,40 +174,257 @@ export { latestPost };
         ) : null}
     </div>
 
+
+        <!-- Tech stack -->
+        <div class="xl:col-span-3 xl:row-start-7  2xl:col-span-9 2xl:row-start-4 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white rounded-lg border-gradient h-full pb-8" >
+          <h2 class="font-header tracking-wide text-4xl long-transition sm:p-12 p-6 ">Tech stack</h2>
+
+          <section class="enable-animation font-header text-8xl long-transition text-gray-500 dark:text-white uppercase">
+            <!-- First Marquee -->
+            <div class="marquee">
+              <ul class="marquee__content">
+                <li class="text-dark-text">React</li>
+                <li>JavaScript</li>
+                <li>HTML5</li>
+                <li class="text-dark-text">Tailwind</li>
+                <li>Astro.js</li>
+                <li>GSAP</li>
+                <li class="text-dark-text">Three.js</li>
+                <li>CSS3</li>
+                <li>SASS</li>
+                <li class="text-dark-text">LESS</li>
+                <li>Git</li>
+                <li>Webpack</li>
+                <li class="text-dark-text">Vite</li>
+                <li>Node.js</li>
+                <li>ES6/ESNext</li>
+              </ul>
+          
+              <!-- Duplicate for continuous effect -->
+              <ul class="marquee__content">
+                <li class="text-dark-text">React</li>
+                <li>JavaScript</li>
+                <li>HTML5</li>
+                <li class="text-dark-text">Tailwind</li>
+                <li>Astro.js</li>
+                <li>GSAP</li>
+                <li class="text-dark-text">Three.js</li>
+                <li>CSS3</li>
+                <li>SASS</li>
+                <li class="text-dark-text">LESS</li>
+                <li>Git</li>
+                <li>Webpack</li>
+                <li class="text-dark-text">Vite</li>
+                <li>Node.js</li>
+                <li>ES6/ESNext</li>
+              </ul>
+            </div>
+          
+            <!-- Second Marquee (Reversed) -->
+            <div class="marquee marquee--reverse">
+              <ul class="marquee__content">
+                <li class="text-dark-text">Node.js</li>
+                <li>ES6/ESNext</li>
+                <li>React</li>
+                <li class="text-dark-text">JavaScript</li>
+                <li>HTML5</li>
+                <li>Tailwind</li>
+                <li class="text-dark-text">Astro.js</li>
+                <li>GSAP</li>
+                <li>Three.js</li>
+                <li class="text-dark-text">CSS3</li>
+                <li>SASS</li>
+                <li>LESS</li>
+                <li class="text-dark-text">Git</li>
+                <li>Webpack</li>
+                <li>Vite</li>
+             
+              </ul>
+          
+              <!-- Duplicate for continuous effect -->
+              <ul class="marquee__content">
+                <li class="text-dark-text">Node.js</li>
+                <li>ES6/ESNext</li>
+                <li>React</li>
+                <li class="text-dark-text">JavaScript</li>
+                <li>HTML5</li>
+                <li>Tailwind</li>
+                <li class="text-dark-text">Astro.js</li>
+                <li>GSAP</li>
+                <li>Three.js</li>
+                <li class="text-dark-text">CSS3</li>
+                <li>SASS</li>
+                <li>LESS</li>
+                <li class="text-dark-text">Git</li>
+                <li>Webpack</li>
+                <li>Vite</li>
+              </ul>
+            </div>
+          
+            <!-- Third Marquee -->
+            <div class="marquee">
+              <ul class="marquee__content">
+                <li>LESS</li>
+                <li>Git</li>
+                <li class="text-dark-text">Webpack</li>
+                <li>Vite</li>
+                <li>React</li>
+                <li>JavaScript</li>
+                <li class="text-dark-text">HTML5</li>
+                <li>Tailwind</li>
+                <li>Astro.js</li>
+                <li class="text-dark-text">GSAP</li>
+                <li>Three.js</li>
+                <li>CSS3</li>
+                <li class="text-dark-text">SASS</li>
+                <li>Node.js</li>
+                <li class="text-dark-text">ES6/ESNext</li>
+              </ul>
+          
+              <!-- Duplicate for continuous effect -->
+              <ul class="marquee__content">
+                <li>LESS</li>
+                <li>Git</li>
+                <li class="text-dark-text">Webpack</li>
+                <li>Vite</li>
+                <li>React</li>
+                <li>JavaScript</li>
+                <li class="text-dark-text">HTML5</li>
+                <li>Tailwind</li>
+                <li>Astro.js</li>
+                <li class="text-dark-text">GSAP</li>
+                <li>Three.js</li>
+                <li>CSS3</li>
+                <li class="text-dark-text">SASS</li>
+                <li>Node.js</li>
+                <li class="text-dark-text">ES6/ESNext</li>
+              </ul>
+            </div>
+          
+            <!-- Fourth Marquee (Reversed) -->
+            <div class="marquee marquee--reverse">
+              <ul class="marquee__content">
+                <li class="text-dark-text">Vite</li>
+                <li>Node.js</li>
+                <li>ES6/ESNext</li>
+                <li class="text-dark-text">React</li>
+                <li>JavaScript</li>
+                <li>HTML5</li>
+                <li class="text-dark-text">Tailwind</li>
+                <li>Astro.js</li>
+                <li>GSAP</li>
+                <li class="text-dark-text">Three.js</li>
+                <li>CSS3</li>
+                <li>SASS</li>
+                <li class="text-dark-text">LESS</li>
+                <li>Git</li>
+                <li>Webpack</li>
+           
+              </ul>
+          
+              <!-- Duplicate for continuous effect -->
+              <ul class="marquee__content">
+                <li class="text-dark-text">Vite</li>
+                <li>Node.js</li>
+                <li>ES6/ESNext</li>
+                <li class="text-dark-text">React</li>
+                <li>JavaScript</li>
+                <li>HTML5</li>
+                <li class="text-dark-text">Tailwind</li>
+                <li>Astro.js</li>
+                <li>GSAP</li>
+                <li class="text-dark-text">Three.js</li>
+                <li>CSS3</li>
+                <li>SASS</li>
+                <li class="text-dark-text">LESS</li>
+                <li>Git</li>
+                <li>Webpack</li>
+           
+              </ul>
+            </div>
+          
+            <!-- Fifth Marquee -->
+            <div class="marquee">
+              <ul class="marquee__content">
+               
+                <li class="text-dark-text">Astro.js</li>
+                <li>GSAP</li>
+                <li>Three.js</li>
+                <li class="text-dark-text">CSS3</li>
+                <li>SASS</li>
+                <li>LESS</li>
+                <li class="text-dark-text">Git</li>
+                <li>React</li>
+                <li class="text-dark-text">JavaScript</li>
+                <li>HTML5</li>
+                <li>Tailwind</li>
+                <li>Webpack</li>
+                <li>Vite</li>
+                <li class="text-dark-text">Node.js</li>
+                <li>ES6/ESNext</li>
+              </ul>
+          
+              <!-- Duplicate for continuous effect -->
+              <ul class="marquee__content">
+               
+                <li class="text-dark-text">Astro.js</li>
+                <li>GSAP</li>
+                <li>Three.js</li>
+                <li class="text-dark-text">CSS3</li>
+                <li>SASS</li>
+                <li>LESS</li>
+                <li>React</li>
+                <li class="text-dark-text">JavaScript</li>
+                <li>HTML5</li>
+                <li>Tailwind</li>
+                <li class="text-dark-text">Git</li>
+                <li>Webpack</li>
+                <li>Vite</li>
+                <li class="text-dark-text">Node.js</li>
+                <li>ES6/ESNext</li>
+              </ul>
+            </div>
+          </section>
+
+        </div>
+
     <!-- Links Section -->
     <div class="xl:col-start-3 xl:col-span-1 xl:row-start-5 2xl:col-span-3 2xl:row-start-4 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white sm:p-12 p-6 rounded-lg border-gradient h-full flex flex-col" >
       <h2 class="font-header tracking-wide mb-4 text-4xl long-transition">Links</h2>
       <div class="flex-1 flex items-center justify-center">
         <div class="grid grid-cols-2 gap-4">
-          <a href="https://github.com/yourusername" target="_blank">
-            <img src="/icons/github.png" alt="GitHub" class="w-32" />
+          <a href="https://github.com/avollrath" target="_blank">
+            <img src="/icons/github.png" alt="GitHub" class="w-32 hover:scale-105 transition-transform" />
           </a>
-          <a href="https://instagram.com/yourusername" target="_blank">
-            <img src="/icons/instagram.png" alt="Instagram" class="w-32" />
+          <a href="https://www.instagram.com/charliefeatherlight/" target="_blank">
+            <img src="/icons/instagram.png" alt="Instagram" class="w-32 hover:scale-105 transition-transform" />
           </a>
-          <a href="https://linkedin.com/in/yourusername" target="_blank">
-            <img src="/icons/linkedin.png" alt="LinkedIn" class="w-32" />
+          <a href="https://www.linkedin.com/in/andrevollrath/" target="_blank">
+            <img src="/icons/linkedin.png" alt="LinkedIn" class="w-32 hover:scale-105 transition-transform" />
           </a>
-          <a href="https://spotify.com/yourusername" target="_blank">
-            <img src="/icons/spotify.png" alt="Spotify" class="w-32" />
+          <a href="https://open.spotify.com/playlist/37i9dQZF1Fa1IIVtEpGUcU?si=0d61932237bf4497" target="_blank">
+            <img src="/icons/spotify.png" alt="Spotify" class="w-32 hover:scale-105 transition-transform" />
           </a>
         </div>
       </div>
     </div>
 
-    <!-- Countries Visited Section -->
-    <div class="xl:col-span-3 xl:row-start-7  2xl:col-span-9 2xl:row-start-4 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white sm:p-12 p-6 rounded-lg border-gradient h-full" >
-      <h2 class="font-header tracking-wide text-4xl long-transition">Countries Visited</h2>
-      <div class="h-auto w-24 mx-auto absolute inset-0 -z-10 globe-container">
-        <Globe client:load scale={250}/>
+        <!-- Contact Section -->
+        <div class="xl:col-start-3 xl:col-span-1 xl:row-start-6 2xl:col-start-1 2xl:col-span-4 2xl:row-start-5 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white sm:p-12 p-6 rounded-lg border-gradient h-full flex flex-col justify-between" >
+          <h2 class="font-header tracking-wide text-4xl mb-6 long-transition">Contact</h2>
+          <div class="flex-1 flex items-center justify-center">
+            <button class="bg-orange rounded-full px-6 py-8 text-white text-3xl font-semibold w-full hover:scale-105 transition-transform">Send Email</button>
+          </div>
+        </div>
       </div>
-    </div>
+
+
 
     <!-- Based in Section -->
     <div class="xl:col-start-1 xl:col-span-2 xl:row-start-6 2xl:col-span-8 2xl:row-start-5 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white sm:p-12 p-6 rounded-lg border-gradient h-full flex flex-col" >
       <h2 class="font-header text-4xl mb-12 long-transition">Based in</h2>
       <div class="flex justify-center items-center 2xl:flex-row xl:flex-row flex-col">
-        <img src="../public/basedin.svg" alt="Globe" class="2xl:w-96 h-auto w-72 xl:mr-12 mr-0 md:py-12 sm:mb-0 mb-12" >
+        <img src="../public/basedin.svg" alt="Globe" class="2xl:w-96 h-auto w-72 xl:mr-12 mr-0 md:py-12 mb-12 dark:invert-0 invert-[.5]" >
         <div class="grid grid-flow-row gap-2">
           <h1 class="text-8xl 2xl:text-9xl mb-6 lg:mb-12 font-header">
             Helsinki<br>Finland<br><span class="text-gray-500">GMT +2</span>
@@ -243,14 +433,35 @@ export { latestPost };
       </div>
     </div>
 
-    <!-- Contact Section -->
-    <div class="xl:col-start-3 xl:col-span-1 xl:row-start-6 2xl:col-start-9 2xl:col-span-4 2xl:row-start-5 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white sm:p-12 p-6 rounded-lg border-gradient h-full flex flex-col justify-between" >
-      <h2 class="font-header tracking-wide text-4xl mb-6 long-transition">Contact</h2>
-      <div class="flex-1 flex items-center justify-center">
-        <button class="bg-orange rounded-full px-6 py-8 text-white text-3xl font-semibold w-full">Send Email</button>
-      </div>
-    </div>
-  </div>
+
 
 </Layout>
+
+
+<style>
+  .render-container {
+    position: relative;
+  }
+
+  .image-container {
+    position: relative;
+  }
+
+  .render-image, .wireframe-image {
+    max-width: 100%;
+    transition: 0.5s ease-in-out;
+  }
+
+  .wireframe-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+
+  .image-container:hover .wireframe-image {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+</style>
  

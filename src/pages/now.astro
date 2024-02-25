@@ -46,16 +46,17 @@ import NowEntry from "../components/NowEntry.astro";
     </div>
     <p>
       I'm currently immersed in the world of web development, exploring the
-      capabilities of <strong>Astro.js</strong> and <strong>Tailwind CSS</strong
-      > to craft efficient and responsive web applications.
+      capabilities of <strong>Astro.js</strong> and <strong>Tailwind CSS</strong>
+      to craft efficient and responsive web applications. In fact, these are the very technologies used to build the website you are viewing right now, showcasing their practical applications in a real-world project.
     </p>
+    
   
 
     <hr class="my-8" />
     <h3 class="mb-8">Currently practicing:</h3>
 
     <p>
-      Currently, I'm also practicing the piano piece <strong
+      I'm also practicing the piano piece <strong
         >"Comptine d'un autre été"</strong
       > by Yann Tiersen, famously known from the movie Amélie.
     </p>
@@ -66,22 +67,22 @@ import NowEntry from "../components/NowEntry.astro";
     />
 
     <script>
-      // Function to update logos based on the theme
-      function updateLogos() {
-        const theme = localStorage.getItem("theme") || "light"; // Default to light theme
-        document.getElementById("astro-logo").src =
-          theme === "dark"
-            ? "../src/images/now/astro-logo-light-gradient.svg"
-            : "../src/images/now/astro-logo-dark.svg";
-        document.getElementById("tailwind-logo").src =
-          theme === "dark"
-            ? "../src/images/now/tailwindcss-logotype-white.svg"
-            : "../src/images/now/tailwindcss-logotype.svg";
-      }
+    document.addEventListener('DOMContentLoaded', function() {
+  function updateLogos() {
+    const theme = localStorage.getItem("theme") || "light"; // Default to light theme
+    const astroLogo = document.getElementById("astro-logo");
+    const tailwindLogo = document.getElementById("tailwind-logo");
 
-      // Update logos on load and when theme changes
-      updateLogos();
-      document.addEventListener("theme-change", updateLogos);
+    if (astroLogo && tailwindLogo) {
+      astroLogo.src = theme === "dark" ? "../src/images/now/astro-logo-light-gradient.svg" : "../src/images/now/astro-logo-dark.svg";
+      tailwindLogo.src = theme === "dark" ? "../src/images/now/tailwindcss-logotype-white.svg" : "../src/images/now/tailwindcss-logotype.svg";
+    }
+  }
+
+  // Update logos on load and when theme changes
+  updateLogos();
+  document.addEventListener("theme-change", updateLogos);
+});
     </script>
   </NowEntry>
 

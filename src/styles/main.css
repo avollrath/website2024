@@ -174,11 +174,18 @@ body {
   .avatar {
     position: absolute;
     bottom: 0px; /* Adjust as needed */
-    right: -50px; /* Adjust as needed */
-    width: 600px; /* Adjust size as needed */
+    right: 00px; /* Adjust as needed */
+    width: 660px; /* Adjust size as needed */
     height: auto;
     z-index: 0; /* Ensure it's above other content */
 }
+
+@media (max-width: 1024px) {
+    .avatar {
+        display: none;
+    }
+  }
+
 
 .cool-contrast-gradient {
     background: linear-gradient(45deg, #000000, #9b1717); /* Blue to Purple gradient */
@@ -227,6 +234,25 @@ body {
 .long-transition {
     transition: 1s ease;
 }
+
+/* Ensure these styles are within your Tailwind CSS or a custom CSS file */
+
+@media screen and (max-width: 1024px) {
+    #nav-menu {
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 90vw;
+      border-radius: 12px;
+      background-color: black;
+      padding: 2rem;
+      z-index: 50;
+      font-size: 2rem;
+      text-align: center;
+    }
+  }
+  
 
 
 
