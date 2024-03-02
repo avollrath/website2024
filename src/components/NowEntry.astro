@@ -16,11 +16,11 @@ const formattedDate = formatDate(inputDate);
 
 ---
 <div class={`${colSpan} flex flex-col`}>
-<div class="dark:bg-gradient-to-r mb-8 long-transition from-dark-card to-darker-card p-12 text-xl text-gray-500 dark:text-white bg-white rounded-lg flex flex-col border-gradient">
+<div class="dark:bg-gradient-to-r mb-8 long-transition from-dark-card to-darker-card sm:p-12 p-6 text-xl text-gray-500 dark:text-white bg-white rounded-lg flex flex-col border-gradient">
     <h1 class="font-header text-center xl:text-9xl text-7xl long-transition">{formattedDate}</h1>
 </div>
 
-<div class="dark:bg-gradient-to-r long-transition from-dark-card to-darker-card md:p-24 p-12 text-xl text-gray-500 dark:text-white bg-white rounded-lg flex flex-col border-gradient">
+<div class="dark:bg-gradient-to-r long-transition from-dark-card to-darker-card md:p-24 sm:p-12 p-6 text-xl text-gray-500 dark:text-white bg-white rounded-lg flex flex-col border-gradient">
             <slot />
         <NowBooks date={inputDate} />
  </div>

@@ -10,27 +10,80 @@ import nintendoClay from "../images/renders/nintendo-clay.jpg";
 import braun from "../images/renders/braunHF3.jpg";
 import braunClay from "../images/renders/braunHF3-clay.jpg";
 
+import desk from "../images/renders/desk.jpg";
+import deskClay from "../images/renders/desk-clay.jpg";
+
+import robot from "../images/renders/robot.jpg";
+import robotClay from "../images/renders/robot-clay.jpg";
+
+import moon from "../images/renders/moon.jpg";
+import moonClay from "../images/renders/moon-clay.jpg";
+
+import santa from "../images/renders/xmas.jpg";
+import santaClay from "../images/renders/xmas-clay.jpg";
+
 ---
 
 <Layout title="Renders" description="A collection of my latest Blender renders">
 
   <Render 
   title="Vintage Elegance: Braun HF3 TV"
-  htmlText="This render pays homage to the <strong>Braun HF3 Television</strong>, an icon of mid-century modern design. Created by the legendary designer <strong>Dieter Rams</strong>, the HF3 was renowned for its minimalist aesthetic and functional elegance.<br><br>The render captures the sleek lines and understated simplicity that defined an era, reflecting Rams' philosophy that good design is as little design as possible. It's a tribute to the time when television sets were not just appliances but pieces of art that complemented the living space."
+  htmlText="This render pays homage to the <strong class='text-dark-text'>Braun HF3 Television</strong>, an icon of mid-century modern design. Created by the legendary designer <strong class='text-dark-text'>Dieter Rams</strong>, the HF3 was renowned for its minimalist aesthetic and functional elegance.<br><br>The render captures the sleek lines and understated simplicity that defined an era, reflecting Rams' philosophy that good design is as little design as possible. It's a tribute to the time when television sets were not just appliances but pieces of art that complemented the living space."
   renderImageSrc={braun}
   clayRenderImageSrc={braunClay}
   altProp="Braun HF3 TV Render"
   transitionName="latest-render"
 />
 
-  <Render 
+<Render 
+  title="Crafted Companions: A Tale of Wooden and Foil Robots"
+  htmlText="This render showcases a delightful juxtaposition of two unique robotic creations. The first, a charming <strong class='text-dark-text'>wooden robot</strong>, is inspired by an illustration for an escape room, reflecting a whimsical and imaginative design. The second, crafted from <strong class='text-dark-text'>aluminum foil</strong>, is a replica of a real-life creation made by my coworker's son. "
+  renderImageSrc={robot};
+  clayRenderImageSrc={robotClay};
+  altProp="Wooden and Aluminum Foil Robots Render"
+  transitionName="robots"
+/>
+
+<Render 
+  title="Neon Nightscape: A Lunar Caution"
+  htmlText="This render draws its inspiration from the dark, foggy November days in Helsinki. The scene, with its neon message '<strong class='text-dark-text'>Please Don't Touch the Moon</strong>', captures the essence of the city's brooding atmosphere during late autumn. It reflects a moment of contemplation and the serene beauty found in the quiet, misty streets, where every light and shadow tells a story."
+  renderImageSrc={moon};
+  clayRenderImageSrc={moonClay};
+  altProp="Moody Billboard Render"
+  transitionName="moonBillboard"
+/>
+
+<Render 
+  title="Merry Hovering: Santa Figurines in Festive Float"
+  htmlText="This vibrant render is a festive spectacle of cute plastic Santa figurines, whimsically hovering as if in a joyous dance. The scene, with colorful foil balloons spelling out 'Merry Christmas', creates a lively and cheerful atmosphere. These buoyant Santas, captured in a moment of playful floatation, embody the lighthearted and magical essence of the holiday season. The inspiration and guidance for this charming scene were drawn from a tutorial by Keelan Jon."
+  renderImageSrc={santa};
+  clayRenderImageSrc={santaClay};
+  altProp="Hovering Santa Render"
+  transitionName="hoveringSanta"
+/>
+
+<Render 
   title="Pixel Perfect Past"
-  htmlText="Inspired by a tutorial from <strong>Polygon Runway</strong>, this render is a nostalgic nod to the <strong>classic Nintendo era</strong>. It features a stylized Nintendo console setup, surrounded by games that defined my early gaming adventures.<br><br>Central to the scene is a TV showing the '<strong>Super Mario World</strong>' intro, evoking fond memories of those pixelated worlds. This render is a heartfelt tribute to the <strong>timeless games</strong> that have left a lasting impression on me."
+  htmlText="Inspired by a tutorial from <strong class='text-dark-text'>Polygon Runway</strong>, this render is a nostalgic nod to the <strong class='text-dark-text'>classic Nintendo era</strong>. It features a stylized Nintendo console setup, surrounded by games that defined my early gaming adventures.<br><br>Central to the scene is a TV showing the '<strong class='text-dark-text'>Super Mario World</strong>' intro, evoking fond memories of those pixelated worlds. This render is a heartfelt tribute to the <strong class='text-dark-text'>timeless games</strong> that have left a lasting impression on me."
   renderImageSrc={nintendo};
   clayRenderImageSrc={nintendoClay};
   altProp="Nintendo Render"
   transitionName="nintendo"
 />
+
+<Render 
+  title="The Tinkerer's Table: A Study in Creative Chaos"
+  htmlText="This render, 'The Tinkerer's Table', is an ode to the creative process, where order and chaos coexist. The scene depicts a <strong class='text-dark-text'>wooden work desk</strong> cluttered with various elements of creation - metal pieces, plastic boxes, and scattered screws, all laid out on a work mat. The goal was to capture the essence of a real tinkerer's workspace, where every item tells a story of ongoing projects and inventive endeavors.<br><br>Although striving for <strong class='text-dark-text'>photorealism</strong>, this render embraces its imperfections, reflecting the true nature of a craftsman's journey. It's a snapshot of a moment where ideas are taking physical form, amidst the apparent disarray that often accompanies the birth of innovation."
+  renderImageSrc={desk};
+  clayRenderImageSrc={deskClay};
+  altProp="Work Desk Render"
+  transitionName="workDesk"
+/>
+
+
+
+
+
 
 
 
