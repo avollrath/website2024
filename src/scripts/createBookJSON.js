@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 import fs from 'fs';
 
 
-const apiKey = 'AIzaSyDGK29IJH_EySONpF1VYQnNNqzCGk4DINU'
+let apiKey = import.meta.env.GOOGLE_API_KEY;
 
 
 const favoriteBookISBNs = [
