@@ -5,7 +5,7 @@ export default defineConfig({
 
     integrations: [solid()],
     site: 'https://avollrath.github.io',
-    base: '/website2024',
+    base: '/',
 });
 
 
