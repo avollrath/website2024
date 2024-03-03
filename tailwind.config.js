@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 
-
 // tailwind.config.js using ESM syntax
 export default {
   content: ['./src/**/*.{astro,html,js}'],
