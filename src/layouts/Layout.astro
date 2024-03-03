@@ -4,6 +4,7 @@ import Footer from '../components/Footer.astro';
 import { ViewTransitions } from 'astro:transitions';
 
 const { title, description } = Astro.props;
+const baseURL = import.meta.env.BASE_URL
 
 ---
 
@@ -12,8 +13,8 @@ const { title, description } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/src/styles/main.css" />
-    <link rel="stylesheet" href="/src/styles/marquee.css" />
+    <link rel="stylesheet" href={`${baseURL}/src/styles/main.css`} />
+    <link rel="stylesheet" href={`${baseURL}/src/styles/marquee.css`} />
     <title>{title}</title>
     <meta name="description" content={description} />
     <ViewTransitions />
