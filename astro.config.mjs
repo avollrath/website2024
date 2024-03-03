@@ -5,6 +5,9 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   integrations: [tailwind()],
   site: 'https://avollrath.github.io',
-  base: '/website2024',
-  outDir: './docs'
+  output: 'static',
+  outDir: './docs',
+  build: {
+    assets: 'astro'
+  }
 });
