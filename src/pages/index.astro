@@ -4,6 +4,7 @@ import { getTopTracks, getCurrentPlayingTrack } from "../scripts/getTopTracks.js
 import Globe from '../components/Globe';
 import Layout from '../layouts/Layout.astro';
 import AudioWave from '../components/AudioWave.astro';
+import Marquee from '../components/Marquee.astro';
 import latestRenderImage from '../images/renders/braunHF3.jpg';
 import latestRenderImageClay from '../images/renders/braunHF3-clay.jpg';
 import { Image } from 'astro:assets';
@@ -58,8 +59,8 @@ export { latestPost };
         <!-- Intro Section -->
         <div class="xl:col-span-3 2xl:col-span-9 dark:dark:bg-gradient-to-r from-dark-card to-darker-card bg-white py-24 px-12 rounded-lg flex sm:flex-row flex-col relative items-center border-gradient" >
           <div class="z-10 flex-1">
-              <h1 class="text-8xl lg:text-xxl font-header long-transition  md:mr-4 lg:text-left text-center">André <br/><span class="text-gray-400">Vollrath</span></h1>
-            <p class="lg:text-left text-center sm:text-6xl/relaxed leading-relaxed  text-3xl tracking-widest font-bold text-dark-text long-transition dark:text-dark-text md:my-12 uppercase">Creative developer
+              <h1 class="text-8xl lg:text-xxl font-header long-transition lg:drop-shadow-[5px_5px_0px_rgba(0,0,0,0.8)] md:mr-4 lg:text-left text-center">André <br/><span class="text-gray-400">Vollrath</span></h1>
+            <p class="lg:text-left text-center sm:text-6xl/relaxed leading-relaxed  text-3xl lg:drop-shadow-[3px_3px_0px_rgba(0,0,0,1)] tracking-widest font-bold text-dark-text long-transition dark:text-dark-text md:my-12 uppercase">Creative developer
             </p>
           </div>
           <img src="../src/images/profile.png" alt="André's Avatar" class="avatar" />
@@ -76,12 +77,14 @@ export { latestPost };
         </a>
       </div>
       <ul class="list-disc pl-5 mb-4 text-xl text-gray-500 dark:text-white bullets long-transition">
-        <li class="mb-4 ">Learning <strong>Astro.js</strong> <strong>and Tailwind CSS</strong></li>
-        <li class="mb-4">Reading "<strong>The Count of Monte Cristo</strong>" by <strong>Alexandre Dumas</strong></li>
-        <li class="mb-4">Reading "<strong>How to Win at Chess</strong>" by <strong>Levy Rozman</strong></li>
-        <li class="mb-4">Reading "<strong>Demon Copperhead</strong>" by <strong>Barbara Kingsolver</strong></li>
-        <li class="mb-4">Practicing "<strong>Comptine d'un autre été</strong>" by <strong>Yann Tiersen</strong> on the piano</li>
+        <li class="mb-4">Learning <strong class='text-dark-text'>Astro.js</strong> and <strong class='text-dark-text'>Tailwind CSS</strong></li>
+        <li class="mb-4">Reading "<strong class='text-dark-text'>The Count of Monte Cristo</strong>" by <strong>Alexandre Dumas</strong></li>
+        <li class="mb-4">Reading "<strong class='text-dark-text'>How to Win at Chess</strong>" by <strong>Levy Rozman</strong></li>
+        <li class="mb-4">Reading "<strong class='text-dark-text'>Demon Copperhead</strong>" by <strong>Barbara Kingsolver</strong></li>
+        <li class="mb-4">Practicing "<strong class='text-dark-text'>Comptine d'un autre été</strong>" by <strong>Yann Tiersen</strong> on the piano</li>
       </ul>
+      
+      
       
       <p class="text-right text-lg  text-gray-500 dark:text-white">Last Updated: February 6, 2024</p>
     </div>
@@ -178,214 +181,7 @@ export { latestPost };
         <!-- Tech stack -->
         <div class="xl:col-span-3 xl:row-start-7  2xl:col-span-9 2xl:row-start-4 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white rounded-lg border-gradient h-full pb-8" >
           <h2 class="font-header tracking-wide text-4xl long-transition sm:p-12 p-6 ">Tech stack</h2>
-
-          <section class="enable-animation font-header text-8xl long-transition text-gray-500 dark:text-white uppercase">
-            <!-- First Marquee -->
-            <div class="marquee">
-              <ul class="marquee__content">
-                <li class="text-dark-text">React</li>
-                <li>JavaScript</li>
-                <li>HTML5</li>
-                <li class="text-dark-text">Tailwind</li>
-                <li>Astro.js</li>
-                <li>GSAP</li>
-                <li class="text-dark-text">Three.js</li>
-                <li>CSS3</li>
-                <li>SASS</li>
-                <li class="text-dark-text">LESS</li>
-                <li>Git</li>
-                <li>Webpack</li>
-                <li class="text-dark-text">Vite</li>
-                <li>Node.js</li>
-                <li>ES6/ESNext</li>
-              </ul>
-          
-              <!-- Duplicate for continuous effect -->
-              <ul class="marquee__content">
-                <li class="text-dark-text">React</li>
-                <li>JavaScript</li>
-                <li>HTML5</li>
-                <li class="text-dark-text">Tailwind</li>
-                <li>Astro.js</li>
-                <li>GSAP</li>
-                <li class="text-dark-text">Three.js</li>
-                <li>CSS3</li>
-                <li>SASS</li>
-                <li class="text-dark-text">LESS</li>
-                <li>Git</li>
-                <li>Webpack</li>
-                <li class="text-dark-text">Vite</li>
-                <li>Node.js</li>
-                <li>ES6/ESNext</li>
-              </ul>
-            </div>
-          
-            <!-- Second Marquee (Reversed) -->
-            <div class="marquee marquee--reverse">
-              <ul class="marquee__content">
-                <li class="text-dark-text">Node.js</li>
-                <li>ES6/ESNext</li>
-                <li>React</li>
-                <li class="text-dark-text">JavaScript</li>
-                <li>HTML5</li>
-                <li>Tailwind</li>
-                <li class="text-dark-text">Astro.js</li>
-                <li>GSAP</li>
-                <li>Three.js</li>
-                <li class="text-dark-text">CSS3</li>
-                <li>SASS</li>
-                <li>LESS</li>
-                <li class="text-dark-text">Git</li>
-                <li>Webpack</li>
-                <li>Vite</li>
-             
-              </ul>
-          
-              <!-- Duplicate for continuous effect -->
-              <ul class="marquee__content">
-                <li class="text-dark-text">Node.js</li>
-                <li>ES6/ESNext</li>
-                <li>React</li>
-                <li class="text-dark-text">JavaScript</li>
-                <li>HTML5</li>
-                <li>Tailwind</li>
-                <li class="text-dark-text">Astro.js</li>
-                <li>GSAP</li>
-                <li>Three.js</li>
-                <li class="text-dark-text">CSS3</li>
-                <li>SASS</li>
-                <li>LESS</li>
-                <li class="text-dark-text">Git</li>
-                <li>Webpack</li>
-                <li>Vite</li>
-              </ul>
-            </div>
-          
-            <!-- Third Marquee -->
-            <div class="marquee">
-              <ul class="marquee__content">
-                <li>LESS</li>
-                <li>Git</li>
-                <li class="text-dark-text">Webpack</li>
-                <li>Vite</li>
-                <li>React</li>
-                <li>JavaScript</li>
-                <li class="text-dark-text">HTML5</li>
-                <li>Tailwind</li>
-                <li>Astro.js</li>
-                <li class="text-dark-text">GSAP</li>
-                <li>Three.js</li>
-                <li>CSS3</li>
-                <li class="text-dark-text">SASS</li>
-                <li>Node.js</li>
-                <li class="text-dark-text">ES6/ESNext</li>
-              </ul>
-          
-              <!-- Duplicate for continuous effect -->
-              <ul class="marquee__content">
-                <li>LESS</li>
-                <li>Git</li>
-                <li class="text-dark-text">Webpack</li>
-                <li>Vite</li>
-                <li>React</li>
-                <li>JavaScript</li>
-                <li class="text-dark-text">HTML5</li>
-                <li>Tailwind</li>
-                <li>Astro.js</li>
-                <li class="text-dark-text">GSAP</li>
-                <li>Three.js</li>
-                <li>CSS3</li>
-                <li class="text-dark-text">SASS</li>
-                <li>Node.js</li>
-                <li class="text-dark-text">ES6/ESNext</li>
-              </ul>
-            </div>
-          
-            <!-- Fourth Marquee (Reversed) -->
-            <div class="marquee marquee--reverse">
-              <ul class="marquee__content">
-                <li class="text-dark-text">Vite</li>
-                <li>Node.js</li>
-                <li>ES6/ESNext</li>
-                <li class="text-dark-text">React</li>
-                <li>JavaScript</li>
-                <li>HTML5</li>
-                <li class="text-dark-text">Tailwind</li>
-                <li>Astro.js</li>
-                <li>GSAP</li>
-                <li class="text-dark-text">Three.js</li>
-                <li>CSS3</li>
-                <li>SASS</li>
-                <li class="text-dark-text">LESS</li>
-                <li>Git</li>
-                <li>Webpack</li>
-           
-              </ul>
-          
-              <!-- Duplicate for continuous effect -->
-              <ul class="marquee__content">
-                <li class="text-dark-text">Vite</li>
-                <li>Node.js</li>
-                <li>ES6/ESNext</li>
-                <li class="text-dark-text">React</li>
-                <li>JavaScript</li>
-                <li>HTML5</li>
-                <li class="text-dark-text">Tailwind</li>
-                <li>Astro.js</li>
-                <li>GSAP</li>
-                <li class="text-dark-text">Three.js</li>
-                <li>CSS3</li>
-                <li>SASS</li>
-                <li class="text-dark-text">LESS</li>
-                <li>Git</li>
-                <li>Webpack</li>
-           
-              </ul>
-            </div>
-          
-            <!-- Fifth Marquee -->
-            <div class="marquee">
-              <ul class="marquee__content">
-               
-                <li class="text-dark-text">Astro.js</li>
-                <li>GSAP</li>
-                <li>Three.js</li>
-                <li class="text-dark-text">CSS3</li>
-                <li>SASS</li>
-                <li>LESS</li>
-                <li class="text-dark-text">Git</li>
-                <li>React</li>
-                <li class="text-dark-text">JavaScript</li>
-                <li>HTML5</li>
-                <li>Tailwind</li>
-                <li>Webpack</li>
-                <li>Vite</li>
-                <li class="text-dark-text">Node.js</li>
-                <li>ES6/ESNext</li>
-              </ul>
-          
-              <!-- Duplicate for continuous effect -->
-              <ul class="marquee__content">
-               
-                <li class="text-dark-text">Astro.js</li>
-                <li>GSAP</li>
-                <li>Three.js</li>
-                <li class="text-dark-text">CSS3</li>
-                <li>SASS</li>
-                <li>LESS</li>
-                <li>React</li>
-                <li class="text-dark-text">JavaScript</li>
-                <li>HTML5</li>
-                <li>Tailwind</li>
-                <li class="text-dark-text">Git</li>
-                <li>Webpack</li>
-                <li>Vite</li>
-                <li class="text-dark-text">Node.js</li>
-                <li>ES6/ESNext</li>
-              </ul>
-            </div>
-          </section>
-
+          <Marquee words={['React', 'HTML5', 'Tailwind', 'Astro.js', 'GSAP', 'Three.js', 'CSS3', 'SASS', 'LESS', 'Git', 'Webpack', 'Vite', 'Node.js', 'ES6/ESNext']} />
         </div>
 
     <!-- Links Section -->

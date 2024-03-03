@@ -14,77 +14,56 @@ import NowEntry from "../components/NowEntry.astro";
             Now
             </h2>
             <p class="my-3 leading-relaxed">
-            Welcome to my <strong>Now</strong> page, a unique space where I share what's
-            currently engaging my attention. Unlike the more static "About" page, this
-            page offers a window into my <strong>current world</strong>.
+              Welcome to my <strong class='text-dark-text'>Now</strong> page, a unique space where I share what's
+              currently engaging my attention. Unlike the more static "About" page, this
+              page offers a window into my <strong class='text-dark-text'>current world</strong>.
             </p>
             <p class="my-3 leading-relaxed">
-            Here, you'll find out about the <strong>projects</strong> I'm involved in,
-            the <strong>subjects</strong> that intrigue me, and where my passions currently
-            lie. This page is like a snapshot of my <strong>life's priorities</strong>
-            and activities at this moment.
+              Here, you'll find out about the <strong class='text-dark-text'>projects</strong> I'm involved in,
+              the <strong class='text-dark-text'>subjects</strong> that intrigue me, and where my passions currently
+              lie. This page is like a snapshot of my <strong class='text-dark-text'>life's priorities</strong>
+              and activities at this moment.
             </p>
             <p class="my-3 leading-relaxed">
-            It's an up-to-date glimpse into my journey, reflecting my latest <strong
-                >interests</strong
-            >, <strong>goals</strong>, and <strong>endeavors</strong>. This page is
-            where I openly share what's important to me right now.
+              It's an up-to-date glimpse into my journey, reflecting my latest <strong class='text-dark-text'>interests</strong>,
+              <strong class='text-dark-text'>goals</strong>, and <strong class='text-dark-text'>endeavors</strong>. This page is
+              where I openly share what's important to me right now.
             </p>
             <p class="my-3 leading-relaxed">
-            For more about the concept of a "Now" page, visit
-            <a href="https://sivers.org/nowff" class="text-dark-text underline font-bold"
-                >Derek Sivers' explanation</a
-            >.
+              For more about the concept of a "Now" page, visit
+              <a href="https://sivers.org/nowff" class="text-dark-text underline font-bold">Derek Sivers' explanation</a>.
+            </p>
+            
             </p>
         </div>
      </div>
 
-  <NowEntry date="2024-02-06" colSpan="2xl:col-span-6 col-span-3">
-    <div class="flex flex-wrap mb-4">
-      <img id="tailwind-logo" class="w-72 h-auto" alt="Tailwind CSS Logo" />
-      <img id="astro-logo" class="w-72 h-auto mr-2" alt="Astro.js Logo" />
-    </div>
-    <p>
-      I'm currently immersed in the world of web development, exploring the
-      capabilities of <strong>Astro.js</strong> and <strong>Tailwind CSS</strong>
-      to craft efficient and responsive web applications. In fact, these are the very technologies used to build the website you are viewing right now, showcasing their practical applications in a real-world project.
-    </p>
+     <NowEntry date="2024-02-06" colSpan="2xl:col-span-6 col-span-3">
+      <div class="flex flex-wrap mb-4">
+        <img id="tailwind-logo" src="../src/images/now/tailwindcss-logotype-white.svg" class="w-72 h-auto dark:inline hidden" alt="Tailwind CSS Logo" />
+        <img id="astro-logo" src="../src/images/now/astro-logo-light-gradient.svg" class="w-72 h-auto mr-2 dark:inline hidden" alt="Astro.js Logo" />
+        <img id="tailwind-logo" src="../src/images/now/tailwindcss-logotype.svg" class="w-72 h-auto dark:hidden" alt="Tailwind CSS Logo" />
+        <img id="astro-logo" src="../src/images/now/astro-logo-dark.svg" class="w-72 h-auto mr-2 dark:hidden" alt="Astro.js Logo" />
+      </div>
+      <p>
+        I'm currently immersed in the world of web development, exploring the
+        capabilities of <strong class='text-dark-text'>Astro.js</strong> and <strong class='text-dark-text'>Tailwind CSS</strong>
+        to craft efficient and responsive web applications. In fact, these are the very technologies used to build the website you are viewing right now, showcasing their practical applications in a real-world project.
+      </p>
     
-  
-
-    <hr class="my-8" />
-    <h3 class="mb-8">Currently practicing:</h3>
-
-    <p>
-      I'm also practicing the piano piece <strong
-        >"Comptine d'un autre été"</strong
-      > by Yann Tiersen, famously known from the movie Amélie.
-    </p>
-    <img
-      src="../src/images/now/amelie.jpeg"
-      alt="Sheet Music of Comptine d'un autre été"
-      class="w-40 h-auto my-12"
-    />
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-  function updateLogos() {
-    const theme = localStorage.getItem("theme") || "light"; // Default to light theme
-    const astroLogo = document.getElementById("astro-logo");
-    const tailwindLogo = document.getElementById("tailwind-logo");
-
-    if (astroLogo && tailwindLogo) {
-      astroLogo.src = theme === "dark" ? "../src/images/now/astro-logo-light-gradient.svg" : "../src/images/now/astro-logo-dark.svg";
-      tailwindLogo.src = theme === "dark" ? "../src/images/now/tailwindcss-logotype-white.svg" : "../src/images/now/tailwindcss-logotype.svg";
-    }
-  }
-
-  // Update logos on load and when theme changes
-  updateLogos();
-  document.addEventListener("theme-change", updateLogos);
-});
-    </script>
-  </NowEntry>
+      <hr class="my-8" />
+      <h3 class="mb-8">Currently practicing:</h3>
+    
+      <p>
+        I'm also practicing the piano piece <strong class='text-dark-text'>"Comptine d'un autre été"</strong> by Yann Tiersen, famously known from the movie Amélie.
+      </p>
+      <img
+        src="../src/images/now/amelie.jpeg"
+        alt="Sheet Music of Comptine d'un autre été"
+        class="w-40 h-auto my-12"
+      />
+    </NowEntry>
+    
 
   <div class="flex flex-col col-span-3">
     <FavoriteBooks bookWidth="w-24"/>
