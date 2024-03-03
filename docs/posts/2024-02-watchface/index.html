@@ -1,0 +1,88 @@
+<!DOCTYPE html><html lang="en" class="dark"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/src/styles/main.css"><link rel="stylesheet" href="/src/styles/marquee.css"><title>Creating a VSCode-Inspired Watch Face for Garmin Forerunner 55 Music</title><meta name="description" content="In this project, we'll embark on a creative journey to design and develop a custom watch face for the Garmin Forerunner 55, drawing inspiration from the popular code editor, Visual Studio Code (VS Code)."><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><style>.theme-switch-wrapper[data-astro-cid-oemx5le4]{display:flex;justify-content:flex-end;align-items:center}.theme-switch[data-astro-cid-oemx5le4]{display:inline-block;height:50px;position:relative;width:90px}.theme-switch[data-astro-cid-oemx5le4] input[data-astro-cid-oemx5le4]{display:none}.slider[data-astro-cid-oemx5le4]{background-color:#e0e0e0;cursor:pointer;inset:0;position:absolute;transition:.4s;border-radius:50px}.slider[data-astro-cid-oemx5le4]:hover{background-color:#ffeacb}.slider[data-astro-cid-oemx5le4]:before{background-color:#d3d3d3;bottom:8px;content:"";height:34px;left:8px;position:absolute;transition:.4s;width:34px;border-radius:50%}input[data-astro-cid-oemx5le4]:checked+.slider[data-astro-cid-oemx5le4]{background-color:#2c2c2c}input[data-astro-cid-oemx5le4]:checked+.slider[data-astro-cid-oemx5le4]:hover{background-color:#3d3d3d}input[data-astro-cid-oemx5le4]:checked+.slider[data-astro-cid-oemx5le4]:before{transform:translate(40px);background-color:#1b1b1b}.slider[data-astro-cid-oemx5le4] svg[data-astro-cid-oemx5le4]{color:#222;position:absolute;transition:opacity .1s ease 0s,transform .2s ease 0s;pointer-events:none;width:24px;height:24px}.feather-moon[data-astro-cid-oemx5le4]{opacity:0;left:12px;bottom:12px;transform:translate(4px)}.feather-sun[data-astro-cid-oemx5le4]{opacity:1;right:14px;bottom:12px;transform:translate(0)}input[data-astro-cid-oemx5le4]:checked+.slider[data-astro-cid-oemx5le4] .feather-moon[data-astro-cid-oemx5le4]{opacity:1;transform:translate(0)}input[data-astro-cid-oemx5le4]:checked+.slider[data-astro-cid-oemx5le4] .feather-sun[data-astro-cid-oemx5le4]{opacity:0;transform:translate(-4px)}.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);-webkit-clip-path:inset(50%);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}
+</style><script type="module" src="/astro/hoisted.l-JsOPk0.js"></script></head> <body class="dark:bg-dark-bg dark:text-white text-dark-text bg-gray-200 font-body"> <div class="grain"></div> <div class="container mx-auto px-4 py-8 w-full max-w-1920 flex flex-col min-h-screen"> <nav class="nav-bar mb-8 lg:col-span-3 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white px-12 py-6 rounded-lg flex justify-between items-center border-gradient"> <!-- Dark Mode Toggle --> <div class="theme-switch-wrapper" data-astro-cid-oemx5le4> <label class="theme-switch" for="checkbox" id="themeToggle" data-astro-cid-oemx5le4> <input type="checkbox" id="checkbox" data-astro-cid-oemx5le4> <div class="slider" data-astro-cid-oemx5le4> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#F6723A" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun" data-astro-cid-oemx5le4> <circle cx="12" cy="12" r="5" data-astro-cid-oemx5le4></circle> <line x1="12" y1="1" x2="12" y2="3" data-astro-cid-oemx5le4></line> <line x1="12" y1="21" x2="12" y2="23" data-astro-cid-oemx5le4></line> <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" data-astro-cid-oemx5le4></line> <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" data-astro-cid-oemx5le4></line> <line x1="1" y1="12" x2="3" y2="12" data-astro-cid-oemx5le4></line> <line x1="21" y1="12" x2="23" y2="12" data-astro-cid-oemx5le4></line> <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" data-astro-cid-oemx5le4></line> <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" data-astro-cid-oemx5le4></line> </svg> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#F6723A" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon" data-astro-cid-oemx5le4> <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" data-astro-cid-oemx5le4></path> </svg> </div> </label> </div>  <!-- Hamburger Icon --> <div class="lg:hidden flex flex-col space-y-2 cursor-pointer" id="hamburger"> <span class="block w-8 h-0.5 bg-dark-text"></span> <span class="block w-8 h-0.5 bg-dark-text"></span> <span class="block w-8 h-0.5 bg-dark-text"></span> </div> <!-- Navigation Links --> <div class="invisible lg:visible flex select-none font-header text-xl md:flex-row flex-col z-30" id="nav-menu"> <a href="/" class="nav-item px-4 py-2 text-gray-500 hover:text-dark-text transition " id="home-link">Home</a><a href="/about" class="nav-item px-4 py-2 text-gray-500 hover:text-dark-text transition " id="about-link">About</a><a href="/now" class="nav-item px-4 py-2 text-gray-500 hover:text-dark-text transition " id="now-link">Now</a><a href="/renders" class="nav-item px-4 py-2 text-gray-500 hover:text-dark-text transition " id="renders-link">Renders</a><a href="/blog" class="nav-item px-4 py-2 text-gray-500 hover:text-dark-text transition gradient-underline dark:text-white" id="blog-link">Blog</a> </div> </nav> <!-- Main content area with 12-column grid layout --> <main class="flex-grow"> <div class="grid 2xl:grid-cols-12 xl:grid-cols-3 grid-cols-1 gap-8">  <div class="lg:col-span-9 dark:bg-gradient-to-r from-dark-card to-darker-card px-48 py-24 bg-white rounded-lg flex flex-col items-center border-gradient"> <header class="blog-header text-center"> <h1 class="text-5xl font-header tracking-wide leading-snug mb-4 long-transition">Creating a VSCode-Inspired Watch Face for Garmin Forerunner 55 Music</h1> <div class="metadata flex flex-col mb-4"> <span class="text-lg">08.08.2022</span>  </div> <img src="https://i.pinimg.com/originals/7b/af/fe/7baffe3fd8b737032792d3462bc34b77.jpg" alt="A creative representation of watchface." class="w-full mb-6 rounded-xl"> </header> <article class="blog-content text-left text-xl leading-relaxed"> <div class="prose dark:prose-invert max-w-none
+  prose-h1:font-bold prose-h2:font-header prose-h2:font-normal prose-h1:text-xl text-gray-500 dark:text-white prose-strong:text-dark-text
+  prose-a:text-dark-text prose-a:font-bold prose-p:text-justify prose-xl prose-img:rounded-xl
+  prose-headings:text-dark-text">  <h1 id="creating-a-visual-studio-code-inspired-watch-face-for-garmin-forerunner-55-music">Creating a Visual Studio Code-Inspired Watch Face for Garmin Forerunner 55 Music</h1>
+<p>In this project, we’ll embark on a creative journey to design and develop a custom watch face for the Garmin Forerunner 55 Music, drawing inspiration from the popular code editor, Visual Studio Code (VS Code). Our goal is to create a visually appealing watch face that mimics the aesthetics of VS Code while providing essential information at a glance.</p>
+<h2 id="conceptualization">Conceptualization</h2>
+<p>Our watch face will resemble the interface of VS Code, featuring a familiar color scheme, font, and layout. The watch information such as time, date, steps, heart rate, sunrise, and sunset will be displayed as if they are properties of a code object, enhancing the user experience with a unique and engaging design.</p>
+<h2 id="design-elements">Design Elements</h2>
+<h3 id="background">Background</h3>
+<p>The background of our watch face will replicate the soothing color palette and subtle texture found in the editor of VS Code, ensuring a cohesive and visually pleasing experience.</p>
+<h3 id="font">Font</h3>
+<p>To evoke the essence of coding, we’ll utilize a monospaced font such as Consolas or Courier New, synonymous with programming environments like VS Code.</p>
+<h3 id="syntax-highlighting">Syntax Highlighting</h3>
+<p>Applying syntax highlighting to different elements of the ‘code’ will enhance readability and visual appeal. We’ll use colors strategically to differentiate between various pieces of information.</p>
+<h3 id="example-layout">Example Layout</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">WatchInfo {</span></span>
+<span class="line"><span style="color:#B392F0">    time</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"10:30 AM"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">    date</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"2024-01-31"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">    steps</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">4500</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">    heartRate</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"75 bpm"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">    sunrise</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"06:45 AM"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">    sunset</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"05:30 PM"</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h2 id="development-process">Development Process</h2>
+<ol>
+<li>
+<p><strong>Design Watch Face Layout:</strong> Sketch out the layout of the watch face, paying close attention to text alignment and readability.</p>
+</li>
+<li>
+<p><strong>Implement Design in Monkey C:</strong> Utilize the Connect IQ SDK to translate our design into a functional watch face. This involves coding the layout, applying syntax highlighting, and ensuring real-time data updates.</p>
+</li>
+<li>
+<p><strong>Testing:</strong> Thoroughly test the watch face on the simulator and actual device to validate readability and performance.</p>
+</li>
+<li>
+<p><strong>Optimization:</strong> Optimize the watch face for battery life and performance, ensuring a seamless user experience.</p>
+</li>
+</ol>
+<h2 id="final-thoughts">Final Thoughts</h2>
+<p>Creating a custom watch face inspired by Visual Studio Code for the Garmin Forerunner 55 Music is an exciting endeavor that combines creativity with technical skill. By blending the aesthetics of a beloved code editor with the functionality of a fitness wearable, we’re able to deliver a unique and engaging experience to users.</p>
+<p>Stay tuned for updates on the progress of this project as we bring our vision to life!</p>
+<p><img src="https://amazfitwatchfaces.com/storage/gts/img/1608500422_32288f7055.gif" alt="Watch Face Preview"></p>
+<p><em>Watch Face Preview: Placeholder image for illustration purposes only.</em></p>  </div> </article> </div> <div class="lg:col-span-3"> <aside class="sidebar dark:bg-gradient-to-r from-dark-card to-darker-card py-24 px-12 bg-white rounded-lg flex flex-col items-start border-gradient"> <h2 class="text-4xl tracking-wide font-header mb-12">Other Posts</h2> <ul class="space-y-4"> <li key="/posts/2024-02-book-covers" class="flex flex-col mb-12"> <a href="/posts/2024-02-book-covers" class="group"> <div class="image-container rounded-md overflow-hidden"> <img src="./../src/images/blog/books.jpg" alt="A collection of book covers displayed on a digital screen." class="w-full mb-2 object-cover aspect-video group-hover:scale-125 transition-transform duration-300 ease-in-out"> </div> <span class="text-lg font-header tracking-wide">Fetching and Displaying Book Covers Using Google Books API</span> </a> <span class="text-xl text-gray-500">08.02.2024</span> </li><li key="/posts/2024-02-pixoo" class="flex flex-col mb-12"> <a href="/posts/2024-02-pixoo" class="group"> <div class="image-container rounded-md overflow-hidden"> <img src="./../src/images/blog/pixoo.jpg" alt="A creative representation of the chess rating display project." class="w-full mb-2 object-cover aspect-video group-hover:scale-125 transition-transform duration-300 ease-in-out"> </div> <span class="text-lg font-header tracking-wide">Building a Real-Time Chess Rating Display with Python and Pixoo</span> </a> <span class="text-xl text-gray-500">30.01.2024</span> </li><li key="/posts/2024-02-spotify" class="flex flex-col mb-12"> <a href="/posts/2024-02-spotify" class="group"> <div class="image-container rounded-md overflow-hidden"> <img src="https://miro.medium.com/v2/resize:fit:1400/1*CEFFWhadfveAWq4yTh3FBQ.png" alt="Spotify logo with top 5 tracks" class="w-full mb-2 object-cover aspect-video group-hover:scale-125 transition-transform duration-300 ease-in-out"> </div> <span class="text-lg font-header tracking-wide">Analyzing Spotify&#39;s Top 5 Tracks</span> </a> <span class="text-xl text-gray-500">08.08.2022</span> </li><li key="/posts/2024-02-watchface" class="flex flex-col mb-12"> <a href="/posts/2024-02-watchface" class="group"> <div class="image-container rounded-md overflow-hidden"> <img src="https://i.pinimg.com/originals/7b/af/fe/7baffe3fd8b737032792d3462bc34b77.jpg" alt="A creative representation of watchface." class="w-full mb-2 object-cover aspect-video group-hover:scale-125 transition-transform duration-300 ease-in-out"> </div> <span class="text-lg font-header tracking-wide">Creating a VSCode-Inspired Watch Face for Garmin Forerunner 55 Music</span> </a> <span class="text-xl text-gray-500">08.08.2022</span> </li> </ul> </aside> </div>  <!-- Slot for page-specific content --> </div> </main> <footer class="footer-bar py-12 flex justify-center items-center text-center text-gray-500"> <p>Handmade with ❤️ by <strong class="text-dark-text">André Vollrath</strong> © 2024. <br>All rights reserved.</p> </footer> </div> <script type="module">
+      // Function to update theme
+      const updateTheme = () => {
+    const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    document.dispatchEvent(new CustomEvent('theme-change'));
+    // Update checkbox state based on the theme
+    document.getElementById('checkbox').checked = theme === 'dark';
+  };
+
+  // Function to handle checkbox change
+  const handleCheckboxChange = () => {
+    const checkbox = document.getElementById('checkbox');
+    const isDark = checkbox.checked;
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    updateTheme();
+  };
+
+  // Initialize theme and attach listeners
+  const init = () => {
+    updateTheme();
+    const checkbox = document.getElementById('checkbox');
+    checkbox.addEventListener('change', handleCheckboxChange);
+    document.getElementById('hamburger').addEventListener('click', function() {
+    document.getElementById('nav-menu').classList.toggle('invisible');
+});
+  };
+
+  // Check if document is already loaded
+  if (document.readyState === 'loading') {  
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+      document.addEventListener('astro:after-swap', () => {
+  // Reinitialize theme and other functionalities
+  init();
+
+  // Dynamically import and reinitialize tooltips
+  import('/src/scripts/initializeTooltips.js').then((module) => {
+    module.default(); // Reinitialize tooltips
+  });
+});
+    </script> <script type="module" src="/src/scripts/initializeTooltips.js"></script> <script type="module" src="/src/scripts/interactiveSections.js"></script> </body> </html>
