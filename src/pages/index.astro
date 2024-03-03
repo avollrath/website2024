@@ -7,6 +7,7 @@ import Marquee from '../components/Marquee.astro';
 import latestRenderImage from '../images/renders/braunHF3.jpg';
 import latestRenderImageClay from '../images/renders/braunHF3-clay.jpg';
 import { Image } from 'astro:assets';
+const baseURL = import.meta.env.BASE_URL
 
 const refreshToken = import.meta.env.SPOTIFY_REFRESH_TOKEN;
 
@@ -34,27 +35,6 @@ export { latestPost };
 
 <Layout title="André's Portfolio" description="Welcome to André's Portfolio">
     
-    <!-- Intro Section
-    <div class="lg:col-span-9 dark:dark:bg-gradient-to-r from-dark-card to-darker-card bg-white py-24 px-12 rounded-lg flex relative items-center border-gradient" >
-      <div class="z-10 flex-1">
-        <div class="flex items-center mb-6 lg:mb-12">
-          <h1 class="text-8xl lg:text-8xl font-bold font-header long-transition mr-4">Hi, I'm André</h1>
-          <img src="/images/hangloose.png" alt="Hangloose emoji" class="w-16" />
-      </div>
-      
-        <p class="text-lg lg:text-3xl leading-relaxed max-w-3xl text-gray-500 long-transition dark:text-white lg:max-w-4xl mb-6 lg:mb-12">
-          I'm a <strong>multi-talented</strong> human specializing in <strong>design</strong> and <strong>development</strong>. Most of my time I design and build digital products. I possess a degree in <strong>Media Design</strong> and have worked on a multitude of <strong>web</strong> and <strong>print-based projects</strong>.
-        </p>
-        
-        <p class=" text-lg lg:text-3xl/relaxed leading-relaxed max-w-xl  text-gray-500 long-transition dark:text-white lg:max-w-5xl mb-6">
-          Currently, I'm working as a Front End Developer at <a href="https://www.talentadore.com" class="bg-gradient-to-tr from-blue-600 to-green-400 text-white px-2 py-1 rounded font-bold">TalentAdore.</a>
-        </p>
-      </div>
-      <img src="/images/profile.png" alt="André's Avatar" class="avatar" />
-    </div> -->
-
-    <!-- 2xl:grid-cols-12 xl:grid-cols-3 md:grid-cols-1  -->
-
         <!-- Intro Section -->
         <div class="xl:col-span-3 2xl:col-span-9 dark:dark:bg-gradient-to-r from-dark-card to-darker-card bg-white py-24 px-12 rounded-lg flex sm:flex-row flex-col relative items-center border-gradient" >
           <div class="z-10 flex-1">
@@ -82,7 +62,6 @@ export { latestPost };
         <li class="mb-4">Reading "<strong class='text-dark-text'>Demon Copperhead</strong>" by <strong>Barbara Kingsolver</strong></li>
         <li class="mb-4">Practicing "<strong class='text-dark-text'>Comptine d'un autre été</strong>" by <strong>Yann Tiersen</strong> on the piano</li>
       </ul>
-      
       
       
       <p class="text-right text-lg  text-gray-500 dark:text-white">Last Updated: February 6, 2024</p>
@@ -189,18 +168,18 @@ export { latestPost };
       <div class="flex-1 flex items-center justify-center">
         <div class="grid grid-cols-2 gap-4">
           <a href="https://github.com/avollrath" target="_blank">
-            <img src="/icons/github.png" alt="GitHub" class="w-32 hover:scale-105 transition-transform" />
+            <img src={`${baseURL}/icons/github.png`} alt="GitHub" class="w-32 hover:scale-105 transition-transform" />
           </a>
           <a href="https://www.instagram.com/charliefeatherlight/" target="_blank">
-            <img src="/icons/instagram.png" alt="Instagram" class="w-32 hover:scale-105 transition-transform" />
+            <img src={`${baseURL}/icons/instagram.png`} alt="Instagram" class="w-32 hover:scale-105 transition-transform" />
           </a>
           <a href="https://www.linkedin.com/in/andrevollrath/" target="_blank">
-            <img src="/icons/linkedin.png" alt="LinkedIn" class="w-32 hover:scale-105 transition-transform" />
+            <img src={`${baseURL}/icons/linkedin.png`} alt="LinkedIn" class="w-32 hover:scale-105 transition-transform" />
           </a>
           <a href="https://open.spotify.com/playlist/37i9dQZF1Fa1IIVtEpGUcU?si=0d61932237bf4497" target="_blank">
-            <img src="/icons/spotify.png" alt="Spotify" class="w-32 hover:scale-105 transition-transform" />
+            <img src={`${baseURL}/icons/spotify.png`} alt="Spotify" class="w-32 hover:scale-105 transition-transform" />
           </a>
-        </div>
+        </div>        
       </div>
     </div>
 
@@ -219,7 +198,7 @@ export { latestPost };
     <div class="xl:col-start-1 xl:col-span-2 xl:row-start-6 2xl:col-span-8 2xl:row-start-5 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white sm:p-12 p-6 rounded-lg border-gradient h-full flex flex-col" >
       <h2 class="font-header text-4xl mb-12 long-transition">Based in</h2>
       <div class="flex justify-center items-center 2xl:flex-row xl:flex-row flex-col">
-        <img src="../public/basedin.svg" alt="Globe" class="2xl:w-96 h-auto w-72 xl:mr-12 mr-0 md:py-12 mb-12 dark:invert-0 invert-[.5]" >
+        <img src={`${baseURL}/basedin.svg`} alt="Globe" class="2xl:w-96 h-auto w-72 xl:mr-12 mr-0 md:py-12 mb-12 dark:invert-0 invert-[.5]" >
         <div class="grid grid-flow-row gap-2">
           <h1 class="text-8xl 2xl:text-9xl mb-6 lg:mb-12 font-header">
             Helsinki<br>Finland<br><span class="text-gray-500">GMT +2</span>
