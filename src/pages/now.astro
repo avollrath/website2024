@@ -3,6 +3,12 @@ import Layout from "../layouts/Layout.astro";
 import FavoriteBooks from "../components/FavoriteBooks.astro";
 import Spotify from "../components/Spotify.astro";
 import NowEntry from "../components/NowEntry.astro";
+import tailwindLogoDark from '../images/now/tailwindcss-logotype-white.svg';
+import tailwindLogo from '../images/now/tailwindcss-logotype.svg';
+import astroLogoDark from '../images/now/astro-logo-dark.svg';
+import astroLogo from '../images/now/astro-logo-light-gradient.svg';
+import amelieCover from '../images/now/amelie.jpeg';
+import { Image } from 'astro:assets';
 ---
 
 <Layout title="Now" description="What I'm doing now">
@@ -40,10 +46,10 @@ import NowEntry from "../components/NowEntry.astro";
 
      <NowEntry date="2024-02-06" colSpan="2xl:col-span-6 col-span-3">
       <div class="flex flex-wrap mb-4">
-        <img id="tailwind-logo" src="../src/images/now/tailwindcss-logotype-white.svg" class="w-72 h-auto dark:inline hidden" alt="Tailwind CSS Logo" />
-        <img id="astro-logo" src="../src/images/now/astro-logo-light-gradient.svg" class="w-72 h-auto mr-2 dark:inline hidden" alt="Astro.js Logo" />
-        <img id="tailwind-logo" src="../src/images/now/tailwindcss-logotype.svg" class="w-72 h-auto dark:hidden" alt="Tailwind CSS Logo" />
-        <img id="astro-logo" src="../src/images/now/astro-logo-dark.svg" class="w-72 h-auto mr-2 dark:hidden" alt="Astro.js Logo" />
+        <Image src={tailwindLogoDark} class="w-72 h-auto dark:inline hidden" alt="Tailwind CSS Logo" />
+        <Image src={astroLogo} class="w-72 h-auto mr-2 dark:inline hidden" alt="Astro.js Logo" />
+        <Image src={tailwindLogo} class="w-72 h-auto dark:hidden" alt="Tailwind CSS Logo" />
+        <Image src={astroLogoDark} class="w-72 h-auto mr-2 dark:hidden" alt="Astro.js Logo" />
       </div>
       <p>
         I'm currently immersed in the world of web development, exploring the
@@ -57,8 +63,8 @@ import NowEntry from "../components/NowEntry.astro";
       <p>
         I'm also practicing the piano piece <strong class='text-dark-text'>"Comptine d'un autre été"</strong> by Yann Tiersen, famously known from the movie Amélie.
       </p>
-      <img
-        src="../src/images/now/amelie.jpeg"
+      <Image
+        src={amelieCover}
         alt="Sheet Music of Comptine d'un autre été"
         class="w-40 h-auto my-12"
       />

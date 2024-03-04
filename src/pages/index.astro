@@ -6,6 +6,7 @@ import AudioWave from '../components/AudioWave.astro';
 import Marquee from '../components/Marquee.astro';
 import latestRenderImage from '../images/renders/braunHF3.jpg';
 import latestRenderImageClay from '../images/renders/braunHF3-clay.jpg';
+import profileImage from '../images/profile.png';
 import { Image } from 'astro:assets';
 const baseURL = import.meta.env.BASE_URL
 
@@ -42,7 +43,7 @@ export { latestPost };
             <p class="lg:text-left text-center sm:text-6xl/relaxed leading-relaxed  text-3xl lg:drop-shadow-[3px_3px_0px_rgba(0,0,0,1)] tracking-widest font-bold text-dark-text long-transition dark:text-dark-text md:my-12 uppercase">Creative developer
             </p>
           </div>
-          <img src="../src/images/profile.png" alt="André's Avatar" class="avatar" />
+          <Image src={profileImage} alt="André's Avatar" class="avatar" />
         </div>
 
     <!-- Now Section -->
