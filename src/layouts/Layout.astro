@@ -72,17 +72,16 @@ const baseURL = import.meta.env.BASE_URL
     init();
   }
 
-      document.addEventListener('astro:after-swap', () => {
-  // Reinitialize theme and other functionalities
-  init();
+  document.addEventListener('astro:after-swap', () => {
+        init();
 
-  // Dynamically import and reinitialize tooltips
-  import('../scripts/initializeTooltips.js').then((module) => {
-    module.default(); // Reinitialize tooltips
-  });
-});
+        // Dynamically import and reinitialize tooltips
+        const tooltipsModulePath = new URL('../scripts/initializeTooltips.js', import.meta.url).href;
+        import(tooltipsModulePath).then((module) => {
+          module.default();
+        }).catch(err => console.error('Error loading tooltips module:', err));
+      });
     </script>
-
 
 
 
