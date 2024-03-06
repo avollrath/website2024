@@ -8,6 +8,7 @@ export function initializeTooltips() {
         placement: 'top',
         animation: 'fade',
         delay: 20,
+        allowHTML: true,
         duration: 20,
         maxWidth: 500,
         allowHTML: true,

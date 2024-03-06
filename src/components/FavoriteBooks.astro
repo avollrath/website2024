@@ -21,7 +21,7 @@ shuffleArray(favoriteBooks);
     <div class="flex flex-row flex-wrap justify-center w-full">
       {favoriteBooks.map((book, index) => (
         <div key={index} class="p-4">
-          <div title={`<b>${book.title}</b> - ${book.authors}`}>
+          <div title={`<strong>${book.title}</strong> - ${book.authors}`}>
             <img 
               src={book.coverURL || fallbackCover} 
               alt={`Cover of ${book.title}`} 
