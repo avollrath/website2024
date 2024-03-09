@@ -10,5 +10,5 @@ export default defineConfig({
   build: {
     assets: 'astro'
   },  
-  base: '/website2024',
+  base: '/avollrath',
 });
