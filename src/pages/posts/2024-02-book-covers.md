@@ -5,7 +5,7 @@ pubDate: '2024-02-08'
 description: 'Learn how to fetch and display book covers from the Google Books API in your web project, enhancing user experience with rich, dynamic content.'
 author: 'Book Lover and Web Developer'
 image:
-    url: './src/images/blog/books.jpg' 
+    url: './../src/images/blog/books.jpg' 
     alt: 'A collection of book covers displayed on a digital screen.'
 tags: ["web development", "API", "Google Books", "JavaScript", "project"]
 teaser: "Embark on a fascinating journey through the world of web development as we explore how to fetch and display book covers using the Google Books API. Whether you're a seasoned developer or just starting out, this blog post will guide you through the steps of enhancing your web project with dynamic content from one of the largest book databases. Get ready to dive into code snippets, API integration, and practical insights to bring your digital bookshelf to life!"

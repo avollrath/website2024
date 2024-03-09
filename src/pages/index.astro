@@ -18,12 +18,12 @@ try {
   console.error("Error fetching top tracks:", error);
 }
 
-let currentPlayingTrack = null;
-try {
-  currentPlayingTrack = await getCurrentPlayingTrack(refreshToken);
-} catch (error) {
-  console.error("Error fetching currently playing track:", error);
-}
+// let currentPlayingTrack = null;
+// try {
+//   currentPlayingTrack = await getCurrentPlayingTrack(refreshToken);
+// } catch (error) {
+//   console.error("Error fetching currently playing track:", error);
+// }
  
 
 const allPosts = await Astro.glob('../pages/posts/*.md');
@@ -146,13 +146,13 @@ export { latestPost };
           ) : null
         ))}
         </div>
-        {currentPlayingTrack && currentPlayingTrack.is_playing && currentPlayingTrack.item && currentPlayingTrack.item.external_urls ? (
+        <!-- {currentPlayingTrack && currentPlayingTrack.is_playing && currentPlayingTrack.item && currentPlayingTrack.item.external_urls ? (
           <div class="currently-playing self-start mt-8">
             <a href={currentPlayingTrack.item.external_urls.spotify} target="_blank" class="flex items-center">
               <span class="mr-4 text-gray-500 dark:text-white text-xl">Playing right now: <strong class="text-dark-text">{currentPlayingTrack.item.name}</strong> by {currentPlayingTrack.item.artists.map(artist => artist.name).join(", ")}</span>  <AudioWave />
             </a>
           </div>
-        ) : null}
+        ) : null} -->
     </div>
 
 
