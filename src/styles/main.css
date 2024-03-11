@@ -35,29 +35,65 @@ body {
 }
 
 @-webkit-keyframes noise {
-    to { transform: translate3d(-7rem,0,0); }
+    to {
+        transform: translate3d(-7rem, 0, 0);
+    }
 }
 
 @keyframes noise {
-    0% { transform: translate3d(0,9rem,0); }
-    10% { transform: translate3d(-1rem,-4rem,0); }
-    20% { transform: translate3d(-8rem,2rem,0); }
-    30% { transform: translate3d(9rem,-9rem,0); }
-    40% { transform: translate3d(-2rem,7rem,0); }
-    50% { transform: translate3d(-9rem,-4rem,0); }
-    60% { transform: translate3d(2rem,6rem,0); }
-    70% { transform: translate3d(7rem,-8rem,0); }
-    80% { transform: translate3d(-9rem,1rem,0); }
-    90% { transform: translate3d(6rem,-5rem,0); }
-    to { transform: translate3d(-7rem,0,0); }
+    0% {
+        transform: translate3d(0, 9rem, 0);
+    }
+
+    10% {
+        transform: translate3d(-1rem, -4rem, 0);
+    }
+
+    20% {
+        transform: translate3d(-8rem, 2rem, 0);
+    }
+
+    30% {
+        transform: translate3d(9rem, -9rem, 0);
+    }
+
+    40% {
+        transform: translate3d(-2rem, 7rem, 0);
+    }
+
+    50% {
+        transform: translate3d(-9rem, -4rem, 0);
+    }
+
+    60% {
+        transform: translate3d(2rem, 6rem, 0);
+    }
+
+    70% {
+        transform: translate3d(7rem, -8rem, 0);
+    }
+
+    80% {
+        transform: translate3d(-9rem, 1rem, 0);
+    }
+
+    90% {
+        transform: translate3d(6rem, -5rem, 0);
+    }
+
+    to {
+        transform: translate3d(-7rem, 0, 0);
+    }
 }
 
 :root {
-    --border-gradient: none; /* Default to no gradient for light mode */
+    --border-gradient: none;
+    /* Default to no gradient for light mode */
 }
 
 .dark {
-    --border-gradient: linear-gradient(30deg, rgba(90, 90, 90, 0.30), rgba(255, 255, 255, 0.301), rgba(90, 90, 90, 0.30)); /* Gradient for dark mode */
+    --border-gradient: linear-gradient(30deg, rgba(90, 90, 90, 0.30), rgba(255, 255, 255, 0.301), rgba(90, 90, 90, 0.30));
+    /* Gradient for dark mode */
 }
 
 .border-gradient {
@@ -67,7 +103,10 @@ body {
 .border-gradient::before {
     content: '';
     position: absolute;
-    top: -2px; right: -2px; bottom: -2px; left: -2px;
+    top: -2px;
+    right: -2px;
+    bottom: -2px;
+    left: -2px;
     z-index: -1;
     background: var(--border-gradient);
     border-radius: inherit;
@@ -78,10 +117,14 @@ body {
     z-index: 1;
 }
 
+
 .border-gradient::after {
     content: '';
     position: absolute;
-    top: -2px; right: -2px; bottom: -2px; left: -2px;
+    top: -2px;
+    right: -2px;
+    bottom: -2px;
+    left: -2px;
     z-index: -1;
     background: linear-gradient(30deg, rgba(150, 150, 150, 0.45), #F6723A, rgba(255, 255, 255, 0.60), #F6723A, rgba(150, 150, 150, 0.45));
     border-radius: inherit;
@@ -92,13 +135,21 @@ body {
 }
 
 .dark .border-gradient:hover::after {
-    opacity: 1; 
+    opacity: 1;
 }
 
 @keyframes borderGradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .dark .border-gradient:hover::before {
@@ -108,15 +159,20 @@ body {
 
 /* Custom Tooltip Theming */
 .tippy-box[data-theme='custom'] {
-    background-color: black; /* Black background */
-    color: white; /* White text color */
-    border-radius: 0.5rem; /* Slightly rounded corners */
-    padding: 1rem; /* Padding inside the tooltip */
-    font-size: 1.2rem; /* Larger font size */
+    background-color: black;
+    /* Black background */
+    color: white;
+    /* White text color */
+    border-radius: 0.5rem;
+    /* Slightly rounded corners */
+    padding: 1rem;
+    /* Padding inside the tooltip */
+    font-size: 1.2rem;
+    /* Larger font size */
     text-align: center;
-  }
+}
 
-  .gradient-text {
+.gradient-text {
     color: #F6723A;
 }
 
@@ -124,9 +180,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%; /* Make it round */
-    width: 56px; /* Circle size */
-    height: 56px; /* Circle size */
+    border-radius: 50%;
+    /* Make it round */
+    width: 56px;
+    /* Circle size */
+    height: 56px;
+    /* Circle size */
     transition: transform 0.3s ease;
     border: 3px solid #F6723A;
 }
@@ -136,12 +195,14 @@ body {
 }
 
 .arrow-link svg {
-    transform: rotate(-45deg); /* Rotate arrow to upper right */
+    transform: rotate(-45deg);
+    /* Rotate arrow to upper right */
     transition: transform 0.7s ease;
 }
 
 .arrow-link:hover svg {
-    transform: rotate(0deg); /* Rotate back to right and move arrow */
+    transform: rotate(0deg);
+    /* Rotate back to right and move arrow */
 }
 
 .clickable-section {
@@ -151,8 +212,10 @@ body {
 
 
 .image-container {
-    width: 100%; /* Set to desired width of the image */
-    overflow: hidden; /* Hide parts of the image outside the container */
+    width: 100%;
+    /* Set to desired width of the image */
+    overflow: hidden;
+    /* Hide parts of the image outside the container */
 }
 
 .image-container img {
@@ -166,85 +229,79 @@ body {
     /* Adjust the background color and opacity to your preference */
 
     /* Apply the frosted glass effect */
-    backdrop-filter: blur(10px); /* Adjust the blur value as needed */
-  
+    backdrop-filter: blur(10px);
+    /* Adjust the blur value as needed */
 
-  }
 
-  .avatar {
+}
+
+.avatar {
     position: absolute;
-    bottom: 0px; /* Adjust as needed */
-    right: 00px; /* Adjust as needed */
-    width: 660px; /* Adjust size as needed */
+    bottom: 0px;
+    /* Adjust as needed */
+    right: 00px;
+    /* Adjust as needed */
+    width: 660px;
+    /* Adjust size as needed */
     height: auto;
-    z-index: 0; /* Ensure it's above other content */
+    z-index: 0;
+    /* Ensure it's above other content */
 }
 
 @media (max-width: 1024px) {
     .avatar {
         display: none;
     }
-  }
+}
 
 
 .cool-contrast-gradient {
-    background: linear-gradient(45deg, #000000, #9b1717); /* Blue to Purple gradient */
+    background: linear-gradient(45deg, #000000, #9b1717);
+    /* Blue to Purple gradient */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-  }
+}
 
 
 
 .bullets li::marker {
     color: #F6723A;
-  }
+}
 
-  .gradient-underline {
+.gradient-underline {
     text-decoration: underline;
-    text-decoration-color: transparent; /* Use transparent color initially */
-    background-clip: text; /* Ensure the background clip applies to the text */
-  }
-  
-  .gradient-underline::after {
+    text-decoration-color: transparent;
+    /* Use transparent color initially */
+    background-clip: text;
+    /* Ensure the background clip applies to the text */
+}
+
+.gradient-underline::after {
     content: '';
     display: block;
-    height: 5px; /* Adjust the height of the underline as needed */
+    height: 5px;
+    /* Adjust the height of the underline as needed */
     background: #F6723A;
     border-radius: 50px;
     width: 110%;
     transform: translateX(-5%)
-  }
+}
 
 
-  .nav-links-container {
+.nav-item.active~.underline {
+    width: 100%;
+}
+
+
+.globe-container {
+    width: 100%;
+    /* Adjust based on layout */
+    height: 500px;
+    /* Adjust as needed */
     position: relative;
-  }
-  
-  .underline {
-    position: absolute;
-    bottom: 0;
-    height: 2px;
-    background-color: #333; /* Adjust color as needed */
-    transition: left 0.3s ease, width 0.3s ease;
-    will-change: left, width;
-  }
-  
-  .nav-item {
-    position: relative;
-  }
-  
-  /* Initial state of the underline */
-  .underline {
-    width: 0;
-    left: 0;
-  }
-
-
-  .globe-container {
-    width: 100%; /* Adjust based on layout */
-    height: 500px; /* Adjust as needed */
-    position: relative; /* Or 'absolute', depending on your layout */
-    z-index: 1; /* Adjust based on your stacking context */
+    /* Or 'absolute', depending on your layout */
+    z-index: 1;
+    /* Adjust based on your stacking context */
 }
 
 
@@ -258,25 +315,16 @@ body {
 
 @media screen and (max-width: 1024px) {
     #nav-menu {
-      flex-direction: column;
-      position: absolute;
-      top: 100%;
-      right: 0;
-      width: 90vw;
-      border-radius: 12px;
-      background-color: black;
-      padding: 2rem;
-      z-index: 50;
-      font-size: 2rem;
-      text-align: center;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 90vw;
+        border-radius: 12px;
+        background-color: black;
+        padding: 2rem;
+        z-index: 50;
+        font-size: 2rem;
+        text-align: center;
     }
-  }
-  
-
-
-
-
-
-
-  
-
+}

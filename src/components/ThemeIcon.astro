@@ -4,7 +4,7 @@
 
 <div class="theme-switch-wrapper">
 	<label class="theme-switch" for="checkbox" id="themeToggle">
-		<input type="checkbox" id="checkbox" checked />
+		<input type="checkbox" id="checkbox" />
 		<div class="slider">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -45,31 +45,6 @@
 		</div>
 	</label>
 </div>
-
-<script>
-	const initToggle = () => {
-		const checkbox = document.getElementById('checkbox')
-		const storedTheme = localStorage.getItem('theme')
-		const isDarkMode =
-			storedTheme === 'dark' ||
-			(!storedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)
-		checkbox.checked = isDarkMode
-
-		const toggleTheme = (isDark) => {
-			document.documentElement.classList.toggle('dark', isDark)
-			localStorage.setItem('theme', isDark ? 'dark' : 'light')
-		}
-
-		checkbox.addEventListener('change', () => {
-			toggleTheme(checkbox.checked)
-		})
-
-		toggleTheme(isDarkMode)
-	}
-
-	document.addEventListener('DOMContentLoaded', initToggle)
-	document.addEventListener('astro:after-swap', initToggle)
-</script>
 
 <style>
 	/* TOGGLE */

@@ -1,81 +1,91 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import FavoriteBooks from "../components/FavoriteBooks.astro";
-import Spotify from "../components/Spotify.astro";
-import NowEntry from "../components/NowEntry.astro";
-import tailwindLogoDark from '../images/now/tailwindcss-logotype-white.svg';
-import tailwindLogo from '../images/now/tailwindcss-logotype.svg';
-import astroLogoDark from '../images/now/astro-logo-dark.svg';
-import astroLogo from '../images/now/astro-logo-light-gradient.svg';
-import amelieCover from '../images/now/amelie.jpeg';
-import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro'
+import FavoriteBooks from '../components/FavoriteBooks.astro'
+import Spotify from '../components/Spotify.astro'
+import NowEntry from '../components/NowEntry.astro'
+import tailwindLogoDark from '../images/now/tailwindcss-logotype-white.svg'
+import tailwindLogo from '../images/now/tailwindcss-logotype.svg'
+import astroLogoDark from '../images/now/astro-logo-dark.svg'
+import astroLogo from '../images/now/astro-logo-light-gradient.svg'
+import amelieCover from '../images/now/amelie.jpeg'
+import { Image } from 'astro:assets'
 ---
 
 <Layout title="Now" description="What I'm doing now">
-     <div class="flex flex-col 2xl:col-span-3 col-span-3">
-        <div
-            class=" dark:bg-gradient-to-r long-transition from-dark-card to-darker-card sm:p-12 p-6 text-xl text-gray-500 dark:text-white bg-white rounded-lg flex flex-col items-center border-gradient"
-        >
-            <h2 class="font-header tracking-wide self-start mb-8 text-4xl long-transition">
-            Now
-            </h2>
-            <p class="my-3 leading-relaxed">
-              Welcome to my <strong class='text-dark-text'>Now</strong> page, a unique space where I share what's
-              currently engaging my attention. Unlike the more static "About" page, this
-              page offers a window into my <strong class='text-dark-text'>current world</strong>.
-            </p>
-            <p class="my-3 leading-relaxed">
-              Here, you'll find out about the <strong class='text-dark-text'>projects</strong> I'm involved in,
-              the <strong class='text-dark-text'>subjects</strong> that intrigue me, and where my passions currently
-              lie. This page is like a snapshot of my <strong class='text-dark-text'>life's priorities</strong>
-              and activities at this moment.
-            </p>
-            <p class="my-3 leading-relaxed">
-              It's an up-to-date glimpse into my journey, reflecting my latest <strong class='text-dark-text'>interests</strong>,
-              <strong class='text-dark-text'>goals</strong>, and <strong class='text-dark-text'>endeavors</strong>. This page is
-              where I openly share what's important to me right now.
-            </p>
-            <p class="my-3 leading-relaxed">
-              For more about the concept of a "Now" page, visit
-              <a href="https://sivers.org/nowff" class="text-dark-text underline font-bold">Derek Sivers' explanation</a>.
-            </p>
-            
-            </p>
-        </div>
-     </div>
+	<div class="col-span-3 flex flex-col 2xl:col-span-3">
+		<div
+			class="long-transition border-gradient flex flex-col items-center rounded-lg bg-white from-dark-card to-darker-card p-6 text-xl text-gray-500 dark:bg-gradient-to-r dark:text-white sm:p-12"
+		>
+			<h2 class="long-transition mb-8 self-start font-header text-4xl tracking-wide">Now</h2>
+			<p class="my-3 leading-relaxed">
+				Welcome to my <strong class="text-dark-text">Now</strong> page, a unique space where I share
+				what's currently engaging my attention. Unlike the more static "About" page, this page offers
+				a window into my <strong class="text-dark-text">current world</strong>.
+			</p>
+			<p class="my-3 leading-relaxed">
+				Here, you'll find out about the <strong class="text-dark-text">projects</strong> I'm involved
+				in, the <strong class="text-dark-text">subjects</strong> that intrigue me, and where my passions
+				currently lie. This page is like a snapshot of my <strong class="text-dark-text"
+					>life's priorities</strong
+				>
+				and activities at this moment.
+			</p>
+			<p class="my-3 leading-relaxed">
+				It's an up-to-date glimpse into my journey, reflecting my latest <strong
+					class="text-dark-text">interests</strong
+				>,
+				<strong class="text-dark-text">goals</strong>, and <strong class="text-dark-text"
+					>endeavors</strong
+				>. This page is where I openly share what's important to me right now.
+			</p>
+			<p class="my-3 leading-relaxed">
+				For more about the concept of a "Now" page, visit
+				<a href="https://sivers.org/nowff" class="font-bold text-dark-text underline"
+					>Derek Sivers' explanation</a
+				>
+			</p>
+		</div>
+	</div>
 
-     <NowEntry date="2024-02-06" colSpan="2xl:col-span-6 col-span-3">
-      <div class="flex flex-wrap mb-4">
-        <Image src={tailwindLogoDark} class="w-72 h-auto dark:inline hidden" alt="Tailwind CSS Logo" />
-        <Image src={astroLogo} class="w-72 h-auto mr-2 dark:inline hidden" alt="Astro.js Logo" />
-        <Image src={tailwindLogo} class="w-72 h-auto dark:hidden" alt="Tailwind CSS Logo" />
-        <Image src={astroLogoDark} class="w-72 h-auto mr-2 dark:hidden" alt="Astro.js Logo" />
-      </div>
-      <p>
-        I'm currently immersed in the world of web development, exploring the
-        capabilities of <strong class='text-dark-text'>Astro.js</strong> and <strong class='text-dark-text'>Tailwind CSS</strong>
-        to craft efficient and responsive web applications. In fact, these are the very technologies used to build the website you are viewing right now, showcasing their practical applications in a real-world project.
-      </p>
-    
-      <hr class="my-8" />
-      <h3 class="mb-8">Currently practicing:</h3>
-    
-      <p>
-        I'm also practicing the piano piece <strong class='text-dark-text'>"Comptine d'un autre été"</strong> by Yann Tiersen, famously known from the movie Amélie.
-      </p>
-      <Image
-        src={amelieCover}
-        alt="Sheet Music of Comptine d'un autre été"
-        class="w-40 h-auto my-12"
-      />
-    </NowEntry>
-    
+	<NowEntry date="2024-02-06" colSpan="2xl:col-span-6 col-span-3">
+		<div class="mb-4 flex flex-wrap">
+			<Image
+				src={tailwindLogoDark}
+				class="hidden h-auto w-72 dark:inline"
+				alt="Tailwind CSS Logo"
+			/>
+			<Image src={astroLogo} class="mr-2 hidden h-auto w-72 dark:inline" alt="Astro.js Logo" />
+			<Image src={tailwindLogo} class="h-auto w-72 dark:hidden" alt="Tailwind CSS Logo" />
+			<Image src={astroLogoDark} class="mr-2 h-auto w-72 dark:hidden" alt="Astro.js Logo" />
+		</div>
+		<p>
+			I'm currently immersed in the world of web development, exploring the capabilities of <strong
+				class="text-dark-text">Astro.js</strong
+			> and <strong class="text-dark-text">Tailwind CSS</strong>
+			to craft efficient and responsive web applications. In fact, these are the very technologies used
+			to build the website you are viewing right now, showcasing their practical applications in a real-world
+			project.
+		</p>
 
-  <div class="flex flex-col col-span-3">
-    <FavoriteBooks bookWidth="w-24"/>
-    <!-- <div class="mt-8">
+		<hr class="my-8" />
+		<h3 class="mb-8">Currently practicing:</h3>
+
+		<p>
+			I'm also practicing the piano piece <strong class="text-dark-text"
+				>"Comptine d'un autre été"</strong
+			> by Yann Tiersen, famously known from the movie Amélie.
+		</p>
+		<Image
+			src={amelieCover}
+			alt="Sheet Music of Comptine d'un autre été"
+			class="my-12 h-auto w-40"
+		/>
+	</NowEntry>
+
+	<div class="col-span-3 flex flex-col">
+		<FavoriteBooks bookWidth="w-24" />
+		<!-- <div class="mt-8">
     <Spotify coverWidth="w-24"/>
     </div> -->
-    </div>
-
+	</div>
 </Layout>

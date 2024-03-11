@@ -29,20 +29,44 @@ const { title, description } = Astro.props
 				</div>
 			</main>
 
-			<Footer transition:persist />
+			<Footer />
 		</div>
 
 		<script src="../scripts/interactiveSections.js"></script>
-
 		<script>
 			import { initializeTooltips } from '../scripts/initializeTooltips.js'
 
-			// Initialize theme and attach listeners
+			const updateTheme = (doc = document) => {
+				const theme =
+					localStorage.getItem('theme') ||
+					(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+				doc.documentElement.classList.toggle('dark', theme === 'dark')
+				doc.dispatchEvent(new CustomEvent('theme-change'))
+				if (doc.getElementById('checkbox')) {
+					doc.getElementById('checkbox').checked = theme === 'dark'
+				}
+			}
+
+			const handleCheckboxChange = () => {
+				const checkbox = document.getElementById('checkbox')
+				const isDark = checkbox.checked
+				localStorage.setItem('theme', isDark ? 'dark' : 'light')
+				updateTheme()
+			}
+
 			const init = () => {
+				updateTheme()
 				initializeTooltips()
-				document.getElementById('hamburger').addEventListener('click', function () {
-					document.getElementById('nav-menu').classList.toggle('invisible')
-				})
+				const checkbox = document.getElementById('checkbox')
+				if (checkbox) {
+					checkbox.addEventListener('change', handleCheckboxChange)
+				}
+				const hamburger = document.getElementById('hamburger')
+				if (hamburger) {
+					hamburger.addEventListener('click', () => {
+						document.getElementById('nav-menu').classList.toggle('invisible')
+					})
+				}
 			}
 
 			if (document.readyState === 'loading') {
@@ -50,6 +74,10 @@ const { title, description } = Astro.props
 			} else {
 				init()
 			}
+
+			document.addEventListener('astro:before-swap', (event) => {
+				updateTheme(event.newDocument)
+			})
 
 			document.addEventListener('astro:after-swap', () => {
 				init()
