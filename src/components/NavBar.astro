@@ -1,39 +1,53 @@
 ---
-import ThemeIcon from './ThemeIcon.astro';
+import ThemeIcon from './ThemeIcon.astro'
 
-const currentPath = new URL(Astro.request.url).pathname;
-const isDev = import.meta.env.DEV;
-const baseUrl = isDev ? '' : Astro.site;
+const currentPath = new URL(Astro.request.url).pathname
+const isDev = import.meta.env.DEV
+const baseUrl = isDev ? '' : Astro.site
 
 const navItems = [
-  { path: '/', label: 'Home', id: 'home-link' },
-  { path: '/about', label: 'About', id: 'about-link' },
-  { path: '/now', label: 'Now', id: 'now-link' },
-  { path: '/renders', label: 'Renders', id: 'renders-link' },
-  { path: '/blog', label: 'Blog', id: 'blog-link', additionalPaths: ['/posts'] },
-];
+	{ path: '/', label: 'Home', id: 'home-link' },
+	{ path: '/about', label: 'About', id: 'about-link' },
+	{ path: '/now', label: 'Now', id: 'now-link' },
+	{ path: '/renders', label: 'Renders', id: 'renders-link' },
+	{ path: '/blog', label: 'Blog', id: 'blog-link', additionalPaths: ['/posts'] }
+]
 
 function isPathActive(itemPath, additionalPaths = []) {
-  return currentPath === itemPath || additionalPaths.some(addPath => currentPath.startsWith(addPath));
+	return (
+		currentPath === itemPath || additionalPaths.some((addPath) => currentPath.startsWith(addPath))
+	)
 }
 ---
 
-<nav class="nav-bar mb-8 lg:col-span-3 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white px-12 py-6 rounded-lg flex justify-between items-center border-gradient">
-  <!-- Dark Mode Toggle -->
-  <ThemeIcon />
+<nav
+	class="nav-bar border-gradient mb-8 flex items-center justify-between rounded-lg bg-white from-dark-card to-darker-card px-12 py-6 dark:bg-gradient-to-r lg:col-span-3"
+>
+	<!-- Dark Mode Toggle -->
+	<ThemeIcon />
 
-  <!-- Hamburger Icon -->
-  <div class="lg:hidden flex flex-col space-y-2 cursor-pointer" id="hamburger">
-    <span class="block w-8 h-0.5 bg-dark-text"></span>
-    <span class="block w-8 h-0.5 bg-dark-text"></span>
-    <span class="block w-8 h-0.5 bg-dark-text"></span>
-  </div>
+	<!-- Hamburger Icon -->
+	<div class="flex cursor-pointer flex-col space-y-2 lg:hidden" id="hamburger">
+		<span class="block h-0.5 w-8 bg-dark-text"></span>
+		<span class="block h-0.5 w-8 bg-dark-text"></span>
+		<span class="block h-0.5 w-8 bg-dark-text"></span>
+	</div>
 
-  <!-- Navigation Links -->
-  <div class="invisible lg:visible flex select-none font-header text-xl md:flex-row flex-col z-30" id="nav-menu">
-    {navItems.map(item => (
-    <a href={`${baseUrl}${item.path}`} class={`nav-item px-4 py-2 text-gray-500 hover:text-dark-text transition ${isPathActive(item.path, item.additionalPaths) ? 'gradient-underline dark:text-white' : ''}`} id={item.id}>{item.label}</a>
-    ))}
-  </div>
+	<!-- Navigation Links -->
+	<div
+		class="invisible z-30 flex select-none flex-col font-header text-xl md:flex-row lg:visible"
+		id="nav-menu"
+	>
+		{
+			navItems.map((item) => (
+				<a
+					href={`${baseUrl}${item.path}`}
+					class={`nav-item px-4 py-2 text-gray-500 transition hover:text-dark-text ${isPathActive(item.path, item.additionalPaths) ? 'gradient-underline dark:text-white' : ''}`}
+					id={item.id}
+				>
+					{item.label}
+				</a>
+			))
+		}
+	</div>
 </nav>
-

@@ -216,9 +216,28 @@ body {
   }
 
 
-.nav-item.active ~ .underline {
-    width: 100%;
-}
+  .nav-links-container {
+    position: relative;
+  }
+  
+  .underline {
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    background-color: #333; /* Adjust color as needed */
+    transition: left 0.3s ease, width 0.3s ease;
+    will-change: left, width;
+  }
+  
+  .nav-item {
+    position: relative;
+  }
+  
+  /* Initial state of the underline */
+  .underline {
+    width: 0;
+    left: 0;
+  }
 
 
   .globe-container {

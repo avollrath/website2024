@@ -1,148 +1,169 @@
 ---
+
 ---
+
 <div class="theme-switch-wrapper">
-  <label class="theme-switch" for="checkbox" id="themeToggle">
-    <input type="checkbox" id="checkbox" />
-    <div class="slider">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
-        viewBox="0 0 24 24"
-        fill="#F6723A"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="feather feather-sun"
-      >
-        <circle cx="12" cy="12" r="5"></circle>
-        <line x1="12" y1="1" x2="12" y2="3"></line>
-        <line x1="12" y1="21" x2="12" y2="23"></line>
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-        <line x1="1" y1="12" x2="3" y2="12"></line>
-        <line x1="21" y1="12" x2="23" y2="12"></line>
-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-      </svg>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
-        viewBox="0 0 24 24"
-        fill="#F6723A"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="feather feather-moon"
-      >
-        <path
-          d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
-        ></path>
-      </svg>
-    </div>
-  </label>
+	<label class="theme-switch" for="checkbox" id="themeToggle">
+		<input type="checkbox" id="checkbox" checked />
+		<div class="slider">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				width="16"
+				height="16"
+				viewBox="0 0 24 24"
+				fill="#F6723A"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				class="feather feather-sun"
+			>
+				<circle cx="12" cy="12" r="5"></circle>
+				<line x1="12" y1="1" x2="12" y2="3"></line>
+				<line x1="12" y1="21" x2="12" y2="23"></line>
+				<line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+				<line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+				<line x1="1" y1="12" x2="3" y2="12"></line>
+				<line x1="21" y1="12" x2="23" y2="12"></line>
+				<line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+				<line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+			</svg>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				width="16"
+				height="16"
+				viewBox="0 0 24 24"
+				fill="#F6723A"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				class="feather feather-moon"
+			>
+				<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+			</svg>
+		</div>
+	</label>
 </div>
-  
+
+<script>
+	const initToggle = () => {
+		const checkbox = document.getElementById('checkbox')
+		const storedTheme = localStorage.getItem('theme')
+		const isDarkMode =
+			storedTheme === 'dark' ||
+			(!storedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+		checkbox.checked = isDarkMode
+
+		const toggleTheme = (isDark) => {
+			document.documentElement.classList.toggle('dark', isDark)
+			localStorage.setItem('theme', isDark ? 'dark' : 'light')
+		}
+
+		checkbox.addEventListener('change', () => {
+			toggleTheme(checkbox.checked)
+		})
+
+		toggleTheme(isDarkMode)
+	}
+
+	document.addEventListener('DOMContentLoaded', initToggle)
+	document.addEventListener('astro:after-swap', initToggle)
+</script>
 
 <style>
-/* TOGGLE */
-.theme-switch-wrapper {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
+	/* TOGGLE */
+	.theme-switch-wrapper {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+	}
 
-.theme-switch {
-  display: inline-block;
-  height: 50px;  /* Increased height */
-  position: relative;
-  width: 90px;  /* Increased width */
-}
+	.theme-switch {
+		display: inline-block;
+		height: 50px; /* Increased height */
+		position: relative;
+		width: 90px; /* Increased width */
+	}
 
-.theme-switch input {
-  display: none;
-}
+	.theme-switch input {
+		display: none;
+	}
 
-.slider {
-  background-color: rgb(224, 224, 224);
-  bottom: 0;
-  cursor: pointer;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  transition: 0.4s;
-  border-radius: 50px;  /* Adjusted for larger size */
-}
+	.slider {
+		background-color: rgb(224, 224, 224);
+		bottom: 0;
+		cursor: pointer;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		transition: 0.4s;
+		border-radius: 50px; /* Adjusted for larger size */
+	}
 
-.slider:hover {
-  background-color: rgb(255, 234, 203);
-}
+	.slider:hover {
+		background-color: rgb(255, 234, 203);
+	}
 
-.slider:before {
-  background-color: rgb(211, 211, 211);
-  bottom: 8px;  /* Adjusted position */
-  content: "";
-  height: 34px;  /* Increased size */
-  left: 8px;  /* Adjusted position */
-  position: absolute;
-  transition: 0.4s;
-  width: 34px;  /* Increased size */
-  border-radius: 50%;
-}
+	.slider:before {
+		background-color: rgb(211, 211, 211);
+		bottom: 8px; /* Adjusted position */
+		content: '';
+		height: 34px; /* Increased size */
+		left: 8px; /* Adjusted position */
+		position: absolute;
+		transition: 0.4s;
+		width: 34px; /* Increased size */
+		border-radius: 50%;
+	}
 
-input:checked + .slider {
-  background-color: #2c2c2c;
-}
+	input:checked + .slider {
+		background-color: #2c2c2c;
+	}
 
-input:checked + .slider:hover {
-  /* Add your desired hover styles here */
-  background-color: #3d3d3d; /* Example: slightly lighter color on hover */
-}
+	input:checked + .slider:hover {
+		/* Add your desired hover styles here */
+		background-color: #3d3d3d; /* Example: slightly lighter color on hover */
+	}
 
+	input:checked + .slider:before {
+		transform: translateX(40px); /* Adjusted for larger size */
+		background-color: #1b1b1b; /* Darker color for knob in dark mode */
+	}
 
+	.slider svg {
+		color: #222;
+		position: absolute;
+		transition:
+			opacity 0.1s ease 0s,
+			transform 0.2s ease 0s;
+		pointer-events: none;
+		width: 24px; /* Increased size */
+		height: 24px; /* Increased size */
+	}
 
-input:checked + .slider:before {
-  transform: translateX(40px);  /* Adjusted for larger size */
-  background-color: #1b1b1b; /* Darker color for knob in dark mode */
-}
+	.feather-moon {
+		opacity: 0;
+		left: 12px; /* Adjusted position */
+		bottom: 12px; /* Adjusted position */
+		transform: translateX(4px);
+	}
 
-.slider svg {
-  color: #222;
-  position: absolute;
-  transition: opacity 0.1s ease 0s, transform 0.2s ease 0s;
-  pointer-events: none;
-  width: 24px;  /* Increased size */
-  height: 24px;  /* Increased size */
-}
+	.feather-sun {
+		opacity: 1;
+		right: 14px; /* Adjusted position */
+		bottom: 12px; /* Adjusted position */
+		transform: translateX(0px);
+	}
 
-.feather-moon {
-  opacity: 0;
-  left: 12px;  /* Adjusted position */
-  bottom: 12px;  /* Adjusted position */
-  transform: translateX(4px);
-}
+	input:checked + .slider .feather-moon {
+		opacity: 1;
+		transform: translateX(0);
+	}
 
-.feather-sun {
-  opacity: 1;
-  right: 14px;  /* Adjusted position */
-  bottom: 12px;  /* Adjusted position */
-  transform: translateX(0px);
-}
-
-input:checked + .slider .feather-moon {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-input:checked + .slider .feather-sun {
-  opacity: 0;
-  transform: translateX(-4px);
-}
-
-
-  </style>
-  
+	input:checked + .slider .feather-sun {
+		opacity: 0;
+		transform: translateX(-4px);
+	}
+</style>

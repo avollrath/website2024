@@ -5,9 +5,9 @@ pubDate: '2024-02-08'
 description: 'Learn how to fetch and display book covers from the Google Books API in your web project, enhancing user experience with rich, dynamic content.'
 author: 'Book Lover and Web Developer'
 image:
-    url: './../src/images/blog/books.jpg' 
-    alt: 'A collection of book covers displayed on a digital screen.'
-tags: ["web development", "API", "Google Books", "JavaScript", "project"]
+  url: './../src/images/blog/books.jpg'
+  alt: 'A collection of book covers displayed on a digital screen.'
+tags: ['web development', 'API', 'Google Books', 'JavaScript', 'project']
 teaser: "Embark on a fascinating journey through the world of web development as we explore how to fetch and display book covers using the Google Books API. Whether you're a seasoned developer or just starting out, this blog post will guide you through the steps of enhancing your web project with dynamic content from one of the largest book databases. Get ready to dive into code snippets, API integration, and practical insights to bring your digital bookshelf to life!"
 ---
 
@@ -38,18 +38,19 @@ To use the Google Books API, you first need to obtain an API key. This involves 
 The main task was to construct a request to the Google Books API that searches for a specific book title and retrieves its cover image. Here's a simplified version of the code used:
 
 ```javascript
-import fetch from 'node-fetch';
+import fetch from 'node-fetch'
 
-const apiKey = 'Your_Google_API_Key';
-const bookTitle = 'Example Book Title';
+const apiKey = 'Your_Google_API_Key'
+const bookTitle = 'Example Book Title'
 
 async function fetchBookCover(title) {
-  const url = `https://www.googleapis.com/books/v1/volumes?q=intitle:${encodeURIComponent(title)}&key=${apiKey}`;
-  const response = await fetch(url);
-  const data = await response.json();
-  return data.items?.[0]?.volumeInfo?.imageLinks?.thumbnail || '';
+	const url = `https://www.googleapis.com/books/v1/volumes?q=intitle:${encodeURIComponent(title)}&key=${apiKey}`
+	const response = await fetch(url)
+	const data = await response.json()
+	return data.items?.[0]?.volumeInfo?.imageLinks?.thumbnail || ''
 }
 ```
+
 ### Integrating the Function
 
 This function was integrated into my web project, where it's called for each book title I wanted to display. The function returns the URL of the book cover image, which is then used in an HTML `img` tag.
@@ -69,7 +70,7 @@ The journey wasn't without its hurdles. Here are some challenges I faced:
 3. **Data Inconsistency**: Sometimes the API didn't return a cover image for a book. I had to implement a fallback mechanism to handle such cases gracefully.
 
 ![Digital Bookshelf](./../../images/blog/books.jpg)
-*My website featuring a dynamic display of book covers fetched from the Google Books API.*
+_My website featuring a dynamic display of book covers fetched from the Google Books API._
 
 ## Conclusion
 
@@ -78,4 +79,3 @@ Integrating the Google Books API to fetch and display book covers added a dynami
 For those looking to enhance their web projects with external data, APIs like Google Books offer a world of possibilities. With some creativity and coding, you can bring a wealth of information and visuals to your digital creations.
 
 Feel free to reach out if you have questions or need tips on your API integration journey. Happy coding and happy reading!
-
