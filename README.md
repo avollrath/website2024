@@ -1,54 +1,34 @@
-# Astro Starter Kit: Basics
+## Hi there 👋 I'm André.
 
-```sh
-npm create astro@latest -- --template basics
-```
+**I'm a front-end developer and designer**, currently working at Talentadore. My journey in tech started with a Commodore 64 and has led me through over two decades in graphic design and web development.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+### 🖥️ My top tech skills:
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- **Web Development**
+  - HTML5, CSS3, JavaScript
+  - React, Node.js, MongoDB
+  - Astro.js, Tailwind CSS
+  - GSAP, Bodymovin, Lottie
+- **Design**
+  - Adobe Creative Suite
+  - Figma
+  - 3D Modeling with Blender
+  - Web Graphics with Three.js
+- **Photography**
+  - Professional retouching and complex image editing
+  - Advertising and freelance experience
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+### 🔨 Stuff I've built includes:
 
-## 🚀 Project Structure
+- A variety of web applications, using modern web technologies
+- Dynamic and user-centric websites
+- Engaging digital products in both web and print
+- Explorations in 3D modeling and web graphics
 
-Inside of your Astro project, you'll see the following folders and files:
+### 📖 A bit more about me:
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+- 💬 **Ask me about**: Web development, design, photography, or anything tech-related. I love to discuss and help with creative and technical topics.
+- 📫 **How to reach me:**: Reach me via the email in my profile.
+- ⚡ **Fun fact:**: I'm an avid player of Rocket League and enjoy challenging myself with piano, chess, and sports like badminton, biking, and table tennis.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+![Github stats](https://github-readme-stats.vercel.app/api?username=[avollrath])
