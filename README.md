@@ -22,7 +22,7 @@
 
 - A variety of web applications, using modern web technologies
 - Dynamic and user-centric websites
-- Engaging digital products in both web and print
+- Engaging (digital) products in both web and print
 - Explorations in 3D modeling and web graphics
 
 ### 📖 A bit more about me:
@@ -30,5 +30,3 @@
 - 💬 **Ask me about**: Web development, design, photography, or anything tech-related. I love to discuss and help with creative and technical topics.
 - 📫 **How to reach me:**: Reach me via the email in my profile.
 - ⚡ **Fun fact:**: I'm an avid player of Rocket League and enjoy challenging myself with piano, chess, and sports like badminton, biking, and table tennis.
-
-![Github stats](https://github-readme-stats.vercel.app/api?username=[avollrath])
