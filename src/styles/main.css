@@ -3,8 +3,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lekton:ital,wght@0,400;0,700;1,400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap');
 
-body {
-    scrollbar-gutter: stable both-edges;
+
+html {
+    scrollbar-gutter: stable;
 }
 
 
@@ -268,28 +269,21 @@ body {
     color: #F6723A;
 }
 
-.gradient-underline {
-    text-decoration: underline;
-    text-decoration-color: transparent;
-    /* Use transparent color initially */
-    background-clip: text;
-    /* Ensure the background clip applies to the text */
+
+.nav-menu {
+    position: relative;
+    /* Ensure the nav menu has a positioning context */
 }
 
-.gradient-underline::after {
-    content: '';
-    display: block;
-    height: 5px;
-    /* Adjust the height of the underline as needed */
-    background: #F6723A;
-    border-radius: 50px;
-    width: 110%;
-    transform: translateX(-5%)
-}
-
-
-.nav-item.active~.underline {
-    width: 100%;
+.nav-underline {
+    position: absolute;
+    bottom: 0;
+    /* Position it at the bottom of the nav menu */
+    height: 4px;
+    width: 0px;
+    background-color: #F6723A;
+    transition: left 0.5s ease-out, width 0.5s ease-out;
+    border-radius: 3px;
 }
 
 

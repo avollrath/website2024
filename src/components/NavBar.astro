@@ -52,3 +52,43 @@ function isPathActive(itemPath, additionalPaths = []) {
 		<div id="nav-underline" class="nav-underline"></div>
 	</div>
 </nav>
+
+<script is:inline>
+	let lastUnderlinePosition = { left: 0, width: 0 }
+
+	function saveUnderlinePosition() {
+		const underline = document.querySelector('#nav-underline')
+		if (underline) {
+			const style = window.getComputedStyle(underline)
+			lastUnderlinePosition.left = parseInt(style.left, 10)
+			lastUnderlinePosition.width = parseInt(style.width, 10)
+		}
+	}
+
+	function updateUnderline() {
+		const underline = document.querySelector('#nav-underline')
+		const activeItem = document.querySelector('.nav-item.gradient-underline')
+		if (!activeItem) return
+
+		const navMenu = document.querySelector('#nav-menu')
+		const activeItemRect = activeItem.getBoundingClientRect()
+		const navMenuRect = navMenu.getBoundingClientRect()
+
+		const newLeft = activeItemRect.left - navMenuRect.left
+		const newWidth = activeItem.offsetWidth
+
+		const movingRight = newLeft > lastUnderlinePosition.left
+
+		underline.style.left = `${movingRight ? lastUnderlinePosition.left : lastUnderlinePosition.left + lastUnderlinePosition.width - newWidth}px`
+		underline.style.width = `${lastUnderlinePosition.width}px`
+
+		requestAnimationFrame(() => {
+			underline.style.left = `${newLeft}px`
+			underline.style.width = `${newWidth}px`
+		})
+	}
+
+	document.addEventListener('astro:before-swap', saveUnderlinePosition)
+	document.addEventListener('astro:after-swap', updateUnderline)
+	document.addEventListener('DOMContentLoaded', updateUnderline)
+</script>
