@@ -287,25 +287,12 @@ html {
 }
 
 
-.globe-container {
-    width: 100%;
-    /* Adjust based on layout */
-    height: 500px;
-    /* Adjust as needed */
-    position: relative;
-    /* Or 'absolute', depending on your layout */
-    z-index: 1;
-    /* Adjust based on your stacking context */
-}
-
-
 
 /* Define the transition effect for the text-transition class */
 .long-transition {
     transition: 1s ease;
 }
 
-/* Ensure these styles are within your Tailwind CSS or a custom CSS file */
 
 @media screen and (max-width: 1024px) {
     #nav-menu {
