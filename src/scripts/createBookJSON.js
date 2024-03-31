@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 import fs from 'fs'
 
-let apiKey = 'AIzaSyDGK29IJH_EySONpF1VYQnNNqzCGk4DINU'
+let apiKey = GOOGLE API
 
 const favoriteBookISBNs = [
 	'9781936976225', // Wir Kinder vom Bahnhof Zoo
