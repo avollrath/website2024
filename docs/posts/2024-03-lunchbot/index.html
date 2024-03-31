@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="en" class="dark"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Building a Real-Time Lunch Menu Bot for Workplace Communication</title><meta name="description" content="Join us on a journey of building LunchBot, a real-time lunch menu bot for workplace communication, using Node.js, Cheerio, and Slack API."><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/astro/about.gjiZ995N.css" />
+<link rel="stylesheet" href="/astro/2024-02-book-covers.-JMwpAA-.css" /><script type="module" src="/astro/hoisted.rLmVEpMu.js"></script></head> <body class="bg-gray-200 font-body text-dark-text dark:bg-dark-bg dark:text-white"> <div class="grain"></div> <div class="container mx-auto flex min-h-screen w-full max-w-1920 flex-col px-4 py-8"> <nav class="nav-bar border-gradient mb-8 flex items-center justify-between rounded-lg bg-white from-dark-card to-darker-card px-12 py-6 dark:bg-gradient-to-r lg:col-span-3"> <div class="theme-switch-wrapper" data-astro-cid-oemx5le4> <label class="theme-switch" for="checkbox" id="themeToggle" data-astro-cid-oemx5le4> <input type="checkbox" id="checkbox" data-astro-cid-oemx5le4> <div class="slider" data-astro-cid-oemx5le4> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#F6723A" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun" data-astro-cid-oemx5le4> <circle cx="12" cy="12" r="5" data-astro-cid-oemx5le4></circle> <line x1="12" y1="1" x2="12" y2="3" data-astro-cid-oemx5le4></line> <line x1="12" y1="21" x2="12" y2="23" data-astro-cid-oemx5le4></line> <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" data-astro-cid-oemx5le4></line> <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" data-astro-cid-oemx5le4></line> <line x1="1" y1="12" x2="3" y2="12" data-astro-cid-oemx5le4></line> <line x1="21" y1="12" x2="23" y2="12" data-astro-cid-oemx5le4></line> <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" data-astro-cid-oemx5le4></line> <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" data-astro-cid-oemx5le4></line> </svg> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#F6723A" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon" data-astro-cid-oemx5le4> <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" data-astro-cid-oemx5le4></path> </svg> </div> </label> </div>  <!-- Hamburger Icon --> <div class="flex cursor-pointer flex-col space-y-2 lg:hidden" id="hamburger"> <span class="block h-0.5 w-8 bg-dark-text"></span> <span class="block h-0.5 w-8 bg-dark-text"></span> <span class="block h-0.5 w-8 bg-dark-text"></span> </div> <div class="invisible z-30 flex select-none flex-col font-header text-xl md:flex-row lg:visible" id="nav-menu"> <a href="https://vollrath.dev//" class="nav-item px-4 py-2 text-gray-500 transition hover:text-dark-text " id="home-link"> Home </a><a href="https://vollrath.dev//about" class="nav-item px-4 py-2 text-gray-500 transition hover:text-dark-text " id="about-link"> About </a><a href="https://vollrath.dev//now" class="nav-item px-4 py-2 text-gray-500 transition hover:text-dark-text " id="now-link"> Now </a><a href="https://vollrath.dev//renders" class="nav-item px-4 py-2 text-gray-500 transition hover:text-dark-text " id="renders-link"> Renders </a><a href="https://vollrath.dev//blog" class="nav-item px-4 py-2 text-gray-500 transition hover:text-dark-text gradient-underline dark:text-white" id="blog-link"> Blog </a> <div id="nav-underline" class="nav-underline"></div> </div> </nav> <script>
+	let lastUnderlinePosition = { left: 0, width: 0 }
+
+	function saveUnderlinePosition() {
+		const underline = document.querySelector('#nav-underline')
+		if (underline) {
+			const style = window.getComputedStyle(underline)
+			lastUnderlinePosition.left = parseInt(style.left, 10)
+			lastUnderlinePosition.width = parseInt(style.width, 10)
+		}
+	}
+
+	function updateUnderline() {
+		const underline = document.querySelector('#nav-underline')
+		const activeItem = document.querySelector('.nav-item.gradient-underline')
+		if (!activeItem) return
+
+		const navMenu = document.querySelector('#nav-menu')
+		const activeItemRect = activeItem.getBoundingClientRect()
+		const navMenuRect = navMenu.getBoundingClientRect()
+
+		const newLeft = activeItemRect.left - navMenuRect.left
+		const newWidth = activeItem.offsetWidth
+
+		const movingRight = newLeft > lastUnderlinePosition.left
+
+		underline.style.left = `${movingRight ? lastUnderlinePosition.left : lastUnderlinePosition.left + lastUnderlinePosition.width - newWidth}px`
+		underline.style.width = `${lastUnderlinePosition.width}px`
+
+		requestAnimationFrame(() => {
+			underline.style.left = `${newLeft}px`
+			underline.style.width = `${newWidth}px`
+		})
+	}
+
+	document.addEventListener('astro:before-swap', saveUnderlinePosition)
+	document.addEventListener('astro:after-swap', updateUnderline)
+	document.addEventListener('DOMContentLoaded', updateUnderline)
+</script> <!-- Main content area with 12-column grid layout --> <main class="flex-grow"> <div class="grid grid-cols-1 gap-8 xl:grid-cols-3 2xl:grid-cols-12">  <div class="lg:col-span-9 dark:bg-gradient-to-r from-dark-card to-darker-card px-48 py-24 bg-white rounded-lg flex flex-col items-center border-gradient"> <header class="blog-header text-center"> <h1 class="text-5xl font-header tracking-wide leading-snug mb-4 long-transition">Building a Real-Time Lunch Menu Bot for Workplace Communication</h1> <div class="metadata flex flex-col mb-4"> <span class="text-lg">30.03.2024</span> <div class="inline-flex flex-wrap justify-center gap-2 mt-2"> <span key="node.js" class="text-lg bg-dark-text text-white px-2 py-1 rounded font-bold">node.js</span><span key="cheerio" class="text-lg bg-dark-text text-white px-2 py-1 rounded font-bold">cheerio</span><span key="slack" class="text-lg bg-dark-text text-white px-2 py-1 rounded font-bold">slack</span><span key="bot" class="text-lg bg-dark-text text-white px-2 py-1 rounded font-bold">bot</span><span key="project" class="text-lg bg-dark-text text-white px-2 py-1 rounded font-bold">project</span><span key="workplace" class="text-lg bg-dark-text text-white px-2 py-1 rounded font-bold">workplace</span> </div> </div> <img src="./src/images/blog/lunchbot.png" alt="Illustration of a lunch table with various dishes, representing LunchBot project." class="w-full mb-6 rounded-xl"> </header> <article class="blog-content text-left text-xl leading-relaxed"> <div class="prose dark:prose-invert max-w-none
+  prose-h1:font-bold prose-h2:font-header prose-h2:font-normal prose-h1:text-xl text-gray-500 dark:text-white prose-strong:text-dark-text
+  prose-a:text-dark-text prose-a:font-bold prose-p:text-justify prose-xl prose-img:rounded-xl
+  prose-headings:text-dark-text">  <p>Welcome to the LunchBot project, where we explore the development of a real-time lunch menu bot designed to enhance workplace communication. Join us on this journey as we delve into the technologies, challenges, and insights behind building LunchBot.</p>
+<h2 id="introduction">Introduction</h2>
+<p>Lunch breaks are an essential part of the workday, providing employees with much-needed sustenance and relaxation. However, deciding what to eat can sometimes be a daunting task, leading to indecision and wasted time. LunchBot aims to solve this problem by providing employees with real-time access to the daily lunch menu, facilitating informed dining choices and streamlining workplace communication.</p>
+<h2 id="technologies-used">Technologies Used</h2>
+<h3 id="nodejs">Node.js</h3>
+<p>Node.js serves as the foundation of LunchBot, providing a runtime environment for executing JavaScript code on the server-side. Its event-driven, non-blocking I/O model makes it well-suited for handling asynchronous operations, such as web scraping and API requests.</p>
+<h3 id="cheerio">Cheerio</h3>
+<p>Cheerio is a fast, flexible, and lightweight library for parsing and manipulating HTML documents using jQuery-style syntax. It plays a crucial role in LunchBot’s web scraping functionality, allowing us to extract menu data from restaurant websites with ease.</p>
+<h3 id="slack-api">Slack API</h3>
+<p>The Slack API enables seamless integration with Slack, a popular messaging platform used by many workplaces for internal communication. By leveraging the Slack API, LunchBot can deliver real-time menu updates directly to designated Slack channels, keeping employees informed and engaged.</p>
+<h2 id="building-lunchbot">Building LunchBot</h2>
+<h3 id="web-scraping">Web Scraping</h3>
+<p>LunchBot fetches daily lunch menus from restaurant websites using web scraping techniques. It utilizes Cheerio to parse HTML content, extract relevant menu information, and format it for display.</p>
+<h3 id="slack-integration">Slack Integration</h3>
+<p>Once the menu data is obtained, LunchBot posts it to designated Slack channels using the Slack API. This integration allows employees to access the daily menu without leaving the Slack environment, promoting efficiency and convenience.</p>
+<h2 id="challenges-and-learnings">Challenges and Learnings</h2>
+<p>Throughout the development process, I encountered various challenges and gained valuable insights:</p>
+<ol>
+<li>
+<p><strong>Web Scraping</strong>: Extracting menu data from restaurant websites posed challenges due to variations in website structures and content formatting. Implementing robust error handling and data parsing techniques was crucial in ensuring reliable data extraction.</p>
+</li>
+<li>
+<p><strong>Slack Integration</strong>: Integrating LunchBot with Slack required understanding the Slack API and implementing message formatting according to Slack’s guidelines. Experimentation and documentation referencing helped overcome integration hurdles and achieve seamless communication with Slack.</p>
+</li>
+<li>
+<p><strong>Asynchronous Operations</strong>: Handling asynchronous operations, such as web scraping and API requests, required careful management of callbacks and promises. Leveraging Node.js’s asynchronous programming features, including async/await, improved code readability and maintainability.</p>
+</li>
+<li>
+<p><strong>Error Handling</strong>: Implementing comprehensive error handling mechanisms was essential, especially when dealing with external dependencies and network operations. Proper error logging and exception handling facilitated effective debugging and troubleshooting.</p>
+</li>
+</ol>
+<h2 id="conclusion">Conclusion</h2>
+<p>The development of LunchBot was an enriching experience that allowed me to explore the intersection of technology and workplace communication. By leveraging Node.js, Cheerio, and the Slack API, I was able to create a versatile and efficient solution for providing real-time lunch menu updates to employees.</p>
+<p>Moving forward, I plan to continue refining LunchBot’s features, adding support for additional restaurants, and enhancing its user interface. With LunchBot, I aim to revolutionize lunchtime at workplaces, making dining decisions easier and more enjoyable for employees.</p>
+<p>Stay tuned for updates on LunchBot’s development journey, and feel free to reach out with any questions or feedback. Happy lunching!</p>
+<p><img  src="/astro/lunchbot.Ddco5qhV_Z1BVwya.webp" alt="LunchBot" width="1114" height="446" loading="lazy" decoding="async">
+<em>The LunchBot project aims to streamline workplace communication and dining decisions.</em></p>  </div> </article> </div> <div class="lg:col-span-3"> <aside class="sidebar dark:bg-gradient-to-r from-dark-card to-darker-card py-24 px-12 bg-white rounded-lg flex flex-col items-start border-gradient"> <h2 class="text-4xl tracking-wide font-header mb-12">Other Posts</h2> <ul class="space-y-4"> <li key="/posts/2024-02-book-covers" class="flex flex-col mb-12"> <a href="/posts/2024-02-book-covers" class="group"> <div class="image-container rounded-md overflow-hidden"> <img src="./../src/images/blog/books.jpg" alt="A collection of book covers displayed on a digital screen." class="w-full mb-2 object-cover aspect-video group-hover:scale-125 transition-transform duration-300 ease-in-out"> </div> <span class="text-lg font-header tracking-wide">Fetching and Displaying Book Covers Using Google Books API</span> </a> <span class="text-xl text-gray-500">08.02.2024</span> </li><li key="/posts/2024-02-pixoo" class="flex flex-col mb-12"> <a href="/posts/2024-02-pixoo" class="group"> <div class="image-container rounded-md overflow-hidden"> <img src="./src/images/blog/pixoo.jpg" alt="A creative representation of the chess rating display project." class="w-full mb-2 object-cover aspect-video group-hover:scale-125 transition-transform duration-300 ease-in-out"> </div> <span class="text-lg font-header tracking-wide">Building a Real-Time Chess Rating Display with Python and Pixoo</span> </a> <span class="text-xl text-gray-500">30.01.2024</span> </li><li key="/posts/2024-02-spotify" class="flex flex-col mb-12"> <a href="/posts/2024-02-spotify" class="group"> <div class="image-container rounded-md overflow-hidden"> <img src="https://miro.medium.com/v2/resize:fit:1400/1*CEFFWhadfveAWq4yTh3FBQ.png" alt="Spotify logo with top 5 tracks" class="w-full mb-2 object-cover aspect-video group-hover:scale-125 transition-transform duration-300 ease-in-out"> </div> <span class="text-lg font-header tracking-wide">Analyzing Spotify&#39;s Top 5 Tracks</span> </a> <span class="text-xl text-gray-500">08.08.2022</span> </li><li key="/posts/2024-02-watchface" class="flex flex-col mb-12"> <a href="/posts/2024-02-watchface" class="group"> <div class="image-container rounded-md overflow-hidden"> <img src="https://i.pinimg.com/originals/7b/af/fe/7baffe3fd8b737032792d3462bc34b77.jpg" alt="A creative representation of watchface." class="w-full mb-2 object-cover aspect-video group-hover:scale-125 transition-transform duration-300 ease-in-out"> </div> <span class="text-lg font-header tracking-wide">Creating a VSCode-Inspired Watch Face for Garmin Forerunner 55 Music</span> </a> <span class="text-xl text-gray-500">08.08.2022</span> </li><li key="/posts/2024-03-lunchbot" class="flex flex-col mb-12"> <a href="/posts/2024-03-lunchbot" class="group"> <div class="image-container rounded-md overflow-hidden"> <img src="./src/images/blog/lunchbot.png" alt="Illustration of a lunch table with various dishes, representing LunchBot project." class="w-full mb-2 object-cover aspect-video group-hover:scale-125 transition-transform duration-300 ease-in-out"> </div> <span class="text-lg font-header tracking-wide">Building a Real-Time Lunch Menu Bot for Workplace Communication</span> </a> <span class="text-xl text-gray-500">30.03.2024</span> </li> </ul> </aside> </div>  <!-- Slot for page-specific content --> </div> </main> <footer class="footer-bar py-12 flex justify-center items-center text-center text-gray-500"> <p>Handmade with ❤️ by <strong class="text-dark-text">André Vollrath</strong> © 2024. <br>All rights reserved.</p> </footer> </div>   </body> </html>
