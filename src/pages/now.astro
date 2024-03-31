@@ -1,13 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import FavoriteBooks from '../components/FavoriteBooks.astro'
-import Spotify from '../components/Spotify.astro'
 import NowEntry from '../components/NowEntry.astro'
+
+import threejsLogoWhite from '../images/now/threejswhite.svg'
+import threejsLogoBlack from '../images/now/threejsblack.svg'
+import enyaCover from '../images/now/enya.jpg'
+
 import tailwindLogoDark from '../images/now/tailwindcss-logotype-white.svg'
 import tailwindLogo from '../images/now/tailwindcss-logotype.svg'
 import astroLogoDark from '../images/now/astro-logo-dark.svg'
 import astroLogo from '../images/now/astro-logo-light-gradient.svg'
 import amelieCover from '../images/now/amelie.jpeg'
+
 import { Image } from 'astro:assets'
 ---
 
@@ -47,40 +52,73 @@ import { Image } from 'astro:assets'
 		</div>
 	</div>
 
-	<NowEntry date="2024-02-06" colSpan="2xl:col-span-6 col-span-3">
-		<div class="mb-4 flex flex-wrap">
+	<div class="col-span-3 2xl:col-span-6">
+		<NowEntry date="2024-03-31">
+			<div class="mb-4 flex flex-wrap">
+				<!-- Add any relevant images like logos for Three.js if you have them -->
+				<Image
+					src={threejsLogoWhite}
+					class="mr-2 hidden h-auto w-72 dark:inline"
+					alt="Three.js Logo"
+				/>
+				<Image src={threejsLogoBlack} class="mr-2 h-auto w-72 dark:hidden" alt="Three.js Logo" />
+			</div>
+			<p>
+				I'm currently deepening my understanding of 3D web graphics through learning <strong
+					class="text-dark-text">Three.js</strong
+				>. I'm engaging with the <strong class="text-dark-text">Three.js Journey course</strong> by Bruno
+				Simon, which has been incredibly insightful, pushing the boundaries of what I thought was possible
+				in web development.
+			</p>
+
+			<hr class="my-8" />
+			<h3 class="mb-8">Currently practicing:</h3>
+
+			<p>
+				Musically, I've taken on the challenge of learning <strong class="text-dark-text"
+					>"Only Time"</strong
+				> by Enya on the piano. This beautiful melody offers a tranquil respite from the daily hustle
+				and allows me to improve my musical skills in a serene and enjoyable manner.
+			</p>
+			<!-- Assuming you have a cover image for "Only Time" -->
+			<Image src={enyaCover} alt="Sheet Music of Only Time by Enya" class="my-12 h-auto w-40" />
+		</NowEntry>
+
+		<NowEntry date="2024-02-06">
+			<div class="mb-4 flex flex-wrap">
+				<Image
+					src={tailwindLogoDark}
+					class="hidden h-auto w-72 dark:inline"
+					alt="Tailwind CSS Logo"
+				/>
+				<Image src={astroLogo} class="mr-2 hidden h-auto w-72 dark:inline" alt="Astro.js Logo" />
+				<Image src={tailwindLogo} class="h-auto w-72 dark:hidden" alt="Tailwind CSS Logo" />
+				<Image src={astroLogoDark} class="mr-2 h-auto w-72 dark:hidden" alt="Astro.js Logo" />
+			</div>
+			<p>
+				I'm currently immersed in the world of web development, exploring the capabilities of <strong
+					class="text-dark-text">Astro.js</strong
+				> and <strong class="text-dark-text">Tailwind CSS</strong>
+				to craft efficient and responsive web applications. In fact, these are the very technologies
+				used to build the website you are viewing right now, showcasing their practical applications
+				in a real-world project.
+			</p>
+
+			<hr class="my-8" />
+			<h3 class="mb-8">Currently practicing:</h3>
+
+			<p>
+				I'm also practicing the piano piece <strong class="text-dark-text"
+					>"Comptine d'un autre été"</strong
+				> by Yann Tiersen, famously known from the movie Amélie.
+			</p>
 			<Image
-				src={tailwindLogoDark}
-				class="hidden h-auto w-72 dark:inline"
-				alt="Tailwind CSS Logo"
+				src={amelieCover}
+				alt="Sheet Music of Comptine d'un autre été"
+				class="my-12 h-auto w-40"
 			/>
-			<Image src={astroLogo} class="mr-2 hidden h-auto w-72 dark:inline" alt="Astro.js Logo" />
-			<Image src={tailwindLogo} class="h-auto w-72 dark:hidden" alt="Tailwind CSS Logo" />
-			<Image src={astroLogoDark} class="mr-2 h-auto w-72 dark:hidden" alt="Astro.js Logo" />
-		</div>
-		<p>
-			I'm currently immersed in the world of web development, exploring the capabilities of <strong
-				class="text-dark-text">Astro.js</strong
-			> and <strong class="text-dark-text">Tailwind CSS</strong>
-			to craft efficient and responsive web applications. In fact, these are the very technologies used
-			to build the website you are viewing right now, showcasing their practical applications in a real-world
-			project.
-		</p>
-
-		<hr class="my-8" />
-		<h3 class="mb-8">Currently practicing:</h3>
-
-		<p>
-			I'm also practicing the piano piece <strong class="text-dark-text"
-				>"Comptine d'un autre été"</strong
-			> by Yann Tiersen, famously known from the movie Amélie.
-		</p>
-		<Image
-			src={amelieCover}
-			alt="Sheet Music of Comptine d'un autre été"
-			class="my-12 h-auto w-40"
-		/>
-	</NowEntry>
+		</NowEntry>
+	</div>
 
 	<div class="col-span-3 flex flex-col">
 		<FavoriteBooks bookWidth="w-24" />

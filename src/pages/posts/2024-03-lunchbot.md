@@ -5,7 +5,7 @@ pubDate: '2024-03-30'
 description: 'Join us on a journey of building LunchBot, a real-time lunch menu bot for workplace communication, using Node.js, Cheerio, and Slack API.'
 author: 'Lunch Enthusiast'
 image:
-  url: './src/images/blog/lunchbot.jpg'
+  url: './src/images/blog/lunchbot.png'
   alt: 'Illustration of a lunch table with various dishes, representing LunchBot project.'
 tags: ['node.js', 'cheerio', 'slack', 'bot', 'project', 'workplace']
 teaser: 'Embark on an exciting adventure as we delve into the creation of LunchBot, a real-time lunch menu bot designed to streamline workplace communication. Learn about the technologies behind LunchBot, the challenges encountered during development, and the lessons learned along the way. Get ready to revolutionize lunchtime at your workplace with LunchBot!'
@@ -61,5 +61,5 @@ Moving forward, I plan to continue refining LunchBot's features, adding support 
 
 Stay tuned for updates on LunchBot's development journey, and feel free to reach out with any questions or feedback. Happy lunching!
 
-![LunchBot](./../../images/blog/lunchbot.jpg)
+![LunchBot](./../../images/blog/lunchbot.png)
 _The LunchBot project aims to streamline workplace communication and dining decisions._

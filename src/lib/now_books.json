@@ -1,23 +1,42 @@
 {
-  "date": "2024-02-06",
-  "books": [
-    {
-      "isbn": "9780451529701",
-      "title": "The Count of Monte Cristo",
-      "authors": "Alexandre Dumas",
-      "coverURL": "http://books.google.com/books/content?id=CCeTEAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-    },
-    {
-      "isbn": "9781984862075",
-      "title": "How to Win at Chess",
-      "authors": "Levy Rozman",
-      "coverURL": "http://books.google.com/books/content?id=r3W4EAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-    },
-    {
-      "isbn": "9780063251922",
-      "title": "Demon Copperhead",
-      "authors": "Barbara Kingsolver",
-      "coverURL": "http://books.google.com/books/content?id=w7ntzgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-    }
-  ]
+	"2024-02-06": [
+		{
+			"isbn": "9780451529701",
+			"title": "The Count of Monte Cristo",
+			"authors": "Alexandre Dumas",
+			"coverURL": "http://books.google.com/books/content?id=EhqNGA9gM94C&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+		},
+		{
+			"isbn": "9781984862075",
+			"title": "How to Win at Chess",
+			"authors": "Levy Rozman",
+			"coverURL": "http://books.google.com/books/content?id=r3W4EAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+		},
+		{
+			"isbn": "9780063251922",
+			"title": "Demon Copperhead",
+			"authors": "Barbara Kingsolver",
+			"coverURL": "http://books.google.com/books/content?id=w7ntzgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+		}
+	],
+	"2024-03-31": [
+		{
+			"isbn": "9780374104092",
+			"title": "Annihilation",
+			"authors": "Jeff VanderMeer",
+			"coverURL": "http://books.google.com/books/content?id=2cl7AgAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+		},
+		{
+			"isbn": "9780671690090",
+			"title": "The Diary of a Young Girl",
+			"authors": "Anne Frank",
+			"coverURL": "http://books.google.com/books/content?id=1OmDuE5bXZsC&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+		},
+		{
+			"isbn": "9780671211356",
+			"title": "Logical Chess: Move By Move",
+			"authors": "Irving Chernev",
+			"coverURL": "http://books.google.com/books/content?id=6RrNAQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+		}
+	]
 }

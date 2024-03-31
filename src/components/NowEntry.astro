@@ -1,28 +1,28 @@
-
 ---
-import NowBooks from '../components/NowBooks.astro';
-const inputDate = Astro.props.date;
-const colSpan = Astro.props.colSpan || 'lg:col-span-6'; // Set default col-span value
-
-
+import NowBooks from '../components/NowBooks.astro'
+const booksDate = Astro.props.date
+const colSpan = Astro.props.colSpan || 'lg:col-span-6' // Set default col-span value
 
 // Function to format date from YYYY-MM-DD to D.M.YYYY
 function formatDate(dateString) {
-    const date = new Date(dateString);
-    return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
+	const date = new Date(dateString)
+	return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
 }
 
-const formattedDate = formatDate(inputDate);
-
+const formattedDate = formatDate(booksDate)
 ---
+
 <div class={`${colSpan} flex flex-col`}>
-<div class="dark:bg-gradient-to-r mb-8 long-transition from-dark-card to-darker-card sm:p-12 p-6 text-xl text-gray-500 dark:text-white bg-white rounded-lg flex flex-col border-gradient">
-    <h1 class="font-header text-center xl:text-9xl text-7xl long-transition">{formattedDate}</h1>
-</div>
+	<div
+		class="long-transition border-gradient mb-8 flex flex-col rounded-lg bg-white from-dark-card to-darker-card p-6 text-xl text-gray-500 dark:bg-gradient-to-r dark:text-white sm:p-12"
+	>
+		<h1 class="long-transition text-center font-header text-7xl xl:text-9xl">{formattedDate}</h1>
+	</div>
 
-<div class="dark:bg-gradient-to-r long-transition from-dark-card to-darker-card md:p-24 sm:p-12 p-6 text-xl text-gray-500 dark:text-white bg-white rounded-lg flex flex-col border-gradient">
-            <slot />
-        <NowBooks date={inputDate} />
- </div>
+	<div
+		class="long-transition border-gradient mb-24 flex flex-col rounded-lg bg-white from-dark-card to-darker-card p-6 text-xl text-gray-500 dark:bg-gradient-to-r dark:text-white sm:p-12 md:p-24"
+	>
+		<slot />
+		<NowBooks booksDate={booksDate} />
+	</div>
 </div>
-
