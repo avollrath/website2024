@@ -1,5 +1,5 @@
 ---
-import ThemeIcon from './ThemeIcon.astro'
+
 
 const currentPath = new URL(Astro.request.url).pathname
 const isDev = import.meta.env.DEV
@@ -21,19 +21,18 @@ function isPathActive(itemPath, additionalPaths = []) {
 ---
 
 <nav
-	class="nav-bar border-gradient mb-8 flex items-center justify-between rounded-lg bg-white from-dark-card to-darker-card px-12 py-6 dark:bg-gradient-to-r lg:col-span-3"
+	class="flex items-center justify-between px-12 py-6 mb-8 bg-white rounded-lg nav-bar border-gradient from-dark-card to-darker-card dark:bg-gradient-to-r lg:col-span-3"
 >
-	<ThemeIcon />
 
 	<!-- Hamburger Icon -->
-	<div class="flex cursor-pointer flex-col space-y-2 lg:hidden" id="hamburger">
+	<div class="flex flex-col space-y-2 cursor-pointer lg:hidden" id="hamburger">
 		<span class="block h-0.5 w-8 bg-dark-text"></span>
 		<span class="block h-0.5 w-8 bg-dark-text"></span>
 		<span class="block h-0.5 w-8 bg-dark-text"></span>
 	</div>
 
 	<div
-		class="invisible z-30 flex select-none flex-col font-header text-xl md:flex-row lg:visible"
+		class="z-30 flex flex-col invisible text-xl select-none font-header md:flex-row lg:visible"
 		id="nav-menu"
 	>
 		{
