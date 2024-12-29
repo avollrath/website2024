@@ -1,9 +1,11 @@
 ---
-
+import { Image } from 'astro:assets';
+import vollrathLogo from '../images/vollrath_logo.png';
 
 const currentPath = new URL(Astro.request.url).pathname
 const isDev = import.meta.env.DEV
 const baseUrl = isDev ? '' : Astro.site
+
 
 const navItems = [
 	{ path: '/', label: 'Home', id: 'home-link' },
@@ -21,8 +23,11 @@ function isPathActive(itemPath, additionalPaths = []) {
 ---
 
 <nav
-	class="flex items-center justify-between px-12 py-6 mb-8 bg-white rounded-lg nav-bar border-gradient from-dark-card to-darker-card dark:bg-gradient-to-r lg:col-span-3"
+	class="flex items-center justify-between px-12 py-6 mb-8 bg-white rounded-lg shadow-lg nav-bar border-gradient from-dark-card to-darker-card dark:bg-gradient-to-r lg:col-span-3"
 >
+<!-- <Image src={vollrathLogo} class="w-32 h-auto mr-2" alt="Vollrath Logo" /> -->
+
+<span class="text-3xl">👋</span>
 
 	<!-- Hamburger Icon -->
 	<div class="flex flex-col space-y-2 cursor-pointer lg:hidden" id="hamburger">
@@ -39,7 +44,7 @@ function isPathActive(itemPath, additionalPaths = []) {
 			navItems.map((item) => (
 				<a
 					href={`${baseUrl}${item.path}`}
-					class={`nav-item px-4 py-2 text-gray-500 transition hover:text-dark-text ${isPathActive(item.path, item.additionalPaths) ? 'gradient-underline dark:text-white' : ''}`}
+					class={`nav-item font-medium px-4 py-2 text-gray-400 transition hover:text-dark-text ${isPathActive(item.path, item.additionalPaths) ? 'gradient-underline font-bold  dark:text-white' : ''}`}
 					id={item.id}
 				>
 					{item.label}

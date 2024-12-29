@@ -37,7 +37,7 @@ export default {
         'dark-bg': '#0d0d0d',  // Adjust the hex value to match your design
         'dark-card': '#1a1a1a', // Adjust the hex value to match your design
         'darker-card': '#121212',
-        'dark-accent': '#757575', // Adjust the hex value to match your design
+        'dark-accent': '#959595', // Adjust the hex value to match your design
         'dark-text': '#038cd0', // Adjust the hex value to match your design
         'white': '#FFF',
         'orange': '#038cd0',

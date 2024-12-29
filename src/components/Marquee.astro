@@ -22,7 +22,7 @@ function shuffleAndDistribute(words) {
 const { words } = Astro.props;
 ---
 
-<section class="enable-animation font-header text-8xl long-transition text-gray-500 dark:text-white uppercase">
+<section class="text-gray-400 uppercase enable-animation font-header text-8xl long-transition dark:text-white">
   {Array.from({ length: 5 }).map((_, index) => {
     const shuffledWords = shuffleAndDistribute([...words]);
     return (

@@ -1,13 +1,19 @@
 @import url('./tailwind.css');
-@import url('https://fonts.googleapis.com/css2?family=Young+Serif&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lekton:ital,wght@0,400;0,700;1,400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
 
 
-html {
-    scrollbar-gutter: stable;
-}
+
+body {
+    --dot-bg: #edf2f6; 
+    --dot-color: rgb(238, 238, 238); 
+    --dot-size: 1px; 
+    --dot-space: 16px; 
+    background:
+      radial-gradient(circle, var(--dot-color) var(--dot-size), transparent calc(var(--dot-size) + 1px)) center / var(--dot-space) var(--dot-space),
+      var(--dot-bg);
+  }
+  
+  
 
 
 .grain {
@@ -30,7 +36,7 @@ html {
     z-index: -300;
     position: fixed;
     background-image: url(https://upload.wikimedia.org/wikipedia/commons/5/5c/Image_gaussian_noise_example.png);
-    opacity: 0.15;
+    opacity: 0.05;
     pointer-events: none;
     -webkit-animation: noise 1s steps(2) infinite;
     animation: noise 1s steps(2) infinite;
@@ -182,7 +188,7 @@ html {
 }
 
 .gradient-text {
-    color: #F6723A;
+    color: #005a9f;
 }
 
 .arrow-link {
@@ -196,7 +202,7 @@ html {
     height: 56px;
     /* Circle size */
     transition: transform 0.3s ease;
-    border: 3px solid #F6723A;
+    border: 3px solid #038cd0;
 }
 
 .arrow-link.white {
@@ -248,7 +254,7 @@ html {
     position: absolute;
     bottom: 0px;
     /* Adjust as needed */
-    right: 00px;
+    right: -160px;
     /* Adjust as needed */
     width: 660px;
     /* Adjust size as needed */
@@ -274,7 +280,7 @@ html {
 
 
 .bullets li::marker {
-    color: #F6723A;
+    color: #038cd0;
 }
 
 
@@ -289,7 +295,7 @@ html {
     /* Position it at the bottom of the nav menu */
     height: 4px;
     width: 0px;
-    background-color: #F6723A;
+    background-color: #038cd0;
     transition: left 0.5s ease-out, width 0.5s ease-out;
     border-radius: 3px;
 }
