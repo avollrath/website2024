@@ -27,7 +27,7 @@ export default {
       }),
 
       backgroundImage: {
-        'about-gradient': 'linear-gradient(32deg, rgba(9,9,121,1) 0%, rgba(0,212,255,1) 100%)',
+        'about-gradient': 'linear-gradient(32deg, rgb(69, 69, 186) 0%, rgba(0,212,255,1) 100%)',
       },
       textColor: {
         'transparent': 'transparent',

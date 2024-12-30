@@ -29,12 +29,12 @@ const { words } = Astro.props;
       <div class={`marquee ${index % 2 === 0 ? '' : 'marquee--reverse'}`}>
         <ul class="marquee__content">
           {shuffledWords.map((word, wordIndex) => (
-            <li key={`${index}-${wordIndex}`} class={wordIndex % 2 === 0 ? 'text-dark-text' : ''}>{word}</li>
+            <li key={`${index}-${wordIndex}`} class={wordIndex % 2 === 0 ? 'text-gradient' : ''}>{word}</li>
           ))}
         </ul>
         <ul class="marquee__content">
           {shuffledWords.map((word, wordIndex) => (
-            <li key={`${index}-${wordIndex}`} class={wordIndex % 2 === 0 ? 'text-dark-text' : ''}>{word}</li>
+            <li key={`${index}-${wordIndex}`} class={wordIndex % 2 === 0 ? 'text-gradient' : ''}>{word}</li>
           ))}
         </ul>
       </div>

@@ -14,7 +14,10 @@ body {
   }
   
   
-
+  .tippy-box[data-theme~='tomato'] {
+    background-color: tomato;
+    color: yellow;
+  }
 
 .grain {
     position: fixed;
@@ -95,12 +98,12 @@ body {
 }
 
 :root {
-    --border-gradient: none;
+    --border-gradient: linear-gradient(30deg, rgba(216, 216, 216, 0.226), rgba(255, 255, 255, 0.541), rgba(199, 199, 199, 0.304));
     /* Default to no gradient for light mode */
 }
 
 .dark {
-    --border-gradient: linear-gradient(30deg, rgba(90, 90, 90, 0.30), rgba(255, 255, 255, 0.301), rgba(90, 90, 90, 0.30));
+    --border-gradient: linear-gradient(30deg, rgba(179, 179, 179, 0.3), rgba(241, 241, 241, 0.551), rgba(90, 90, 90, 0.30));
     /* Gradient for dark mode */
 }
 
@@ -126,7 +129,7 @@ body {
 }
 
 .text-gradient {
-    background-image: linear-gradient(32deg, rgba(9,9,121,1) 0%, rgba(0,212,255,1) 100%);
+    background-image: linear-gradient(32deg, rgb(69, 69, 186) 0%, rgba(0,212,255,1) 100%);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -174,13 +177,13 @@ body {
 
 /* Custom Tooltip Theming */
 .tippy-box[data-theme='custom'] {
-    background-color: black;
+    background: linear-gradient(10deg, rgb(69, 69, 186) 0%, rgba(0,212,255,1) 100%);
     /* Black background */
     color: white;
     /* White text color */
     border-radius: 0.5rem;
     /* Slightly rounded corners */
-    padding: 1rem;
+    padding: 0.7rem;
     /* Padding inside the tooltip */
     font-size: 1.2rem;
     /* Larger font size */
@@ -250,18 +253,54 @@ body {
 
 }
 
-.avatar {
+.avatar-wrapper {
     position: absolute;
-    bottom: 0px;
-    /* Adjust as needed */
-    right: -160px;
-    /* Adjust as needed */
-    width: 660px;
-    /* Adjust size as needed */
+    bottom: -40px; 
+    right: -150px;
+    width: 800px; 
     height: auto;
     z-index: 0;
-    /* Ensure it's above other content */
-}
+  }
+  
+  .avatar-image {
+    display: block; 
+    width: 100%;
+    height: auto;   
+    position: relative; 
+  }
+  
+
+  .eye-container {
+    position: absolute; 
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  /* The eyes themselves */
+  .eye-left, .eye-right {
+    position: absolute; 
+    width: 60px;
+    height: 60px;
+    z-index: 2; /* ensure they’re on top of the avatar image */
+    transition: transform 200ms ease-out;
+  }
+  
+  /* Now tweak top/left or top/right to place them correctly. 
+     Because .eye-container is the full size of the avatar, 
+     you can use something like top: 30%; left: 40%, 
+     or exact px if you prefer. */
+  .eye-left {
+    top: 353px;
+    left: 335px;
+  }
+  
+  .eye-right {
+    top: 353px;
+    left: 476px;
+  }
 
 @media (max-width: 1024px) {
     .avatar {
@@ -271,10 +310,7 @@ body {
 
 
 .cool-contrast-gradient {
-    background: linear-gradient(45deg, #000000, #9b1717);
-    /* Blue to Purple gradient */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: rgb(0, 247, 255);
 }
 
 

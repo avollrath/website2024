@@ -12,19 +12,19 @@ console.log('Books for Selected Date:', booksForSelectedDate)
 ---
 
 <div>
-	<div class="mb-12 flex flex-col">
+	<div class="flex flex-col mb-12">
 		<hr class="my-8" />
 		<h3 class="mb-8">Currently reading:</h3>
 		{
 			booksForSelectedDate.map((book) => (
-				<div key={book.isbn} class="mb-12 flex items-center">
+				<div key={book.isbn} class="flex items-center mb-12">
 					<img
 						src={book.coverURL}
 						alt={`${book.title} Book Cover`}
-						class="mr-8 h-auto w-32 rounded-sm shadow-lg"
+						class="w-32 h-auto mr-8 rounded-sm shadow-lg"
 					/>
 					<div>
-						<p class="text-2xl font-bold text-dark-text">{book.title}</p>
+						<p class="text-2xl font-semibold text-dark-text">{book.title}</p>
 						<p>by {book.authors}</p>
 					</div>
 				</div>

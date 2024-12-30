@@ -3,12 +3,12 @@ const { title, htmlText, renderImageSrc, clayRenderImageSrc, transitionName, alt
 import { Image } from "astro:assets";
 ---
 
-<div class="flex flex-col 2xl:col-span-3 col-span-2">
+<div class="flex flex-col col-span-2 2xl:col-span-3">
   <div
-    class="dark:bg-gradient-to-r long-transition from-dark-card to-darker-card text-xl text-gray-500 dark:text-white bg-white rounded-lg flex flex-col border-gradient"
+    class="flex flex-col text-xl text-gray-400 bg-white rounded-lg dark:bg-gradient-to-r long-transition from-dark-card to-darker-card dark:text-white border-gradient"
   >
-    <div class="sm:p-12 p-6">
-      <h2 class="font-header tracking-wide self-start mb-8 text-2xl long-transition">
+    <div class="p-6 sm:p-12">
+      <h2 class="self-start mb-8 text-2xl tracking-wide font-header long-transition">
         {title}
       </h2>
       <p set:html={htmlText}></p>
@@ -16,9 +16,9 @@ import { Image } from "astro:assets";
   </div>
 </div>
 <div
-  class="2xl:col-span-9 col-span-2 dark:bg-gradient-to-r long-transition from-dark-card to-darker-card sm:p-12 p-6 text-xl text-gray-500 dark:text-white bg-white rounded-lg flex flex-col items-center border-gradient"
+  class="flex flex-col items-center col-span-2 p-6 text-xl text-gray-400 bg-white rounded-lg 2xl:col-span-9 dark:bg-gradient-to-r long-transition from-dark-card to-darker-card sm:p-12 dark:text-white border-gradient"
 >
-  <div class="image-container rounded-md">
+  <div class="rounded-md image-container">
     <Image
       src={renderImageSrc}
       transition:name={transitionName}
