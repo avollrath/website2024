@@ -18,7 +18,7 @@ const navItems = [
 function isPathActive(itemPath, additionalPaths = []) {
 	return (
 		currentPath === itemPath || additionalPaths.some((addPath) => currentPath.startsWith(addPath))
-	)
+		)
 }
 ---
 
@@ -44,7 +44,7 @@ function isPathActive(itemPath, additionalPaths = []) {
 			navItems.map((item) => (
 				<a
 					href={`${baseUrl}${item.path}`}
-					class={`nav-item font-medium px-4 py-2 text-gray-400 transition hover:text-dark-text ${isPathActive(item.path, item.additionalPaths) ? 'gradient-underline font-bold  dark:text-white' : ''}`}
+					class={`nav-item font-medium px-4 py-2 transition hover:text-dark-text ${isPathActive(item.path, item.additionalPaths) ? 'gradient-underline text-dark-text' : ' text-gray-400'}`}
 					id={item.id}
 				>
 					{item.label}
@@ -76,8 +76,8 @@ function isPathActive(itemPath, additionalPaths = []) {
 		const activeItemRect = activeItem.getBoundingClientRect()
 		const navMenuRect = navMenu.getBoundingClientRect()
 
-		const newLeft = activeItemRect.left - navMenuRect.left
-		const newWidth = activeItem.offsetWidth
+		const newLeft = activeItemRect.left +10 - navMenuRect.left
+		const newWidth = activeItem.offsetWidth -20
 
 		const movingRight = newLeft > lastUnderlinePosition.left
 

@@ -170,7 +170,7 @@ export { latestPost };
           track && track.external_urls && track.album && track.album.images[0] ? (
             <div key={track.id}>
               <a href={track.external_urls.spotify} target="_blank" title={`<strong class="font-semibold">${track.name}</strong> - ${track.artists.map((artist) => artist.name).join(", ")}`}>
-                <img src={track.album.images[0].url} alt={`Cover art for ${track.name}`} class="w-32 h-auto transition-transform duration-300 rounded-md shadow-lg hover:scale-105" />
+                <img src={track.album.images[0].url} alt={`Cover art for ${track.name}`} class="h-auto transition-transform duration-300 rounded-md shadow-lg w-28 hover:scale-105" />
               </a>
             </div>
           ) : null
@@ -197,16 +197,16 @@ export { latestPost };
       <h2 class="mb-4 text-4xl tracking-wide font-header long-transition">Links</h2>
       <div class="flex items-center justify-center flex-1">
         <div class="grid grid-cols-2 gap-4">
-          <a href="https://github.com/avollrath" target="_blank">
+          <a href="https://github.com/avollrath" target="_blank" title="GitHub">
             <img src={`/icons/github.png`} alt="GitHub" class="w-48 transition-transform hover:scale-105" />
           </a>
-          <a href="https://www.instagram.com/charliefeatherlight/" target="_blank">
+          <a href="https://www.instagram.com/charliefeatherlight/" target="_blank" title="Instagramm">
             <img src={`/icons/instagram.png`} alt="Instagram" class="w-48 transition-transform hover:scale-105" />
           </a>
-          <a href="https://www.linkedin.com/in/andrevollrath/" target="_blank">
+          <a href="https://www.linkedin.com/in/andrevollrath/" target="_blank" title="LinkedIn">
             <img src={`/icons/linkedin.png`} alt="LinkedIn" class="w-48 transition-transform hover:scale-105" />
           </a>
-          <a href="https://open.spotify.com/playlist/37i9dQZF1Fa1IIVtEpGUcU?si=0d61932237bf4497" target="_blank">
+          <a href="https://open.spotify.com/playlist/37i9dQZF1Fa1IIVtEpGUcU?si=0d61932237bf4497" target="_blank" title="Spotify">
             <img src={`/icons/spotify.png`} alt="Spotify" class="w-48 transition-transform hover:scale-105" />
           </a>
         </div>        
@@ -241,7 +241,9 @@ export { latestPost };
 
 </Layout>
 
-<script >
+<script is:inline>
+
+  function initEyes() {
   // Select each pupil (the two img elements)
   const eyes = document.querySelectorAll('.eye-left, .eye-right');
 
@@ -273,9 +275,12 @@ export { latestPost };
       const offsetX = clampedDistance * Math.cos(angle);
       const offsetY = clampedDistance * Math.sin(angle);
 
-      eye.style.transform = `translate(calc(-50% + ${offsetX}px), calc(-50% + ${offsetY}px))`;
+      eye.style.transform = `translate(calc(${offsetX}px), calc(${offsetY}px))`;
     });
   });
+  document.addEventListener('astro:after-swap', initEyes)
+};
+initEyes();
 </script>
 
 
