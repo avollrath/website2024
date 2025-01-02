@@ -1,4 +1,5 @@
 import fetch from 'node-fetch';
+import { readSpotifyCache, writeSpotifyCache } from './utils.js';
 
 let currentAccessToken = import.meta.env.SPOTIFY_ACCESS_TOKEN;
 
@@ -29,32 +30,49 @@ async function refreshAccessToken(refreshToken) {
   return data.access_token;
 }
 
-// Main function to get top tracks from Spotify
 async function getTopTracks(refreshToken) {
-  let response = await fetch('https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=10', {
-    headers: {
-      Authorization: `Bearer ${currentAccessToken}`
-    }
-  });
-
-  // Check if the access token was expired
-  if (response.status === 401) {
-    // Refresh the token
-    await refreshAccessToken(refreshToken);
-    // Retry the request with the new token
-    response = await fetch('https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=5', {
+  try {
+    let response = await fetch('https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=10', {
       headers: {
         Authorization: `Bearer ${currentAccessToken}`
       }
     });
-  }
 
-  if (!response.ok) {
-    throw new Error(`Error fetching top tracks: ${response.status}`);
-  }
+    // If 401, attempt token refresh, then retry
+    if (response.status === 401) {
+      await refreshAccessToken(refreshToken);
+      response = await fetch('https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=10', {
+        headers: { Authorization: `Bearer ${currentAccessToken}` }
+      });
+    }
 
-  const data = await response.json();
-  return data.items;
+    if (!response.ok) {
+      // If not OK, we throw so we jump to catch block
+      throw new Error(`Spotify API error: ${response.status}`);
+    }
+
+    // Succeeded, parse JSON
+    const data = await response.json();
+
+    // Cache the results for fallback
+    await writeSpotifyCache(data.items);
+
+    return data.items;
+  } catch (err) {
+    console.error('Error fetching top tracks:', err);
+
+    // If the fetch fails (network error or 5xx, etc.),
+    // fallback to reading the cache:
+    const cachedData = await readSpotifyCache();
+    if (cachedData) {
+      console.log('Returning cached Spotify tracks.');
+      return cachedData;
+    } else {
+      // If we have no cache, return empty array or handle gracefully
+      console.log('No cache available, returning empty array.');
+      return [];
+    }
+  }
 }
 
 async function getCurrentPlayingTrack(refreshToken) {
