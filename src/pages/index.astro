@@ -1,20 +1,19 @@
 ---
+import { getTopTracks } from '../scripts/getTopTracks.js'
+import Layout from '../layouts/Layout.astro'
+import Marquee from '../components/Marquee.astro'
+import latestRenderImage from '../images/renders/braunHF3.jpg'
+import latestRenderImageClay from '../images/renders/braunHF3-clay.jpg'
+import profileImage from '../images/profile.png'
+import { Image } from 'astro:assets'
 
-import { getTopTracks } from "../scripts/getTopTracks.js";
-import Layout from '../layouts/Layout.astro';
-import Marquee from '../components/Marquee.astro';
-import latestRenderImage from '../images/renders/braunHF3.jpg';
-import latestRenderImageClay from '../images/renders/braunHF3-clay.jpg';
-import profileImage from '../images/profile.png';
-import { Image } from 'astro:assets';
+const refreshToken = import.meta.env.SPOTIFY_REFRESH_TOKEN
 
-const refreshToken = import.meta.env.SPOTIFY_REFRESH_TOKEN;
-
-let topTracks = [];
+let topTracks = []
 try {
-  topTracks = await getTopTracks(refreshToken);
+	topTracks = await getTopTracks(refreshToken)
 } catch (error) {
-  console.error("Error fetching top tracks:", error);
+	console.error('Error fetching top tracks:', error)
 }
 
 // let currentPlayingTrack = null;
@@ -23,291 +22,428 @@ try {
 // } catch (error) {
 //   console.error("Error fetching currently playing track:", error);
 // }
- 
 
-const allPosts = await Astro.glob('../pages/posts/*.md');
-const latestPost = allPosts[0]; 
+const allPosts = await Astro.glob('../pages/posts/*.md')
+const latestPost = allPosts[0]
 
-export { latestPost };
-
+export { latestPost }
 ---
 
 <Layout title="André's Portfolio" description="Welcome to André's Portfolio">
-    
-        <!-- Intro Section -->
-        <div class="relative flex flex-col items-center px-12 py-24 bg-white rounded-lg shadow-lg xl:col-span-3 2xl:col-span-9 dark:dark:bg-gradient-to-r from-dark-card to-darker-card sm:flex-row border-gradient" >
-          <div class="z-10 flex-1">
-              <h1 class="text-6xl text-center lg:text-8xl font-header long-transition text-gradient md:mr-4 lg:text-left">Hi, I’m André,</h1>
-              <p class="z-10 max-w-screen-lg py-2 pr-2 my-12 text-2xl text-left bg-white/75 backdrop-blur rounded-xl sm:text-3xl/relaxed">
-                a Germany-born
-                <strong class="font-semibold">front-end developer</strong>
-                and
-                <strong class="font-semibold">designer</strong>
-                based in Helsinki. I’ve combined a
-                <strong class="font-semibold">strong design background</strong>
-                with hands-on
-                <strong class="font-semibold">coding expertise</strong>
-                to build engaging solutions, including a
-                <strong class="font-semibold">next-gen ATS</strong>
-                at
-                <strong class="font-semibold">TalentAdore</strong>.
-                Now I’m ready to bring my
-                <strong class="font-semibold">bilingual fluency</strong>
-                and
-                <strong class="font-semibold">global perspective</strong>
-                to
-                <strong class="font-semibold">Zürich’s</strong>
-                thriving tech scene, helping teams innovate through
-                <strong class="font-semibold">user-centric</strong>
-                experiences and modern web technologies.
-              </p>
-              
-          </div>
-          <div class="avatar-wrapper max-2xl:hidden" id="face">
-            <Image src={profileImage} alt="André's Avatar" class="avatar-image" />
-            <div class="eye-container">
-              <img src="/eye.png" alt="Left Eye" class="eye-left" />
-              <img src="/eye.png" alt="Right Eye" class="eye-right" />
-            </div>
-          </div>
-        </div>
+	<!-- Intro Section -->
+	<div
+		class="border-gradient relative flex flex-col items-center rounded-lg bg-white from-dark-card to-darker-card px-12 py-24 shadow-lg dark:dark:bg-gradient-to-r sm:flex-row xl:col-span-3 2xl:col-span-9"
+	>
+		<div class="z-10 flex-1">
+			<h1
+				class="long-transition text-gradient text-center font-header text-6xl md:mr-4 lg:text-left lg:text-8xl"
+			>
+				Hi, I’m André,
+			</h1>
+			<p
+				class="z-10 my-12 max-w-screen-lg rounded-xl bg-white/75 py-2 pr-2 text-left text-2xl backdrop-blur sm:text-3xl/relaxed"
+			>
+				a Germany-born
+				<strong class="font-semibold">front-end developer</strong>
+				and
+				<strong class="font-semibold">designer</strong>
+				based in Helsinki. I’ve combined a
+				<strong class="font-semibold">strong design background</strong>
+				with hands-on
+				<strong class="font-semibold">coding expertise</strong>
+				to build engaging solutions, including a
+				<strong class="font-semibold">next-gen ATS</strong>
+				at
+				<strong class="font-semibold">TalentAdore</strong>. Now I’m ready to bring my
+				<strong class="font-semibold">bilingual fluency</strong>
+				and
+				<strong class="font-semibold">global perspective</strong>
+				to
+				<strong class="font-semibold">Zürich’s</strong>
+				thriving tech scene, helping teams innovate through
+				<strong class="font-semibold">user-centric</strong>
+				experiences and modern web technologies.
+			</p>
+		</div>
+		<div class="avatar-wrapper max-2xl:hidden" id="face">
+			<Image src={profileImage} alt="André's Avatar" class="avatar-image" />
+			<div class="eye-container">
+				<img src="/eye.png" alt="Left Eye" class="eye-left" />
+				<img src="/eye.png" alt="Right Eye" class="eye-right" />
+			</div>
+		</div>
+	</div>
 
+	<!-- Now Section -->
+	<div
+		class="border-gradient clickable-section flex h-full flex-col justify-between rounded-lg bg-white from-dark-card to-darker-card p-6 shadow-lg dark:bg-gradient-to-r sm:p-12 xl:col-span-1 xl:row-start-2 2xl:col-span-3 2xl:col-start-10 2xl:row-start-1"
+	>
+		<div class="mb-6 flex items-center justify-between">
+			<h2 class="long-transition font-header text-4xl tracking-wide">Now</h2>
+			<a href="/now" class="arrow-link">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					class="h-6 w-6 stroke-orange"
+					fill="none"
+					viewBox="0 0 24 24"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="3"
+						d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+				</svg>
+			</a>
+		</div>
+		<ul class="bullets long-transition mb-4 list-disc pl-5 text-xl text-gray-400 dark:text-white">
+			<li class="mb-4">
+				Learning <strong class="font-semibold text-dark-text">Astro.js</strong> and <strong
+					class="font-semibold text-dark-text">Tailwind CSS</strong
+				>
+			</li>
+			<li class="mb-4">
+				Reading "<strong class="font-semibold text-dark-text">The Count of Monte Cristo</strong>" by <strong
+					class="font-semibold">Alexandre Dumas</strong
+				>
+			</li>
+			<li class="mb-4">
+				Reading "<strong class="font-semibold text-dark-text">How to Win at Chess</strong>" by <strong
+					class="font-semibold">Levy Rozman</strong
+				>
+			</li>
+			<li class="mb-4">
+				Reading "<strong class="font-semibold text-dark-text">Demon Copperhead</strong>" by <strong
+					class="font-semibold">Barbara Kingsolver</strong
+				>
+			</li>
+			<li class="mb-4">
+				Practicing "<strong class="font-semibold text-dark-text">Comptine d'un autre été</strong>"
+				by <strong class="font-semibold">Yann Tiersen</strong> on the piano
+			</li>
+		</ul>
 
-    <!-- Now Section -->
-    <div class="flex flex-col justify-between h-full p-6 bg-white rounded-lg shadow-lg xl:col-span-1 xl:row-start-2 2xl:row-start-1 2xl:col-start-10 2xl:col-span-3 dark:bg-gradient-to-r from-dark-card to-darker-card sm:p-12 border-gradient clickable-section">
-      <div class="flex items-center justify-between mb-6">
-        <h2 class="text-4xl tracking-wide font-header long-transition">Now</h2>
-        <a href="/now" class="arrow-link">
-             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-orange" fill="none" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-          </svg>
-        </a>
-      </div>
-      <ul class="pl-5 mb-4 text-xl text-gray-400 list-disc dark:text-white bullets long-transition">
-        <li class="mb-4">Learning <strong class='font-semibold text-dark-text'>Astro.js</strong> and <strong class='font-semibold text-dark-text'>Tailwind CSS</strong></li>
-        <li class="mb-4">Reading "<strong class='font-semibold text-dark-text'>The Count of Monte Cristo</strong>" by <strong class="font-semibold">Alexandre Dumas</strong></li>
-        <li class="mb-4">Reading "<strong class='font-semibold text-dark-text'>How to Win at Chess</strong>" by <strong class="font-semibold">Levy Rozman</strong></li>
-        <li class="mb-4">Reading "<strong class='font-semibold text-dark-text'>Demon Copperhead</strong>" by <strong class="font-semibold">Barbara Kingsolver</strong></li>
-        <li class="mb-4">Practicing "<strong class='font-semibold text-dark-text'>Comptine d'un autre été</strong>" by <strong class="font-semibold">Yann Tiersen</strong> on the piano</li>
-      </ul>
-      
-      
-      
-      <p class="text-lg text-right text-gray-400 dark:text-white">Last Updated: February 6, 2024</p>
-    </div>
+		<p class="text-right text-lg text-gray-400 dark:text-white">Last Updated: February 6, 2024</p>
+	</div>
 
-    <!-- Latest Blog Section -->
-    <div class="h-full p-6 bg-white rounded-lg shadow-lg xl:col-start-2 xl:col-span-2 xl:row-span-2 2xl:col-span-3 2xl:row-start-2 dark:bg-gradient-to-r from-dark-card to-darker-card sm:p-12 border-gradient clickable-section">
-      <div class="flex items-center justify-between mb-6">
-        <h2 class="text-4xl tracking-wide font-header long-transition">Latest Blog</h2>
-        <a href={latestPost.url} class="arrow-link">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-orange" fill="none" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-          </svg>
-        </a>
-      </div>
-      <h3 class="mb-6 text-2xl text-gray-400 font-body long-transition dark:text-white">{latestPost.frontmatter.title}</h3>
-      <div class="rounded-md image-container">
-        <img src={latestPost.frontmatter.image.url} alt={latestPost.frontmatter.image.alt} class="object-cover mb-6 rounded-md md:w-24 aspect-video">
-      </div>
-      <p class="text-xl text-gray-400 long-transition dark:text-white">
-        {latestPost.frontmatter.teaser}
-      </p>
-      <div class="flex justify-center">
-        <button class="px-10 py-4 mt-12 text-xl font-semibold text-white transition-transform rounded-full bg-orange hover:scale-105">Read blog post</button>
-      </div>
-    </div>
+	<!-- Latest Blog Section -->
+	<div
+		class="border-gradient clickable-section h-full rounded-lg bg-white from-dark-card to-darker-card p-6 shadow-lg dark:bg-gradient-to-r sm:p-12 xl:col-span-2 xl:col-start-2 xl:row-span-2 2xl:col-span-3 2xl:row-start-2"
+	>
+		<div class="mb-6 flex items-center justify-between">
+			<h2 class="long-transition font-header text-4xl tracking-wide">Latest Blog</h2>
+			<a href={latestPost.url} class="arrow-link">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					class="h-6 w-6 stroke-orange"
+					fill="none"
+					viewBox="0 0 24 24"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="3"
+						d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+				</svg>
+			</a>
+		</div>
+		<h3 class="long-transition mb-6 font-body text-2xl text-gray-400 dark:text-white">
+			{latestPost.frontmatter.title}
+		</h3>
+		<div class="image-container rounded-md">
+			<img
+				src={latestPost.frontmatter.image.url}
+				alt={latestPost.frontmatter.image.alt}
+				class="mb-6 aspect-video rounded-md object-cover md:w-24"
+			/>
+		</div>
+		<p class="long-transition text-xl text-gray-400 dark:text-white">
+			{latestPost.frontmatter.teaser}
+		</p>
+		<div class="flex justify-center">
+			<button
+				class="mt-12 rounded-full bg-orange px-10 py-4 text-xl font-semibold text-white transition-transform hover:scale-105"
+				>Read blog post</button
+			>
+		</div>
+	</div>
 
-    <!-- About Section -->
-    <div class="h-full p-6 text-white rounded-lg shadow-lg xl:col-span-1 xl:row-start-3 2xl:col-start-4 2xl:col-span-3 2xl:row-start-2 bg-about-gradient sm:p-12 clickable-section bright-section">
-      <div class="flex items-center justify-between mb-6">
-        <h2 class="text-4xl tracking-wide font-header long-transition">About</h2>
-        <a href="/about" class="arrow-link white">
-             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-white" fill="none" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-          </svg>
-        </a>
-      </div>
-      <p class="text-xl">
-        Hello there, I'm <strong class="font-semibold">André Vollrath</strong>, and I'm thrilled to make your acquaintance. I'm a <strong class="font-semibold">designer</strong> and <strong class="font-semibold">front-end developer</strong>, deeply passionate about the digital world. With over a decade of experience under my belt, I've dedicated myself to crafting visually stunning designs and building engaging websites.
-      </p>
-      <br />
-      <p class="text-xl">
-        In the realm of <strong class="font-semibold">design</strong>, I thrive on bringing ideas to life. Whether it's fine-tuning images in <strong class="font-semibold">Adobe Photoshop</strong> or creating stunning <strong class="font-semibold">web designs</strong>, my passion for visual storytelling drives me to push the boundaries of creativity.
-      </p>      
-    </div>
+	<!-- About Section -->
+	<div
+		class="clickable-section bright-section h-full rounded-lg bg-about-gradient p-6 text-white shadow-lg sm:p-12 xl:col-span-1 xl:row-start-3 2xl:col-span-3 2xl:col-start-4 2xl:row-start-2"
+	>
+		<div class="mb-6 flex items-center justify-between">
+			<h2 class="long-transition font-header text-4xl tracking-wide">About</h2>
+			<a href="/about" class="arrow-link white">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					class="h-6 w-6 stroke-white"
+					fill="none"
+					viewBox="0 0 24 24"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="3"
+						d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+				</svg>
+			</a>
+		</div>
+		<p class="text-xl">
+			Hello there, I'm <strong class="font-semibold">André Vollrath</strong>, and I'm thrilled to
+			make your acquaintance. I'm a <strong class="font-semibold">designer</strong> and <strong
+				class="font-semibold">front-end developer</strong
+			>, deeply passionate about the digital world. With over a decade of experience under my belt,
+			I've dedicated myself to crafting visually stunning designs and building engaging websites.
+		</p>
+		<br />
+		<p class="text-xl">
+			In the realm of <strong class="font-semibold">design</strong>, I thrive on bringing ideas to
+			life. Whether it's fine-tuning images in <strong class="font-semibold">Adobe Photoshop</strong
+			> or creating stunning <strong class="font-semibold">web designs</strong>, my passion for
+			visual storytelling drives me to push the boundaries of creativity.
+		</p>
+	</div>
 
-    <!-- Latest Render Section -->
-    <div class="h-full p-6 bg-white rounded-lg shadow-lg xl:col-span-3 xl:row-start-4 2xl:col-start-7 2xl:col-span-6 2xl:row-start-2 dark:bg-gradient-to-r from-dark-card to-darker-card sm:p-12 border-gradient clickable-section latest-render-section" >
-      <div class="flex items-center justify-between mb-6">
-        <h2 class="text-4xl tracking-wide font-header long-transition">Latest Render</h2>
-        <a href="/renders" class="arrow-link">
-             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-orange" fill="none" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-          </svg>
-        </a>
-      </div>
-      <div class="rounded-md image-container">
-        <Image src={latestRenderImage} alt="Latest Render"
-        transition:name="latest-render"
-        class="rounded-md"
-        densities={[1, 1.5, 2]}
-        decoding="async"
-        loading="lazy"/>
-        <Image
-        src={latestRenderImageClay}
-        alt="Wireframe Render"
-        class="wireframe-image"
-      />
-      </div>
-    </div>
+	<!-- Latest Render Section -->
+	<div
+		class="border-gradient clickable-section latest-render-section h-full rounded-lg bg-white from-dark-card to-darker-card p-6 shadow-lg dark:bg-gradient-to-r sm:p-12 xl:col-span-3 xl:row-start-4 2xl:col-span-6 2xl:col-start-7 2xl:row-start-2"
+	>
+		<div class="mb-6 flex items-center justify-between">
+			<h2 class="long-transition font-header text-4xl tracking-wide">Latest Render</h2>
+			<a href="/renders" class="arrow-link">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					class="h-6 w-6 stroke-orange"
+					fill="none"
+					viewBox="0 0 24 24"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="3"
+						d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+				</svg>
+			</a>
+		</div>
+		<div class="image-container rounded-md">
+			<Image
+				src={latestRenderImage}
+				alt="Latest Render"
+				transition:name="latest-render"
+				class="rounded-md"
+				densities={[1, 1.5, 2]}
+				decoding="async"
+				loading="lazy"
+			/>
+			<Image src={latestRenderImageClay} alt="Wireframe Render" class="wireframe-image" />
+		</div>
+	</div>
 
-    <!-- Spotify Section -->
-    <div class="flex flex-col items-center h-full p-6 overflow-visible bg-white rounded-lg shadow-lg xl:col-span-2 xl:row-start-5 2xl:col-span-9 2xl:row-start-3 dark:bg-gradient-to-r from-dark-card to-darker-card sm:p-12 border-gradient" >
-      <h2 class="self-start mb-8 text-4xl tracking-wide font-header long-transition">Spotify Top 10 <span class="text-2xl font-semibold text-gray-400 whitespace-nowrap">(last 6 months)</span></h2>
-      <div class="flex flex-row flex-wrap justify-center w-full gap-4">
-        {topTracks.map((track) => (
-          track && track.external_urls && track.album && track.album.images[0] ? (
-            <div key={track.id}>
-              <a href={track.external_urls.spotify} target="_blank" title={`<strong class="font-semibold">${track.name}</strong> - ${track.artists.map((artist) => artist.name).join(", ")}`}>
-                <img src={track.album.images[0].url} alt={`Cover art for ${track.name}`} class="h-auto transition-transform duration-300 rounded-md shadow-lg w-28 hover:scale-105" />
-              </a>
-            </div>
-          ) : null
-        ))}
-        </div>
-        <!-- {currentPlayingTrack && currentPlayingTrack.is_playing && currentPlayingTrack.item && currentPlayingTrack.item.external_urls ? (
+	<!-- Spotify Section -->
+	<div
+		class="border-gradient flex h-full flex-col items-center overflow-visible rounded-lg bg-white from-dark-card to-darker-card p-6 shadow-lg dark:bg-gradient-to-r sm:p-12 xl:col-span-2 xl:row-start-5 2xl:col-span-9 2xl:row-start-3"
+	>
+		<h2 class="long-transition mb-8 self-start font-header text-4xl tracking-wide">
+			Spotify Top 10 <span class="whitespace-nowrap text-2xl font-semibold text-gray-400"
+				>(last 6 months)</span
+			>
+		</h2>
+		<div class="flex w-full flex-row flex-wrap justify-center gap-4">
+			{
+				topTracks.map((track) =>
+					track && track.external_urls && track.album && track.album.images[0] ? (
+						<div key={track.id}>
+							<a
+								href={track.external_urls.spotify}
+								target="_blank"
+								title={`<strong class="font-semibold">${track.name}</strong> - ${track.artists.map((artist) => artist.name).join(', ')}`}
+							>
+								<img
+									src={track.album.images[0].url}
+									alt={`Cover art for ${track.name}`}
+									class="h-auto w-28 rounded-md shadow-lg transition-transform duration-300 hover:scale-105"
+								/>
+							</a>
+						</div>
+					) : null
+				)
+			}
+		</div>
+		<!-- {currentPlayingTrack && currentPlayingTrack.is_playing && currentPlayingTrack.item && currentPlayingTrack.item.external_urls ? (
           <div class="self-start mt-8 currently-playing">
             <a href={currentPlayingTrack.item.external_urls.spotify} target="_blank" class="flex items-center">
               <span class="mr-4 text-xl text-gray-400 dark:text-white">Playing right now: <strong class="text-dark-text">{currentPlayingTrack.item.name}</strong> by {currentPlayingTrack.item.artists.map(artist => artist.name).join(", ")}</span>  <AudioWave />
             </a>
           </div>
         ) : null} -->
-    </div>
+	</div>
 
+	<!-- Tech stack -->
+	<div
+		class="border-gradient h-full rounded-lg bg-white from-dark-card to-darker-card pb-8 shadow-lg dark:bg-gradient-to-r xl:col-span-3 xl:row-start-7 2xl:col-span-9 2xl:row-start-4"
+	>
+		<h2 class="long-transition p-6 font-header text-4xl tracking-wide sm:p-12">Tech stack</h2>
+		<Marquee
+			words={[
+				'React',
+				'HTML5',
+				'Tailwind',
+				'Astro.js',
+				'GSAP',
+				'Three.js',
+				'CSS3',
+				'SASS',
+				'LESS',
+				'Git',
+				'Webpack',
+				'Vite',
+				'Node.js',
+				'ES6/ESNext'
+			]}
+		/>
+	</div>
 
-        <!-- Tech stack -->
-        <div class="h-full pb-8 bg-white rounded-lg shadow-lg xl:col-span-3 xl:row-start-7 2xl:col-span-9 2xl:row-start-4 dark:bg-gradient-to-r from-dark-card to-darker-card border-gradient" >
-          <h2 class="p-6 text-4xl tracking-wide font-header long-transition sm:p-12 ">Tech stack</h2>
-          <Marquee words={['React', 'HTML5', 'Tailwind', 'Astro.js', 'GSAP', 'Three.js', 'CSS3', 'SASS', 'LESS', 'Git', 'Webpack', 'Vite', 'Node.js', 'ES6/ESNext']} />
-        </div>
+	<!-- Links Section -->
+	<div
+		class="border-gradient flex h-full flex-col rounded-lg bg-white from-dark-card to-darker-card p-6 shadow-lg dark:bg-gradient-to-r sm:p-12 xl:col-span-1 xl:col-start-3 xl:row-start-5 2xl:col-span-3 2xl:row-start-4"
+	>
+		<h2 class="long-transition mb-4 font-header text-4xl tracking-wide">Links</h2>
+		<div class="flex flex-1 items-center justify-center">
+			<div class="grid grid-cols-2 gap-4">
+				<a href="https://github.com/avollrath" target="_blank" title="GitHub">
+					<img
+						src={`/icons/github.png`}
+						alt="GitHub"
+						class="w-48 transition-transform hover:scale-105"
+					/>
+				</a>
+				<a href="https://www.instagram.com/charliefeatherlight/" target="_blank" title="Instagramm">
+					<img
+						src={`/icons/instagram.png`}
+						alt="Instagram"
+						class="w-48 transition-transform hover:scale-105"
+					/>
+				</a>
+				<a href="https://www.linkedin.com/in/andrevollrath/" target="_blank" title="LinkedIn">
+					<img
+						src={`/icons/linkedin.png`}
+						alt="LinkedIn"
+						class="w-48 transition-transform hover:scale-105"
+					/>
+				</a>
+				<a
+					href="https://open.spotify.com/playlist/37i9dQZF1Fa1IIVtEpGUcU?si=0d61932237bf4497"
+					target="_blank"
+					title="Spotify"
+				>
+					<img
+						src={`/icons/spotify.png`}
+						alt="Spotify"
+						class="w-48 transition-transform hover:scale-105"
+					/>
+				</a>
+			</div>
+		</div>
+	</div>
 
-    <!-- Links Section -->
-    <div class="flex flex-col h-full p-6 bg-white rounded-lg shadow-lg xl:col-start-3 xl:col-span-1 xl:row-start-5 2xl:col-span-3 2xl:row-start-4 dark:bg-gradient-to-r from-dark-card to-darker-card sm:p-12 border-gradient" >
-      <h2 class="mb-4 text-4xl tracking-wide font-header long-transition">Links</h2>
-      <div class="flex items-center justify-center flex-1">
-        <div class="grid grid-cols-2 gap-4">
-          <a href="https://github.com/avollrath" target="_blank" title="GitHub">
-            <img src={`/icons/github.png`} alt="GitHub" class="w-48 transition-transform hover:scale-105" />
-          </a>
-          <a href="https://www.instagram.com/charliefeatherlight/" target="_blank" title="Instagramm">
-            <img src={`/icons/instagram.png`} alt="Instagram" class="w-48 transition-transform hover:scale-105" />
-          </a>
-          <a href="https://www.linkedin.com/in/andrevollrath/" target="_blank" title="LinkedIn">
-            <img src={`/icons/linkedin.png`} alt="LinkedIn" class="w-48 transition-transform hover:scale-105" />
-          </a>
-          <a href="https://open.spotify.com/playlist/37i9dQZF1Fa1IIVtEpGUcU?si=0d61932237bf4497" target="_blank" title="Spotify">
-            <img src={`/icons/spotify.png`} alt="Spotify" class="w-48 transition-transform hover:scale-105" />
-          </a>
-        </div>        
-      </div>
-    </div>
+	<!-- Contact Section -->
+	<div
+		class="border-gradient flex h-full flex-col justify-between rounded-lg bg-white from-dark-card to-darker-card p-6 shadow-lg dark:bg-gradient-to-r sm:p-12 xl:col-span-1 xl:col-start-3 xl:row-start-6 2xl:col-span-4 2xl:col-start-1 2xl:row-start-5"
+	>
+		<h2 class="long-transition mb-6 font-header text-4xl tracking-wide">Contact</h2>
+		<div class="flex flex-1 items-center justify-center">
+			<button
+				class="w-full rounded-full bg-orange px-6 py-8 text-3xl font-semibold text-white transition-transform hover:scale-105"
+				>Send Email</button
+			>
+		</div>
+	</div>
 
-        <!-- Contact Section -->
-        <div class="flex flex-col justify-between h-full p-6 bg-white rounded-lg shadow-lg xl:col-start-3 xl:col-span-1 xl:row-start-6 2xl:col-start-1 2xl:col-span-4 2xl:row-start-5 dark:bg-gradient-to-r from-dark-card to-darker-card sm:p-12 border-gradient" >
-          <h2 class="mb-6 text-4xl tracking-wide font-header long-transition">Contact</h2>
-          <div class="flex items-center justify-center flex-1">
-            <button class="w-full px-6 py-8 text-3xl font-semibold text-white transition-transform rounded-full bg-orange hover:scale-105">Send Email</button>
-          </div>
-        </div>
-      </div>
-
-
-
-    <!-- Based in Section -->
-    <div class="flex flex-col h-full p-6 bg-white rounded-lg shadow-lg xl:col-start-1 xl:col-span-2 xl:row-start-6 2xl:col-span-8 2xl:row-start-5 dark:bg-gradient-to-r from-dark-card to-darker-card sm:p-12 border-gradient" >
-      <h2 class="mb-12 text-4xl font-header long-transition">Based in</h2>
-      <div class="flex flex-col items-center justify-center 2xl:flex-row xl:flex-row">
-        <img src={`basedin.svg`} alt="Globe" class="2xl:w-96 h-auto w-72 xl:mr-12 mr-0 md:py-12 mb-12 dark:invert-0 invert-[.5]" >
-        <div class="grid grid-flow-row gap-2">
-          <h1 class="mb-6 text-8xl 2xl:text-9xl lg:mb-12 font-header">
-            Helsinki<br>Finland<br><span class="text-gray-400">GMT +2</span>
-          </h1>
-        </div>
-      </div>
-    </div>
-
-
-
+	<!-- Based in Section -->
+	<div
+		class="border-gradient flex h-full flex-col rounded-lg bg-white from-dark-card to-darker-card p-6 shadow-lg dark:bg-gradient-to-r sm:p-12 xl:col-span-2 xl:col-start-1 xl:row-start-6 2xl:col-span-8 2xl:row-start-5"
+	>
+		<h2 class="long-transition mb-12 font-header text-4xl">Based in</h2>
+		<div class="flex flex-col items-center justify-center xl:flex-row 2xl:flex-row">
+			<img
+				src={`basedin.svg`}
+				alt="Globe"
+				class="mb-12 mr-0 h-auto w-72 invert-[.5] dark:invert-0 md:py-12 xl:mr-12 2xl:w-96"
+			/>
+			<div class="grid grid-flow-row gap-2">
+				<h1 class="mb-6 font-header text-8xl lg:mb-12 2xl:text-9xl">
+					Helsinki<br />Finland<br /><span class="text-gray-400">GMT +2</span>
+				</h1>
+			</div>
+		</div>
+	</div>
 </Layout>
 
 <script is:inline>
+	function initEyes() {
+		// Select each pupil (the two img elements)
+		const eyes = document.querySelectorAll('.eye-left, .eye-right')
 
-  function initEyes() {
-  // Select each pupil (the two img elements)
-  const eyes = document.querySelectorAll('.eye-left, .eye-right');
+		// Maximum distance (in px) from the “home” position each pupil can move.
+		// Adjust this so the pupils stay within the white area of the eyes in your avatar.
+		const MAX_DISTANCE = 10
 
-  // Maximum distance (in px) from the “home” position each pupil can move.
-  // Adjust this so the pupils stay within the white area of the eyes in your avatar.
-  const MAX_DISTANCE = 10;
+		document.addEventListener('mousemove', (e) => {
+			eyes.forEach((eye) => {
+				// 1) Get the pupil’s "home" position
+				//    (where you placed it in CSS, i.e. .eye-left { top: ..., left: ... })
+				const rect = eye.getBoundingClientRect()
+				// The "center" of the pupil’s home position:
+				const centerX = rect.left + rect.width / 2
+				const centerY = rect.top + rect.height / 2
 
-  document.addEventListener('mousemove', (e) => {
-    eyes.forEach((eye) => {
-      // 1) Get the pupil’s "home" position
-      //    (where you placed it in CSS, i.e. .eye-left { top: ..., left: ... })
-      const rect = eye.getBoundingClientRect();
-      // The "center" of the pupil’s home position:
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
+				// 2) Distance from mouse to that center
+				const dx = e.clientX - centerX
+				const dy = e.clientY - centerY
 
-      // 2) Distance from mouse to that center
-      const dx = e.clientX - centerX;
-      const dy = e.clientY - centerY;
+				// 3) Calculate the angle + how far the mouse is
+				const angle = Math.atan2(dy, dx)
+				const distance = Math.hypot(dx, dy) // same as Math.sqrt(dx*dx + dy*dy)
 
-      // 3) Calculate the angle + how far the mouse is
-      const angle = Math.atan2(dy, dx);
-      const distance = Math.hypot(dx, dy); // same as Math.sqrt(dx*dx + dy*dy)
+				// 4) Clamp to MAX_DISTANCE so the pupil doesn't go too far
+				const clampedDistance = Math.min(distance, MAX_DISTANCE)
 
-      // 4) Clamp to MAX_DISTANCE so the pupil doesn't go too far
-      const clampedDistance = Math.min(distance, MAX_DISTANCE);
+				// 5) Convert polar (distance, angle) to x/y offsets
+				const offsetX = clampedDistance * Math.cos(angle)
+				const offsetY = clampedDistance * Math.sin(angle)
 
-      // 5) Convert polar (distance, angle) to x/y offsets
-      const offsetX = clampedDistance * Math.cos(angle);
-      const offsetY = clampedDistance * Math.sin(angle);
-
-      eye.style.transform = `translate(calc(${offsetX}px), calc(${offsetY}px))`;
-    });
-  });
-  document.addEventListener('astro:after-swap', initEyes)
-};
-initEyes();
+				eye.style.transform = `translate(calc(${offsetX}px), calc(${offsetY}px))`
+			})
+		})
+		document.addEventListener('astro:after-swap', initEyes)
+	}
+	initEyes()
 </script>
 
-
 <style>
-  .render-container {
-    position: relative;
-  }
+	.render-container {
+		position: relative;
+	}
 
-  .image-container {
-    position: relative;
-  }
+	.image-container {
+		position: relative;
+	}
 
-  .render-image, .wireframe-image {
-    max-width: 100%;
-    transition: 0.5s ease-in-out;
-  }
+	.render-image,
+	.wireframe-image {
+		max-width: 100%;
+		transition: 0.5s ease-in-out;
+	}
 
-  .wireframe-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-  }
+	.wireframe-image {
+		position: absolute;
+		top: 0;
+		left: 0;
+		opacity: 0;
+	}
 
-  .image-container:hover .wireframe-image {
-    opacity: 1;
-    transform: scale(1.1);
-  }
+	.image-container:hover .wireframe-image {
+		opacity: 1;
+		transform: scale(1.1);
+	}
 </style>
- 

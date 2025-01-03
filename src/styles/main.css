@@ -1,364 +1,296 @@
 @import url('./tailwind.css');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
 
-
-
 body {
-    --dot-bg: #edf2f6; 
-    --dot-color: rgb(238, 238, 238); 
-    --dot-size: 1px; 
-    --dot-space: 16px; 
-    background:
-      radial-gradient(circle, var(--dot-color) var(--dot-size), transparent calc(var(--dot-size) + 1px)) center / var(--dot-space) var(--dot-space),
-      var(--dot-bg);
-  }
-  
-  
-  .tippy-box[data-theme~='tomato'] {
-    background-color: tomato;
-    color: yellow;
-  }
-
-.grain {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    pointer-events: none;
-    z-index: -300;
-    transform: translateZ(0);
-}
-
-.grain:before {
-    content: "";
-    top: -10rem;
-    left: -10rem;
-    width: calc(100% + 20rem);
-    height: calc(100% + 20rem);
-    z-index: -300;
-    position: fixed;
-    background-image: url(https://upload.wikimedia.org/wikipedia/commons/5/5c/Image_gaussian_noise_example.png);
-    opacity: 0.05;
-    pointer-events: none;
-    -webkit-animation: noise 1s steps(2) infinite;
-    animation: noise 1s steps(2) infinite;
-}
-
-@-webkit-keyframes noise {
-    to {
-        transform: translate3d(-7rem, 0, 0);
-    }
-}
-
-@keyframes noise {
-    0% {
-        transform: translate3d(0, 9rem, 0);
-    }
-
-    10% {
-        transform: translate3d(-1rem, -4rem, 0);
-    }
-
-    20% {
-        transform: translate3d(-8rem, 2rem, 0);
-    }
-
-    30% {
-        transform: translate3d(9rem, -9rem, 0);
-    }
-
-    40% {
-        transform: translate3d(-2rem, 7rem, 0);
-    }
-
-    50% {
-        transform: translate3d(-9rem, -4rem, 0);
-    }
-
-    60% {
-        transform: translate3d(2rem, 6rem, 0);
-    }
-
-    70% {
-        transform: translate3d(7rem, -8rem, 0);
-    }
-
-    80% {
-        transform: translate3d(-9rem, 1rem, 0);
-    }
-
-    90% {
-        transform: translate3d(6rem, -5rem, 0);
-    }
-
-    to {
-        transform: translate3d(-7rem, 0, 0);
-    }
+	--dot-bg: #edf2f6;
+	--dot-color: rgb(238, 238, 238);
+	--dot-size: 1px;
+	--dot-space: 16px;
+	background:
+		radial-gradient(
+				circle,
+				var(--dot-color) var(--dot-size),
+				transparent calc(var(--dot-size) + 1px)
+			)
+			center / var(--dot-space) var(--dot-space),
+		var(--dot-bg);
 }
 
 :root {
-    --border-gradient: linear-gradient(30deg, rgba(216, 216, 216, 0.226), rgba(255, 255, 255, 0.541), rgba(199, 199, 199, 0.304));
-    /* Default to no gradient for light mode */
+	--border-gradient: linear-gradient(
+		30deg,
+		rgba(216, 216, 216, 0.226),
+		rgba(255, 255, 255, 0.541),
+		rgba(199, 199, 199, 0.304)
+	);
+	/* Default to no gradient for light mode */
 }
 
 .dark {
-    --border-gradient: linear-gradient(30deg, rgba(179, 179, 179, 0.3), rgba(241, 241, 241, 0.551), rgba(90, 90, 90, 0.30));
-    /* Gradient for dark mode */
+	--border-gradient: linear-gradient(
+		30deg,
+		rgba(179, 179, 179, 0.3),
+		rgba(241, 241, 241, 0.551),
+		rgba(90, 90, 90, 0.3)
+	);
+	/* Gradient for dark mode */
 }
 
 .border-gradient {
-    position: relative;
+	position: relative;
 }
 
 .border-gradient::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    right: -2px;
-    bottom: -2px;
-    left: -2px;
-    z-index: -1;
-    background: var(--border-gradient);
-    border-radius: inherit;
+	content: '';
+	position: absolute;
+	top: -2px;
+	right: -2px;
+	bottom: -2px;
+	left: -2px;
+	z-index: -1;
+	background: var(--border-gradient);
+	border-radius: inherit;
 }
 
 .border-gradient * {
-    position: relative;
-    z-index: 1;
+	position: relative;
+	z-index: 1;
 }
 
 .text-gradient {
-    background-image: linear-gradient(32deg, rgb(69, 69, 186) 0%, rgba(0,212,255,1) 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-  }
-
+	background-image: linear-gradient(32deg, rgb(69, 69, 186) 0%, rgba(0, 212, 255, 1) 100%);
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
+}
 
 .border-gradient::after {
-    content: '';
-    position: absolute;
-    top: -2px;
-    right: -2px;
-    bottom: -2px;
-    left: -2px;
-    z-index: -1;
-    background: linear-gradient(30deg, rgba(150, 150, 150, 0.45), #F6723A, rgba(255, 255, 255, 0.60), #F6723A, rgba(150, 150, 150, 0.45));
-    border-radius: inherit;
-    opacity: 0;
-    animation: borderGradientAnimation 4s ease infinite;
-    background-size: 200% 200%;
-    transition: opacity 0.3s ease;
+	content: '';
+	position: absolute;
+	top: -2px;
+	right: -2px;
+	bottom: -2px;
+	left: -2px;
+	z-index: -1;
+	background: linear-gradient(
+		30deg,
+		rgba(150, 150, 150, 0.45),
+		#f6723a,
+		rgba(255, 255, 255, 0.6),
+		#f6723a,
+		rgba(150, 150, 150, 0.45)
+	);
+	border-radius: inherit;
+	opacity: 0;
+	animation: borderGradientAnimation 4s ease infinite;
+	background-size: 200% 200%;
+	transition: opacity 0.3s ease;
 }
 
 .dark .border-gradient:hover::after {
-    opacity: 1;
+	opacity: 1;
 }
 
 @keyframes borderGradientAnimation {
-    0% {
-        background-position: 0% 50%;
-    }
+	0% {
+		background-position: 0% 50%;
+	}
 
-    50% {
-        background-position: 100% 50%;
-    }
+	50% {
+		background-position: 100% 50%;
+	}
 
-    100% {
-        background-position: 0% 50%;
-    }
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 .dark .border-gradient:hover::before {
-    background: linear-gradient(30deg, rgba(150, 150, 150, 0.45), #F6723A, rgba(255, 255, 255, 0.60), #F6723A, rgba(150, 150, 150, 0.45));
+	background: linear-gradient(
+		30deg,
+		rgba(150, 150, 150, 0.45),
+		#f6723a,
+		rgba(255, 255, 255, 0.6),
+		#f6723a,
+		rgba(150, 150, 150, 0.45)
+	);
 }
-
 
 /* Custom Tooltip Theming */
 .tippy-box[data-theme='custom'] {
-    background: linear-gradient(10deg, rgb(69, 69, 186) 0%, rgba(0,212,255,1) 100%);
-    /* Black background */
-    color: white;
-    /* White text color */
-    border-radius: 0.5rem;
-    /* Slightly rounded corners */
-    padding: 0.7rem;
-    /* Padding inside the tooltip */
-    font-size: 1.2rem;
-    /* Larger font size */
-    text-align: center;
+	background: #ff5ff6;
+	/* Black background */
+	color: white;
+	/* White text color */
+	border-radius: 0.5rem;
+	/* Slightly rounded corners */
+	padding: 0.7rem;
+	/* Padding inside the tooltip */
+	font-size: 1.2rem;
+	/* Larger font size */
+	text-align: center;
 }
 
 .gradient-text {
-    color: #005a9f;
+	color: #005a9f;
 }
 
 .arrow-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    /* Make it round */
-    width: 56px;
-    /* Circle size */
-    height: 56px;
-    /* Circle size */
-    transition: transform 0.3s ease;
-    border: 3px solid #038cd0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	/* Make it round */
+	width: 56px;
+	/* Circle size */
+	height: 56px;
+	/* Circle size */
+	transition: transform 0.3s ease;
+	border: 3px solid #ff5ff6;
 }
 
 .arrow-link.white {
-    border: 3px solid #ffffff;
+	border: 3px solid #ffffff;
 }
 
 .arrow-link svg {
-    transform: rotate(-45deg);
-    /* Rotate arrow to upper right */
-    transition: transform 0.7s ease;
+	transform: rotate(-45deg);
+	/* Rotate arrow to upper right */
+	transition: transform 0.7s ease;
 }
 
 .arrow-link:hover svg {
-    transform: rotate(0deg);
-    /* Rotate back to right and move arrow */
+	transform: rotate(0deg);
+	/* Rotate back to right and move arrow */
 }
 
 .clickable-section {
-    cursor: pointer;
+	cursor: pointer;
 }
 
-
-
 .image-container {
-    width: 100%;
-    /* Set to desired width of the image */
-    overflow: hidden;
-    /* Hide parts of the image outside the container */
+	width: 100%;
+	/* Set to desired width of the image */
+	overflow: hidden;
+	/* Hide parts of the image outside the container */
 }
 
 .image-container img {
-    width: 100%;
-    height: auto;
-    transition: transform 0.5s ease-in-out;
-    object-fit: cover;
+	width: 100%;
+	height: auto;
+	transition: transform 0.5s ease-in-out;
+	object-fit: cover;
 }
 
 .frosted-glass-section {
-    /* Adjust the background color and opacity to your preference */
+	/* Adjust the background color and opacity to your preference */
 
-    /* Apply the frosted glass effect */
-    backdrop-filter: blur(10px);
-    /* Adjust the blur value as needed */
-
-
+	/* Apply the frosted glass effect */
+	backdrop-filter: blur(10px);
+	/* Adjust the blur value as needed */
 }
 
 .avatar-wrapper {
-    position: absolute;
-    bottom: -40px; 
-    right: -150px;
-    width: 800px; 
-    height: auto;
-    z-index: 0;
-  }
-  
-  .avatar-image {
-    display: block; 
-    width: 100%;
-    height: auto;   
-    position: relative; 
-  }
-  
+	position: absolute;
+	bottom: -40px;
+	right: -150px;
+	width: 800px;
+	height: auto;
+	z-index: 0;
+}
 
-  .eye-container {
-    position: absolute; 
-    top: 0; 
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-  }
-  
-  /* The eyes themselves */
-  .eye-left, .eye-right {
-    position: absolute; 
-    width: 60px;
-    height: 60px;
-    z-index: 2; /* ensure they’re on top of the avatar image */
-    transition: transform 200ms ease-out;
-  }
-  
-  /* Now tweak top/left or top/right to place them correctly. 
+.avatar-image {
+	display: block;
+	width: 100%;
+	height: auto;
+	position: relative;
+}
+
+.eye-container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+}
+
+/* The eyes themselves */
+.eye-left,
+.eye-right {
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	z-index: 2; /* ensure they’re on top of the avatar image */
+	transition: transform 200ms ease-out;
+}
+
+/* Now tweak top/left or top/right to place them correctly. 
      Because .eye-container is the full size of the avatar, 
      you can use something like top: 30%; left: 40%, 
      or exact px if you prefer. */
-  .eye-left {
-    top: 320px;
-    left: 310px;
-  }
-  
-  .eye-right {
-    top: 320px;
-    left: 443px;
-  }
+.eye-left {
+	top: 320px;
+	left: 310px;
+}
+
+.eye-right {
+	top: 320px;
+	left: 443px;
+}
 
 @media (max-width: 1024px) {
-    .avatar {
-        display: none;
-    }
+	.avatar {
+		display: none;
+	}
 }
-
 
 .cool-contrast-gradient {
-    color: rgb(0, 247, 255);
+	color: rgb(0, 247, 255);
 }
-
-
 
 .bullets li::marker {
-    color: #038cd0;
+	color: #038cd0;
 }
 
-
 .nav-menu {
-    position: relative;
-    /* Ensure the nav menu has a positioning context */
+	position: relative;
+	/* Ensure the nav menu has a positioning context */
 }
 
 .nav-underline {
-    position: absolute;
-    bottom: 4px;
-    /* Position it at the bottom of the nav menu */
-    height: 3px;
-    width: 0px;
-    background-color: #038cd0;
-    transition: left 0.5s ease-out, width 0.5s ease-out;
-    border-radius: 3px;
+	position: absolute;
+	bottom: 4px;
+	/* Position it at the bottom of the nav menu */
+	height: 3px;
+	width: 0px;
+	background-color: #ff5ff6;
+	transition:
+		left 0.5s ease-out,
+		width 0.5s ease-out;
+	border-radius: 3px;
 }
-
-
 
 /* Define the transition effect for the text-transition class */
 .long-transition {
-    transition: 1s ease;
+	transition: 1s ease;
 }
 
-
 @media screen and (max-width: 1024px) {
-    #nav-menu {
-        flex-direction: column;
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 100vw;
-        height: 100vh;
-        border-radius: 12px;
-        background-color: black;
-        padding: 2rem;
-        z-index: 50;
-        font-size: 2rem;
-        text-align: center;
-        justify-content: center;
-        align-items: center;
-    }
+	#nav-menu {
+		flex-direction: column;
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 100vw;
+		height: 100vh;
+		border-radius: 12px;
+		background-color: black;
+		padding: 2rem;
+		z-index: 50;
+		font-size: 2rem;
+		text-align: center;
+		justify-content: center;
+		align-items: center;
+	}
 }

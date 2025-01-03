@@ -1,11 +1,10 @@
 ---
-import { Image } from 'astro:assets';
-import vollrathLogo from '../images/vollrath_logo.png';
+import { Image } from 'astro:assets'
+import vollrathLogo from '../images/vollrath_logo.svg'
 
 const currentPath = new URL(Astro.request.url).pathname
 const isDev = import.meta.env.DEV
 const baseUrl = isDev ? '' : Astro.site
-
 
 const navItems = [
 	{ path: '/', label: 'Home', id: 'home-link' },
@@ -18,33 +17,31 @@ const navItems = [
 function isPathActive(itemPath, additionalPaths = []) {
 	return (
 		currentPath === itemPath || additionalPaths.some((addPath) => currentPath.startsWith(addPath))
-		)
+	)
 }
 ---
 
 <nav
-	class="flex items-center justify-between px-12 py-6 mb-8 bg-white rounded-lg shadow-lg nav-bar border-gradient from-dark-card to-darker-card dark:bg-gradient-to-r lg:col-span-3"
+	class="nav-bar border-gradient mb-8 flex items-center justify-between rounded-lg bg-white from-dark-card to-darker-card px-12 shadow-lg dark:bg-gradient-to-r lg:col-span-3"
 >
-<!-- <Image src={vollrathLogo} class="w-32 h-auto mr-2" alt="Vollrath Logo" /> -->
-
-<span class="text-3xl">👋</span>
+	<Image src={vollrathLogo} class="mr-2 h-auto w-16 py-3" alt="Vollrath Logo" />
 
 	<!-- Hamburger Icon -->
-	<div class="flex flex-col space-y-2 cursor-pointer lg:hidden" id="hamburger">
+	<div class="flex cursor-pointer flex-col space-y-2 lg:hidden" id="hamburger">
 		<span class="block h-0.5 w-8 bg-dark-text"></span>
 		<span class="block h-0.5 w-8 bg-dark-text"></span>
 		<span class="block h-0.5 w-8 bg-dark-text"></span>
 	</div>
 
 	<div
-		class="z-30 flex flex-col invisible text-xl select-none font-header md:flex-row lg:visible"
+		class="invisible z-30 flex select-none flex-col font-header text-xl md:flex-row lg:visible"
 		id="nav-menu"
 	>
 		{
 			navItems.map((item) => (
 				<a
 					href={`${baseUrl}${item.path}`}
-					class={`nav-item font-medium px-4 py-2 transition hover:text-dark-text ${isPathActive(item.path, item.additionalPaths) ? 'gradient-underline text-dark-text' : ' text-gray-400'}`}
+					class={`nav-item px-4 py-2 font-medium transition hover:text-dark-text ${isPathActive(item.path, item.additionalPaths) ? 'gradient-underline text-dark-text' : ' text-gray-400'}`}
 					id={item.id}
 				>
 					{item.label}
@@ -76,8 +73,8 @@ function isPathActive(itemPath, additionalPaths = []) {
 		const activeItemRect = activeItem.getBoundingClientRect()
 		const navMenuRect = navMenu.getBoundingClientRect()
 
-		const newLeft = activeItemRect.left +10 - navMenuRect.left
-		const newWidth = activeItem.offsetWidth -20
+		const newLeft = activeItemRect.left + 10 - navMenuRect.left
+		const newWidth = activeItem.offsetWidth - 20
 
 		const movingRight = newLeft > lastUnderlinePosition.left
 

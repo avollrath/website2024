@@ -1,63 +1,60 @@
 ---
-const { title, htmlText, renderImageSrc, clayRenderImageSrc, transitionName, altProp } = Astro.props;
-import { Image } from "astro:assets";
+const { title, htmlText, renderImageSrc, clayRenderImageSrc, transitionName, altProp } = Astro.props
+import { Image } from 'astro:assets'
 ---
 
-<div class="flex flex-col col-span-2 2xl:col-span-3">
-  <div
-    class="flex flex-col text-xl text-gray-400 bg-white rounded-lg dark:bg-gradient-to-r long-transition from-dark-card to-darker-card dark:text-white border-gradient"
-  >
-    <div class="p-6 sm:p-12">
-      <h2 class="self-start mb-8 text-2xl tracking-wide font-header long-transition">
-        {title}
-      </h2>
-      <p set:html={htmlText}></p>
-    </div>
-  </div>
+<div class="col-span-2 flex flex-col 2xl:col-span-3">
+	<div
+		class="long-transition border-gradient flex flex-col rounded-lg bg-white from-dark-card to-darker-card text-xl text-gray-400 shadow-lg dark:bg-gradient-to-r dark:text-white"
+	>
+		<div class="p-6 sm:p-12">
+			<h2 class="long-transition mb-8 self-start font-header text-2xl tracking-wide">
+				{title}
+			</h2>
+			<p set:html={htmlText} />
+		</div>
+	</div>
 </div>
 <div
-  class="flex flex-col items-center col-span-2 p-6 text-xl text-gray-400 bg-white rounded-lg 2xl:col-span-9 dark:bg-gradient-to-r long-transition from-dark-card to-darker-card sm:p-12 dark:text-white border-gradient"
+	class="long-transition border-gradient col-span-2 flex flex-col items-center rounded-lg bg-white from-dark-card to-darker-card p-6 text-xl text-gray-400 shadow-lg dark:bg-gradient-to-r dark:text-white sm:p-12 2xl:col-span-9"
 >
-  <div class="rounded-md image-container">
-    <Image
-      src={renderImageSrc}
-      transition:name={transitionName}
-      alt={altProp}
-      class="rounded-md"
-      densities={[1, 1.5, 2]}
-      decoding="async"
-      loading="lazy"
-    />
-    <Image
-      src={clayRenderImageSrc}
-      alt="Wireframe Render"
-      class="wireframe-image"
-    />
-  </div>
+	<div class="image-container rounded-md">
+		<Image
+			src={renderImageSrc}
+			transition:name={transitionName}
+			alt={altProp}
+			class="rounded-md"
+			densities={[1, 1.5, 2]}
+			decoding="async"
+			loading="lazy"
+		/>
+		<Image src={clayRenderImageSrc} alt="Wireframe Render" class="wireframe-image" />
+	</div>
 </div>
 
 <style>
-    .render-container {
-      position: relative;
-    }
-  
-    .image-container {
-      position: relative;
-    }
-  
-    .render-image, .wireframe-image {
-      max-width: 100%;
-      transition: opacity 0.9s ease;
-    }
-  
-    .wireframe-image {
-      position: absolute;
-      top: 0;
-      left: 0;
-      opacity: 0;
-    }
-  
-    .image-container:hover .wireframe-image {
-      opacity: 1;
-    }
-  </style>
+	.render-container {
+		position: relative;
+	}
+
+	.image-container {
+		position: relative;
+	}
+
+	.render-image,
+	.wireframe-image {
+		max-width: 100%;
+		transition: opacity 0.9s ease;
+	}
+
+	.wireframe-image {
+		position: absolute;
+		top: 0;
+		left: 0;
+		opacity: 0;
+	}
+
+	.image-container:hover .wireframe-image {
+		opacity: 1;
+	}
+</style>

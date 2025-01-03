@@ -17,85 +17,91 @@ import { Image } from 'astro:assets'
 ---
 
 <Layout title="Now" description="What I'm doing now">
-	<div class="flex flex-col col-span-3 2xl:col-span-3">
+	<div class="col-span-3 flex flex-col 2xl:col-span-3">
 		<div
-			class="flex flex-col items-center p-6 text-xl text-gray-400 bg-white rounded-lg long-transition border-gradient from-dark-card to-darker-card dark:bg-gradient-to-r dark:text-white sm:p-12"
+			class="long-transition border-gradient flex flex-col items-center rounded-lg bg-white from-dark-card to-darker-card p-6 text-xl text-gray-400 shadow-lg dark:bg-gradient-to-r dark:text-white sm:p-12"
 		>
-			<h2 class="self-start mb-8 text-4xl tracking-wide long-transition font-header">Now</h2>
+			<h2 class="long-transition mb-8 self-start font-header text-4xl tracking-wide">Now</h2>
 			<p class="my-3 leading-relaxed">
-				Welcome to my <strong class="font-semibold text-dark-text">Now</strong> page, a unique space where I share
-				what's currently engaging my attention. Unlike the more static "About" page, this page offers
-				a window into my <strong class="font-semibold text-dark-text">current world</strong>.
-			  </p>
-			  <p class="my-3 leading-relaxed">
-				Here, you'll find out about the <strong class="font-semibold text-dark-text">projects</strong> I'm involved
-				in, the <strong class="font-semibold text-dark-text">subjects</strong> that intrigue me, and where my passions
-				currently lie. This page is like a snapshot of my <strong class="font-semibold text-dark-text"
-				  >life's priorities</strong
+				Welcome to my <strong class="font-semibold text-dark-text">Now</strong> page, a unique space
+				where I share what's currently engaging my attention. Unlike the more static "About" page, this
+				page offers a window into my <strong class="font-semibold text-dark-text"
+					>current world</strong
+				>.
+			</p>
+			<p class="my-3 leading-relaxed">
+				Here, you'll find out about the <strong class="font-semibold text-dark-text"
+					>projects</strong
+				> I'm involved in, the <strong class="font-semibold text-dark-text">subjects</strong> that intrigue
+				me, and where my passions currently lie. This page is like a snapshot of my <strong
+					class="font-semibold text-dark-text">life's priorities</strong
 				>
 				and activities at this moment.
-			  </p>
-			  <p class="my-3 leading-relaxed">
+			</p>
+			<p class="my-3 leading-relaxed">
 				It's an up-to-date glimpse into my journey, reflecting my latest <strong
-				  class="font-semibold text-dark-text"
-				  >interests</strong
+					class="font-semibold text-dark-text">interests</strong
 				>,
-				<strong class="font-semibold text-dark-text">goals</strong>, and <strong class="font-semibold text-dark-text"
-				  >endeavors</strong
+				<strong class="font-semibold text-dark-text">goals</strong>, and <strong
+					class="font-semibold text-dark-text">endeavors</strong
 				>. This page is where I openly share what's important to me right now.
-			  </p>
-			  <p class="my-3 leading-relaxed">
+			</p>
+			<p class="my-3 leading-relaxed">
 				For more about the concept of a "Now" page, visit
-				<a href="https://sivers.org/nowff" class="font-semibold underline text-dark-text"
-				  >Derek Sivers' explanation</a
+				<a href="https://sivers.org/nowff" class="font-semibold text-dark-text underline"
+					>Derek Sivers' explanation</a
 				>.
-			  </p>
-			  
+			</p>
 		</div>
 	</div>
 
 	<div class="col-span-3 2xl:col-span-6">
 		<NowEntry date="2024-03-31">
-			<div class="flex flex-wrap mb-4">
+			<div class="mb-4 flex flex-wrap">
 				<!-- Add any relevant images like logos for Three.js if you have them -->
 				<Image
 					src={threejsLogoWhite}
-					class="hidden h-auto mr-2 w-72 dark:inline"
+					class="mr-2 hidden h-auto w-72 dark:inline"
 					alt="Three.js Logo"
 				/>
-				<Image src={threejsLogoBlack} class="h-auto mr-2 w-72 dark:hidden" alt="Three.js Logo" />
+				<Image src={threejsLogoBlack} class="mr-2 h-auto w-72 dark:hidden" alt="Three.js Logo" />
 			</div>
 			<p>
 				I'm currently deepening my understanding of 3D web graphics through learning <strong
 					class="font-semibold text-dark-text">Three.js</strong
-				>. I'm engaging with the <strong class="font-semibold text-dark-text">Three.js Journey course</strong> by Bruno
-				Simon, which has been incredibly insightful, pushing the boundaries of what I thought was possible
-				in web development.
+				>. I'm engaging with the <strong class="font-semibold text-dark-text"
+					>Three.js Journey course</strong
+				> by Bruno Simon, which has been incredibly insightful, pushing the boundaries of what I thought
+				was possible in web development.
 			</p>
 
 			<hr class="my-8" />
 			<h3 class="mb-8">Currently practicing:</h3>
 
 			<p>
-				Musically, I've taken on the challenge of learning <strong class="font-semibold text-dark-text"
-					>"Only Time"</strong
+				Musically, I've taken on the challenge of learning <strong
+					class="font-semibold text-dark-text">"Only Time"</strong
 				> by Enya on the piano. This beautiful melody offers a tranquil respite from the daily hustle
 				and allows me to improve my musical skills in a serene and enjoyable manner.
 			</p>
 			<!-- Assuming you have a cover image for "Only Time" -->
-			<Image src={enyaCover} alt="Sheet Music of Only Time by Enya" class="w-40 h-auto my-12 rounded-md" />
+			<Image
+				src={enyaCover}
+				alt="Sheet Music of Only Time by Enya"
+				class="my-12 h-auto w-40 rounded-md"
+			/>
 		</NowEntry>
 
 		<NowEntry date="2024-02-06">
-			<div class="flex flex-wrap mb-4">
+			<div class="mb-4 flex flex-wrap">
 				<Image
 					src={tailwindLogoDark}
 					class="hidden h-auto w-72 dark:inline"
 					alt="Tailwind CSS Logo"
 				/>
-				<Image src={astroLogo} class="hidden h-auto mr-2 w-72 dark:inline" alt="Astro.js Logo" />
+				<Image src={astroLogo} class="mr-2 hidden h-auto w-72 dark:inline" alt="Astro.js Logo" />
 				<Image src={tailwindLogo} class="h-auto w-72 dark:hidden" alt="Tailwind CSS Logo" />
-				<Image src={astroLogoDark} class="h-auto mr-2 w-72 dark:hidden" alt="Astro.js Logo" />
+				<Image src={astroLogoDark} class="mr-2 h-auto w-72 dark:hidden" alt="Astro.js Logo" />
 			</div>
 			<p>
 				I'm currently immersed in the world of web development, exploring the capabilities of <strong
@@ -117,12 +123,12 @@ import { Image } from 'astro:assets'
 			<Image
 				src={amelieCover}
 				alt="Sheet Music of Comptine d'un autre été"
-				class="w-40 h-auto my-12 rounded-md"
+				class="my-12 h-auto w-40 rounded-md"
 			/>
 		</NowEntry>
 	</div>
 
-	<div class="flex flex-col col-span-3">
+	<div class="col-span-3 flex flex-col">
 		<FavoriteBooks bookWidth="w-24" />
 		<!-- <div class="mt-8">
     <Spotify coverWidth="w-24"/>
