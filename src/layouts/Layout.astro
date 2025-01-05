@@ -22,13 +22,13 @@ const favIcon = await getImage({ src: faviconSrc, format: 'svg' })
 	</head>
 	<body class="bg-gray-50 font-body text-dark-text dark:bg-dark-bg dark:text-white">
 		<div
-			class="max-w-2160 container mx-auto flex min-h-screen w-full flex-col px-4 py-8 lg:px-8 2xl:px-16"
+			class="container mx-auto flex min-h-screen w-full max-w-2160 flex-col px-1 py-1 sm:px-4 sm:py-10 lg:px-8 2xl:px-16"
 		>
 			<NavBar />
 
 			<!-- Main content area with 12-column grid layout -->
 			<main class="flex-grow">
-				<div class="grid grid-cols-1 gap-8 xl:grid-cols-3 2xl:grid-cols-12">
+				<div class="grid grid-cols-1 gap-4 sm:gap-8 xl:grid-cols-3 2xl:grid-cols-12">
 					<slot />
 					<!-- Slot for page-specific content -->
 				</div>
