@@ -50,7 +50,8 @@ body {
 	color: #005a9f;
 }
 
-.arrow-link {
+.arrow-link,
+.arrow {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -62,7 +63,8 @@ body {
 }
 
 @media screen and (max-width: 640px) {
-	.arrow-link {
+	.arrow-link,
+	.arrow {
 		width: 26px;
 		height: 26px;
 		border: 2px solid #ff5ff6;
