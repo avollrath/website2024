@@ -1,6 +1,9 @@
 @import url('./tailwind.css');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
 
+html {
+	scroll-behavior: smooth;
+}
 body {
 	--dot-bg: #edf2f6;
 	--dot-color: rgb(238, 238, 238);
@@ -56,6 +59,14 @@ body {
 	height: 56px;
 	transition: transform 0.3s ease;
 	border: 3px solid #ff5ff6;
+}
+
+@media screen and (max-width: 640px) {
+	.arrow-link {
+		width: 26px;
+		height: 26px;
+		border: 2px solid #ff5ff6;
+	}
 }
 
 .arrow-link.white {

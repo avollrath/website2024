@@ -1,39 +1,47 @@
 ---
 // Import the Layout
-import Layout from '../layouts/Layout.astro';
-import Sidebar from '../components/Sidebar.astro'; // Assuming you have a Sidebar component
-const { frontmatter } = Astro.props; // Access content here
-import { formatDate } from '../scripts/utils.js';
-import Prose from '../components/Prose.astro';
+import Layout from '../layouts/Layout.astro'
+import Sidebar from '../components/Sidebar.astro' // Assuming you have a Sidebar component
+const { frontmatter } = Astro.props // Access content here
+import { formatDate } from '../scripts/utils.js'
+import Prose from '../components/Prose.astro'
 ---
 
 <Layout title={frontmatter.title} description={frontmatter.description}>
+	<div
+		class="border-gradient flex flex-col items-center rounded-lg bg-white px-4 py-8 dark:bg-gradient-to-r sm:p-12 lg:col-span-9"
+	>
+		<header class="blog-header text-center">
+			<h1 class="long-transition mb-4 font-header leading-snug tracking-wide sm:text-4xl">
+				{frontmatter.title}
+			</h1>
+			<div class="metadata mb-4 flex flex-col">
+				<span class="mb-4 text-lg">{formatDate(frontmatter.pubDate)}</span>
+				{
+					frontmatter.tags && frontmatter.tags.length > 0 && (
+						<div class="mt-2 inline-flex flex-wrap justify-center gap-2">
+							{frontmatter.tags.map((tag) => (
+								<span
+									key={tag}
+									class="rounded bg-orange px-2 py-1 text-xs font-semibold text-white lg:text-base"
+								>
+									{tag}
+								</span>
+							))}
+						</div>
+					)
+				}
+			</div>
+			<img src={frontmatter.image.url} alt={frontmatter.image.alt} class="mb-6 w-full rounded-xl" />
+		</header>
+		<article class="blog-content max-w-full text-left text-xl leading-relaxed">
+			<Prose>
+				<slot />
+			</Prose>
+		</article>
+	</div>
 
-    <div class="lg:col-span-9 dark:bg-gradient-to-r from-dark-card to-darker-card px-48 py-24 bg-white rounded-lg flex flex-col items-center border-gradient">
-        <header class="blog-header text-center">
-            <h1 class="text-5xl font-header tracking-wide leading-snug mb-4 long-transition">{frontmatter.title}</h1>
-            <div class="metadata flex flex-col mb-4">
-              <span class="text-lg">{formatDate(frontmatter.pubDate)}</span>
-              {frontmatter.tags && frontmatter.tags.length > 0 && (
-                <div class="inline-flex flex-wrap justify-center gap-2 mt-2">
-                  {frontmatter.tags.map(tag => (
-                    <span key={tag} class="text-lg bg-dark-text text-white px-2 py-1 rounded font-bold">{tag}</span>
-                  ))}
-                </div>
-              )}
-            </div>
-            <img src={frontmatter.image.url} alt={frontmatter.image.alt} class="w-full mb-6 rounded-xl"/>
-          </header>
-      <article class="blog-content text-left text-xl leading-relaxed">
-        <Prose>
-          <slot />
-        </Prose>
-      </article>
-    </div>
-    
-    <div class="lg:col-span-3">
-        <Sidebar />
-    </div>
-
+	<div class="lg:col-span-3">
+		<Sidebar />
+	</div>
 </Layout>
-
