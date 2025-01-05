@@ -38,34 +38,26 @@ export { latestPost }
 			<h1
 				class="long-transition text-gradient text-center font-header text-6xl md:mr-4 lg:text-left lg:text-8xl"
 			>
-				Hi, I’m André,
+				Hi, I’m André.
 			</h1>
 			<p
-				class="z-10 my-12 max-w-screen-lg rounded-xl bg-white/75 py-2 pr-2 text-left text-2xl backdrop-blur sm:text-3xl/relaxed"
+				class="z-10 my-12 max-w-screen-lg rounded-xl bg-white/75 py-2 pr-2 text-left text-2xl backdrop-blur-sm backdrop-brightness-125 max-2xl:max-w-full sm:text-3xl/relaxed"
 			>
-				a Germany-born
-				<strong class="font-semibold">front-end developer</strong>
-				and
-				<strong class="font-semibold">designer</strong>
-				based in Helsinki. I’ve combined a
-				<strong class="font-semibold">strong design background</strong>
-				with hands-on
-				<strong class="font-semibold">coding expertise</strong>
-				to build engaging solutions, including a
-				<strong class="font-semibold">next-gen ATS</strong>
-				at
-				<strong class="font-semibold">TalentAdore</strong>. Now I’m ready to bring my
-				<strong class="font-semibold">bilingual fluency</strong>
-				and
-				<strong class="font-semibold">global perspective</strong>
-				to
-				<strong class="font-semibold">Zürich’s</strong>
-				thriving tech scene, helping teams innovate through
-				<strong class="font-semibold">user-centric</strong>
-				experiences and modern web technologies.
+				With a <strong class="font-semibold">strong foundation</strong> in
+				<strong class="font-semibold">design</strong> and
+				<strong class="font-semibold">front-end development</strong>, I specialize in crafting <strong
+					class="font-semibold">modern</strong
+				>,
+				<strong class="font-semibold">user-centric solutions</strong>. My work combines <strong
+					class="font-semibold">creativity</strong
+				>,
+				<strong class="font-semibold">technology</strong>, and a
+				<strong class="font-semibold">global perspective</strong> to help teams innovate and bring their
+				ideas to life through
+				<strong class="font-semibold">engaging digital experiences</strong>.
 			</p>
 		</div>
-		<div class="avatar-wrapper max-2xl:hidden" id="face">
+		<div class="avatar-wrapper max-lg:hidden" id="face">
 			<Image src={profileImage} alt="André's Avatar" class="avatar-image" />
 			<div class="eye-container">
 				<img src="/eye.png" alt="Left Eye" class="eye-left" />
@@ -381,34 +373,22 @@ export { latestPost }
 
 <script is:inline>
 	function initEyes() {
-		// Select each pupil (the two img elements)
 		const eyes = document.querySelectorAll('.eye-left, .eye-right')
-
-		// Maximum distance (in px) from the “home” position each pupil can move.
-		// Adjust this so the pupils stay within the white area of the eyes in your avatar.
 		const MAX_DISTANCE = 10
 
 		document.addEventListener('mousemove', (e) => {
 			eyes.forEach((eye) => {
-				// 1) Get the pupil’s "home" position
-				//    (where you placed it in CSS, i.e. .eye-left { top: ..., left: ... })
 				const rect = eye.getBoundingClientRect()
-				// The "center" of the pupil’s home position:
 				const centerX = rect.left + rect.width / 2
 				const centerY = rect.top + rect.height / 2
 
-				// 2) Distance from mouse to that center
 				const dx = e.clientX - centerX
 				const dy = e.clientY - centerY
 
-				// 3) Calculate the angle + how far the mouse is
 				const angle = Math.atan2(dy, dx)
-				const distance = Math.hypot(dx, dy) // same as Math.sqrt(dx*dx + dy*dy)
-
-				// 4) Clamp to MAX_DISTANCE so the pupil doesn't go too far
+				const distance = Math.hypot(dx, dy)
 				const clampedDistance = Math.min(distance, MAX_DISTANCE)
 
-				// 5) Convert polar (distance, angle) to x/y offsets
 				const offsetX = clampedDistance * Math.cos(angle)
 				const offsetY = clampedDistance * Math.sin(angle)
 

@@ -48,7 +48,7 @@ function isPathActive(itemPath, additionalPaths = []) {
 				</a>
 			))
 		}
-		<div id="nav-underline" class="nav-underline"></div>
+		<div id="nav-underline" class="nav-underline invisible lg:visible"></div>
 	</div>
 </nav>
 
@@ -61,6 +61,26 @@ function isPathActive(itemPath, additionalPaths = []) {
 			const style = window.getComputedStyle(underline)
 			lastUnderlinePosition.left = parseInt(style.left, 10)
 			lastUnderlinePosition.width = parseInt(style.width, 10)
+		}
+	}
+
+	function initMenu() {
+		const hamburger = document.getElementById('hamburger')
+		const navMenu = document.getElementById('nav-menu')
+
+		if (hamburger && navMenu) {
+			hamburger.addEventListener('click', () => {
+				navMenu.classList.toggle('invisible')
+
+				// Check if the menu is now visible
+				if (!navMenu.classList.contains('invisible')) {
+					// Disable scrolling
+					document.body.style.overflow = 'hidden'
+				} else {
+					// Re-enable scrolling
+					document.body.style.overflow = ''
+				}
+			})
 		}
 	}
 
@@ -89,5 +109,8 @@ function isPathActive(itemPath, additionalPaths = []) {
 
 	document.addEventListener('astro:before-swap', saveUnderlinePosition)
 	document.addEventListener('astro:after-swap', updateUnderline)
+	document.addEventListener('astro:after-swap', initMenu)
+	document.addEventListener('DOMContentLoaded', initMenu)
 	document.addEventListener('DOMContentLoaded', updateUnderline)
+	window.addEventListener('resize', updateUnderline)
 </script>

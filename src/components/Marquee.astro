@@ -1,22 +1,25 @@
 ---
 // Shuffle the array and ensure adjacent items are not both highlighted
 function shuffleAndDistribute(words) {
+	// Create a deep copy of the words array to avoid mutation
+	const shuffledWords = words.slice() // or [...words]
+
 	// Shuffling the array
-	for (let i = words.length - 1; i > 0; i--) {
+	for (let i = shuffledWords.length - 1; i > 0; i--) {
 		const j = Math.floor(Math.random() * (i + 1))
-		;[words[i], words[j]] = [words[j], words[i]]
+		;[shuffledWords[i], shuffledWords[j]] = [shuffledWords[j], shuffledWords[i]]
 	}
 
 	// Ensuring no adjacent highlighted items
-	for (let i = 0; i < words.length - 1; i++) {
+	for (let i = 0; i < shuffledWords.length - 1; i++) {
 		if (i % 2 === 0 && (i + 1) % 2 === 0) {
 			let next = i + 2
-			if (next < words.length) {
-				;[words[i + 1], words[next]] = [words[next], words[i + 1]]
+			if (next < shuffledWords.length) {
+				;[shuffledWords[i + 1], shuffledWords[next]] = [shuffledWords[next], shuffledWords[i + 1]]
 			}
 		}
 	}
-	return words
+	return shuffledWords
 }
 
 const { words } = Astro.props
