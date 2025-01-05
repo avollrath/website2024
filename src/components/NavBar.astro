@@ -43,7 +43,7 @@ function isPathActive(itemPath, additionalPaths = []) {
 		{
 			navItems.map((item) => (
 				<a
-					href={`${baseUrl}${item.path}`}
+					href={item.path}
 					class={`nav-item px-4 py-2 font-medium transition hover:text-dark-text ${isPathActive(item.path, item.additionalPaths) ? 'gradient-underline text-dark-text' : ' text-gray-400'}`}
 					id={item.id}
 				>
