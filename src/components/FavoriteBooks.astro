@@ -17,7 +17,7 @@ shuffleArray(favoriteBooks)
 ---
 
 <div
-	class={`${colSpan} xl:col-span-3 col-span-3 dark:bg-gradient-to-r from-dark-card to-darker-card bg-white px-4 py-8 sm:p-12 rounded-md sm:rounded-lg border-gradient flex flex-col items-center shadow-lg`}
+	class={`${colSpan} col-span-3  bg-white px-4 py-8 2xl:p-12 rounded-md sm:rounded-lg border-gradient flex flex-col items-center shadow-lg`}
 >
 	<h2
 		class="long-transition mb-8 text-center font-header text-xl tracking-wide sm:text-4xl"
@@ -27,7 +27,7 @@ shuffleArray(favoriteBooks)
 	<div class="flex w-full flex-row flex-wrap justify-center">
 		{
 			favoriteBooks.map((book, index) => (
-				<div key={index} class="p-4">
+				<div key={index} class="p-2 2xl:p-4">
 					<div title={`<strong class='font-semibold'>${book.title}</strong> - ${book.authors}`}>
 						<img
 							src={book.coverURL || fallbackCover}

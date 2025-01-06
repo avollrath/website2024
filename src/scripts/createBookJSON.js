@@ -1,7 +1,16 @@
 import fetch from 'node-fetch'
 import fs from 'fs'
+import dotenv from 'dotenv'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
-let apiKey = GOOGLE_API_KEY
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+dotenv.config({ path: path.resolve(__dirname, '../../.env') })
+
+let apiKey = process.env.GOOGLE_API_KEY
+console.log('Loaded API Key:', process.env.GOOGLE_API_KEY)
 
 const favoriteBookISBNs = [
 	'9781936976225', // Wir Kinder vom Bahnhof Zoo
@@ -25,7 +34,15 @@ const nowPageBookISBNs = [
 	'9780063251922', // Demon Copperhead
 	'9780374104092', // Annihilation
 	'9780671690090', // Anne Frank
-	'9780671211356' // Logical Chess Move by move
+	'9780671211356', // Logical Chess Move by move
+	'9780525541424', // Believe It to Achieve It
+	'9780735213616', // Breath
+	'9783641053420', // Green mile
+	'9781250865038', // Feel good productivity
+	'9781451627299', // 11/22/63
+	'9781771643764', // Gut
+	'9780062880925', // Don't trust your gut
+	'9781533281852' // Siddhartha
 ]
 
 async function fetchBookDetails(isbn) {
@@ -79,4 +96,4 @@ async function saveBooksData(bookISBNs, fileName, date) {
 }
 
 // saveBooksData(favoriteBookISBNs, 'favoriteBooks.json')
-saveBooksData(nowPageBookISBNs, 'nowPageBooks.json', '2024-02-06')
+saveBooksData(nowPageBookISBNs, 'nowPageBooks.json', '2024-09-28')

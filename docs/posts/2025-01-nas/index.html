@@ -1,0 +1,147 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Building My Ultimate NAS with Unraid: Power, Storage, and Versatility</title><link rel="icon" href="/astro/favicon.DdVGadsO.svg" type="image/svg+xml"><meta name="description" content="Explore the journey of building a powerful, versatile NAS with Unraid, perfect for media storage, smart home automation, and more."><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/astro/about.BhCAX4gI.css">
+<link rel="stylesheet" href="/astro/2024-02-book-covers.Zg8A7M0t.css"><script type="module" src="/astro/hoisted.VQplzdks.js"></script></head> <body class="bg-gray-50 font-body text-dark-text dark:bg-dark-bg dark:text-white"> <div class="container mx-auto flex min-h-screen w-full max-w-2160 flex-col px-1 py-1 sm:px-4 sm:py-10 lg:px-8 2xl:px-16"> <nav class="nav-bar border-gradient sticky top-0 z-10 mb-4 flex items-center justify-between rounded-md bg-white from-dark-card to-darker-card px-4 shadow-lg dark:bg-gradient-to-r sm:static sm:z-0 sm:mb-8 sm:rounded-lg sm:px-12 lg:col-span-3"> <a href="/"> <img src="/astro/vollrath_logo.BsKTyMrh_Z2tfTe0.svg" class="mr-2 h-auto w-10 py-2 sm:w-16 sm:py-3" alt="Vollrath Logo" width="32" height="32" loading="lazy" decoding="async"> </a> <!-- Hamburger Icon --> <div class="flex cursor-pointer flex-col space-y-1 sm:space-y-2 lg:hidden" id="hamburger"> <span class="block h-0.5 w-5 bg-dark-text sm:w-8"></span> <span class="block h-0.5 w-5 bg-dark-text sm:w-8"></span> <span class="block h-0.5 w-5 bg-dark-text sm:w-8"></span> </div> <div class="invisible z-30 flex select-none flex-col font-header text-xl md:flex-row lg:visible" id="nav-menu"> <a href="/" class="nav-item px-4 py-2 font-medium transition hover:text-dark-text  text-gray-400" id="home-link"> Home </a><a href="/about" class="nav-item px-4 py-2 font-medium transition hover:text-dark-text  text-gray-400" id="about-link"> About </a><a href="/now" class="nav-item px-4 py-2 font-medium transition hover:text-dark-text  text-gray-400" id="now-link"> Now </a><a href="/renders" class="nav-item px-4 py-2 font-medium transition hover:text-dark-text  text-gray-400" id="renders-link"> Renders </a><a href="/blog" class="nav-item px-4 py-2 font-medium transition hover:text-dark-text gradient-underline text-dark-text" id="blog-link"> Blog </a> <div id="nav-underline" class="nav-underline invisible lg:visible"></div> </div> </nav> <script>
+	let lastUnderlinePosition = { left: 0, width: 0 }
+
+	function saveUnderlinePosition() {
+		const underline = document.querySelector('#nav-underline')
+		if (underline) {
+			const style = window.getComputedStyle(underline)
+			lastUnderlinePosition.left = parseInt(style.left, 10)
+			lastUnderlinePosition.width = parseInt(style.width, 10)
+		}
+	}
+
+	function initMenu() {
+		const hamburger = document.getElementById('hamburger')
+		const navMenu = document.getElementById('nav-menu')
+
+		if (hamburger && navMenu) {
+			hamburger.addEventListener('click', () => {
+				navMenu.classList.toggle('invisible')
+
+				// Check if the menu is now visible
+				if (!navMenu.classList.contains('invisible')) {
+					// Disable scrolling
+					document.body.style.overflow = 'hidden'
+				} else {
+					// Re-enable scrolling
+					document.body.style.overflow = ''
+				}
+			})
+		}
+	}
+
+	function updateUnderline() {
+		const underline = document.querySelector('#nav-underline')
+		const activeItem = document.querySelector('.nav-item.gradient-underline')
+
+		if (!activeItem) {
+			return
+		}
+
+		const navMenu = document.querySelector('#nav-menu')
+		const activeItemRect = activeItem.getBoundingClientRect()
+		const navMenuRect = navMenu.getBoundingClientRect()
+
+		const newLeft = activeItemRect.left + 10 - navMenuRect.left
+		const newWidth = activeItem.offsetWidth - 20
+
+		const movingRight = newLeft > lastUnderlinePosition.left
+
+		underline.style.left = `${movingRight ? lastUnderlinePosition.left : lastUnderlinePosition.left + lastUnderlinePosition.width - newWidth}px`
+		underline.style.width = `${lastUnderlinePosition.width}px`
+
+		requestAnimationFrame(() => {
+			underline.style.left = `${newLeft}px`
+			underline.style.width = `${newWidth}px`
+		})
+	}
+
+	function initializeListeners() {
+		const events = [
+			{ target: document, type: 'astro:before-swap', handler: saveUnderlinePosition },
+			{
+				target: document,
+				type: 'astro:after-swap',
+				handler: () => {
+					updateUnderline()
+					initMenu()
+				}
+			},
+			{
+				target: document,
+				type: 'DOMContentLoaded',
+				handler: () => {
+					initMenu()
+					updateUnderline()
+				}
+			},
+			{ target: window, type: 'resize', handler: updateUnderline }
+		]
+
+		events.forEach(({ target, type, handler }) => target.addEventListener(type, handler))
+	}
+
+	initializeListeners()
+</script> <!-- Main content area with 12-column grid layout --> <main class="flex-grow"> <div class="grid grid-cols-1 gap-4 sm:gap-8 xl:grid-cols-3 2xl:grid-cols-12">  <div class="border-gradient flex flex-col items-center rounded-lg bg-white px-4 py-8 dark:bg-gradient-to-r sm:p-12 lg:col-span-9"> <header class="blog-header text-center"> <h1 class="long-transition mb-4 font-header leading-snug tracking-wide sm:text-4xl"> Building My Ultimate NAS with Unraid: Power, Storage, and Versatility </h1> <div class="metadata mb-4 flex flex-col"> <span class="mb-4 text-lg">03.01.2025</span> <div class="mt-2 inline-flex flex-wrap justify-center gap-2"> <span key="NAS" class="rounded bg-orange px-2 py-1 text-xs font-semibold text-white lg:text-base"> NAS </span><span key="Unraid" class="rounded bg-orange px-2 py-1 text-xs font-semibold text-white lg:text-base"> Unraid </span><span key="Home Server" class="rounded bg-orange px-2 py-1 text-xs font-semibold text-white lg:text-base"> Home Server </span><span key="Tech" class="rounded bg-orange px-2 py-1 text-xs font-semibold text-white lg:text-base"> Tech </span><span key="Docker" class="rounded bg-orange px-2 py-1 text-xs font-semibold text-white lg:text-base"> Docker </span><span key="Plex" class="rounded bg-orange px-2 py-1 text-xs font-semibold text-white lg:text-base"> Plex </span> </div> </div> <img src="/blog/nas_build.jpg" alt="A sleek, modern NAS setup in a white Jonsbo N2 case." class="mb-6 w-full rounded-xl"> </header> <article class="blog-content max-w-full text-left text-xl leading-relaxed"> <div class="prose max-w-full text-gray-400 prose-headings:text-dark-text prose-h1:text-xl prose-h1:font-bold prose-h2:rounded prose-h2:max-w-fit prose-h2:mx-auto prose-h2:bg-dark-text prose-h2:py-2 prose-h2:px-3 prose-h2:text-sm prose-h2:font-header prose-h2:font-semibold prose-h2:text-white prose-p:text-justify prose-a:font-bold prose-a:text-dark-text prose-strong:text-dark-text prose-img:rounded-xl">  <p>Building my own NAS (Network-Attached Storage) system has been one of the most rewarding tech projects I’ve undertaken. This little powerhouse not only serves as a reliable home for my media library and photo backups but also acts as a hub for smart home automation and various Docker applications. Here’s a detailed look at how I designed, built, and configured my NAS to meet my needs.</p>
+<h2 id="the-hardware-a-perfect-balance-of-power-and-efficiency">The Hardware: A Perfect Balance of Power and Efficiency</h2>
+<p>For the heart of my NAS, I chose the <strong>ASROCK N100DC-ITX</strong>, featuring Intel’s efficient Quad-Core N100 processor. It’s an ideal choice for a low-power server that can handle multiple Docker containers and light virtualization without breaking a sweat.</p>
+<h3 id="components">Components:</h3>
+<ul>
+<li><strong>Case</strong>: A sleek, white <strong>Jonsbo N2</strong> — compact yet spacious enough for all components.</li>
+<li><strong>RAM</strong>: 8GB of DDR4 memory, more than sufficient for my current workload.</li>
+<li><strong>Cache Drive</strong>: <strong>WD Red SN700 NVMe SSD (1 TB)</strong> for blazing-fast caching and application data.</li>
+<li><strong>HDDs</strong>: A combination of two robust drives:
+<ul>
+<li><strong>HGST Ultrastar He8 8TB</strong></li>
+<li><strong>Seagate IronWolf 8TB</strong></li>
+</ul>
+</li>
+<li><strong>Cooling</strong>: To ensure silent and efficient cooling, I installed a <strong>Noctua NF-A12x25</strong> fan.</li>
+</ul>
+<p>I run these drives in <strong>Parity</strong> with Unraid, which provides data redundancy. This ensures that even if one drive fails, no data is lost. It’s a peace-of-mind feature that’s essential for a reliable storage setup.</p>
+<p>I also plan to upgrade to <strong>four 24TB HDDs</strong> in the future, which will significantly expand my storage capacity and allow me to consolidate my growing data needs.</p>
+<h2 id="software-the-power-of-unraid">Software: The Power of Unraid</h2>
+<p>I chose <strong>Unraid</strong> as the operating system for its flexibility and ease of use. Unraid allows me to combine drives of different sizes while ensuring data redundancy. Its web interface makes management a breeze, and its extensive plugin and Docker support opens the door to endless possibilities.</p>
+<h3 id="key-features-im-using">Key Features I’m Using:</h3>
+<ul>
+<li><strong>Plex Media Server</strong>: Streams movies, TV shows, and music to devices throughout my home.</li>
+<li><strong>Immich</strong>: A self-hosted solution for managing my photo and video library.</li>
+<li><strong>Home Assistant</strong>: Acts as the brain of my smart home.</li>
+</ul>
+<h2 id="docker-containers-the-real-mvps">Docker Containers: The Real MVPs</h2>
+<p>Docker containers are at the core of my NAS functionality. Here are some of the key containers I’ve set up:</p>
+<ul>
+<li><strong>Plex Media Server</strong>: My go-to for organizing and streaming media.</li>
+<li><strong>Immich</strong>: Handles photo backups and AI-driven photo organization.</li>
+<li><strong>Home Assistant</strong>: Keeps my smart home devices running smoothly.</li>
+<li><strong>DuckDNS</strong>: Ensures I can securely access my NAS from anywhere.</li>
+<li><strong>Nginx Proxy Manager</strong>: Simplifies managing SSL certificates and proxy configurations.</li>
+<li><strong>Tautulli</strong>: Provides detailed insights into Plex usage and activity.</li>
+</ul>
+<p>Each container is configured with optimized volume mappings and ports, ensuring smooth operation and easy troubleshooting.</p>
+<h2 id="use-cases-a-central-hub-for-everything">Use Cases: A Central Hub for Everything</h2>
+<p>My NAS has quickly become indispensable for several key tasks:</p>
+<ol>
+<li><strong>Media Server</strong>: Plex streams my movies, TV shows, and music seamlessly to every device in my home.</li>
+<li><strong>Photo Backup and Hosting</strong>: Immich keeps my growing photo library organized and accessible, complete with AI-driven tagging.</li>
+<li><strong>Smart Home Integration</strong>: With Home Assistant, my NAS orchestrates lights, sensors, and automations for a smarter living experience.</li>
+<li><strong>File Storage and Access</strong>: Acts as a central repository for personal files, ensuring everything is safely backed up.</li>
+<li><strong>Experimentation</strong>: From trying out new Docker images to experimenting with virtual machines, my NAS is a playground for learning and innovation.</li>
+</ol>
+<h2 id="challenges-and-solutions">Challenges and Solutions</h2>
+<p>Building a NAS isn’t without its hurdles. Here are some challenges I faced and how I tackled them:</p>
+<ul>
+<li><strong>Drive Noise</strong>: The solution? Carefully selecting low-noise components and tweaking fan curves to minimize noise during idle periods.</li>
+<li><strong>Docker Configuration</strong>: With so many containers, managing network settings and volume mappings required careful planning.</li>
+<li><strong>Storage Allocation</strong>: Balancing cache usage and long-term storage was tricky, but Unraid’s documentation helped clarify best practices.</li>
+</ul>
+<h2 id="final-thoughts">Final Thoughts</h2>
+<p>This NAS project has been an exciting journey into the world of DIY home servers. It’s not just a tech experiment; it’s a vital part of my daily life, handling everything from entertainment to smart home management.</p>
+<p>If you’re considering building your own NAS, I’d highly recommend diving in. The flexibility and control you gain are unmatched, and the satisfaction of creating a tailored solution is incredibly rewarding.</p>
+<p>Got questions or want to share your own NAS build? Drop a comment below — I’d love to hear from you!</p>
+<hr>
+<p>Happy building!</p>  </div> </article> </div> <div class="lg:col-span-3"> <aside class="sidebar dark:bg-gradient-to-r from-dark-card to-darker-card py-24 px-12 bg-white rounded-lg flex flex-col items-start border-gradient"> <h2 class="text-4xl tracking-wide font-header mb-12">Other Posts</h2> <ul class="space-y-4"> <li key="/posts/2024-02-book-covers" class="flex flex-col mb-12"> <a href="/posts/2024-02-book-covers" class="group"> <div class="image-container rounded-md overflow-hidden"> <img src="/blog/books.jpg" alt="A collection of book covers displayed on a digital screen." class="w-full mb-2 object-cover aspect-video group-hover:scale-125 transition-transform duration-300 ease-in-out"> </div> <span class="text-lg font-header tracking-wide">Fetching and Displaying Book Covers Using Google Books API</span> </a> <span class="text-xl text-gray-500">08.02.2024</span> </li><li key="/posts/2024-02-pixoo" class="flex flex-col mb-12"> <a href="/posts/2024-02-pixoo" class="group"> <div class="image-container rounded-md overflow-hidden"> <img src="/blog/pixoo.jpg" alt="A creative representation of the chess rating display project." class="w-full mb-2 object-cover aspect-video group-hover:scale-125 transition-transform duration-300 ease-in-out"> </div> <span class="text-lg font-header tracking-wide">Building a Real-Time Chess Rating Display with Python and Pixoo</span> </a> <span class="text-xl text-gray-500">30.01.2024</span> </li><li key="/posts/2024-02-spotify" class="flex flex-col mb-12"> <a href="/posts/2024-02-spotify" class="group"> <div class="image-container rounded-md overflow-hidden"> <img src="https://miro.medium.com/v2/resize:fit:1400/1*CEFFWhadfveAWq4yTh3FBQ.png" alt="Spotify logo with top 5 tracks" class="w-full mb-2 object-cover aspect-video group-hover:scale-125 transition-transform duration-300 ease-in-out"> </div> <span class="text-lg font-header tracking-wide">Analyzing Spotify&#39;s Top 5 Tracks</span> </a> <span class="text-xl text-gray-500">08.08.2022</span> </li><li key="/posts/2024-02-watchface" class="flex flex-col mb-12"> <a href="/posts/2024-02-watchface" class="group"> <div class="image-container rounded-md overflow-hidden"> <img src="https://i.pinimg.com/originals/7b/af/fe/7baffe3fd8b737032792d3462bc34b77.jpg" alt="A creative representation of watchface." class="w-full mb-2 object-cover aspect-video group-hover:scale-125 transition-transform duration-300 ease-in-out"> </div> <span class="text-lg font-header tracking-wide">Creating a VSCode-Inspired Watch Face for Garmin Forerunner 55 Music</span> </a> <span class="text-xl text-gray-500">08.08.2022</span> </li><li key="/posts/2024-03-lunchbot" class="flex flex-col mb-12"> <a href="/posts/2024-03-lunchbot" class="group"> <div class="image-container rounded-md overflow-hidden"> <img src="/blog/lunchbot.png" alt="Illustration of a lunch table with various dishes, representing LunchBot project." class="w-full mb-2 object-cover aspect-video group-hover:scale-125 transition-transform duration-300 ease-in-out"> </div> <span class="text-lg font-header tracking-wide">Building a Real-Time Lunch Menu Bot for Workplace Communication</span> </a> <span class="text-xl text-gray-500">30.03.2024</span> </li><li key="/posts/2025-01-nas" class="flex flex-col mb-12"> <a href="/posts/2025-01-nas" class="group"> <div class="image-container rounded-md overflow-hidden"> <img src="/blog/nas_build.jpg" alt="A sleek, modern NAS setup in a white Jonsbo N2 case." class="w-full mb-2 object-cover aspect-video group-hover:scale-125 transition-transform duration-300 ease-in-out"> </div> <span class="text-lg font-header tracking-wide">Building My Ultimate NAS with Unraid: Power, Storage, and Versatility</span> </a> <span class="text-xl text-gray-500">03.01.2025</span> </li> </ul> </aside> </div>  <!-- Slot for page-specific content --> </div> </main> <footer class="footer-bar flex items-center justify-center py-12 text-center text-sm text-gray-400 sm:text-base"> <p>
+Handmade with ❤️ by <strong class="text-dark-text">André Vollrath</strong> © 2025. <br>All
+		rights reserved.
+</p> </footer> </div>   </body> </html>

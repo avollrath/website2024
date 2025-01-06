@@ -16,7 +16,7 @@
     "astro-tooltips": "^0.6.2",
     "autoprefixer": "^10.4.17",
     "d3": "^7.8.5",
-    "dotenv": "^16.4.1",
+    "dotenv": "^16.4.7",
     "node-fetch": "^3.3.2",
     "postcss": "^8.4.33",
     "prettier": "^3.2.5",

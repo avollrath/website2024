@@ -15,6 +15,17 @@ body {
 			var(--dot-color) var(--dot-size),
 			transparent calc(var(--dot-size) + 1px)) center / var(--dot-space) var(--dot-space),
 		var(--dot-bg);
+	cursor: url('/white-cartoon-hand-cursor.png'), auto;
+}
+
+button,
+a,
+[role="button"],
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+.clickable-section {
+	cursor: url('/white-cartoon-hand-pointer.png'), pointer !important;
 }
 
 .border-gradient {

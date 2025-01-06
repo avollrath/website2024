@@ -2,13 +2,8 @@
 // Import the JSON data and the date prop
 import nowBooksData from '../lib/now_books.json'
 const booksDate = Astro.props.booksDate
-
 const booksForSelectedDate = nowBooksData[booksDate] || []
 
-console.log('Selected Date:', booksDate)
-console.log('Books for Selected Date:', booksForSelectedDate)
-
-// Access the books array
 ---
 
 <div>
