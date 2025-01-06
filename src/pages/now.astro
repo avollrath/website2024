@@ -19,9 +19,9 @@ import { Image } from 'astro:assets'
 <Layout title="Now" description="What I'm doing now">
 	<div class="col-span-3 flex flex-col 2xl:col-span-3">
 		<div
-			class="long-transition border-gradient flex flex-col items-center rounded-lg bg-white from-dark-card to-darker-card p-6 text-gray-400 shadow-lg dark:bg-gradient-to-r dark:text-white sm:p-12 sm:text-lg"
+			class="long-transition border-gradient flex flex-col items-center rounded-lg bg-white p-6 text-gray-400 shadow-lg sm:p-12 sm:text-lg"
 		>
-			<h2 class="long-transition mb-8 self-start font-header text-4xl tracking-wide">Now</h2>
+			<h2 class="long-transition mb-8 text-dark-text font-header text-4xl tracking-wide">Now</h2>
 			<p class="my-3 leading-relaxed">
 				Welcome to my <strong class="font-semibold text-dark-text">Now</strong> page, a unique space
 				where I share what's currently engaging my attention. Unlike the more static "About" page, this
@@ -57,14 +57,8 @@ import { Image } from 'astro:assets'
 
 	<div class="col-span-3 2xl:col-span-6">
 		<NowEntry date="2024-03-31">
-			<div class="mb-4 flex flex-wrap">
-				<!-- Add any relevant images like logos for Three.js if you have them -->
-				<Image
-					src={threejsLogoWhite}
-					class="mr-2 hidden h-auto w-72 dark:inline"
-					alt="Three.js Logo"
-				/>
-				<Image src={threejsLogoBlack} class="mr-2 h-auto w-72 dark:hidden" alt="Three.js Logo" />
+			<div class="mb-4 flex flex-wrap justify-center">
+				<Image src={threejsLogoBlack} class="mr-2 h-auto w-72 " alt="Three.js Logo" />
 			</div>
 			<p>
 				I'm currently deepening my understanding of 3D web graphics through learning <strong
@@ -93,13 +87,12 @@ import { Image } from 'astro:assets'
 		</NowEntry>
 
 		<NowEntry date="2024-02-06">
-			<div class="mb-4 flex flex-wrap">
+			<div class="mb-4 flex flex-wrap justify-center">
 				<Image
 					src={tailwindLogoDark}
 					class="hidden h-auto w-72 dark:inline"
 					alt="Tailwind CSS Logo"
 				/>
-				<Image src={astroLogo} class="mr-2 hidden h-auto w-72 dark:inline" alt="Astro.js Logo" />
 				<Image src={tailwindLogo} class="h-auto w-72 dark:hidden" alt="Tailwind CSS Logo" />
 				<Image src={astroLogoDark} class="mr-2 h-auto w-72 dark:hidden" alt="Astro.js Logo" />
 			</div>

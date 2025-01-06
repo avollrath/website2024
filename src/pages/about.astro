@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import FavoriteBooks from '../components/FavoriteBooks.astro'
+import TechStack from '../components/TechStack.astro'
 ---
 
 <Layout title="About" description="About me page">
@@ -10,11 +11,11 @@ import FavoriteBooks from '../components/FavoriteBooks.astro'
 	>
 	</div>
 	<div
-		class="long-transition border-gradient col-span-3 flex flex-col items-center rounded-md bg-white from-dark-card to-darker-card px-4 py-8 text-gray-400 shadow-lg sm:rounded-lg sm:px-12 sm:py-24 sm:text-lg xl:col-span-2 xl:px-24 2xl:col-span-8 2xl:px-48"
+		class="long-transition border-gradient col-span-3 flex flex-col items-center rounded-md bg-white px-4 py-8 text-gray-400 shadow-lg sm:rounded-lg sm:p-12 sm:text-lg xl:col-span-2 2xl:col-span-8"
 	>
 		<div class="bio space-y-4">
 			<h1
-				class="long-transition text-center font-header text-xl tracking-wide text-dark-text sm:text-left sm:text-4xl"
+				class="long-transition text-center mb-12 font-header text-xl tracking-wide text-dark-text sm:text-4xl"
 			>
 				About Me
 			</h1>
@@ -46,6 +47,11 @@ import FavoriteBooks from '../components/FavoriteBooks.astro'
 				Three.js, showcasing my passion for learning and growth in the field.
 			</p>
 
+			<div class="p-2 sm:p-6">
+				<h3 class="mb-8 text-center text-xl font-semibold text-orange">My toolbox</h3>
+				<TechStack />
+			</div>
+
 			<p>
 				As a <strong class="font-semibold text-dark-text">technology enthusiast</strong>, I am
 				always intrigued by the latest trends and innovations. My interests span across VR, gadgets,
@@ -63,7 +69,7 @@ import FavoriteBooks from '../components/FavoriteBooks.astro'
 			</p>
 
 			<p>
-				My blog is a reflection of my diverse interests and projects in the tech world, covering a
+				My <a href="/blog" class="font-semibold text-orange underline">blog</a> is a reflection of my diverse interests and projects in the tech world, covering a
 				range of topics and explorations. It's where I share my insights, learnings, and experiences
 				with a wider audience.
 			</p>

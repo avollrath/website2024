@@ -4,18 +4,16 @@
 html {
 	scroll-behavior: smooth;
 }
+
 body {
 	--dot-bg: #edf2f6;
 	--dot-color: rgb(238, 238, 238);
 	--dot-size: 1px;
 	--dot-space: 16px;
 	background:
-		radial-gradient(
-				circle,
-				var(--dot-color) var(--dot-size),
-				transparent calc(var(--dot-size) + 1px)
-			)
-			center / var(--dot-space) var(--dot-space),
+		radial-gradient(circle,
+			var(--dot-color) var(--dot-size),
+			transparent calc(var(--dot-size) + 1px)) center / var(--dot-space) var(--dot-space),
 		var(--dot-bg);
 }
 
@@ -56,13 +54,14 @@ body {
 	align-items: center;
 	justify-content: center;
 	border-radius: 50%;
-	width: 56px;
-	height: 56px;
+	width: 40px;
+	height: 40px;
 	transition: transform 0.3s ease;
 	border: 3px solid #ff5ff6;
 }
 
 @media screen and (max-width: 640px) {
+
 	.arrow-link,
 	.arrow {
 		width: 26px;
@@ -159,6 +158,7 @@ body {
 		width: 35px;
 		height: 35px;
 	}
+
 	.eye-left {
 		top: 141px;
 		left: 276px;
