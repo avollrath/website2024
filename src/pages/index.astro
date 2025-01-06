@@ -20,6 +20,7 @@ try {
 const allPosts = await Astro.glob('../pages/posts/*.md');
 
 allPosts.sort((a, b) => new Date(b.frontmatter.pubDate) - new Date(a.frontmatter.pubDate));
+
 const latestPost = allPosts[0];
 
 export { latestPost };
@@ -241,7 +242,7 @@ export { latestPost };
 
 	<!-- Spotify Section -->
 	<div
-		class="border-gradient flex h-full flex-col items-center overflow-visible rounded-md bg-white from-dark-card to-darker-card px-4 py-8 shadow-lg dark:bg-gradient-to-r sm:rounded-lg sm:p-12 xl:col-span-2 xl:row-start-5 2xl:col-span-9 2xl:row-start-3"
+		class="border-gradient flex h-full flex-col items-center overflow-visible rounded-md bg-white from-dark-card to-darker-card px-4 py-8 shadow-lg dark:bg-gradient-to-r sm:rounded-lg xl:col-span-2 xl:row-start-5 2xl:col-span-9 2xl:row-start-3"
 	>
 		<h2
 			class="long-transition mb-8 text-center font-header text-xl tracking-wide sm:text-4xl"
@@ -251,7 +252,7 @@ export { latestPost };
 				>(last 6 months)</span
 			>
 		</h2>
-		<div class="flex w-full flex-row flex-wrap justify-center gap-4">
+		<div class="flex w-full flex-row flex-wrap justify-center gap-2">
 			{
 				topTracks.map((track) =>
 					track && track.external_urls && track.album && track.album.images[0] ? (
@@ -264,7 +265,7 @@ export { latestPost };
 								<img
 									src={track.album.images[0].url}
 									alt={`Cover art for ${track.name}`}
-									class="h-auto w-28 rounded-md shadow-lg transition-transform duration-300 hover:scale-105"
+									class="h-auto w-24 rounded-md shadow-lg transition-transform duration-300 hover:scale-105"
 								/>
 							</a>
 						</div>
