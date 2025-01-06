@@ -1,13 +1,34 @@
 ---
-// Import statements
 import Layout from '../layouts/Layout.astro';
+import Sidebar from '../components/Sidebar.astro' 
 const allPosts = await Astro.glob('../pages/posts/*.md');
 allPosts.sort((a, b) => new Date(b.frontmatter.pubDate) - new Date(a.frontmatter.pubDate));
 ---
 
 <Layout title="Blog" description="Latest blog posts">
+    <div class="col-span-3 flex flex-col 2xl:col-span-3">
+        <div
+            class="long-transition flex flex-col mb-4 items-center rounded-md sm:rounded-lg bg-about-gradient text-white p-6 text-gray-400 shadow-lg sm:p-12 sm:text-lg"
+        >
+            <h2 class="long-transition mb-8 font-header text-4xl tracking-wide" transition:name="blog-header">Blog</h2>
+            <p class="my-3 leading-relaxed">
+                Welcome to my <strong class="font-semibold">Blog</strong>, a curated collection of my thoughts, experiences, and projects. Here, I dive into a wide range of topics that capture my curiosity and passion.
+            </p>
+            <p class="my-3 leading-relaxed">
+                Whether you're interested in <strong class="font-semibold">tech explorations</strong>, creative endeavors, or deep dives into interesting challenges, this is the space where I share it all. Every post is a glimpse into my journey of learning, creating, and experimenting.
+            </p>
+            <p class="my-3 leading-relaxed">
+                You'll find posts about my latest <strong class="font-semibold">projects</strong>, <strong class="font-semibold">insights</strong>, and <strong class="font-semibold">discoveries</strong>, all written with the hope of inspiring or helping others in their own pursuits.
+            </p>
+            <p class="my-3 leading-relaxed">
+                Thank you for visiting and joining me on this journey.
+            </p>
+        </div>
+    </div>
+    
+    <div class="col-span-3 2xl:col-span-9">
     {allPosts.map((post) => (
-        <div class="block col-span-12 bg-white rounded-md sm:rounded-lg shadow-xl cursor-pointer dark:bg-gradient-to-r from-dark-card to-darker-card border-gradient group">
+        <div class="block col-span-12 bg-white rounded-md sm:rounded-lg shadow-xl cursor-pointer border-gradient group mb-4">
             <!-- Wrapping the entire post in an <a> tag -->
             <a href={post.url} class="flex flex-col items-center overflow-hidden rounded-t-md sm:rounded-t-lg lg:flex-row md:rounded-l-lg">
                 
@@ -22,12 +43,13 @@ allPosts.sort((a, b) => new Date(b.frontmatter.pubDate) - new Date(a.frontmatter
                 <!-- Text Content Container -->
                 <div class="flex flex-col justify-center w-full p-6 2xl:p-24 sm:p-12 md:justify-between">
                     <div>
-                        <h2 class="mb-4 text-xl sm:text-2xl tracking-wide transition 2xl:text-5xl/tight xl:text-4xl font-header long-transition">{post.frontmatter.title}</h2>
-                        <p class="sm:text-lg text-gray-400 dark:text-gray-300 2xl:text-2xl long-transition">{post.frontmatter.description}</p>
+                        <h2 class="mb-4 text-xl sm:text-2xl tracking-wide transition font-header long-transition">{post.frontmatter.title}</h2>
+                        <p class=" text-gray-400 dark:text-gray-300  long-transition">{post.frontmatter.description}</p>
                     </div>
                  
                 </div>
             </a>
         </div>
     ))}
+    </div>
 </Layout>
