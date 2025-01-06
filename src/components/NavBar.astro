@@ -2,9 +2,7 @@
 import { Image } from 'astro:assets'
 import vollrathLogo from '../images/vollrath_logo.svg'
 
-const currentPath = new URL(Astro.request.url).pathname
-const isDev = import.meta.env.DEV
-const baseUrl = isDev ? '' : Astro.site.toString().replace(/\/$/, '')
+const currentPath = new URL(Astro.request.url).pathname.replace(/\/$/, '') || '/'
 
 const navItems = [
 	{ path: '/', label: 'Home', id: 'home-link' },
