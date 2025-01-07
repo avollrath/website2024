@@ -3,13 +3,13 @@ const { title, htmlText, renderImageSrc, clayRenderImageSrc, transitionName, alt
 import { Image } from 'astro:assets'
 ---
 
-<div class="col-span-3 flex flex-col">
+<div class="col-span-3 flex flex-col xl:col-span-1 2xl:col-span-3">
 	<div
-		class="long-transition border-gradient flex flex-col rounded-lg bg-white text-gray-400 shadow-lg max-md:rounded-md sm:text-lg"
+		class="long-transition border-gradient flex flex-col rounded-lg bg-white text-gray-400 shadow-lg max-md:rounded-md sm:text-md 3xl:text-lg"
 	>
 		<div class="p-6 sm:p-12">
 			<h2
-				class="long-transition text-center mb-8 font-header text-2xl text-orange max-sm:mb-2 max-sm:text-lg"
+				class="long-transition text-center mb-4 font-header text-2xl text-orange max-sm:mb-2 max-sm:text-md 3xl:text-lg"
 			>
 				{title}
 			</h2>
@@ -18,7 +18,7 @@ import { Image } from 'astro:assets'
 	</div>
 </div>
 <div
-	class="long-transition border-gradient col-span-3 mb-8 flex flex-col items-center rounded-lg bg-white p-12 text-gray-400 shadow-lg max-md:rounded-md max-md:p-4 max-sm:border-none max-sm:p-0 sm:text-lg 2xl:col-span-9"
+	class="long-transition border-gradient col-span-3 mb-4 flex flex-col items-center rounded-lg bg-white p-12 text-gray-400 shadow-lg max-md:rounded-md max-md:p-4 max-sm:border-none max-sm:p-0 sm:text-md 3xl:text-lg xl:col-span-2 2xl:col-span-9"
 >
 	<div class="image-container rounded-md">
 		<Image

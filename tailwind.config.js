@@ -14,9 +14,13 @@ export default {
 				xxl: ['12rem', '10rem']
 			},
 
+			screens: {
+				'3xl': '1920px'
+			},
+
 			maxWidth: {
 				1920: '1920px',
-				2160: '2160px'
+				1970: '1970px'
 			},
 
 			gradientColorStops: (theme) => ({

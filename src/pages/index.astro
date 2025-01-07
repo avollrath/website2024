@@ -33,13 +33,15 @@ export { latestPost };
 		class="border-gradient relative flex flex-col items-center rounded-md bg-white px-4 py-8 shadow-lg sm:flex-row sm:rounded-lg sm:px-12 sm:py-24 xl:col-span-3 2xl:col-span-9"
 	>
 		<div class="z-10 flex-1">
+			
 			<h1
 				class="long-transition text-gradient text-center font-header text-5xl sm:text-6xl md:mr-4 lg:text-left lg:text-8xl"
 			>
-				Hi, I’m André.
+			<!-- <span class='text-white text-4xl sm:text-5xl lg:text-7xl'>👋</span>  -->
+			Hi, I’m André.
 			</h1>
 			<p
-				class="z-10 my-4 max-w-screen-lg rounded-xl bg-white/75 py-2 pr-2 text-base backdrop-blur-sm backdrop-brightness-125 max-2xl:max-w-full sm:my-12 sm:text-left sm:text-3xl/relaxed"
+				class="z-10 my-4 max-w-screen-md 3xl:max-w-screen-lg rounded-xl bg-white/75 py-2 pr-2 text-base backdrop-blur-sm backdrop-brightness-125 max-2xl:max-w-full sm:my-12 sm:text-left sm:text-2xl/relaxed 3xl:text-3xl/relaxed "
 			>
 				With a <strong class="font-semibold">strong foundation</strong> in
 				<strong class="font-semibold">design</strong> and
@@ -94,7 +96,7 @@ export { latestPost };
 			</a>
 		</div>
 		<ul
-	class="bullets long-transition mb-4 list-disc pl-5 text-gray-400 dark:text-white sm:text-lg"
+	class="bullets long-transition mb-4 list-disc pl-5 text-gray-400  sm:text-md 3xl:text-lg"
 >
 	<li class="mb-4">
 		Getting back into Photography with an <strong class="font-semibold text-dark-text">Olympus Micro Four Thirds (MFT) system</strong>
@@ -118,7 +120,7 @@ export { latestPost };
 	
 </ul>
 
-		<p class="text-center text-sm text-gray-400 dark:text-white">Last Updated: January 6, 2025</p>
+		<p class="text-center text-sm text-gray-400">Last Updated: January 6, 2025</p>
 	</div>
 
 	<!-- Latest Blog Section -->
@@ -143,7 +145,7 @@ export { latestPost };
 				</svg>
 			</a>
 		</div>
-		<h3 class="long-transition text-md mb-6 font-body text-center font-semibold text-dark-text sm:text-lg">
+		<h3 class="long-transition text-md mb-6 font-body text-center font-semibold text-dark-text sm:text-md 3xl:text-lg">
 			{latestPost.frontmatter.title}
 		</h3>
 		<div class="rounded-md overflow-hidden w-full mb-6">
@@ -153,7 +155,7 @@ export { latestPost };
 				class="w-full aspect-video object-cover transition duration-1000 transform group-hover:scale-125"
 			/>
 		</div>
-		<p class="long-transition text-gray-400 dark:text-white sm:text-lg" set:html={latestPost.frontmatter.teaser}></p>
+		<p class="long-transition text-gray-400 dark:text-white sm:text-md 3xl:text-lg" set:html={latestPost.frontmatter.teaser}></p>
 		<div class="flex justify-center">
 			<button
 				class="mt-12 rounded-full bg-orange px-10 py-4 text-lg font-semibold text-white transition-transform hover:scale-105"
@@ -184,7 +186,7 @@ export { latestPost };
 				</svg>
 			</a>
 		</div>
-		<p class="sm:text-lg">
+		<p class="sm:text-md 3xl:text-lg">
 			Hello there, I'm <strong class="font-semibold">André Vollrath</strong>, and I'm thrilled to
 			make your acquaintance. I'm a <strong class="font-semibold">designer</strong> and <strong
 				class="font-semibold">front-end developer</strong
@@ -192,7 +194,7 @@ export { latestPost };
 			I've dedicated myself to crafting visually stunning designs and building engaging websites.
 		</p>
 		<br />
-		<p class="sm:text-lg">
+		<p class="sm:text-md 3xl:text-lg">
 			In the realm of <strong class="font-semibold">design</strong>, I thrive on bringing ideas to
 			life. Whether it's fine-tuning images in <strong class="font-semibold">Adobe Photoshop</strong
 			> or creating stunning <strong class="font-semibold">web designs</strong>, my passion for
@@ -265,7 +267,7 @@ export { latestPost };
 								<img
 									src={track.album.images[0].url}
 									alt={`Cover art for ${track.name}`}
-									class="h-auto w-24 rounded-md shadow-lg transition-transform duration-300 hover:scale-105"
+									class="h-auto w-24 3xl:w-32 rounded-md shadow-lg transition-transform duration-300 hover:scale-105"
 								/>
 							</a>
 						</div>
@@ -273,13 +275,6 @@ export { latestPost };
 				)
 			}
 		</div>
-		<!-- {currentPlayingTrack && currentPlayingTrack.is_playing && currentPlayingTrack.item && currentPlayingTrack.item.external_urls ? (
-          <div class="self-start mt-8 currently-playing">
-            <a href={currentPlayingTrack.item.external_urls.spotify} target="_blank" class="flex items-center">
-              <span class="mr-4 text-lg text-gray-400 dark:text-white">Playing right now: <strong class="text-dark-text">{currentPlayingTrack.item.name}</strong> by {currentPlayingTrack.item.artists.map(artist => artist.name).join(", ")}</span>  <AudioWave />
-            </a>
-          </div>
-        ) : null} -->
 	</div>
 
 	<!-- Tech stack -->
@@ -326,21 +321,21 @@ export { latestPost };
 					<img
 						src={`/icons/github.png`}
 						alt="GitHub"
-						class="w-32 transition-transform hover:scale-105 sm:w-48"
+						class="w-28 transition-transform hover:scale-105 2xl:w-36"
 					/>
 				</a>
 				<a href="https://www.instagram.com/charliefeatherlight/" target="_blank" title="Instagram">
 					<img
 						src={`/icons/instagram.png`}
 						alt="Instagram"
-						class="w-32 transition-transform hover:scale-105 sm:w-48"
+						class="w-28 transition-transform hover:scale-105 2xl:w-36"
 					/>
 				</a>
 				<a href="https://www.linkedin.com/in/andrevollrath/" target="_blank" title="LinkedIn">
 					<img
 						src={`/icons/linkedin.png`}
 						alt="LinkedIn"
-						class="w-32 transition-transform hover:scale-105 sm:w-48"
+						class="w-28 transition-transform hover:scale-105 2xl:w-36"
 					/>
 				</a>
 				<a
@@ -351,7 +346,7 @@ export { latestPost };
 					<img
 						src={`/icons/spotify.png`}
 						alt="Spotify"
-						class="w-32 transition-transform hover:scale-105 sm:w-48"
+						class="w-28 transition-transform hover:scale-105 2xl:w-36"
 					/>
 				</a>
 			</div>

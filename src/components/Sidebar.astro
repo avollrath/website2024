@@ -1,6 +1,7 @@
 ---
 import { formatDate } from '../scripts/utils.js';
 const allPosts = await Astro.glob('../pages/posts/*.md');
+allPosts.sort((a, b) => new Date(b.frontmatter.pubDate) - new Date(a.frontmatter.pubDate));
 ---
 
 <aside class="sidebar dark:bg-gradient-to-r from-dark-card to-darker-card py-24 px-12 bg-white rounded-lg flex flex-col items-start border-gradient">

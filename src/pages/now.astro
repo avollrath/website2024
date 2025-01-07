@@ -19,9 +19,9 @@ import { Image } from 'astro:assets'
 ---
 
 <Layout title="Now" description="What I'm doing now">
-	<div class="col-span-3 flex flex-col 2xl:col-span-3">
+	<div class="col-span-3 flex flex-col xl:col-span-1 2xl:col-span-3">
 		<div
-			class="long-transition flex flex-col mb-4 items-center rounded-md sm:rounded-lg bg-about-gradient text-white p-6 text-gray-400 shadow-lg sm:p-12 sm:text-lg"
+			class="long-transition flex flex-col mb-4 items-center rounded-md sm:rounded-lg bg-about-gradient text-white p-6 shadow-lg sm:p-12 sm:text-md 3xl:text-lg"
 		>
 			<h2 class="long-transition mb-8 font-header text-4xl tracking-wide" transition:name="now-header">Now</h2>
 			<p class="my-3 leading-relaxed">
@@ -57,7 +57,7 @@ import { Image } from 'astro:assets'
 		</div>
 	</div>
 
-	<div class="col-span-3 2xl:col-span-6">
+	<div class="col-span-3 xl:col-span-2 2xl:col-span-6">
 
 		<NowEntry date="2025-01-06">
 			<div class="mb-4 flex flex-wrap justify-center gap-12">
@@ -86,7 +86,7 @@ import { Image } from 'astro:assets'
 		</NowEntry>
 
 		<NowEntry date="2024-09-28">
-			<div class="mb-4 flex flex-wrap justify-center gap-12 mb-8">
+			<div class="mb-4 flex flex-wrap justify-center gap-12">
 				<Image src={davinciLogo} class="h-12 w-auto sm:h-16" alt="Davinci Resolve Logo" />
 				<Image src={luminarLogo} class="h-12 w-auto sm:h-16" alt="Luminar Neo Logo" />
 				<Image src={affinityLogo} class="h-12 w-auto sm:h-16" alt="Affinity Logo" />
@@ -105,7 +105,7 @@ import { Image } from 'astro:assets'
 
 		
 		<NowEntry date="2024-03-31">
-			<div class="mb-4 flex flex-wrap justify-center mb-8">
+			<div class="mb-4 flex flex-wrap justify-center">
 				<Image src={threejsLogo} class="mr-2 h-auto w-36 sm:w-72 " alt="Three.js Logo" />
 			</div>
 			<p>
@@ -135,7 +135,7 @@ import { Image } from 'astro:assets'
 		</NowEntry>
 
 		<NowEntry date="2024-02-06">
-			<div class="mb-4 flex flex-wrap justify-center mb-8">
+			<div class="mb-4 flex flex-wrap justify-center">
 				<Image src={tailwindLogo} class="h-auto w-36 sm:w-72" alt="Tailwind CSS Logo" />
 				<Image src={astroLogo} class="mr-2 h-auto w-36 sm:w-72" alt="Astro.js Logo" />
 			</div>
@@ -165,9 +165,6 @@ import { Image } from 'astro:assets'
 	</div>
 
 	<div class="col-span-3 flex flex-col">
-		<FavoriteBooks bookWidth="w-24" />
-		<!-- <div class="mt-8">
-    <Spotify coverWidth="w-24"/>
-    </div> -->
+		<FavoriteBooks bookWidth="w-20" />
 	</div>
 </Layout>

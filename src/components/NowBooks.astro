@@ -7,7 +7,7 @@ const booksForSelectedDate = nowBooksData[booksDate] || []
 ---
 
 <div>
-	<div class="flex flex-col mb-12">
+	<div class="flex flex-col justify-center mb-12">
 		<hr class="my-8" />
 		<h3 class="mb-8">Currently reading:</h3>
 		{
@@ -16,7 +16,7 @@ const booksForSelectedDate = nowBooksData[booksDate] || []
 					<img
 						src={book.coverURL}
 						alt={`${book.title} Book Cover`}
-						class="w-32 h-auto mr-8 rounded-sm shadow-lg"
+						class="w-20 h-auto mr-8 rounded shadow-lg transition duration-300 ease-in-out hover:scale-150"
 					/>
 					<div>
 						<p class="text-2xl font-semibold text-dark-text">{book.title}</p>
