@@ -11,19 +11,22 @@ body {
 	--dot-size: 1px;
 	--dot-space: 16px;
 	background:
-		radial-gradient(circle,
-			var(--dot-color) var(--dot-size),
-			transparent calc(var(--dot-size) + 1px)) center / var(--dot-space) var(--dot-space),
+		radial-gradient(
+				circle,
+				var(--dot-color) var(--dot-size),
+				transparent calc(var(--dot-size) + 1px)
+			)
+			center / var(--dot-space) var(--dot-space),
 		var(--dot-bg);
 	cursor: url('/white-cartoon-hand-cursor.png'), auto;
 }
 
 button,
 a,
-[role="button"],
-input[type="button"],
-input[type="submit"],
-input[type="reset"],
+[role='button'],
+input[type='button'],
+input[type='submit'],
+input[type='reset'],
 .clickable-section {
 	cursor: url('/white-cartoon-hand-pointer.png'), pointer !important;
 }
@@ -74,7 +77,6 @@ input[type="reset"],
 }
 
 @media screen and (max-width: 640px) {
-
 	.arrow-link,
 	.arrow {
 		width: 26px;
@@ -215,19 +217,17 @@ input[type="reset"],
 	#nav-menu {
 		flex-direction: column;
 		position: absolute;
-		top: 2vh;
-		right: 2vw;
-		width: 96vw;
-		height: 96vh;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
 		border-radius: 2rem;
-		border: 6px solid #ff5ff6;
 		padding: 16rem 2rem;
 		z-index: 50;
 		font-size: 4rem;
 		text-align: center;
 		justify-content: space-between;
 		align-items: center;
-		backdrop-filter: saturate(180%) blur(8px);
-		background-color: rgba(255, 255, 255, 0.8);
+		background-color: #fff;
 	}
 }

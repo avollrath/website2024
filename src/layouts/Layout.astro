@@ -21,11 +21,12 @@ const favIcon = await getImage({ src: faviconSrc, format: 'svg' })
 		<ViewTransitions />
 	</head>
 	<body class="bg-gray-50 font-body text-dark-text dark:bg-dark-bg dark:text-white">
+		<div class="sticky top-0 z-10 mx-auto max-w-1970 sm:static sm:z-0 sm:px-4 sm:pt-4">
+			<NavBar />
+		</div>
 		<div
 			class="container mx-auto flex min-h-screen w-full max-w-1970 flex-col px-1 py-1 sm:px-4 sm:py-4 lg:px-4"
 		>
-			<NavBar />
-
 			<!-- Main content area with 12-column grid layout -->
 			<main class="flex-grow">
 				<div class="grid grid-cols-1 gap-4 xl:grid-cols-3 2xl:grid-cols-12">

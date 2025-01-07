@@ -17,14 +17,13 @@ try {
 	console.error('Error fetching top tracks:', error)
 }
 
-const allPosts = await Astro.glob('../pages/posts/*.md');
+const allPosts = await Astro.glob('../pages/posts/*.md')
 
-allPosts.sort((a, b) => new Date(b.frontmatter.pubDate) - new Date(a.frontmatter.pubDate));
+allPosts.sort((a, b) => new Date(b.frontmatter.pubDate) - new Date(a.frontmatter.pubDate))
 
-const latestPost = allPosts[0];
+const latestPost = allPosts[0]
 
-export { latestPost };
-
+export { latestPost }
 ---
 
 <Layout title="André's Portfolio" description="Welcome to André's Portfolio">
@@ -33,15 +32,14 @@ export { latestPost };
 		class="border-gradient relative flex flex-col items-center rounded-md bg-white px-4 py-8 shadow-lg sm:flex-row sm:rounded-lg sm:px-12 sm:py-24 xl:col-span-3 2xl:col-span-9"
 	>
 		<div class="z-10 flex-1">
-			
 			<h1
 				class="long-transition text-gradient text-center font-header text-5xl sm:text-6xl md:mr-4 lg:text-left lg:text-8xl"
 			>
-			<!-- <span class='text-white text-4xl sm:text-5xl lg:text-7xl'>👋</span>  -->
-			Hi, I’m André.
+				<!-- <span class='text-white text-4xl sm:text-5xl lg:text-7xl'>👋</span>  -->
+				Hi, I’m André.
 			</h1>
 			<p
-				class="z-10 my-4 max-w-screen-md 3xl:max-w-screen-lg rounded-xl bg-white/75 py-2 pr-2 text-base backdrop-blur-sm backdrop-brightness-125 max-2xl:max-w-full sm:my-12 sm:text-left sm:text-2xl/relaxed 3xl:text-3xl/relaxed "
+				class="z-10 my-4 max-w-screen-md rounded-xl bg-white/75 py-2 pr-2 text-base backdrop-blur-sm backdrop-brightness-125 max-2xl:max-w-full sm:my-12 sm:text-left sm:text-2xl/relaxed 3xl:max-w-screen-lg 3xl:text-3xl/relaxed"
 			>
 				With a <strong class="font-semibold">strong foundation</strong> in
 				<strong class="font-semibold">design</strong> and
@@ -79,7 +77,12 @@ export { latestPost };
 	>
 		<div class="mb-6 flex items-center justify-between">
 			<span class="arrow invisible"> </span>
-			<h2 class="long-transition font-header text-xl tracking-wide sm:text-4xl" transition:name="now-header">Now</h2>
+			<h2
+				class="long-transition font-header text-xl tracking-wide sm:text-4xl"
+				transition:name="now-header"
+			>
+				Now
+			</h2>
 			<a href="/now" class="arrow-link">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -95,41 +98,46 @@ export { latestPost };
 				</svg>
 			</a>
 		</div>
-		<ul
-	class="bullets long-transition mb-4 list-disc pl-5 text-gray-400  sm:text-md 3xl:text-lg"
->
-	<li class="mb-4">
-		Getting back into Photography with an <strong class="font-semibold text-dark-text">Olympus Micro Four Thirds (MFT) system</strong>
-	</li>
-	<li class="mb-4">
-		Reading "<strong class="font-semibold text-dark-text">Feel-Good Productivity</strong>" by <strong
-			class="font-semibold">Ali Abdaal</strong>
-	</li>
-	<li class="mb-4">
-		Reading "<strong class="font-semibold text-dark-text">11/22/63</strong>" by <strong
-			class="font-semibold">Stephen King</strong>
-	</li>
-	<li class="mb-4">
-		Reading "<strong class="font-semibold text-dark-text">Gut</strong>" by <strong
-			class="font-semibold">Giulia Enders</strong>
-	</li>
-	<li class="mb-4">
-		Reading "<strong class="font-semibold text-dark-text">Don't Trust Your Gut</strong>" by <strong
-			class="font-semibold">Seth Stephens-Davidowitz</strong>
-	</li>
-	
-</ul>
+		<ul class="bullets long-transition sm:text-md mb-4 list-disc pl-5 text-gray-400 3xl:text-lg">
+			<li class="mb-4">
+				Getting back into Photography with an <strong class="font-semibold text-dark-text"
+					>Olympus Micro Four Thirds (MFT) system</strong
+				>
+			</li>
+			<li class="mb-4">
+				Reading "<strong class="font-semibold text-dark-text">Feel-Good Productivity</strong>" by <strong
+					class="font-semibold">Ali Abdaal</strong
+				>
+			</li>
+			<li class="mb-4">
+				Reading "<strong class="font-semibold text-dark-text">11/22/63</strong>" by <strong
+					class="font-semibold">Stephen King</strong
+				>
+			</li>
+			<li class="mb-4">
+				Reading "<strong class="font-semibold text-dark-text">Gut</strong>" by <strong
+					class="font-semibold">Giulia Enders</strong
+				>
+			</li>
+			<li class="mb-4">
+				Reading "<strong class="font-semibold text-dark-text">Don't Trust Your Gut</strong>" by <strong
+					class="font-semibold">Seth Stephens-Davidowitz</strong
+				>
+			</li>
+		</ul>
 
 		<p class="text-center text-sm text-gray-400">Last Updated: January 6, 2025</p>
 	</div>
 
 	<!-- Latest Blog Section -->
 	<div
-		class="border-gradient clickable-section h-full rounded-md bg-white px-4 py-8 shadow-lg sm:rounded-lg sm:p-12 xl:col-span-2 xl:col-start-2 xl:row-span-2 2xl:col-span-3 2xl:row-start-2 group"
+		class="border-gradient clickable-section group h-full rounded-md bg-white px-4 py-8 shadow-lg sm:rounded-lg sm:p-12 xl:col-span-2 xl:col-start-2 xl:row-span-2 2xl:col-span-3 2xl:row-start-2"
 	>
 		<div class="mb-6 flex items-center justify-between">
 			<span class="arrow invisible"> </span>
-			<h2 class="long-transition font-header text-xl tracking-wide text-center sm:text-4xl">Blog</h2>
+			<h2 class="long-transition text-center font-header text-xl tracking-wide sm:text-4xl">
+				Blog
+			</h2>
 			<a href={latestPost.url} class="arrow-link">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -145,17 +153,22 @@ export { latestPost };
 				</svg>
 			</a>
 		</div>
-		<h3 class="long-transition text-md mb-6 font-body text-center font-semibold text-dark-text sm:text-md 3xl:text-lg">
+		<h3
+			class="long-transition text-md sm:text-md mb-6 text-center font-body font-semibold text-dark-text 3xl:text-lg"
+		>
 			{latestPost.frontmatter.title}
 		</h3>
-		<div class="rounded-md overflow-hidden w-full mb-6">
+		<div class="mb-6 w-full overflow-hidden rounded-md">
 			<img
 				src={latestPost.frontmatter.image.url}
 				alt={latestPost.frontmatter.image.alt}
-				class="w-full aspect-video object-cover transition duration-1000 transform group-hover:scale-125"
+				class="aspect-video w-full transform object-cover transition duration-1000 group-hover:scale-125"
 			/>
 		</div>
-		<p class="long-transition text-gray-400 dark:text-white sm:text-md 3xl:text-lg" set:html={latestPost.frontmatter.teaser}></p>
+		<p
+			class="long-transition sm:text-md text-gray-400 dark:text-white 3xl:text-lg"
+			set:html={latestPost.frontmatter.teaser}
+		/>
 		<div class="flex justify-center">
 			<button
 				class="mt-12 rounded-full bg-orange px-10 py-4 text-lg font-semibold text-white transition-transform hover:scale-105"
@@ -170,7 +183,12 @@ export { latestPost };
 	>
 		<div class="mb-6 flex items-center justify-between">
 			<span class="arrow invisible"> </span>
-			<h2 class="long-transition font-header text-xl tracking-wide sm:text-4xl" transition:name="about-header">About</h2>
+			<h2
+				class="long-transition font-header text-xl tracking-wide sm:text-4xl"
+				transition:name="about-header"
+			>
+				About
+			</h2>
 			<a href="/about" class="arrow-link white">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -246,9 +264,7 @@ export { latestPost };
 	<div
 		class="border-gradient flex h-full flex-col items-center overflow-visible rounded-md bg-white from-dark-card to-darker-card px-4 py-8 shadow-lg dark:bg-gradient-to-r sm:rounded-lg xl:col-span-2 xl:row-start-5 2xl:col-span-9 2xl:row-start-3"
 	>
-		<h2
-			class="long-transition mb-8 text-center font-header text-xl tracking-wide sm:text-4xl"
-		>
+		<h2 class="long-transition mb-8 text-center font-header text-xl tracking-wide sm:text-4xl">
 			Spotify Top 10 <span
 				class="whitespace-nowraptext-base font-semibold tracking-normal text-gray-400 sm:text-2xl"
 				>(last 6 months)</span
@@ -267,7 +283,7 @@ export { latestPost };
 								<img
 									src={track.album.images[0].url}
 									alt={`Cover art for ${track.name}`}
-									class="h-auto w-24 3xl:w-32 rounded-md shadow-lg transition-transform duration-300 hover:scale-105"
+									class="h-auto w-24 rounded-md shadow-lg transition-transform duration-300 hover:scale-105 3xl:w-32"
 								/>
 							</a>
 						</div>
@@ -310,9 +326,7 @@ export { latestPost };
 	<div
 		class="border-gradient flex h-full flex-col rounded-md bg-white from-dark-card to-darker-card px-4 py-8 shadow-lg dark:bg-gradient-to-r sm:rounded-lg sm:p-12 xl:col-span-1 xl:col-start-3 xl:row-start-5 2xl:col-span-3 2xl:row-start-4"
 	>
-		<h2
-			class="long-transition mb-4 text-center font-header text-xl tracking-wide sm:text-4xl"
-		>
+		<h2 class="long-transition mb-4 text-center font-header text-xl tracking-wide sm:text-4xl">
 			Links
 		</h2>
 		<div class="flex flex-1 items-center justify-center">
@@ -357,9 +371,7 @@ export { latestPost };
 	<div
 		class="border-gradient flex h-full flex-col justify-center rounded-md bg-white from-dark-card to-darker-card px-4 py-8 shadow-lg dark:bg-gradient-to-r sm:rounded-lg sm:p-12 xl:col-span-1 xl:col-start-3 xl:row-start-6 2xl:col-span-4 2xl:col-start-1 2xl:row-start-5"
 	>
-		<h2
-			class="long-transition mb-6 text-center font-header text-xl tracking-wide sm:text-4xl"
-		>
+		<h2 class="long-transition mb-6 text-center font-header text-xl tracking-wide sm:text-4xl">
 			Get in touch
 		</h2>
 		<div id="contact" class="flex flex-1 items-center justify-center">
@@ -371,19 +383,27 @@ export { latestPost };
 	<div
 		class="border-gradient flex h-full flex-col rounded-md bg-white from-dark-card to-darker-card px-4 py-8 shadow-lg dark:bg-gradient-to-r sm:rounded-lg sm:p-12 xl:col-span-2 xl:col-start-1 xl:row-start-6 2xl:col-span-8 2xl:row-start-5"
 	>
-		<h2 class="long-transition mb-12 text-center font-header text-xl sm:text-4xl">
-			Based in
-		</h2>
+		<h2 class="long-transition mb-12 text-center font-header text-xl sm:text-4xl">Based in</h2>
 		<div class="flex flex-col items-center justify-center xl:flex-row 2xl:flex-row">
-			<img
+			<!-- <img
 				src={`basedin.svg`}
 				alt="Globe"
 				class="mb-12 mr-0 h-auto w-72 invert-[.5] md:py-12 xl:mr-12 2xl:w-96"
-			/>
+			/> -->
+			<div class="mb-12 mr-0 h-auto w-72 opacity-60 xl:mb-0 xl:mr-12 2xl:w-96">
+				<script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.8/dist/lottie-player.js"
+				></script><lottie-player
+					src="https://lottie.host/e08917be-738c-4d39-b834-a4302a5a93c0/5zKSJTrRJ7.json"
+					background="##FFFFFF"
+					speed="1"
+					style="width: 100%; height: 100%"
+					loop
+					autoplay
+					direction="1"
+					mode="normal"></lottie-player>
+			</div>
 			<div class="grid grid-flow-row gap-2">
-				<h1
-					class="mb-6 text-center font-header text-5xl sm:text-8xl lg:mb-12 lg:text-left 2xl:text-9xl"
-				>
+				<h1 class="text-center font-header text-5xl sm:text-8xl lg:text-left 2xl:text-9xl">
 					Helsinki<br />Finland<br /><span class="text-gray-400">GMT +2</span>
 				</h1>
 			</div>
