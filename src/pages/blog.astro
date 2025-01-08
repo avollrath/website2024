@@ -8,7 +8,7 @@ allPosts.sort((a, b) => new Date(b.frontmatter.pubDate) - new Date(a.frontmatter
 <Layout title="Blog" description="Latest blog posts">
     <div class="col-span-3 flex flex-col xl:col-span-1 2xl:col-span-3">
         <div
-            class="long-transition flex flex-col mb-4 items-center rounded-md sm:rounded-lg bg-about-gradient text-white p-6 shadow-lg sm:p-12 sm:text-md 3xl:text-lg"
+            class="long-transition flex flex-col mb-4 items-center rounded-md text-base sm:rounded-lg bg-about-gradient text-white p-6 shadow-lg sm:p-12 sm:text-md 3xl:text-lg"
         >
             <h2 class="long-transition mb-8 font-header text-4xl tracking-wide" transition:name="blog-header">Blog</h2>
             <p class="my-3 leading-relaxed">
@@ -44,7 +44,7 @@ allPosts.sort((a, b) => new Date(b.frontmatter.pubDate) - new Date(a.frontmatter
                 <div class="flex flex-col justify-center w-full p-6 2xl:p-24 sm:p-12 md:justify-between">
                     <div>
                         <h2 class="mb-4 text-md 2xl:text-3xl tracking-wide transition font-header long-transition">{post.frontmatter.title}</h2>
-                        <p class=" text-gray-400 dark:text-gray-300  long-transition">{post.frontmatter.description}</p>
+                        <p class=" text-gray-400 text-base">{post.frontmatter.description}</p>
                     </div>
                  
                 </div>

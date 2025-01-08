@@ -14,7 +14,7 @@ const formattedDate = formatDate(booksDate)
 
 <div class={`${colSpan} flex flex-col `}>
 	<div
-		class="border-gradient mb-4 flex flex-col rounded-md sm:rounded-lg bg-white p-6 text-gray-400 shadow-lg sm:p-12 sm:text-md 3xl:text-lg"
+		class="border-gradient sm:text-md mb-4 flex flex-col rounded-md bg-white p-6 text-gray-400 shadow-lg sm:rounded-lg sm:p-12 3xl:text-lg"
 	>
 		<h1 class="text-center font-header text-7xl text-orange xl:text-9xl">
 			{formattedDate}
@@ -22,7 +22,7 @@ const formattedDate = formatDate(booksDate)
 	</div>
 
 	<div
-		class="border-gradient mb-8 flex flex-col rounded-md sm:rounded-lg bg-white p-6 text-gray-400 shadow-lg sm:p-12 sm:text-md 3xl:text-lg"
+		class="border-gradient sm:text-md mb-8 flex flex-col rounded-md bg-white p-6 text-base text-gray-400 shadow-lg sm:rounded-lg sm:p-12 3xl:text-lg"
 	>
 		<slot />
 		<NowBooks booksDate={booksDate} />

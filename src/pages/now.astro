@@ -10,7 +10,6 @@ import luminarLogo from '../images/now/luminar_logo.png'
 import threejsLogo from '../images/now/threejsblack.svg'
 import enyaCover from '../images/now/enya.jpg'
 
-import tailwindLogoDark from '../images/now/tailwindcss-logotype-white.svg'
 import tailwindLogo from '../images/now/tailwindcss-logotype.svg'
 import astroLogo from '../images/now/astro-logo-dark.svg'
 import amelieCover from '../images/now/amelie.jpeg'
@@ -21,31 +20,33 @@ import { Image } from 'astro:assets'
 <Layout title="Now" description="What I'm doing now">
 	<div class="col-span-3 flex flex-col xl:col-span-1 2xl:col-span-3">
 		<div
-			class="long-transition flex flex-col mb-4 items-center rounded-md sm:rounded-lg bg-about-gradient text-white p-6 shadow-lg sm:p-12 sm:text-md 3xl:text-lg"
+			class="long-transition sm:text-md mb-4 flex flex-col items-center rounded-md bg-about-gradient p-6 text-base text-white shadow-lg sm:rounded-lg sm:p-12 3xl:text-lg"
 		>
-			<h2 class="long-transition mb-8 font-header text-4xl tracking-wide" transition:name="now-header">Now</h2>
+			<h2
+				class="long-transition mb-8 font-header text-4xl tracking-wide"
+				transition:name="now-header"
+			>
+				Now
+			</h2>
 			<p class="my-3 leading-relaxed">
-				Welcome to my <strong class="font-semibold ">Now</strong> page, a unique space
-				where I share what's currently engaging my attention. Unlike the more static "About" page, this
-				page offers a window into my <strong class="font-semibold "
-					>current world</strong
-				>.
+				Welcome to my <strong class="font-semibold">Now</strong> page, a unique space where I share what's
+				currently engaging my attention. Unlike the more static "About" page, this page offers a window
+				into my <strong class="font-semibold">current world</strong>.
 			</p>
 			<p class="my-3 leading-relaxed">
-				Here, you'll find out about the <strong class="font-semibold "
-					>projects</strong
-				> I'm involved in, the <strong class="font-semibold ">subjects</strong> that intrigue
-				me, and where my passions currently lie. This page is like a snapshot of my <strong
-					class="font-semibold ">life's priorities</strong
+				Here, you'll find out about the <strong class="font-semibold">projects</strong> I'm involved
+				in, the <strong class="font-semibold">subjects</strong> that intrigue me, and where my passions
+				currently lie. This page is like a snapshot of my <strong class="font-semibold"
+					>life's priorities</strong
 				>
 				and activities at this moment.
 			</p>
 			<p class="my-3 leading-relaxed">
 				It's an up-to-date glimpse into my journey, reflecting my latest <strong
-					class="font-semibold ">interests</strong
+					class="font-semibold">interests</strong
 				>,
-				<strong class="font-semibold ">goals</strong>, and <strong
-					class="font-semibold ">endeavors</strong
+				<strong class="font-semibold">goals</strong>, and <strong class="font-semibold"
+					>endeavors</strong
 				>. This page is where I openly share what's important to me right now.
 			</p>
 			<p class="my-3 leading-relaxed">
@@ -58,31 +59,46 @@ import { Image } from 'astro:assets'
 	</div>
 
 	<div class="col-span-3 xl:col-span-2 2xl:col-span-6">
-
 		<NowEntry date="2025-01-06">
 			<div class="mb-4 flex flex-wrap justify-center gap-12">
 				<!-- <Image src={olympusLogo} class="h-12 w-auto sm:h-16" alt="Olympus Logo" /> -->
 			</div>
 			<p class="mb-8">
 				After some thought, I decided to move away from Sony’s full-frame system and try the <strong
-				  class="font-semibold text-dark-text">Micro Four Thirds (MFT) system</strong>. The change has been a game-changer for me—it’s lighter, more portable, and fits my needs perfectly. Here’s the gear I’ve added to my setup:
-			  </p>
-			  <ul class="list-disc ml-6 mb-8">
+					class="font-semibold text-dark-text">Micro Four Thirds (MFT) system</strong
+				>. The change has been a game-changer for me—it’s lighter, more portable, and fits my needs
+				perfectly. Here’s the gear I’ve added to my setup:
+			</p>
+			<ul class="mb-8 ml-6 list-disc">
 				<li><strong class="font-semibold text-dark-text">Olympus OM-D E-M1 Mark II</strong></li>
-				<li><strong class="font-semibold text-dark-text">Olympus M.Zuiko Digital ED 12-40mm f/2.8 PRO</strong></li>
-				<li><strong class="font-semibold text-dark-text">Olympus M.Zuiko Digital ED 40-150mm f/2.8 PRO</strong></li>
-				<li><strong class="font-semibold text-dark-text">Olympus M.Zuiko Digital ED 12-100mm f/4 IS PRO</strong></li>
-				<li><strong class="font-semibold text-dark-text">Sigma 16mm f/1.4 DC DN Contemporary</strong></li>
+				<li>
+					<strong class="font-semibold text-dark-text"
+						>Olympus M.Zuiko Digital ED 12-40mm f/2.8 PRO</strong>
+				</li>
+				<li>
+					<strong class="font-semibold text-dark-text"
+						>Olympus M.Zuiko Digital ED 40-150mm f/2.8 PRO</strong>
+				</li>
+				<li>
+					<strong class="font-semibold text-dark-text"
+						>Olympus M.Zuiko Digital ED 12-100mm f/4 IS PRO</strong>
+				</li>
+				<li>
+					<strong class="font-semibold text-dark-text">Sigma 16mm f/1.4 DC DN Contemporary</strong>
+				</li>
 				<li><strong class="font-semibold text-dark-text">Meike 50mm f/0.95</strong></li>
-			  </ul>
-			  <p>
+			</ul>
+			<p>
 				To expand my creative possibilities, I’ve also picked up a few exciting tools. The <strong
-				  class="font-semibold text-dark-text">DJI Air 2S</strong> drone lets me capture breathtaking aerial shots, while the <strong
-				  class="font-semibold text-dark-text">DJI Osmo Pocket 3</strong> has been a fantastic companion for stabilized footage on the go.
-			  </p>
-			  <p>
-				It’s been a refreshing experience diving into this new system, and I’m excited to see where it takes my creative work.
-			  </p>
+					class="font-semibold text-dark-text">DJI Air 2S</strong
+				> drone lets me capture breathtaking aerial shots, while the <strong
+					class="font-semibold text-dark-text">DJI Osmo Pocket 3</strong
+				> has been a fantastic companion for stabilized footage on the go.
+			</p>
+			<p>
+				It’s been a refreshing experience diving into this new system, and I’m excited to see where
+				it takes my creative work.
+			</p>
 		</NowEntry>
 
 		<NowEntry date="2024-09-28">
@@ -92,21 +108,20 @@ import { Image } from 'astro:assets'
 				<Image src={affinityLogo} class="h-12 w-auto sm:h-16" alt="Affinity Logo" />
 			</div>
 			<p>
-				I've recently transitioned from Adobe's subscription model to more
-				cost-effective tools. I'm now learning and using <strong
-					class="font-semibold text-dark-text">Affinity Photo, Designer, and Publisher</strong>, which have proven to be
-				excellent alternatives. For photo editing, I’ve explored <strong
-					class="font-semibold text-dark-text">Luminar Neo</strong>, and for video editing and effects, I’ve replaced
-				Adobe After Effects and Premiere with <strong
-					class="font-semibold text-dark-text">DaVinci Resolve Studio</strong>. It's been refreshing to embrace
-				these new tools and workflows.
+				I've recently transitioned from Adobe's subscription model to more cost-effective tools. I'm
+				now learning and using <strong class="font-semibold text-dark-text"
+					>Affinity Photo, Designer, and Publisher</strong
+				>, which have proven to be excellent alternatives. For photo editing, I’ve explored <strong
+					class="font-semibold text-dark-text">Luminar Neo</strong
+				>, and for video editing and effects, I’ve replaced Adobe After Effects and Premiere with <strong
+					class="font-semibold text-dark-text">DaVinci Resolve Studio</strong
+				>. It's been refreshing to embrace these new tools and workflows.
 			</p>
 		</NowEntry>
 
-		
 		<NowEntry date="2024-03-31">
 			<div class="mb-4 flex flex-wrap justify-center">
-				<Image src={threejsLogo} class="mr-2 h-auto w-36 sm:w-72 " alt="Three.js Logo" />
+				<Image src={threejsLogo} class="mr-2 h-auto w-36 sm:w-72" alt="Three.js Logo" />
 			</div>
 			<p>
 				I'm currently deepening my understanding of 3D web graphics through learning <strong
