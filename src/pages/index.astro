@@ -437,23 +437,32 @@ const latestPost = allPosts[0]
 		const sunglasses = document.querySelector('.sunglasses')
 		const contactButton = document.querySelector('a[href="#contact"]')
 		const MAX_DISTANCE = 10
-		const padding = 10 // padding around eyes for hover detection
+		const padding = 10
 
 		let isEyeHovered = false
 		let isButtonHovered = false
+		let removalTimeout = null
 
 		function updateSunglassesVisibility() {
-			if (sunglasses) {
-				if (isEyeHovered || isButtonHovered) {
-					sunglasses.classList.add('visible')
-				} else {
-					sunglasses.classList.remove('visible')
+			if (!sunglasses) return
+
+			if (isEyeHovered || isButtonHovered) {
+				if (removalTimeout) {
+					clearTimeout(removalTimeout)
+					removalTimeout = null
+				}
+				sunglasses.classList.add('visible')
+			} else {
+				if (!removalTimeout) {
+					removalTimeout = setTimeout(() => {
+						sunglasses.classList.remove('visible')
+						removalTimeout = null
+					}, 300)
 				}
 			}
 		}
 
 		document.addEventListener('mousemove', (e) => {
-			// Existing eye movement logic
 			eyes.forEach((eye) => {
 				const rect = eye.getBoundingClientRect()
 				const centerX = rect.left + rect.width / 2
@@ -468,7 +477,6 @@ const latestPost = allPosts[0]
 				eye.style.transform = `translate(${offsetX}px, ${offsetY}px)`
 			})
 
-			// Check if mouse is over any eye with padding
 			let overEye = false
 			eyes.forEach((eye) => {
 				const rect = eye.getBoundingClientRect()
@@ -485,11 +493,11 @@ const latestPost = allPosts[0]
 					overEye = true
 				}
 			})
+
 			isEyeHovered = overEye
 			updateSunglassesVisibility()
 		})
 
-		// Button hover event listeners
 		if (contactButton) {
 			contactButton.addEventListener('mouseenter', () => {
 				isButtonHovered = true
