@@ -435,44 +435,71 @@ const latestPost = allPosts[0]
 	function initEyes() {
 		const eyes = document.querySelectorAll('.eye-left, .eye-right')
 		const sunglasses = document.querySelector('.sunglasses')
+		const contactButton = document.querySelector('a[href="#contact"]')
 		const MAX_DISTANCE = 10
+		const padding = 10 // padding around eyes for hover detection
+
+		let isEyeHovered = false
+		let isButtonHovered = false
+
+		function updateSunglassesVisibility() {
+			if (sunglasses) {
+				if (isEyeHovered || isButtonHovered) {
+					sunglasses.classList.add('visible')
+				} else {
+					sunglasses.classList.remove('visible')
+				}
+			}
+		}
 
 		document.addEventListener('mousemove', (e) => {
+			// Existing eye movement logic
 			eyes.forEach((eye) => {
 				const rect = eye.getBoundingClientRect()
 				const centerX = rect.left + rect.width / 2
 				const centerY = rect.top + rect.height / 2
-
 				const dx = e.clientX - centerX
 				const dy = e.clientY - centerY
-
 				const angle = Math.atan2(dy, dx)
 				const distance = Math.hypot(dx, dy)
 				const clampedDistance = Math.min(distance, MAX_DISTANCE)
-
 				const offsetX = clampedDistance * Math.cos(angle)
 				const offsetY = clampedDistance * Math.sin(angle)
-
 				eye.style.transform = `translate(${offsetX}px, ${offsetY}px)`
 			})
 
+			// Check if mouse is over any eye with padding
 			let overEye = false
 			eyes.forEach((eye) => {
 				const rect = eye.getBoundingClientRect()
+				const paddedLeft = rect.left - padding
+				const paddedRight = rect.right + padding
+				const paddedTop = rect.top - padding
+				const paddedBottom = rect.bottom + padding
 				if (
-					e.clientX >= rect.left &&
-					e.clientX <= rect.right &&
-					e.clientY >= rect.top &&
-					e.clientY <= rect.bottom
+					e.clientX >= paddedLeft &&
+					e.clientX <= paddedRight &&
+					e.clientY >= paddedTop &&
+					e.clientY <= paddedBottom
 				) {
 					overEye = true
 				}
 			})
-
-			if (sunglasses) {
-				sunglasses.style.opacity = overEye ? '1' : '0'
-			}
+			isEyeHovered = overEye
+			updateSunglassesVisibility()
 		})
+
+		// Button hover event listeners
+		if (contactButton) {
+			contactButton.addEventListener('mouseenter', () => {
+				isButtonHovered = true
+				updateSunglassesVisibility()
+			})
+			contactButton.addEventListener('mouseleave', () => {
+				isButtonHovered = false
+				updateSunglassesVisibility()
+			})
+		}
 
 		document.addEventListener('astro:after-swap', initEyes)
 	}

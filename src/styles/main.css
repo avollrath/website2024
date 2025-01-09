@@ -152,8 +152,18 @@ input[type='reset'],
 	height: auto;
 	z-index: 3;
 	opacity: 0; /* Hidden by default */
-	transition: opacity 0.3s ease;
 	pointer-events: none;
+	transform: translateY(-50px); /* Start above */
+	transition:
+		transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+		opacity 0.3s ease;
+	/* Optional: Add will-change for better performance */
+	will-change: transform, opacity;
+}
+
+.sunglasses.visible {
+	opacity: 1;
+	transform: translateY(0);
 }
 
 .eye-left,
@@ -194,6 +204,12 @@ input[type='reset'],
 	.eye-right {
 		top: 142px;
 		left: 333px;
+	}
+
+	.sunglasses {
+		width: 150px;
+		top: 110px;
+		left: 246px;
 	}
 }
 
