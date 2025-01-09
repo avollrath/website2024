@@ -1,24 +1,38 @@
 ---
-import { formatDate } from '../scripts/utils.js';
-const allPosts = await Astro.glob('../pages/posts/*.md');
-allPosts.sort((a, b) => new Date(b.frontmatter.pubDate) - new Date(a.frontmatter.pubDate));
+import { formatDate } from '../scripts/utils.js'
+import { getResolvedPosts } from '../scripts/getResolvedPosts'
+import { Image } from 'astro:assets'
+
+const allPosts = await getResolvedPosts()
 ---
 
-<aside class="sidebar dark:bg-gradient-to-r from-dark-card to-darker-card py-24 px-12 bg-white rounded-lg flex flex-col items-start border-gradient">
-  <h2 class="text-4xl tracking-wide font-header mb-12">Other Posts</h2>
-  <ul class="space-y-4">
-    {allPosts.map(post => (
-      <li key={post.url} class="flex flex-col mb-12">
-        <a href={post.url} class="group">
-          <div class="image-container rounded-md overflow-hidden">
-            {post.frontmatter.image.url && (
-              <img src={post.frontmatter.image.url} alt={post.frontmatter.image.alt} class="w-full mb-2 object-cover aspect-video group-hover:scale-125 transition-transform duration-300 ease-in-out" />
-            )}
-          </div>
-          <span class="text-lg font-header tracking-wide">{post.frontmatter.title}</span>
-        </a>
-        <span class="text-xl text-gray-500">{formatDate(post.frontmatter.pubDate)}</span>
-      </li>
-    ))}
-  </ul>
+<aside
+	class="sidebar border-gradient flex flex-col items-start rounded-lg bg-white from-dark-card to-darker-card px-12 py-24 dark:bg-gradient-to-r"
+>
+	<h2 class="mb-12 font-header text-4xl tracking-wide">Other Posts</h2>
+	<ul class="space-y-4">
+		{
+			allPosts.map((post) => (
+				<li key={post.url} class="mb-12 flex flex-col">
+					<a href={post.url} class="group">
+						<div class="image-container overflow-hidden rounded-md">
+							{post.frontmatter.image?.src ? (
+								<Image
+									src={post.frontmatter.image.src}
+									alt={post.frontmatter.image.alt || 'Other Post Image'}
+									class="mb-2 aspect-video w-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-125"
+									decoding="async"
+									loading="lazy"
+								/>
+							) : (
+								<p>No image available</p>
+							)}
+						</div>
+						<span class="font-header text-lg tracking-wide">{post.frontmatter.title}</span>
+					</a>
+					<span class="text-xl text-gray-500">{formatDate(post.frontmatter.pubDate)}</span>
+				</li>
+			))
+		}
+	</ul>
 </aside>

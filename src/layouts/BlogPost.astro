@@ -1,10 +1,14 @@
 ---
-// Import the Layout
 import Layout from '../layouts/Layout.astro'
-import Sidebar from '../components/Sidebar.astro' 
-const { frontmatter } = Astro.props
+import Sidebar from '../components/Sidebar.astro'
 import { formatDate } from '../scripts/utils.js'
 import Prose from '../components/Prose.astro'
+import { Image } from 'astro:assets'
+import { resolveImage } from '../scripts/resolveImage'
+
+const { frontmatter } = Astro.props
+
+resolveImage(frontmatter)
 ---
 
 <Layout title={frontmatter.title} description={frontmatter.description}>
@@ -32,7 +36,19 @@ import Prose from '../components/Prose.astro'
 					)
 				}
 			</div>
-			<img src={frontmatter.image.url} alt={frontmatter.image.alt} class="mb-6 w-full rounded-xl" />
+			{
+				frontmatter.image?.src ? (
+					<Image
+						src={frontmatter.image.src}
+						alt={frontmatter.image.alt || 'Blog Post Image'}
+						class="mb-6 w-full rounded-xl"
+						decoding="async"
+						loading="lazy"
+					/>
+				) : (
+					<p>No image available</p>
+				)
+			}
 		</header>
 		<article class="blog-content max-w-full text-left text-xl leading-relaxed">
 			<Prose>

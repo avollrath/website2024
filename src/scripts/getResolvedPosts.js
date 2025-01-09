@@ -1,25 +1,20 @@
-const blogImages = import.meta.glob('../images/blog/*', { eager: true })
+import { resolveImage } from './resolveImage'
 
 export async function getResolvedPosts() {
+	const blogImages = import.meta.glob('../images/blog/*', { eager: true })
 	const allPosts = await import.meta.glob('../pages/posts/*.md')
 	const postEntries = Object.values(allPosts).map((postModule) => postModule())
 	const posts = await Promise.all(postEntries)
 
 	posts.forEach((post) => {
-		const { image } = post.frontmatter || {}
-		if (!image?.src) {
-			post.frontmatter.image = {
+		const { frontmatter } = post
+		if (!frontmatter.image?.src) {
+			frontmatter.image = {
 				src: blogImages['../images/blog/default.jpg']?.default || '',
 				alt: 'Default blog post image'
 			}
-		} else if (typeof image.src === 'string' && !image.src.startsWith('http')) {
-			const imagePath = `../images/blog/${image.src.split('/').pop()}`
-			const resolvedImage = blogImages[imagePath]
-			if (resolvedImage) {
-				image.src = resolvedImage.default || resolvedImage.src || ''
-			} else {
-				image.src = ''
-			}
+		} else {
+			resolveImage(frontmatter)
 		}
 	})
 
