@@ -4,11 +4,10 @@ pubDate: 2022-08-08
 author: Your Name
 layout: ../../layouts/BlogPost.astro
 image:
-    url: 'https://i.pinimg.com/originals/7b/af/fe/7baffe3fd8b737032792d3462bc34b77.jpg'
-    alt: 'A creative representation of watchface.'
+  src: '../images/blog/garmin.jpg'
+  alt: 'A creative representation of watchface.'
 teaser: "Get ready to merge your love for coding with your passion for fitness! In our upcoming blog post, we're diving into the exciting world of custom watch face development. Join us as we unveil our latest project: a Visual Studio Code-inspired watch face for the Garmin Forerunner 55 Music. Discover how we blend the aesthetics of your favorite code editor with the functionality of a fitness wearable. Stay tuned for an exclusive look behind the scenes and get ready to elevate your wrist game!"
 description: "In this project, we'll embark on a creative journey to design and develop a custom watch face for the Garmin Forerunner 55, drawing inspiration from the popular code editor, Visual Studio Code (VS Code)."
-
 ---
 
 # Creating a Visual Studio Code-Inspired Watch Face for Garmin Forerunner 55 Music
@@ -64,4 +63,4 @@ Stay tuned for updates on the progress of this project as we bring our vision to
 
 ![Watch Face Preview](https://amazfitwatchfaces.com/storage/gts/img/1608500422_32288f7055.gif)
 
-*Watch Face Preview: Placeholder image for illustration purposes only.*
+_Watch Face Preview: Placeholder image for illustration purposes only._

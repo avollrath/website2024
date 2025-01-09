@@ -5,7 +5,7 @@ pubDate: '2024-02-08'
 description: 'Learn how to fetch and display book covers from the Google Books API in your web project, enhancing user experience with rich, dynamic content.'
 author: 'Book Lover and Web Developer'
 image:
-  url: '/blog/books.jpg'
+  src: '../images/blog/books.jpg'
   alt: 'A collection of book covers displayed on a digital screen.'
 tags: ['web development', 'API', 'Google Books', 'JavaScript', 'project']
 teaser: "Embark on a fascinating journey through the world of web development as we explore how to fetch and display book covers using the Google Books API. Whether you're a seasoned developer or just starting out, this blog post will guide you through the steps of enhancing your web project with dynamic content from one of the largest book databases. Get ready to dive into code snippets, API integration, and practical insights to bring your digital bookshelf to life!"
@@ -68,9 +68,8 @@ The journey wasn't without its hurdles. Here are some challenges I faced:
 2. **Handling API Limitations**: The Google Books API has rate limits and quotas. I had to ensure that my requests were efficient and didn't exceed these limits.
 
 3. **Data Inconsistency**: Sometimes the API didn't return a cover image for a book. I had to implement a fallback mechanism to handle such cases gracefully.
-
-![Digital Bookshelf](/images/blog/books.jpg)
-_My website featuring a dynamic display of book covers fetched from the Google Books API._
+   ![Digital Bookshelf](../../images/blog/books.jpg)
+   _My website featuring a dynamic display of book covers fetched from the Google Books API._
 
 ## Conclusion
 

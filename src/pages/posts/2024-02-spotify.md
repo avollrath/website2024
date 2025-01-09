@@ -1,16 +1,16 @@
 ---
-title: Analyzing Spotify's Top 5 Tracks
+title: Analyzing Spotify's Top 10 Tracks
 pubDate: 2022-08-08
 author: Your Name
 layout: ../../layouts/BlogPost.astro
 image:
-    url: 'https://miro.medium.com/v2/resize:fit:1400/1*CEFFWhadfveAWq4yTh3FBQ.png'
-    alt: 'Spotify logo with top 5 tracks'
+  src: '../images/blog/spotify.jpg'
+  alt: 'Spotify logo with top 5 tracks'
 teaser: "Discover the music that topped your charts! In this blog post, we delve into the fascinating world of data analysis by examining Spotify's top 5 tracks. Join us as we uncover trends, insights, and surprises hidden within the playlists of millions of listeners. From genre preferences to artist popularity, get ready for a deep dive into the music that moves us."
 description: "In this blog post, we delve into the fascinating world of data analysis by examining Spotify's top 5 tracks, uncovering trends, insights, and surprises hidden within the playlists of millions of listeners."
 ---
 
-# Analyzing Spotify's Top 5 Tracks
+# Analyzing Spotify's Top 10 Tracks
 
 Discover the music that topped your charts! In this blog post, we delve into the fascinating world of data analysis by examining Spotify's top 5 tracks. Join us as we uncover trends, insights, and surprises hidden within the playlists of millions of listeners. From genre preferences to artist popularity, get ready for a deep dive into the music that moves us.
 
@@ -44,4 +44,4 @@ Stay tuned for the full analysis, coming soon!
 
 ![Spotify Top 5 Tracks](https://hapakenya.com/wp-content/uploads/2021/02/spotify.jpg)
 
-*Image: Spotify logo with top 5 tracks - for illustration purposes only.*
+_Image: Spotify logo with top 5 tracks - for illustration purposes only._

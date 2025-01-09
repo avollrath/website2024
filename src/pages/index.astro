@@ -6,9 +6,11 @@ import ContactForm from '../components/ContactForm.astro'
 import latestRenderImage from '../images/renders/braunHF3.jpg'
 import latestRenderImageClay from '../images/renders/braunHF3-clay.jpg'
 import profileImage from '../images/profile.png'
+import eyeImage from '../images/eye.png'
 import { Image } from 'astro:assets'
+import { getResolvedPosts } from '../scripts/getResolvedPosts'
 
-const refreshToken = import.meta.env.SPOTIFY_REFRESH_TOKEN
+const refreshToken = import.meta.env.SPOTIFY_REFRESH_TOKE
 
 let topTracks = []
 try {
@@ -17,13 +19,9 @@ try {
 	console.error('Error fetching top tracks:', error)
 }
 
-const allPosts = await Astro.glob('../pages/posts/*.md')
-
-allPosts.sort((a, b) => new Date(b.frontmatter.pubDate) - new Date(a.frontmatter.pubDate))
+const allPosts = await getResolvedPosts()
 
 const latestPost = allPosts[0]
-
-export { latestPost }
 ---
 
 <Layout title="André's Portfolio" description="Welcome to André's Portfolio">
@@ -63,10 +61,16 @@ export { latestPost }
 			</div>
 		</div>
 		<div class="avatar-wrapper max-lg:hidden" id="face">
-			<Image src={profileImage} alt="André's Avatar" class="avatar-image" />
+			<Image
+				src={profileImage}
+				alt="André's Avatar"
+				class="avatar-image"
+				decoding="async"
+				loading="lazy"
+			/>
 			<div class="eye-container">
-				<img src="/eye.png" alt="Left Eye" class="eye-left" />
-				<img src="/eye.png" alt="Right Eye" class="eye-right" />
+				<Image src={eyeImage} alt="Left Eye" class="eye-left" decoding="async" loading="lazy" />
+				<Image src={eyeImage} alt="Right Eye" class="eye-right" decoding="async" loading="lazy" />
 			</div>
 		</div>
 	</div>
@@ -155,27 +159,33 @@ export { latestPost }
 				</svg>
 			</a>
 		</div>
-		<h3
-			class="long-transition sm:text-md mb-6 text-center font-body text-base font-semibold text-orange 3xl:text-lg"
-		>
-			{latestPost.frontmatter.title}
-		</h3>
-		<div class="mb-6 w-full overflow-hidden rounded-md">
-			<img
-				src={latestPost.frontmatter.image.url}
-				alt={latestPost.frontmatter.image.alt}
-				class="aspect-video w-full transform object-cover transition duration-1000 group-hover:scale-125"
-			/>
-		</div>
-		<p
-			class="long-transition sm:text-md text-base text-gray-400 dark:text-white 3xl:text-lg"
-			set:html={latestPost.frontmatter.teaser}
-		/>
-		<div class="flex justify-center">
-			<button
-				class="mt-12 rounded-full bg-orange px-10 py-4 text-lg font-semibold text-white transition-transform hover:scale-105"
-				>Read blog post</button
-			>
+		<div class="flex h-full flex-col items-center justify-center">
+			<div>
+				<h3
+					class="long-transition sm:text-md mb-6 text-center font-body text-base font-semibold text-orange 3xl:text-lg"
+				>
+					{latestPost.frontmatter.title}
+				</h3>
+				<div class="mb-6 w-full overflow-hidden rounded-md">
+					<Image
+						src={latestPost.frontmatter.image.src}
+						alt={latestPost.frontmatter.image.alt}
+						class="aspect-video w-full transform object-cover transition duration-1000 group-hover:scale-125"
+						decoding="async"
+						loading="lazy"
+					/>
+				</div>
+				<p
+					class="long-transition sm:text-md text-base text-gray-400 dark:text-white 3xl:text-lg"
+					set:html={latestPost.frontmatter.teaser}
+				/>
+				<div class="flex justify-center">
+					<button
+						class="mt-12 rounded-full bg-orange px-10 py-4 text-lg font-semibold text-white transition-transform hover:scale-105"
+						>Read blog post</button
+					>
+				</div>
+			</div>
 		</div>
 	</div>
 
@@ -467,5 +477,22 @@ export { latestPost }
 	.image-container:hover .wireframe-image {
 		opacity: 1;
 		transform: scale(1.1);
+	}
+
+	@keyframes fadeInOut {
+		0%,
+		50% {
+			opacity: 0;
+		}
+		25%,
+		75% {
+			opacity: 1;
+		}
+	}
+
+	@media (hover: none) {
+		.wireframe-image {
+			animation: fadeInOut 10s infinite ease-in-out;
+		}
 	}
 </style>

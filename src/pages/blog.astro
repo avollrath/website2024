@@ -1,8 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Sidebar from '../components/Sidebar.astro' 
-const allPosts = await Astro.glob('../pages/posts/*.md');
-allPosts.sort((a, b) => new Date(b.frontmatter.pubDate) - new Date(a.frontmatter.pubDate));
+import { Image } from 'astro:assets';
+import { getResolvedPosts } from '../scripts/getResolvedPosts';
+const allPosts = await getResolvedPosts();
 ---
 
 <Layout title="Blog" description="Latest blog posts">
@@ -34,9 +34,21 @@ allPosts.sort((a, b) => new Date(b.frontmatter.pubDate) - new Date(a.frontmatter
                 
                 <!-- Image Container with overflow-hidden -->
                 <div class="w-full max-w-5xl overflow-hidden">
-                    <!-- Image with scale and transition effect on group hover -->
-                    <img src={post.frontmatter.image.url} alt={post.frontmatter.image.alt} 
-                         class="w-full transition duration-1000 transform group-hover:scale-125">
+                    
+      
+        {post.frontmatter.image.src ? (
+            <Image
+              src={post.frontmatter.image.src}
+              alt={post.frontmatter.image.alt || 'Default Alt Text'}
+              width={1200}
+              height={675}
+              class="w-full transition duration-1000 transform group-hover:scale-125"
+              loading="lazy"
+              decoding="async"
+            />
+          ) : (
+            <p>No image available</p>
+          )}
                             
                 </div>
                 
