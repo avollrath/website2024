@@ -7,6 +7,7 @@ import latestRenderImage from '../images/renders/braunHF3.jpg'
 import latestRenderImageClay from '../images/renders/braunHF3-clay.jpg'
 import profileImage from '../images/profile.png'
 import eyeImage from '../images/eye.png'
+import sunglassesImage from '../images/sunglasses.png'
 import { Image } from 'astro:assets'
 import { getResolvedPosts } from '../scripts/getResolvedPosts'
 
@@ -71,6 +72,13 @@ const latestPost = allPosts[0]
 			<div class="eye-container">
 				<Image src={eyeImage} alt="Left Eye" class="eye-left" decoding="async" loading="lazy" />
 				<Image src={eyeImage} alt="Right Eye" class="eye-right" decoding="async" loading="lazy" />
+				<Image
+					src={sunglassesImage}
+					alt="sunglasses"
+					class="sunglasses"
+					decoding="async"
+					loading="lazy"
+				/>
 			</div>
 		</div>
 	</div>
@@ -426,6 +434,7 @@ const latestPost = allPosts[0]
 <script is:inline>
 	function initEyes() {
 		const eyes = document.querySelectorAll('.eye-left, .eye-right')
+		const sunglasses = document.querySelector('.sunglasses')
 		const MAX_DISTANCE = 10
 
 		document.addEventListener('mousemove', (e) => {
@@ -444,11 +453,30 @@ const latestPost = allPosts[0]
 				const offsetX = clampedDistance * Math.cos(angle)
 				const offsetY = clampedDistance * Math.sin(angle)
 
-				eye.style.transform = `translate(calc(${offsetX}px), calc(${offsetY}px))`
+				eye.style.transform = `translate(${offsetX}px, ${offsetY}px)`
 			})
+
+			let overEye = false
+			eyes.forEach((eye) => {
+				const rect = eye.getBoundingClientRect()
+				if (
+					e.clientX >= rect.left &&
+					e.clientX <= rect.right &&
+					e.clientY >= rect.top &&
+					e.clientY <= rect.bottom
+				) {
+					overEye = true
+				}
+			})
+
+			if (sunglasses) {
+				sunglasses.style.opacity = overEye ? '1' : '0'
+			}
 		})
+
 		document.addEventListener('astro:after-swap', initEyes)
 	}
+
 	initEyes()
 </script>
 

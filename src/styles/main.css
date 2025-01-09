@@ -144,6 +144,18 @@ input[type='reset'],
 	pointer-events: none;
 }
 
+.sunglasses {
+	position: absolute;
+	top: 135px;
+	left: 300px;
+	width: 180px;
+	height: auto;
+	z-index: 3;
+	opacity: 0; /* Hidden by default */
+	transition: opacity 0.3s ease;
+	pointer-events: none;
+}
+
 .eye-left,
 .eye-right {
 	position: absolute;
