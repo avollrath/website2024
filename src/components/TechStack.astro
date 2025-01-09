@@ -1,15 +1,27 @@
 ---
 const images = await Astro.glob('/src/images/logos/*.svg')
+
 const logos = images.map((image) => {
-	const fileName = image.default.src.split('/').pop()?.split('?')[0]
-	const formattedName = fileName.replace('.svg', '').replace(/-/g, ' ')
+	const fullFileName = image.default.src.split('/').pop()?.split('?')[0] || ''
+
+	const withoutExtension = fullFileName.replace(/\.svg$/, '')
+
+	const parts = withoutExtension.split('.')
+
+	let baseName
+	if (parts.length >= 2) {
+		baseName = parts.slice(0, -1).join('.')
+	} else {
+		baseName = withoutExtension
+	}
+
+	const formattedName = baseName.replace(/-/g, ' ')
 
 	return {
 		src: image.default.src,
 		title: formattedName
 	}
 })
-// Logos from https://svglogos.dev/
 ---
 
 <div class="p-4 text-center">

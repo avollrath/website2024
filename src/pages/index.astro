@@ -176,7 +176,7 @@ const latestPost = allPosts[0]
 					/>
 				</div>
 				<p
-					class="long-transition sm:text-md text-base text-gray-400 3xl:text-lg"
+					class="long-transition sm:text-md text-gray-4003xl:text-lg text-base"
 					set:html={latestPost.frontmatter.teaser}
 				/>
 				<div class="flex justify-center">
@@ -386,7 +386,7 @@ const latestPost = allPosts[0]
 		<h2 class="long-transition mb-6 text-center font-header text-xl tracking-wide sm:text-4xl">
 			Get in touch
 		</h2>
-		<div id="contact" class="flex flex-1 items-center justify-center text-base">
+		<div id="contact" class="flex flex-1 items-center justify-center">
 			<ContactForm />
 		</div>
 	</div>
@@ -492,7 +492,7 @@ const latestPost = allPosts[0]
 
 	@media (hover: none) {
 		.wireframe-image {
-			animation: fadeInOut 20s infinite ease-in-out;
+			animation: fadeInOut 10s infinite ease-in-out;
 		}
 	}
 </style>
