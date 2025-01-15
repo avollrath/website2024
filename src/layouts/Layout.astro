@@ -18,6 +18,14 @@ const favIcon = await getImage({ src: faviconSrc, format: 'svg' })
 		<title>{title}</title>
 		<link rel="icon" href={faviconSrc.src} type="image/svg+xml" />
 		<meta name="description" content={description} />
+		<script
+			data-goatcounter="https://vollrath.goatcounter.com/count"
+			async
+			src="//gc.zgo.at/count.js"></script>
+
+		<meta property="og:title" content="André Vollrath's tech space" />
+		<meta property="og:type" content="website" />
+
 		<ViewTransitions />
 	</head>
 	<body class="bg-gray-50 font-body text-dark-text dark:bg-dark-bg dark:text-white">
