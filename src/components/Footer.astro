@@ -1,8 +1,17 @@
 <footer
-	class="footer-bar flex items-center justify-center py-12 text-center text-sm text-gray-400 sm:text-base"
+	class="footer-bar > * + * w-full flex-col items-center justify-center divide-y-2 text-center text-sm text-gray-400 sm:text-base"
 >
-	<p>
-		Handmade with ❤️ by <strong class="text-dark-text font-semibold">André Vollrath</strong> © 2025. <br />All
-		rights reserved.
-	</p>
+	<a
+		href="#"
+		class="my-8 block hover:underline"
+		onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+	>
+		Scroll to top ⬆
+	</a>
+	<div class="bg-gray-100 py-16">
+		<p>
+			Handmade with ❤️ by <strong class="font-semibold text-dark-text">André Vollrath</strong> © 2025.
+			<br />All rights reserved.
+		</p>
+	</div>
 </footer>

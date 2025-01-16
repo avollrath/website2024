@@ -11,7 +11,7 @@ import sunglassesImage from '../images/sunglasses.png'
 import { Image } from 'astro:assets'
 import { getResolvedPosts } from '../scripts/getResolvedPosts'
 
-const refreshToken = import.meta.env.SPOTIFY_REFRESH_TOKE
+const refreshToken = import.meta.env.SPOTIFY_REFRESH_TOKEN
 
 let topTracks = []
 try {
@@ -31,14 +31,18 @@ const latestPost = allPosts[0]
 		class="border-gradient relative flex flex-col items-center rounded-md bg-white px-4 py-8 shadow-lg sm:flex-row sm:rounded-lg sm:px-12 sm:py-24 xl:col-span-3 2xl:col-span-9"
 	>
 		<div class="z-10 flex-1">
+			<div
+				class="mb-8 inline-block w-auto rounded-full border-2 border-gray-200 bg-gray-100 px-3 py-1"
+			>
+				<span class="text-base text-gray-400">👋 vollrath.dev</span>
+			</div>
 			<h1
 				class="long-transition text-gradient text-center font-header text-5xl sm:text-6xl md:mr-4 lg:text-left lg:text-8xl"
 			>
-				<!-- <span class='text-white text-4xl sm:text-5xl lg:text-7xl'>👋</span>  -->
 				Hi, I’m André.
 			</h1>
 			<p
-				class="z-10 my-4 max-w-screen-md rounded-xl bg-white/75 py-2 pr-2 text-base backdrop-blur-sm backdrop-brightness-125 max-2xl:max-w-full sm:my-12 sm:text-left sm:text-2xl/relaxed 3xl:max-w-screen-lg 3xl:text-3xl/relaxed"
+				class="z-10 my-4 max-w-screen-md rounded-xl bg-white/75 py-2 pr-2 text-base backdrop-blur-sm backdrop-brightness-125 max-2xl:max-w-full sm:my-6 sm:text-left sm:text-2xl/relaxed 3xl:max-w-screen-lg 3xl:text-3xl/relaxed"
 			>
 				With a <strong class="font-semibold">strong foundation</strong> in
 				<strong class="font-semibold">design</strong> and
@@ -56,9 +60,21 @@ const latestPost = allPosts[0]
 			<div class="flex justify-center">
 				<a
 					href="#contact"
-					class="rounded-full bg-orange px-10 py-4 text-center font-semibold text-white transition-transform hover:scale-105 sm:text-3xl/relaxed"
-					>Get in touch</a
-				>
+					class="flex items-center rounded-full bg-orange px-10 py-4 text-center font-semibold text-white transition-transform hover:scale-105 sm:text-3xl/relaxed"
+					>Get in touch
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						class="ml-2 h-6 w-6 stroke-white"
+						fill="none"
+						viewBox="0 0 24 24"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="3"
+							d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+					</svg>
+				</a>
 			</div>
 		</div>
 		<div class="avatar-wrapper max-lg:hidden" id="face">
@@ -167,32 +183,31 @@ const latestPost = allPosts[0]
 				</svg>
 			</a>
 		</div>
-		<div class="flex h-full flex-col items-center justify-center">
-			<div>
-				<h3
-					class="long-transition sm:text-md mb-6 text-center font-body text-base font-semibold text-orange 3xl:text-lg"
-				>
-					{latestPost.frontmatter.title}
-				</h3>
-				<div class="mb-6 w-full overflow-hidden rounded-md">
-					<Image
-						src={latestPost.frontmatter.image.src}
-						alt={latestPost.frontmatter.image.alt}
-						class="aspect-video w-full transform object-cover transition duration-1000 group-hover:scale-125"
-						decoding="async"
-						loading="lazy"
-					/>
-				</div>
-				<p
-					class="long-transition sm:text-md text-gray-4003xl:text-lg text-base"
-					set:html={latestPost.frontmatter.teaser}
+
+		<div>
+			<h3
+				class="long-transition sm:text-md mb-6 text-center font-body text-base font-semibold text-orange 3xl:text-lg"
+			>
+				{latestPost.frontmatter.title}
+			</h3>
+			<div class="mb-6 w-full overflow-hidden rounded-md">
+				<Image
+					src={latestPost.frontmatter.image.src}
+					alt={latestPost.frontmatter.image.alt}
+					class="aspect-video w-full transform object-cover transition duration-1000 group-hover:scale-125"
+					decoding="async"
+					loading="lazy"
 				/>
-				<div class="flex justify-center">
-					<button
-						class="mt-12 rounded-full bg-orange px-10 py-4 text-lg font-semibold text-white transition-transform hover:scale-105"
-						>Read blog post</button
-					>
-				</div>
+			</div>
+			<p
+				class="long-transition sm:text-md text-gray-4003xl:text-lg text-base"
+				set:html={latestPost.frontmatter.teaser}
+			/>
+			<div class="flex justify-center">
+				<button
+					class="mt-12 rounded-full bg-orange px-10 py-4 text-lg font-semibold text-white transition-transform hover:scale-105"
+					>Read blog post</button
+				>
 			</div>
 		</div>
 	</div>
