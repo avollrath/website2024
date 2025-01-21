@@ -10,14 +10,13 @@
 
 	<input type="checkbox" class="hidden" style="display:none" name="botcheck" />
 	<div class="mb-5">
-		<label for="full_name" class="mb-2 block text-center font-semibold">Hi! What’s your name?</label
-		>
+		<label for="full_name" class="invisible mb-2 block font-semibold">Hi! What’s your name?</label>
 		<input
 			type="text"
 			id="full_name"
-			placeholder="Your name goes here"
+			placeholder="Name"
 			required
-			class="w-full rounded border border-slate-300 px-4 py-3 outline-none ring-slate-100 placeholder:text-slate-400 focus:border-slate-600 focus:ring-4"
+			class="mt-1 block w-full border-b border-gray-100 py-1 text-base focus:border-dark-text focus:outline-none"
 			name="name"
 		/>
 		<div class="empty-feedback invalid-feedback mt-1 text-sm text-red-400">
@@ -25,16 +24,16 @@
 		</div>
 	</div>
 	<div class="mb-5">
-		<label for="email_address" class="mb-2 block text-center font-semibold"
+		<label for="email_address" class="invisible mb-2 block text-center font-semibold"
 			>How can I reach you?</label
 		>
 		<input
 			id="email_address"
 			type="email"
-			placeholder="Your email address"
+			placeholder="Email"
 			name="email"
 			required
-			class="w-full rounded border border-slate-300 px-4 py-3 outline-none ring-slate-100 placeholder:text-slate-400 focus:border-slate-600 focus:ring-4"
+			class="mt-1 block w-full border-b border-gray-100 py-1 text-base focus:border-dark-text focus:outline-none"
 		/>
 		<div class="empty-feedback mt-1 text-sm text-red-400">Please provide your email address.</div>
 		<div class="invalid-feedback mt-1 text-sm text-red-400">
@@ -42,13 +41,15 @@
 		</div>
 	</div>
 	<div class="mb-3">
-		<label for="message" class="mb-2 block text-center font-semibold">Let’s connect!</label>
+		<label for="message" class="invisible mb-2 block text-center font-semibold"
+			>Let’s connect!</label
+		>
 		<textarea
 			name="message"
 			id="message"
 			required
-			placeholder="Type your message..."
-			class="h-36 w-full rounded border border-slate-300 px-4 py-3 outline-none ring-slate-100 placeholder:text-slate-400 focus:border-slate-600 focus:ring-4"
+			placeholder="Your message..."
+			class="mt-1 block w-full border-b border-gray-100 py-1 text-base focus:border-dark-text focus:outline-none"
 		></textarea>
 		<div class="empty-feedback invalid-feedback mt-1 text-sm text-red-400">
 			Please enter your message.
