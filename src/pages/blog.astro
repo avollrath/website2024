@@ -28,37 +28,40 @@ const allPosts = await getResolvedPosts();
     
     <div class="col-span-3 xl:col-span-2 2xl:col-span-9">
     {allPosts.map((post) => (
-        <div class="block col-span-12 bg-white rounded-md sm:rounded-lg shadow-xl cursor-pointer border-gradient group mb-4">
-            <!-- Wrapping the entire post in an <a> tag -->
-            <a href={post.url} class="flex flex-col items-center overflow-hidden rounded-t-md sm:rounded-t-lg lg:flex-row md:rounded-l-lg">
-                
-                <!-- Image Container with overflow-hidden -->
-                <div class="w-full max-w-7xl overflow-hidden">
-                    
-                    {post.frontmatter.image.src ? (
-                        <Image
-                        src={post.frontmatter.image.src}
-                        alt={post.frontmatter.image.alt || 'Default Alt Text'}
-                        class="w-full object-cover transition duration-1000 transform group-hover:scale-125"
-                        loading="lazy"
-                        decoding="async"
-                        />
-                    ) : (
-                        <p>No image available</p>
-                    )}
-                            
-                </div>
-                
-                <!-- Text Content Container -->
-                <div class="flex flex-col justify-center w-full p-6 2xl:p-24 sm:p-12 md:justify-between">
-                    <div>
-                        <h2 class="mb-4 text-md 2xl:text-2xl tracking-wide transition font-header long-transition">{post.frontmatter.title}</h2>
-                        <p class=" text-gray-400 text-base">{post.frontmatter.description}</p>
-                    </div>
-                 
-                </div>
-            </a>
-        </div>
+        <div class="block col-span-12 bg-white rounded-md sm:rounded-lg shadow-xl cursor-pointer border-gradient group transition ease-out duration-300 mb-4 hover:shadow-2xl">
+  <!-- Wrapping the entire post in an <a> tag -->
+  <a href={post.url} class="flex items-stretch overflow-hidden rounded-t-md sm:rounded-t-lg md:rounded-l-lg">
+    
+    <!-- Image Container with overflow-hidden, full height, and flex-grow -->
+    <div class="w-full max-w-7xl overflow-hidden flex-1">
+      {post.frontmatter.image.src ? (
+        <Image
+          src={post.frontmatter.image.src}
+          alt={post.frontmatter.image.alt || 'Default Alt Text'}
+          class="w-full h-full object-cover transition duration-500 ease-out transform group-hover:scale-110"
+          loading="lazy"
+          decoding="async"
+        />
+      ) : (
+        <p>No image available</p>
+      )}
+    </div>
+    
+    <!-- Text Content Container with flex-grow -->
+    <div class="flex flex-col justify-center w-full p-6 sm:p-12 items-center flex-1">
+      <div>
+        <h2 class="mb-4 text-sm md:text-md lg:text-lg xl:text-xl 2xl:text-2xl tracking-wide duration-500 ease-in-out transition font-header origin-bottom-left group-hover:-translate-y-2 group-hover:text-orange">
+          {post.frontmatter.title}
+        </h2>
+        <p class="text-gray-400 text-sm lg:text-base">
+          {post.frontmatter.description}
+        </p>
+      </div>
+    </div>
+  </a>
+</div>
+
+
     ))}
     </div>
 </Layout>

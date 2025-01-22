@@ -8,6 +8,10 @@ import latestRenderImageClay from '../images/renders/braunHF3-clay.jpg'
 import profileImage from '../images/profile.png'
 import eyeImage from '../images/eye.png'
 import sunglassesImage from '../images/sunglasses.png'
+import instagramLogo from '../images/icons/instagram.svg'
+import spotifyLogo from '../images/icons/spotify.svg'
+import linkedinLogo from '../images/icons/linkedin.svg'
+import githubLogo from '../images/icons/github.svg'
 import { Image } from 'astro:assets'
 import { getResolvedPosts } from '../scripts/getResolvedPosts'
 
@@ -129,30 +133,27 @@ const latestPost = allPosts[0]
 		<ul
 			class="bullets long-transition sm:text-md mb-4 list-disc pl-5 text-base text-gray-400 3xl:text-lg"
 		>
-			<li class="mb-4 text-base">
-				Getting back into Photography with an <strong class="font-semibold text-dark-text"
-					>Olympus Micro Four Thirds (MFT) system</strong
+			<li class="sm:text-md mb-4 text-base 3xl:text-lg">
+				Switched my Photography gear to an <strong class="font-semibold text-dark-text"
+					>Olympus Micro Four Thirds system</strong
 				>
 			</li>
-			<li class="mb-4 text-base">
-				Reading "<strong class="font-semibold text-dark-text">Feel-Good Productivity</strong>" by <strong
-					class="font-semibold">Ali Abdaal</strong
-				>
+			<li class="sm:text-md mb-4 text-base 3xl:text-lg">
+				Reading "<strong class="font-semibold text-dark-text">Feel-Good Productivity</strong>" <br
+				/>
+				by Ali Abdaal
 			</li>
-			<li class="mb-4 text-base">
-				Reading "<strong class="font-semibold text-dark-text">11/22/63</strong>" by <strong
-					class="font-semibold">Stephen King</strong
-				>
+			<li class="sm:text-md mb-4 text-base 3xl:text-lg">
+				Reading "<strong class="font-semibold text-dark-text">11/22/63</strong>" <br />
+				by Stephen King
 			</li>
-			<li class="mb-4 text-base">
-				Reading "<strong class="font-semibold text-dark-text">Gut</strong>" by <strong
-					class="font-semibold">Giulia Enders</strong
-				>
+			<li class="sm:text-md mb-4 text-base 3xl:text-lg">
+				Reading "<strong class="font-semibold text-dark-text">Gut</strong>" <br />
+				by Giulia Enders
 			</li>
-			<li class="mb-4 text-base">
-				Reading "<strong class="font-semibold text-dark-text">Don't Trust Your Gut</strong>" by <strong
-					class="font-semibold">Seth Stephens-Davidowitz</strong
-				>
+			<li class="sm:text-md mb-4 text-base 3xl:text-lg">
+				Reading "<strong class="font-semibold text-dark-text">Don't Trust Your Gut</strong>" <br />
+				by Seth Stephens-Davidowitz
 			</li>
 		</ul>
 
@@ -200,7 +201,7 @@ const latestPost = allPosts[0]
 				/>
 			</div>
 			<p
-				class="long-transition sm:text-md text-gray-4003xl:text-lg text-base"
+				class="long-transition sm:text-md text-base text-gray-400 3xl:text-lg"
 				set:html={latestPost.frontmatter.teaser}
 			/>
 			<div class="flex justify-center">
@@ -240,18 +241,18 @@ const latestPost = allPosts[0]
 			</a>
 		</div>
 		<p class="sm:text-md text-base 3xl:text-lg">
-			Hello there, I'm <strong class="font-semibold">André Vollrath</strong>, and I'm thrilled to
-			make your acquaintance. I'm a <strong class="font-semibold">designer</strong> and <strong
-				class="font-semibold">front-end developer</strong
-			>, deeply passionate about the digital world. With over a decade of experience under my belt,
-			I've dedicated myself to crafting visually stunning designs and building engaging websites.
+			Hi there! I'm <strong class="font-semibold">André Vollrath</strong>—a dedicated designer and
+			front-end developer eager to connect and collaborate. I thrive on transforming creative ideas
+			into impactful digital experiences. With more than ten years of hands-on experience, I blend
+			creative vision with technical expertise to craft engaging websites, dynamic web applications,
+			and beyond.
 		</p>
 		<br />
 		<p class="sm:text-md text-base 3xl:text-lg">
-			In the realm of <strong class="font-semibold">design</strong>, I thrive on bringing ideas to
-			life. Whether it's fine-tuning images in <strong class="font-semibold">Adobe Photoshop</strong
-			> or creating stunning <strong class="font-semibold">web designs</strong>, my passion for
-			visual storytelling drives me to push the boundaries of creativity.
+			My passion for <strong class="font-semibold">design</strong> drives me to continuously explore
+			and innovate. Whether creating compelling visual content or crafting intuitive user interfaces,
+			I push creative boundaries to deliver visually stunning and user-friendly solutions. I'm excited
+			to bring my enthusiasm, attention to detail, and collaborative approach to new challenges and opportunities.
 		</p>
 	</div>
 
@@ -365,26 +366,32 @@ const latestPost = allPosts[0]
 			Links
 		</h2>
 		<div class="flex flex-1 items-center justify-center">
-			<div class="grid grid-cols-2 gap-4">
+			<div class="grid grid-cols-2 gap-2">
 				<a href="https://github.com/avollrath" target="_blank" title="GitHub">
-					<img
-						src={`/icons/github.png`}
-						alt="GitHub"
-						class="w-28 transition-transform hover:scale-105 2xl:w-36"
+					<Image
+						src={githubLogo}
+						alt="Github Logo"
+						class="h-auto w-24 rounded-md transition-transform duration-300 3xl:w-32"
+						decoding="async"
+						loading="lazy"
 					/>
 				</a>
 				<a href="https://www.instagram.com/charliefeatherlight/" target="_blank" title="Instagram">
-					<img
-						src={`/icons/instagram.png`}
-						alt="Instagram"
-						class="w-28 transition-transform hover:scale-105 2xl:w-36"
+					<Image
+						src={instagramLogo}
+						alt="Instagram Logo"
+						class="h-auto w-24 rounded-md transition-transform duration-300 3xl:w-32"
+						decoding="async"
+						loading="lazy"
 					/>
 				</a>
 				<a href="https://www.linkedin.com/in/andrevollrath/" target="_blank" title="LinkedIn">
-					<img
-						src={`/icons/linkedin.png`}
-						alt="LinkedIn"
-						class="w-28 transition-transform hover:scale-105 2xl:w-36"
+					<Image
+						src={linkedinLogo}
+						alt="LinkedIn Logo"
+						class="h-auto w-24 rounded-md transition-transform duration-300 3xl:w-32"
+						decoding="async"
+						loading="lazy"
 					/>
 				</a>
 				<a
@@ -392,10 +399,12 @@ const latestPost = allPosts[0]
 					target="_blank"
 					title="Spotify"
 				>
-					<img
-						src={`/icons/spotify.png`}
-						alt="Spotify"
-						class="w-28 transition-transform hover:scale-105 2xl:w-36"
+					<Image
+						src={spotifyLogo}
+						alt="Spotify Logo"
+						class="h-auto w-24 rounded-md transition-transform duration-300 3xl:w-32"
+						decoding="async"
+						loading="lazy"
 					/>
 				</a>
 			</div>

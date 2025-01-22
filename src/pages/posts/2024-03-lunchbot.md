@@ -1,8 +1,8 @@
 ---
-title: 'Building a Real-Time Lunch Menu Bot for Workplace Communication'
+title: 'Building a Lunch Menu Bot for Slack'
 layout: ../../layouts/BlogPost.astro
 pubDate: '2024-03-30'
-description: 'Join us on a journey of building LunchBot, a real-time lunch menu bot for workplace communication, using Node.js, Cheerio, and Slack API.'
+description: 'Join us on a journey of building LunchBot, a real-time lunch menu bot for Slack, using Node.js, Cheerio, and Slack API.'
 author: 'Lunch Enthusiast'
 image:
   src: '../images/blog/lunchbot.jpg'
