@@ -1,34 +1,42 @@
 ---
-const images = await Astro.glob('/src/images/logos/*.svg')
+const { logos: selectedLogos } = Astro.props
 
-const logos = images.map((image) => {
-	const fullFileName = image.default.src.split('/').pop()?.split('?')[0] || ''
+// Fetch all logo images
+const allImages = await Astro.glob('/src/images/logos/*.svg')
 
-	const withoutExtension = fullFileName.replace(/\.svg$/, '')
+// Helper function to extract filename from the image src
+const getFilename = (src) => {
+	const parts = src.split('/')
+	return parts[parts.length - 1].split('?')[0] // Remove query params if any
+}
 
-	const parts = withoutExtension.split('.')
-
-	let baseName
-	if (parts.length >= 2) {
-		baseName = parts.slice(0, -1).join('.')
-	} else {
-		baseName = withoutExtension
-	}
-
-	const formattedName = baseName.replace(/-/g, ' ')
-
-	return {
-		src: image.default.src,
-		title: formattedName
-	}
-})
+// Process and format logos
+const logos = allImages
+	// If selectedLogos is provided, filter the images accordingly
+	.filter((image) => {
+		if (selectedLogos && Array.isArray(selectedLogos) && selectedLogos.length > 0) {
+			const filename = getFilename(image.default.src)
+			return selectedLogos.includes(filename)
+		}
+		return true // If no logos prop is provided, include all logos
+	})
+	.map((image) => {
+		const filename = getFilename(image.default.src)
+		const nameWithoutExtension = filename.replace(/\.svg$/i, '')
+		const formattedName = nameWithoutExtension.replace(/-/g, ' ')
+		return {
+			src: image.default.src,
+			title: formattedName
+		}
+	})
 ---
 
+<!-- TechStack.astro -->
 <div class="p-4 text-center">
 	<div class="flex flex-wrap justify-center gap-6">
 		{
 			logos.map((logo) => (
-				<div class="flex flex-col items-center space-y-2">
+				<div class="flex flex-col items-center space-y-2" key={logo.title}>
 					<img
 						src={logo.src}
 						title={logo.title}

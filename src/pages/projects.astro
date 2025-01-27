@@ -1,0 +1,20 @@
+---
+import Layout from '../layouts/Layout.astro'
+import nintendo from '../images/projects/jurassic-jump.jpg'
+import Project from '../components/Project.astro'
+---
+
+<Layout title="Projects" description="A collection of my projects">
+	<Project
+		title="Jurassic Jump"
+		htmlText={`
+			Embarking on my game development journey, I created <strong class='font-semibold text-dark-text'>Jurassic Jump</strong>, a simple Jump&Run game. Initially built with <strong class='font-semibold text-dark-text'>vanilla JavaScript</strong>, I encountered performance bottlenecks as the game's complexity and graphical fidelity increased. To address these challenges, I transitioned to the <strong class='font-semibold text-dark-text'>Godot engine</strong>, delving into <strong class='font-semibold text-dark-text'>GDScript</strong> for the first time.<br><br>
+			For the game's visuals, I crafted reference images using <strong class='font-semibold text-dark-text'>Affinity Photo</strong> and utilized an image-to-image workflow in <strong class='font-semibold text-dark-text'>ComfyUI</strong> with the <strong class='font-semibold text-dark-text'>Flux Dev stable diffusion model</strong> and a <strong class='font-semibold text-dark-text'>Lora</strong> to achieve a <strong class='font-semibold text-dark-text'>ClayMation</strong> aesthetic. This project was a steep learning curve, introducing me to essential concepts like <strong class='font-semibold text-dark-text'>GameManagers</strong>, <strong class='font-semibold text-dark-text'>particle systems</strong>, <strong class='font-semibold text-dark-text'>Audio Managers</strong>, creating <strong class='font-semibold text-dark-text'>sprite sheets</strong>, and <strong class='font-semibold text-dark-text'>level building</strong>. Building Jurassic Jump not only honed my technical skills but also deepened my understanding of game mechanics and artistic workflows, laying a strong foundation for my future endeavors in game development.<br><br>
+			You can also play it in full screen: <a class='font-semibold underline text-orange' href='https://avollrath.github.io/WebGL-test/'>here</a>
+		  `}
+		projectImageSrc={nintendo}
+		altProp="Jurassic Jump Game"
+		iframeSrc="https://avollrath.github.io/WebGL-test/"
+		techStackLogos={['Godot.svg']}
+	/>
+</Layout>
