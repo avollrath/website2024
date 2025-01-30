@@ -1,7 +1,7 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Blog</title><link rel="icon" href="/astro/favicon.DdVGadsO.svg" type="image/svg+xml"><meta name="description" content="Latest blog posts"><script data-goatcounter="https://vollrath.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script><meta property="og:title" content="André Vollrath's tech space"><meta property="og:type" content="website"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/astro/about.C-f0_h-K.css">
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Blog</title><link rel="icon" href="/astro/favicon.DdVGadsO.svg" type="image/svg+xml"><meta name="description" content="Latest blog posts"><script data-goatcounter="https://vollrath.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script><meta property="og:title" content="André Vollrath's tech space"><meta property="og:type" content="website"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/astro/about.BjPIpVlS.css">
 <style>@keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0;mix-blend-mode:plus-lighter}to{opacity:1;mix-blend-mode:plus-lighter}}@keyframes astroFadeOut{0%{opacity:1;mix-blend-mode:plus-lighter}to{opacity:0;mix-blend-mode:plus-lighter}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media (prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}
 </style>
-<link rel="stylesheet" href="/astro/2024-02-book-covers.BdA6VFRD.css"><script type="module" src="/astro/hoisted.VQplzdks.js"></script><style>[data-astro-transition-scope="astro-6n27wyjg-1"] { view-transition-name: blog-header; }@layer astro { ::view-transition-old(blog-header) { 
+<link rel="stylesheet" href="/astro/2024-02-book-covers.CcYkGXFg.css"><script type="module" src="/astro/hoisted.BAnJs-SD.js"></script><style>[data-astro-transition-scope="astro-6n27wyjg-1"] { view-transition-name: blog-header; }@layer astro { ::view-transition-old(blog-header) { 
 	animation-duration: 180ms;
 	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
 	animation-fill-mode: both;
@@ -37,91 +37,7 @@
 	animation-duration: 180ms;
 	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
 	animation-fill-mode: both;
-	animation-name: astroFadeIn; }</style></head> <body class="bg-gray-50 font-body text-dark-text dark:bg-dark-bg dark:text-white"> <div class="sticky top-0 z-10 mx-auto max-w-1970 sm:static sm:z-0 sm:px-4 sm:pt-4"> <nav class="nav-bar border-gradient flex items-center justify-between bg-white px-4 shadow-lg sm:rounded-lg sm:px-12 lg:col-span-3"> <a href="/"> <img src="/astro/vollrath_logo.BoR0YlKe_Z1W1Vew.svg" class="mr-2 h-auto w-10 py-2 sm:w-16 sm:py-3" alt="Vollrath Logo" width="32" height="32" loading="lazy" decoding="async"> </a> <!-- Hamburger Icon --> <div class="flex cursor-pointer flex-col space-y-1 sm:space-y-2 lg:hidden" id="hamburger"> <span class="block h-0.5 w-5 bg-dark-text sm:w-8"></span> <span class="block h-0.5 w-5 bg-dark-text sm:w-8"></span> <span class="block h-0.5 w-5 bg-dark-text sm:w-8"></span> </div> <div class="invisible z-30 flex select-none flex-col font-header text-xl md:flex-row lg:visible" id="nav-menu"> <a href="/" class="nav-item px-4 py-2 font-medium transition hover:text-dark-text  text-gray-400" id="home-link"> Home </a><a href="/about" class="nav-item px-4 py-2 font-medium transition hover:text-dark-text  text-gray-400" id="about-link"> About </a><a href="/now" class="nav-item px-4 py-2 font-medium transition hover:text-dark-text  text-gray-400" id="now-link"> Now </a><a href="/renders" class="nav-item px-4 py-2 font-medium transition hover:text-dark-text  text-gray-400" id="renders-link"> Renders </a><a href="/blog" class="nav-item px-4 py-2 font-medium transition hover:text-dark-text gradient-underline text-dark-text" id="blog-link"> Blog </a> <div id="nav-underline" class="nav-underline invisible lg:visible"></div> </div> </nav> <script>
-	let lastUnderlinePosition = { left: 0, width: 0 }
-
-	function saveUnderlinePosition() {
-		const underline = document.querySelector('#nav-underline')
-		if (underline) {
-			const style = window.getComputedStyle(underline)
-			lastUnderlinePosition.left = parseInt(style.left, 10)
-			lastUnderlinePosition.width = parseInt(style.width, 10)
-		}
-	}
-
-	function initMenu() {
-		const hamburger = document.getElementById('hamburger')
-		const navMenu = document.getElementById('nav-menu')
-
-		if (hamburger && navMenu) {
-			hamburger.addEventListener('click', () => {
-				navMenu.classList.toggle('invisible')
-
-				// Check if the menu is now visible
-				if (!navMenu.classList.contains('invisible')) {
-					// Disable scrolling
-					document.body.style.overflow = 'hidden'
-				} else {
-					// Re-enable scrolling
-					document.body.style.overflow = ''
-				}
-			})
-		}
-	}
-
-	function updateUnderline() {
-		const underline = document.querySelector('#nav-underline')
-		const activeItem = document.querySelector('.nav-item.gradient-underline')
-
-		if (!activeItem) {
-			return
-		}
-
-		const navMenu = document.querySelector('#nav-menu')
-		const activeItemRect = activeItem.getBoundingClientRect()
-		const navMenuRect = navMenu.getBoundingClientRect()
-
-		const newLeft = activeItemRect.left + 10 - navMenuRect.left
-		const newWidth = activeItem.offsetWidth - 20
-
-		const movingRight = newLeft > lastUnderlinePosition.left
-
-		underline.style.left = `${movingRight ? lastUnderlinePosition.left : lastUnderlinePosition.left + lastUnderlinePosition.width - newWidth}px`
-		underline.style.width = `${lastUnderlinePosition.width}px`
-
-		requestAnimationFrame(() => {
-			underline.style.left = `${newLeft}px`
-			underline.style.width = `${newWidth}px`
-		})
-	}
-
-	function initializeListeners() {
-		const events = [
-			{ target: document, type: 'astro:before-swap', handler: saveUnderlinePosition },
-			{
-				target: document,
-				type: 'astro:after-swap',
-				handler: () => {
-					updateUnderline()
-					initMenu()
-				}
-			},
-			{
-				target: document,
-				type: 'DOMContentLoaded',
-				handler: () => {
-					initMenu()
-					updateUnderline()
-				}
-			},
-			{ target: window, type: 'resize', handler: updateUnderline }
-		]
-
-		events.forEach(({ target, type, handler }) => target.addEventListener(type, handler))
-	}
-
-	initializeListeners()
-</script> </div> <div class="container mx-auto flex min-h-screen w-full max-w-1970 flex-col px-4 py-1 sm:py-4"> <!-- Main content area with 12-column grid layout --> <main class="flex-grow"> <div class="grid grid-cols-1 gap-4 xl:grid-cols-3 2xl:grid-cols-12">  <div class="col-span-3 flex flex-col xl:col-span-1 2xl:col-span-3"> <div class="long-transition flex flex-col mb-4 items-center rounded-md text-base sm:rounded-lg bg-about-gradient text-white p-6 shadow-lg sm:p-12 sm:text-md 3xl:text-lg"> <h2 class="long-transition mb-8 font-header text-4xl tracking-wide" data-astro-transition-scope="astro-6n27wyjg-1">Blog</h2> <p class="my-3 leading-relaxed">
+	animation-name: astroFadeIn; }</style></head> <body class="bg-gray-50 font-body text-dark-text dark:bg-dark-bg dark:text-white"> <div class="sticky top-0 z-10 mx-auto max-w-1970 sm:static sm:z-0 sm:px-4 sm:pt-4"> <nav class="nav-bar border-gradient flex items-center justify-between bg-white px-4 shadow-lg sm:rounded-lg sm:px-12"> <a href="/" class="z-50"> <img src="/astro/vollrath_logo.BoR0YlKe_Z1W1Vew.svg" class="mr-2 h-auto w-10 py-2 sm:w-16 sm:py-3" alt="Vollrath Logo" width="32" height="32" loading="lazy" decoding="async"> </a> <!-- Hamburger Menu --> <button class="z-50 flex cursor-pointer flex-col space-y-1 sm:space-y-2 lg:hidden" id="hamburger" aria-label="Menu" aria-expanded="false"> <span class="block h-0.5 w-5 bg-dark-text transition-all duration-300 sm:w-8"></span> <span class="block h-0.5 w-5 bg-dark-text transition-all duration-300 sm:w-8"></span> <span class="block h-0.5 w-5 bg-dark-text transition-all duration-300 sm:w-8"></span> </button> <!-- Navigation Menu --> <div class="invisible fixed inset-0 z-40 flex select-none flex-col items-center justify-center bg-white font-header text-xl lg:visible lg:relative lg:flex-row lg:bg-transparent" id="nav-menu"> <a href="/" class="nav-item relative px-3 py-2 font-medium transition-colors duration-300 lg:py-4 text-gray-400 hover:text-dark-text" id="home-link"> Home </a><a href="/about" class="nav-item relative px-3 py-2 font-medium transition-colors duration-300 lg:py-4 text-gray-400 hover:text-dark-text" id="about-link"> About </a><a href="/projects" class="nav-item relative px-3 py-2 font-medium transition-colors duration-300 lg:py-4 text-gray-400 hover:text-dark-text" id="projects-link"> Projects </a><a href="/now" class="nav-item relative px-3 py-2 font-medium transition-colors duration-300 lg:py-4 text-gray-400 hover:text-dark-text" id="now-link"> Now </a><a href="/renders" class="nav-item relative px-3 py-2 font-medium transition-colors duration-300 lg:py-4 text-gray-400 hover:text-dark-text" id="renders-link"> Renders </a><a href="/blog" class="nav-item relative px-3 py-2 font-medium transition-colors duration-300 lg:py-4 gradient-underline text-dark-text" id="blog-link"> Blog </a> <div id="nav-underline" class="nav-underline invisible lg:visible"></div> </div> </nav> </div> <div class="container mx-auto flex min-h-screen w-full max-w-1970 flex-col px-4 py-1 sm:py-4"> <!-- Main content area with 12-column grid layout --> <main class="flex-grow"> <div class="grid grid-cols-1 gap-4 xl:grid-cols-3 2xl:grid-cols-12">  <div class="col-span-3 flex flex-col xl:col-span-1 2xl:col-span-3"> <div class="long-transition flex flex-col mb-4 items-center rounded-md text-base sm:rounded-lg bg-about-gradient text-white p-6 shadow-lg sm:p-12 sm:text-md 3xl:text-lg"> <h2 class="long-transition mb-8 font-header text-4xl tracking-wide" data-astro-transition-scope="astro-6n27wyjg-1">Blog</h2> <p class="my-3 leading-relaxed">
 Welcome to my <strong class="font-semibold">Blog</strong>, a curated collection of my thoughts, experiences, and projects. Here, I dive into a wide range of topics that capture my curiosity and passion.
 </p> <p class="my-3 leading-relaxed">
 Whether you're interested in <strong class="font-semibold">tech explorations</strong>, creative endeavors, or deep dives into interesting challenges, this is the space where I share it all. Every post is a glimpse into my journey of learning, creating, and experimenting.
