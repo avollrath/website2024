@@ -8,6 +8,7 @@ const { title, description } = Astro.props
 import { getImage } from 'astro:assets'
 import faviconSrc from '../images/favicon.svg'
 const favIcon = await getImage({ src: faviconSrc, format: 'svg' })
+import { initializeNavigation } from '../scripts/navigationHandler.js'
 ---
 
 <!doctype html>
@@ -45,7 +46,8 @@ const favIcon = await getImage({ src: faviconSrc, format: 'svg' })
 		<script src="../scripts/interactiveSections.js"></script>
 		<script>
 			import { initializeTooltips } from '../scripts/initializeTooltips.js'
-
+			import { initializeNavigation } from '../scripts/navigationHandler.js'
+			initializeNavigation()
 			const init = () => {
 				initializeTooltips()
 			}

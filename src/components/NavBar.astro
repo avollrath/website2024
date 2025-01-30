@@ -21,28 +21,38 @@ function isPathActive(itemPath, additionalPaths = []) {
 ---
 
 <nav
-	class="nav-bar border-gradient flex items-center justify-between bg-white px-4 shadow-lg sm:rounded-lg sm:px-12 lg:col-span-3"
+	class="nav-bar border-gradient flex items-center justify-between bg-white px-4 shadow-lg sm:rounded-lg sm:px-12"
 >
-	<a href="/">
+	<a href="/" class="z-50">
 		<Image src={vollrathLogo} class="mr-2 h-auto w-10 py-2 sm:w-16 sm:py-3" alt="Vollrath Logo" />
 	</a>
 
-	<!-- Hamburger Icon -->
-	<div class="flex cursor-pointer flex-col space-y-1 sm:space-y-2 lg:hidden" id="hamburger">
-		<span class="block h-0.5 w-5 bg-dark-text sm:w-8"></span>
-		<span class="block h-0.5 w-5 bg-dark-text sm:w-8"></span>
-		<span class="block h-0.5 w-5 bg-dark-text sm:w-8"></span>
-	</div>
+	<!-- Hamburger Menu -->
+	<button
+		class="z-50 flex cursor-pointer flex-col space-y-1 sm:space-y-2 lg:hidden"
+		id="hamburger"
+		aria-label="Menu"
+		aria-expanded="false"
+	>
+		<span class="block h-0.5 w-5 bg-dark-text transition-all duration-300 sm:w-8"></span>
+		<span class="block h-0.5 w-5 bg-dark-text transition-all duration-300 sm:w-8"></span>
+		<span class="block h-0.5 w-5 bg-dark-text transition-all duration-300 sm:w-8"></span>
+	</button>
 
+	<!-- Navigation Menu -->
 	<div
-		class="invisible z-30 flex select-none flex-col font-header text-xl md:flex-row lg:visible"
+		class="invisible fixed inset-0 z-40 flex select-none flex-col items-center justify-center bg-white font-header text-xl lg:visible lg:relative lg:flex-row lg:bg-transparent"
 		id="nav-menu"
 	>
 		{
 			navItems.map((item) => (
 				<a
 					href={item.path}
-					class={`nav-item px-3 py-2 font-medium transition hover:text-dark-text ${isPathActive(item.path, item.additionalPaths) ? 'gradient-underline text-dark-text' : ' text-gray-400'}`}
+					class={`nav-item relative px-3 py-2 font-medium transition-colors duration-300 lg:py-4 ${
+						isPathActive(item.path, item.additionalPaths)
+							? 'gradient-underline text-dark-text'
+							: 'text-gray-400 hover:text-dark-text'
+					}`}
 					id={item.id}
 				>
 					{item.label}
@@ -52,89 +62,3 @@ function isPathActive(itemPath, additionalPaths = []) {
 		<div id="nav-underline" class="nav-underline invisible lg:visible"></div>
 	</div>
 </nav>
-
-<script is:inline>
-	let lastUnderlinePosition = { left: 0, width: 0 }
-
-	function saveUnderlinePosition() {
-		const underline = document.querySelector('#nav-underline')
-		if (underline) {
-			const style = window.getComputedStyle(underline)
-			lastUnderlinePosition.left = parseInt(style.left, 10)
-			lastUnderlinePosition.width = parseInt(style.width, 10)
-		}
-	}
-
-	function initMenu() {
-		const hamburger = document.getElementById('hamburger')
-		const navMenu = document.getElementById('nav-menu')
-
-		if (hamburger && navMenu) {
-			hamburger.addEventListener('click', () => {
-				navMenu.classList.toggle('invisible')
-
-				// Check if the menu is now visible
-				if (!navMenu.classList.contains('invisible')) {
-					// Disable scrolling
-					document.body.style.overflow = 'hidden'
-				} else {
-					// Re-enable scrolling
-					document.body.style.overflow = ''
-				}
-			})
-		}
-	}
-
-	function updateUnderline() {
-		const underline = document.querySelector('#nav-underline')
-		const activeItem = document.querySelector('.nav-item.gradient-underline')
-
-		if (!activeItem) {
-			return
-		}
-
-		const navMenu = document.querySelector('#nav-menu')
-		const activeItemRect = activeItem.getBoundingClientRect()
-		const navMenuRect = navMenu.getBoundingClientRect()
-
-		const newLeft = activeItemRect.left + 10 - navMenuRect.left
-		const newWidth = activeItem.offsetWidth - 20
-
-		const movingRight = newLeft > lastUnderlinePosition.left
-
-		underline.style.left = `${movingRight ? lastUnderlinePosition.left : lastUnderlinePosition.left + lastUnderlinePosition.width - newWidth}px`
-		underline.style.width = `${lastUnderlinePosition.width}px`
-
-		requestAnimationFrame(() => {
-			underline.style.left = `${newLeft}px`
-			underline.style.width = `${newWidth}px`
-		})
-	}
-
-	function initializeListeners() {
-		const events = [
-			{ target: document, type: 'astro:before-swap', handler: saveUnderlinePosition },
-			{
-				target: document,
-				type: 'astro:after-swap',
-				handler: () => {
-					updateUnderline()
-					initMenu()
-				}
-			},
-			{
-				target: document,
-				type: 'DOMContentLoaded',
-				handler: () => {
-					initMenu()
-					updateUnderline()
-				}
-			},
-			{ target: window, type: 'resize', handler: updateUnderline }
-		]
-
-		events.forEach(({ target, type, handler }) => target.addEventListener(type, handler))
-	}
-
-	initializeListeners()
-</script>

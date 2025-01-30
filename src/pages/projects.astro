@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import nintendo from '../images/projects/jurassic-jump.jpg'
+import jurassicJumpImg from '../images/projects/jurassic-jump.jpg'
+import supervimusImg from '../images/projects/supervimus.jpg'
 import Project from '../components/Project.astro'
 ---
 
@@ -12,9 +13,22 @@ import Project from '../components/Project.astro'
 			For the game's visuals, I crafted reference images using <strong class='font-semibold text-dark-text'>Affinity Photo</strong> and utilized an image-to-image workflow in <strong class='font-semibold text-dark-text'>ComfyUI</strong> with the <strong class='font-semibold text-dark-text'>Flux Dev stable diffusion model</strong> and a <strong class='font-semibold text-dark-text'>Lora</strong> to achieve a <strong class='font-semibold text-dark-text'>ClayMation</strong> aesthetic. This project was a steep learning curve, introducing me to essential concepts like <strong class='font-semibold text-dark-text'>GameManagers</strong>, <strong class='font-semibold text-dark-text'>particle systems</strong>, <strong class='font-semibold text-dark-text'>Audio Managers</strong>, creating <strong class='font-semibold text-dark-text'>sprite sheets</strong>, and <strong class='font-semibold text-dark-text'>level building</strong>. Building Jurassic Jump not only honed my technical skills but also deepened my understanding of game mechanics and artistic workflows, laying a strong foundation for my future endeavors in game development.<br><br>
 			You can also play it in full screen: <a class='font-semibold underline text-orange' href='https://avollrath.github.io/WebGL-test/'>here</a>
 		  `}
-		projectImageSrc={nintendo}
+		projectImageSrc={jurassicJumpImg}
 		altProp="Jurassic Jump Game"
 		iframeSrc="https://avollrath.github.io/WebGL-test/"
+		techStackLogos={['Godot.svg']}
+	/>
+	<Project
+		title="superVIMus"
+		htmlText={`
+			<strong class='font-semibold text-dark-text'>superVIMus</strong> is a simple yet quirky box-pushing game designed to build muscle memory for the <strong class='font-semibold text-dark-text'>hjkl</strong> movement keys. Wrapped in cute pixel graphics with a surprising gory twist, the game offers a lighthearted but effective way to get comfortable with keyboard-based navigation.<br><br>
+			Built entirely in the <strong class='font-semibold text-dark-text'>Godot engine</strong> using <strong class='font-semibold text-dark-text'>GDScript</strong>, the project was a hands-on way for me to internalize directional movement before diving deeper into <strong class='font-semibold text-dark-text'>Vim motions</strong> with the <strong class='font-semibold text-dark-text'>Neovim VSCode extension</strong>. The design focuses on clear, intuitive mechanics, making it an engaging experience for both newcomers and seasoned Vim users looking for a fun refresher.<br><br>
+			Developing <strong class='font-semibold text-dark-text'>superVIMus</strong> reinforced my understanding of <strong class='font-semibold text-dark-text'>grid-based movement</strong>, <strong class='font-semibold text-dark-text'>level design</strong>, and <strong class='font-semibold text-dark-text'>puzzle mechanics</strong>, all while keeping the gameplay humorous and visually appealing.<br><br>
+			Try it out and sharpen your navigation skills: <a class='font-semibold underline text-orange' href='https://avollrath.github.io/superVIMus/'>Play now</a>
+		  `}
+		projectImageSrc={supervimusImg}
+		altProp="superVIMus Game"
+		iframeSrc="https://avollrath.github.io/superVIMus/"
 		techStackLogos={['Godot.svg']}
 	/>
 </Layout>

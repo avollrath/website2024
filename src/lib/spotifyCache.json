@@ -533,7 +533,7 @@
     "is_local": false,
     "is_playable": true,
     "name": "Ham kummst",
-    "popularity": 49,
+    "popularity": 48,
     "preview_url": null,
     "track_number": 2,
     "type": "track",
@@ -1812,17 +1812,17 @@
   },
   {
     "album": {
-      "album_type": "single",
+      "album_type": "album",
       "artists": [
         {
           "external_urls": {
-            "spotify": "https://open.spotify.com/artist/0LyfQWJT6nXafLPZqxe9Of"
+            "spotify": "https://open.spotify.com/artist/6ZBnvCszokLW4YHZ50uHY8"
           },
-          "href": "https://api.spotify.com/v1/artists/0LyfQWJT6nXafLPZqxe9Of",
-          "id": "0LyfQWJT6nXafLPZqxe9Of",
-          "name": "Various Artists",
+          "href": "https://api.spotify.com/v1/artists/6ZBnvCszokLW4YHZ50uHY8",
+          "id": "6ZBnvCszokLW4YHZ50uHY8",
+          "name": "Chuuwee",
           "type": "artist",
-          "uri": "spotify:artist:0LyfQWJT6nXafLPZqxe9Of"
+          "uri": "spotify:artist:6ZBnvCszokLW4YHZ50uHY8"
         }
       ],
       "available_markets": [
@@ -2013,45 +2013,45 @@
         "XK"
       ],
       "external_urls": {
-        "spotify": "https://open.spotify.com/album/21alOpsMx60zdErFSECreD"
+        "spotify": "https://open.spotify.com/album/5rpTNtLWwfsoBCcN2kJ2c0"
       },
-      "href": "https://api.spotify.com/v1/albums/21alOpsMx60zdErFSECreD",
-      "id": "21alOpsMx60zdErFSECreD",
+      "href": "https://api.spotify.com/v1/albums/5rpTNtLWwfsoBCcN2kJ2c0",
+      "id": "5rpTNtLWwfsoBCcN2kJ2c0",
       "images": [
         {
           "height": 640,
-          "url": "https://i.scdn.co/image/ab67616d0000b27373b76656cb98b751256f1860",
+          "url": "https://i.scdn.co/image/ab67616d0000b27394057aa1e3680f0c285c2ae3",
           "width": 640
         },
         {
           "height": 300,
-          "url": "https://i.scdn.co/image/ab67616d00001e0273b76656cb98b751256f1860",
+          "url": "https://i.scdn.co/image/ab67616d00001e0294057aa1e3680f0c285c2ae3",
           "width": 300
         },
         {
           "height": 64,
-          "url": "https://i.scdn.co/image/ab67616d0000485173b76656cb98b751256f1860",
+          "url": "https://i.scdn.co/image/ab67616d0000485194057aa1e3680f0c285c2ae3",
           "width": 64
         }
       ],
       "is_playable": true,
-      "name": "Hardgroove Techno Essentials",
-      "release_date": "2022-05-13",
+      "name": "Wildstyle! (A-Side)",
+      "release_date": "2018-07-31",
       "release_date_precision": "day",
-      "total_tracks": 4,
+      "total_tracks": 19,
       "type": "album",
-      "uri": "spotify:album:21alOpsMx60zdErFSECreD"
+      "uri": "spotify:album:5rpTNtLWwfsoBCcN2kJ2c0"
     },
     "artists": [
       {
         "external_urls": {
-          "spotify": "https://open.spotify.com/artist/2p7Y0dNv69hTDzrQU7HSGJ"
+          "spotify": "https://open.spotify.com/artist/6ZBnvCszokLW4YHZ50uHY8"
         },
-        "href": "https://api.spotify.com/v1/artists/2p7Y0dNv69hTDzrQU7HSGJ",
-        "id": "2p7Y0dNv69hTDzrQU7HSGJ",
-        "name": "Dave Mol",
+        "href": "https://api.spotify.com/v1/artists/6ZBnvCszokLW4YHZ50uHY8",
+        "id": "6ZBnvCszokLW4YHZ50uHY8",
+        "name": "Chuuwee",
         "type": "artist",
-        "uri": "spotify:artist:2p7Y0dNv69hTDzrQU7HSGJ"
+        "uri": "spotify:artist:6ZBnvCszokLW4YHZ50uHY8"
       }
     ],
     "available_markets": [
@@ -2242,24 +2242,24 @@
       "XK"
     ],
     "disc_number": 1,
-    "duration_ms": 386470,
-    "explicit": false,
+    "duration_ms": 199933,
+    "explicit": true,
     "external_ids": {
-      "isrc": "USLZJ2248773"
+      "isrc": "QM24S1825197"
     },
     "external_urls": {
-      "spotify": "https://open.spotify.com/track/1mzBXr6rqxnWDmpQVa7P1w"
+      "spotify": "https://open.spotify.com/track/5ILGwp3VJFXSqeZPMXxHI7"
     },
-    "href": "https://api.spotify.com/v1/tracks/1mzBXr6rqxnWDmpQVa7P1w",
-    "id": "1mzBXr6rqxnWDmpQVa7P1w",
+    "href": "https://api.spotify.com/v1/tracks/5ILGwp3VJFXSqeZPMXxHI7",
+    "id": "5ILGwp3VJFXSqeZPMXxHI7",
     "is_local": false,
     "is_playable": true,
-    "name": "Talking About",
-    "popularity": 4,
+    "name": "Boom Bap Funk",
+    "popularity": 16,
     "preview_url": null,
-    "track_number": 1,
+    "track_number": 13,
     "type": "track",
-    "uri": "spotify:track:1mzBXr6rqxnWDmpQVa7P1w"
+    "uri": "spotify:track:5ILGwp3VJFXSqeZPMXxHI7"
   },
   {
     "album": {

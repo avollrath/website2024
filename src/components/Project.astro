@@ -1,5 +1,6 @@
 ---
-const { title, htmlText, projectImageSrc, transitionName, altProp, iframeSrc, techStackLogos } = Astro.props
+const { title, htmlText, projectImageSrc, transitionName, altProp, iframeSrc, techStackLogos } =
+	Astro.props
 import { Image } from 'astro:assets'
 import TechStack from '../components/TechStack.astro'
 ---
@@ -16,19 +17,20 @@ import TechStack from '../components/TechStack.astro'
 			</h2>
 			<p set:html={htmlText} class="max-sm:text-sm" />
 		</div>
-		{techStackLogos && techStackLogos.length > 0 ? (
-		<div class="mb-4 text-center">
-			<span class="mb-8 font-semibold">Tech Stack:</span>
-			<TechStack logos={techStackLogos} />
-		</div>
-
-		  ) : (
-			<TechStack />
-		  )}
+		{
+			techStackLogos && techStackLogos.length > 0 ? (
+				<div class="mb-4 text-center">
+					<span class="mb-8">Tech Stack:</span>
+					<TechStack logos={techStackLogos} />
+				</div>
+			) : (
+				<TechStack />
+			)
+		}
 	</div>
 </div>
 <div
-	class="border-gradient sm:text-md col-span-3 mb-4 flex flex-col items-center rounded-lg bg-white p-12 text-gray-400 shadow-lg max-md:rounded-md max-md:p-4 max-sm:border-none max-sm:p-0 xl:col-span-2 2xl:col-span-8 3xl:text-lg wrapper"
+	class="border-gradient sm:text-md wrapper col-span-3 mb-4 flex flex-col items-center rounded-lg bg-white p-12 text-gray-400 shadow-lg max-md:rounded-md max-md:p-4 max-sm:border-none max-sm:p-0 xl:col-span-2 2xl:col-span-8 3xl:text-lg"
 >
 	<div class={`image-container rounded-md ${iframeSrc ? 'cursor-pointer iframe-trigger' : ''}`}>
 		<Image
@@ -40,42 +42,16 @@ import TechStack from '../components/TechStack.astro'
 			loading="lazy"
 		/>
 	</div>
-	{iframeSrc && (
-		<div class="iframe-container hidden w-full">
-		  <iframe
-			class="aspect-video w-full rounded-md"
-			data-src={iframeSrc}
-			allowfullscreen
-			loading="lazy"
-		  ></iframe>
-		</div>
-	  )}
+	{
+		iframeSrc && (
+			<div class="iframe-container hidden w-full">
+				<iframe
+					class="aspect-video w-full rounded-md"
+					data-src={iframeSrc}
+					allowfullscreen
+					loading="lazy"
+				/>
+			</div>
+		)
+	}
 </div>
-
-{iframeSrc && (
-	<script>
-	  document.addEventListener('DOMContentLoaded', () => {
-		// Function to handle image click
-		function handleImageClick(imageElement) {
-		  const projectContainer = imageElement.closest('.wrapper');
-		  if (!projectContainer) return;
-  
-		  const imageContainer = projectContainer.querySelector('.image-container');
-		  const iframeContainer = projectContainer.querySelector('.iframe-container');
-		  const iframe = iframeContainer.querySelector('iframe');
-  
-		  if (iframe) {
-			iframe.src = iframe.getAttribute('data-src');
-  
-			imageContainer.classList.add('hidden');
-			iframeContainer.classList.remove('hidden');
-		  }
-		}
-  
-		const clickableImages = document.querySelectorAll('.iframe-trigger');
-		clickableImages.forEach((img) => {
-		  img.addEventListener('click', () => handleImageClick(img));
-		});
-	  });
-	</script>
-  )}
